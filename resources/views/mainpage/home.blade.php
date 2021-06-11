@@ -9,129 +9,29 @@
 rel="stylesheet"
 href="https://unpkg.com/swiper/swiper-bundle.min.css"
 />
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/bootstrap5.min.css">
-<link href="http://fonts.cdnfonts.com/css/prompt" rel="stylesheet">
-<style>
-    .navbar-top li{
-        padding-top: 5px;
-    }
-</style>
-<style>
-    html,
-    body {
-      position: relative;
-      height: 100%;
-      font-family: 'Prompt', sans-serif !important;
-    }
+{{-- <link rel="stylesheet" href="/css/bootstrap.min.css"> --}}
+{{-- <link rel="stylesheet" href="/css/bootstrap5.min.css">
+<link href="http://fonts.cdnfonts.com/css/prompt" rel="stylesheet"> --}}
 
-    body {
-      background: #f8f8f8;
-      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      color: #000;
-      margin: 0;
-      padding: 0;
-      margin-top: 120px;
-    }
-
-    .swiper-container {
-      width: 100%;
-      height: 450px;
-    }
-    .swiper-container-3{
-        height: 300px;
-    }
-    .swiper-container-3 .swiper-slide{
-        margin-right: 10px;
-    }
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-
-      /* Center slide text vertically */
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-    }
-
-    .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .swipper-sf{
-        background-color: #fff;
-        margin: 5px 0;
-    }
-    .swiper-slide .text{
-        padding: 80px;
-        height: 100%;
-        text-align: start;
-    }
-    .swiper-slide .text h3{
-        font-size: 13px;
-        color: #003580;
-        font-weight: 600;
-    }
-    .swiper-slide .text h2{
-        font-size: 20px;
-        font-weight: 600;
-    }
-    .swiper-slide .text p{
-        font-size: 13px;
-    }
-    .col-brands .col-md-6{
-        padding: 3px;
-    }
-    .col-brands .col-12{
-        padding: 3px;
-    }
-    .swiper-container-2 .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
-    }
-    .col-product .row>*{
-        padding-right: 0;
-        padding-left: 0;
-    }
-    .col-product .text h2{
-        font-size: 18px;
-        margin: 20px 0;
-    }
-  </style>
 @endsection
 
 {{-- Body HTML --}}
 @section('content')
      <!-- Swiper -->
-  <div class="swiper-container swiper-container-0 mySwiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="/image/home/Group 313.png"></div>
-      <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=1"></div>
-      <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=2"></div>
-      <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=3"></div>
-      <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=4"></div>
-      <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=5"></div>
-      <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=6"></div>
-      <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=7"></div>
-      <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=8"></div>
+    <div class="swiper-container swiper-container-0 mySwiper">
+        <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="/image/home/Group 313.png"></div>
+        <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=1"></div>
+        <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=2"></div>
+        <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=3"></div>
+        <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=4"></div>
+        <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=5"></div>
+        <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=6"></div>
+        <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=7"></div>
+        <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=8"></div>
+        </div>
+        <div class="swiper-pagination"></div>
     </div>
-    <div class="swiper-pagination"></div>
-  </div>
-
 
     <section class="swipper-sf">
         <div class="container">
@@ -217,13 +117,15 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css"
     <section class="col-brands">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-xs-12 col-md-6">
                     <img src="/image/home/001.png" width="100%">
                 </div>
-                <div class="col-md-6">
+
+                <div class="col-xs-12 col-md-6">
                     <img src="/image/home/002.png" width="100%">
                 </div>
-                <div class="col-12">
+
+                <div class="col-xs-12 col-12">
                     <img src="/image/home/003.png" width="100%">
                 </div>
             </div>

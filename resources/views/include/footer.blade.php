@@ -14,7 +14,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-6 col-md-3 about">
+            <div class="col-xs-12 col-sm-6 col-md-2 about">
                 <h4>Mobihub</h4>
                 <li>เกี่ยวกับเรา</li>
                 <li>ข่าวสาร</li>
@@ -23,7 +23,7 @@
                 <li>ติดต่อเรา</li>
             </div>
 
-            <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="col-xs-12 col-sm-6 col-md-4">
                 <h4>เกี่ยวกับ Mobihub</h4>
                 <p>
                     ผู้จัดจำหน่ายแบบ Business-to-Business (B2B) ที่ได้รับอนุญาตและบริการที่มีการจัดการซึ่งจำหน่ายสนับสนุนซ่อมแซมผลิตภัณฑ์
