@@ -1,23 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
-    {{-- <link rel="stylesheet" href="/css/bootstrap3.4.1.min.css">
-    <script src="{{ asset('/js/jquery3-5-1.min.js') }}"></script>
-    <script src="{{ asset('/js/bootstrap3.4.1.min.js') }}"></script> --}}
-    <!-- Link Swiper's CSS -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/swiper/swiper-bundle.min.css"
-    />
-    <link rel="stylesheet" href="/css/bootstrap5.min.css">
-    <link href="http://fonts.cdnfonts.com/css/prompt" rel="stylesheet">
+@extends('layout/home-2')
 
- <!-- Demo styles -->
- <style>
+{{-- Title Website --}}
+@section('title', 'MOBIHUB | Home')
+
+{{-- Link CSS --}}
+@section('link')
+<link
+rel="stylesheet"
+href="https://unpkg.com/swiper/swiper-bundle.min.css"
+/>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/bootstrap5.min.css">
+<link href="http://fonts.cdnfonts.com/css/prompt" rel="stylesheet">
+<style>
+    .navbar-top li{
+        padding-top: 5px;
+    }
+</style>
+<style>
     html,
     body {
       position: relative;
@@ -112,10 +112,11 @@
         margin: 20px 0;
     }
   </style>
-</head>
+@endsection
 
-<body>
-  <!-- Swiper -->
+{{-- Body HTML --}}
+@section('content')
+     <!-- Swiper -->
   <div class="swiper-container swiper-container-0 mySwiper">
     <div class="swiper-wrapper">
       <div class="swiper-slide"><img src="/image/home/Group 313.png"></div>
@@ -255,78 +256,80 @@
             </div>
         </div>
     </section>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-  <!-- Swiper JS -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Initialize Swiper -->
-  <script>
-    var swiper = new Swiper(".swiper-container-0", {
-         pagination: {
+     <!-- Initialize Swiper -->
+     <script>
+        var swiper = new Swiper(".swiper-container-0", {
+            pagination: {
+                el: ".swiper-pagination",
+                dynamicBullets: true,
+            },
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+        });
+        </script>
+        <script>
+        var swiper = new Swiper(".swiper-container-1", {
+            direction: "vertical",
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            });
+        </script>
+        <script>
+        var swiper = new Swiper(".swiper-container-2", {
+            effect: "fade",
+            pagination: {
+                el: ".swiper-pagination",
+                dynamicBullets: true,
+            },
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            });
+        </script>
+        <script>
+        var swiper = new Swiper(".swiper-container-3", {
+            slidesPerView: 1,
+            spaceBetween: 5,
+            pagination: {
             el: ".swiper-pagination",
-            dynamicBullets: true,
-        },
-        autoplay: {
-          delay: 2500,
-          disableOnInteraction: false,
-        },
-    });
-  </script>
-  <script>
-    var swiper = new Swiper(".swiper-container-1", {
-        direction: "vertical",
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-          dynamicBullets: true,
-        },
-        autoplay: {
-          delay: 3500,
-          disableOnInteraction: false,
-        },
-      });
-  </script>
-   <script>
-    var swiper = new Swiper(".swiper-container-2", {
-        effect: "fade",
-        pagination: {
-            el: ".swiper-pagination",
-            dynamicBullets: true,
-        },
-        autoplay: {
-          delay: 3500,
-          disableOnInteraction: false,
-        },
-      });
-  </script>
-   <script>
-    var swiper = new Swiper(".swiper-container-3", {
-      slidesPerView: 1,
-      spaceBetween: 5,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      breakpoints: {
-        "@0.00": {
-          slidesPerView: 1,
-          spaceBetween: 5,
-        },
-        "@0.75": {
-          slidesPerView: 2,
-          spaceBetween: 10,
-        },
-        "@1.00": {
-          slidesPerView: 3,
-          spaceBetween: 15,
-        },
-        "@1.50": {
-          slidesPerView: 4,
-          spaceBetween: 20,
-        },
-      },
-    });
-  </script>
+            clickable: true,
+            },
+            breakpoints: {
+            "@0.00": {
+                slidesPerView: 1,
+                spaceBetween: 5,
+            },
+            "@0.75": {
+                slidesPerView: 2,
+                spaceBetween: 10,
+            },
+            "@1.00": {
+                slidesPerView: 3,
+                spaceBetween: 15,
+            },
+            "@1.50": {
+                slidesPerView: 4,
+                spaceBetween: 20,
+            },
+            },
+        });
+        </script>
+@endsection
 
-</body>
-</html>
+@section('script')
+
+
+@endsection
