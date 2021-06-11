@@ -9,9 +9,8 @@
 rel="stylesheet"
 href="https://unpkg.com/swiper/swiper-bundle.min.css"
 />
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/bootstrap5.min.css">
-<link href="http://fonts.cdnfonts.com/css/prompt" rel="stylesheet">
+{{-- <link rel="stylesheet" href="/css/bootstrap5.min.css"> --}}
+
 <style>
     .navbar-top li{
         padding-top: 5px;
