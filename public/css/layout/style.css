@@ -75,3 +75,37 @@ body{
 .navbar-default .navbar-top .navbar-top-right li:nth-child(1){
     margin-right: 25px;
 }
+
+/*========= Footer ========*/
+.footer{
+    margin-top: 10%;
+    border-top:1px solid #ddd;
+    padding-top: 30px;
+}
+.footer h4{
+    font-family: 'Prompt', sans-serif;
+}
+.footer li{
+    list-style: none;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.footer .about li{
+    list-style: circle;
+    margin-left: 10px;
+}
+.footer .copy-right{
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #f4f4f4;
+    padding-top: 15px;
+}
+.footer img{
+    height: 240px;
+    position: absolute;
+    right: 0;
+    -webkit-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    z-index: 0;
+}
