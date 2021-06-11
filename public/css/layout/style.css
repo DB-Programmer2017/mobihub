@@ -1,0 +1,77 @@
+body{
+    font-family: 'Prompt', sans-serif;
+}
+/*Navbar*/
+.navbar-default{
+    font-family: 'Prompt', sans-serif;
+    box-shadow: 0 0 10px -3px rgba(0,0,0,0.2);
+}
+.navbar-default li a{
+    font-family: 'Prompt', sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+}
+.navbar-default .navbar-brand{
+    font-family: 'Prompt', sans-serif;
+}
+.navbar-default .navbar-nav:nth-child(1){
+    width: 80%;
+    text-align: right;
+    padding-left: 35%;
+}
+.navbar-default .navbar-nav li a{
+    color:#919191;
+}
+.navbar-default .navbar-nav .btn-quotation{
+    margin-top: 10px;
+    border-radius: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.navbar-default .container-fluid{
+    border-top:1px solid #f4f4f4;
+    padding-right: 30px;
+}
+
+.navbar-default .navbar-top{
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+.navbar-default .navbar-top .navbar-center{
+    text-align: center;
+}
+.navbar-default .navbar-top ul{
+    width: 33%;
+    display: inline-block;
+}
+.navbar-default .navbar-top ul .img-brand{
+    height: 30px;
+    width: auto;
+}
+.navbar-default .navbar-top ul li{
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal;
+}
+.navbar-default .navbar-top ul .social{
+    height: 28px;
+    width: 28px;
+    line-height: 28px;
+    color:#505050;
+    border: 1px solid #505050;
+    text-align: center;
+    border-radius: 50px;
+}
+.navbar-default .navbar-top ul .social:hover{
+    background: #505050;
+    color:#fff;
+    cursor: pointer;
+}
+.navbar-default .navbar-top .navbar-top-right{
+    text-align: right;
+    padding-right: 30px;
+}
+.navbar-default .navbar-top .navbar-top-right li:nth-child(1){
+    margin-right: 25px;
+}
