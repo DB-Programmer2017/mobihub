@@ -158,6 +158,18 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css"
             </div>
         </div>
     </section>
+    <section class="col-news">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <img src="/image/home/Rectangle 306.png" width="100%" alt="">
+                </div>
+                <div class="col-xs-12 col-md-6">
+
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
