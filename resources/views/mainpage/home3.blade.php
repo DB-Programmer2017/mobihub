@@ -7,9 +7,8 @@
 @section('link')
 <link
 rel="stylesheet"
-href="https://unpkg.com/swiper/swiper-bundle.min.css"
-/>
-{{-- <link rel="stylesheet" href="/css/bootstrap5.min.css"> --}}
+href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+
 
 <style>
     .navbar-top li{
@@ -102,6 +101,7 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css"
         font-size: 18px;
         background: #fff;
     }
+    .col-news .row>*,
     .col-product .row>*{
         padding-right: 0;
         padding-left: 0;
@@ -109,6 +109,9 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css"
     .col-product .text h2{
         font-size: 18px;
         margin: 20px 0;
+    }
+    .col-news{
+        margin: 50px 0;
     }
   </style>
 @endsection
@@ -251,6 +254,18 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css"
                     <div class="swiper-slide">Slide 9</div>
                     </div>
                     <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="col-news">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <img src="/image/home/Rectangle 306.png" width="100%" alt="">
+                </div>
+                <div class="col-xs-12 col-md-6">
+
                 </div>
             </div>
         </div>
