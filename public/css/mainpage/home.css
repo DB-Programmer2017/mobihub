@@ -1,0 +1,226 @@
+.swiper-slide .text h3{
+    font-size: 13px;
+    color: #003580;
+    font-weight: 600;
+}
+.swiper-slide .text h2{
+    font-size: 20px;
+    font-weight: 600;
+}
+.swiper-slide .text p{
+    font-size: 13px;
+}
+.col-brands .col-md-6{
+    padding: 3px;
+}
+.col-brands .col-12{
+    padding: 3px;
+}
+.swiper-container-2 .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+}
+.col-news .row>*,
+.col-product .row>*{
+    padding-right: 0;
+    padding-left: 0;
+}
+.col-product .text h2{
+    font-size: 18px;
+    margin: 20px 0;
+}
+.col-product .swiper-slide .text-1{
+    padding: 0 30px;
+    height: 100%;
+    text-align: center;
+}
+.col-product .swiper-slide .text-1 h3{
+    font-size: 12px;
+    color: #505050;
+}
+.col-product .swiper-slide .text-1 h2{
+    font-size: 14px;
+    color: #202020;
+    font-weight: 200;
+    margin-top: 10px;
+}
+.col-product .swiper-slide .text-2 {
+    font-size: 10px;
+    color: #d4d4d4;
+}
+.col-product .swiper-slide .flex-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .col-product .btn-primary:hover {
+    background-color: #999999;
+    border-color: #999999;
+}
+.col-product  .btn:hover, .btn:focus,
+.col-product .btn.focus {
+    text-decoration: none;
+}
+.col-product  .btn-primary {
+    background-color: #999999;
+    border-color: #999999;
+}
+.col-product .btn {
+    border-radius: 25px;
+    font-size: 10px;
+    font-weight: 200;
+    padding: 5px 20px;
+    z-index: 11;
+}
+.col-news{
+    margin: 50px 0;
+    position: relative;
+}
+.col-news .container{
+    background: #fff;
+}
+
+.col-news .box {
+    text-align: center;
+    background-color: #F4F4F4;
+    padding: 10px;
+    position: absolute;
+    left: 34%;
+    width: 400px;
+    z-index: 10;
+    bottom: 9%;
+}
+.col-news .box h2{
+    font-size: 22px;
+}
+.col-news .box h3 {
+    font-size: 16px;
+    font-weight: 200;
+    color: #999999;
+    padding: 0 30px;
+}
+.col-news .box p{
+    text-align: end;
+    font-size: 11px;
+    font-weight: 200;
+    color: #999999;
+    margin: 0;
+}
+.swiper-container-4{
+    padding: 0 0px 0px 27% !important;
+}
+.text-news p {
+    padding-left: 29%;
+    padding-top: 10%;
+}
+.text-news .text-1{
+    text-align: start;
+}
+.text-news .text-1 h2{
+    font-size: 16px;
+    margin-top: 0%;
+}
+.text-news .text-1 p {
+    font-size: 10px;
+    padding-left: 0%;
+    padding-top: 0;
+}
+.col-news .swiper-slide{
+    display: block !important;
+}
+.col-news .box-news{
+    margin: 5px 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+.col-news .pic-news{
+    height: auto;
+    /* adjust in the future */
+}
+.col-news .swiper-slide img{
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+@media (max-width:1200px) and (min-width:801px){
+
+}
+@media (max-width:991.98px){
+    .swiper-container-2{
+        height: 200px;
+    }
+    .swiper-slide .text {
+        padding: 20px;
+    }
+    .swiper-slide .text h3 {
+        font-size: 15px;
+    }
+    .swiper-slide .text p {
+        font-size: 12px;
+    }
+    .swiper-slide .text p {
+        font-size: 12px;
+    }
+    .col-product .swiper-slide .text-1 h2 {
+        font-size: 10px;
+    }
+    .col-news .box {
+        left: 16%;
+        bottom: 40%;
+    }
+
+}
+@media (max-width:800px){
+    .col-news .box {
+        text-align: center;
+        background-color: #F4F4F4;
+        padding: 10px;
+        position: absolute;
+        left: 7%;
+        width: 360px;
+        z-index: 10;
+        bottom: 40%;
+        top: 50%;
+    }
+    .col-news .box h2 {
+        font-size: 17px;
+        margin-top: 10px;
+    }
+    .col-news .box h3 {
+        font-size: 12px;
+        font-weight: 200;
+        color: #999999;
+        padding: 0px 15px;
+    }
+    .swiper-container-3 {
+        height: auto;
+    }
+    .swiper-container-2 {
+        height: 230px;
+    }
+}
+@media (max-width:690px) and (min-width:320px){
+    .col-news .box {
+        padding: 10px;
+        left: 7%;
+        width: 276px;
+        height: 120px;
+        bottom: 40%;
+        top: calc(100%/3.8);
+    }
+    .swiper-container-4 {
+        padding: 0 0px 0px 5% !important;
+    }
+    .text-news p {
+        padding-left: 8%;
+        padding-top: 10%;
+    }
+    .text-news .text-1 h2 {
+        font-size: 16px;
+        margin-top: 0%;
+        margin-bottom: 0;
+    }
+}
