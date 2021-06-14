@@ -20,15 +20,10 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css"
      <!-- Swiper -->
     <div class="swiper-container swiper-container-0 mySwiper">
         <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="/image/home/Group 313.png"></div>
-        <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=1"></div>
-        <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=2"></div>
-        <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=3"></div>
-        <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=4"></div>
-        <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=5"></div>
-        <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=6"></div>
-        <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=7"></div>
-        <div class="swiper-slide"><img src="https://picsum.photos/1080/450?random=8"></div>
+            <div class="swiper-slide"><img src="/image/home/Group 313.png"></div>
+            <div class="swiper-slide"><img src="/image/home/Untitled-1.jpg"></div>
+            <div class="swiper-slide"><img src="/image/home/Group 321.jpg"></div>
+
         </div>
         <div class="swiper-pagination"></div>
     </div>
@@ -143,15 +138,122 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css"
                 <!-- Swiper -->
                 <div class="swiper-container swiper-container-3 mySwiper">
                     <div class="swiper-wrapper">
-                    <div class="swiper-slide">Slide 1</div>
-                    <div class="swiper-slide">Slide 2</div>
-                    <div class="swiper-slide">Slide 3</div>
-                    <div class="swiper-slide">Slide 4</div>
-                    <div class="swiper-slide">Slide 5</div>
-                    <div class="swiper-slide">Slide 6</div>
-                    <div class="swiper-slide">Slide 7</div>
-                    <div class="swiper-slide">Slide 8</div>
-                    <div class="swiper-slide">Slide 9</div>
+                        <div class="swiper-slide">
+                            <div class="box">
+                                <img class="img-responsive" src="/image/home/product/product2.jpg" alt="">
+                                <div class="text-1">
+                                    <h3>
+                                        IPHONE 12 PRO / 12 PRO MAX CASE
+                                    </h3>
+                                    <h2>
+                                        SHOCKPROOF DROP PROOF RUGGED
+                                        COVER W/ X-MOUNT & CARABINER
+                                    </h2>
+                                </div>
+                                <div class="flex-box">
+                                    <div class="text-2">
+                                        รหัสสินค้า : 77-65501
+                                    </div>
+                                    <button class="btn btn-primary" type="button">ติดต่อผู้ขาย</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="box">
+                                <img class="img-responsive" src="/image/home/product/product3.jpg" alt="">
+                                <div class="text-1">
+                                    <h3>
+                                        Gaming
+                                    </h3>
+                                    <h2>
+                                        RAM-B-149Z-UN7U
+                                    </h2>
+                                </div>
+                                <div class="flex-box">
+                                    <div class="text-2">
+                                        รหัสสินค้า : 77-65501
+                                    </div>
+                                    <button class="btn btn-primary" type="button">ติดต่อผู้ขาย</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="box">
+                                <img class="img-responsive" src="/image/home/product/product4.jpg" alt="">
+                                <div class="text-1">
+                                    <h3>
+                                        AirPods
+                                    </h3>
+                                    <h2>
+                                        Ispra Series Case
+                                    </h2>
+                                </div>
+                                <div class="flex-box">
+                                    <div class="text-2">
+                                        รหัสสินค้า : 77-65501
+                                    </div>
+                                    <button class="btn btn-primary" type="button">ติดต่อผู้ขาย</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="box">
+                                <img class="img-responsive" src="/image/home/product/product5.jpg" alt="">
+                                <div class="text-1">
+                                    <h3>
+                                        มอเตอร์ไซต์
+                                    </h3>
+                                    <h2>
+                                        RAM-B-149Z-UN7U
+                                    </h2>
+                                </div>
+                                <div class="flex-box">
+                                    <div class="text-2">
+                                        รหัสสินค้า : 77-65501
+                                    </div>
+                                    <button class="btn btn-primary" type="button">ติดต่อผู้ขาย</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="box">
+                                <img class="img-responsive" src="/image/home/product/product1.jpg" alt="">
+                                <div class="text-1">
+                                    <h3>
+                                        Bag mounting
+                                    </h3>
+                                    <h2>
+                                       Otter Box case
+                                    </h2>
+                                </div>
+                                <div class="flex-box">
+                                    <div class="text-2">
+                                        รหัสสินค้า : 77-65501
+                                    </div>
+                                    <button class="btn btn-primary" type="button">ติดต่อผู้ขาย</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="box">
+                                <img class="img-responsive" src="/image/home/product/product1.jpg" alt="">
+                                <div class="text-1">
+                                    <h3>
+                                        IPHONE 12 PRO / 12 PRO MAX CASE
+                                    </h3>
+                                    <h2>
+                                        SHOCKPROOF DROP PROOF RUGGED
+                                        COVER W/ X-MOUNT & CARABINER
+                                    </h2>
+                                </div>
+                                <div class="flex-box">
+                                    <div class="text-2">
+                                        รหัสสินค้า : 77-65501
+                                    </div>
+                                    <button class="btn btn-primary" type="button">ติดต่อผู้ขาย</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -162,10 +264,388 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css"
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-6">
-                    <img src="/image/home/Rectangle 306.png" width="100%" alt="">
+                    <img src="/image/home/shutterstock_1712203645-news2.jpg" class="pic-news" width="100%" alt="">
                 </div>
-                <div class="col-xs-12 col-md-6">
-
+                <div class="box">
+                    <h2>
+                        Symmetry Series Clear Case
+                    </h2>
+                    <h3>
+                        It has survived not only five centuries, but also the leap into electronic..
+                    </h3>
+                    <p>
+                        <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                    </p>
+                </div>
+                <div class="col-xs-12 col-md-6 text-news">
+                    <p>
+                        ข่าวสาร
+                    </p>
+                    <div class="swiper-container swiper-container-4 mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=1">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=1">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=1">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=2">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=2">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=3">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=3">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=4">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=4">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=5">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=5">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=6">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=6">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=1">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=1">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=1">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=1">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=1">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="https://picsum.photos/450/450?grayscale?random=1">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                hello
+                                            </h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -183,6 +663,7 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css"
             autoplay: {
                 delay: 2500,
                 disableOnInteraction: false,
+                speed: 1,
             },
         });
         </script>
@@ -241,6 +722,19 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css"
             },
         });
         </script>
+         <script>
+            var swiper = new Swiper(".swiper-container-4", {
+              direction: "vertical",
+              slidesPerView: 1,
+              spaceBetween: 30,
+              mousewheel: true,
+              pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+            });
+          </script>
 @endsection
 
 @section('script')
