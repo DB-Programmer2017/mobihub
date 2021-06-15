@@ -13,6 +13,7 @@ use App\Http\Controllers\SubscriptionEmailController;
 use App\Http\Controllers\NewsAllController;
 use App\Http\Controllers\SlideAllController;
 use App\Http\Controllers\MobihubController;
+use App\Http\Controllers\ArmorxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,14 @@ Route::get('/', function () {
     Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
 
 
+// Route::get('/armor-x', function () {
+//     return view('mainpage/armor-x');
+// });
+Route::get('/armor-x', [ArmorxController::class,'home_armor_x']);
+
+Route::get('/armor-x-product', function () {
+    return view('mainpage/armor-x-product');
+});
 Route::get('/service', function () {
     return view('mainpage/service');
 });
