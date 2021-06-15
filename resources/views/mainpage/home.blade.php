@@ -5,13 +5,7 @@
 
 {{-- Link CSS --}}
 @section('link')
-<link
-rel="stylesheet"
-href="https://unpkg.com/swiper/swiper-bundle.min.css"
-/>
-{{-- <link rel="stylesheet" href="/css/bootstrap.min.css"> --}}
-{{-- <link rel="stylesheet" href="/css/bootstrap5.min.css">
-<link href="http://fonts.cdnfonts.com/css/prompt" rel="stylesheet"> --}}
+<link rel="stylesheet" href="/css/mainpage/home.css">
 
 @endsection
 
@@ -20,9 +14,30 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css"
      <!-- Swiper -->
     <div class="swiper-container swiper-container-0 mySwiper">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="/image/home/Group 313.png"></div>
-            <div class="swiper-slide"><img src="/image/home/Untitled-1.jpg"></div>
-            <div class="swiper-slide"><img src="/image/home/Group 321.jpg"></div>
+            <div class="swiper-slide">
+                <picture>
+                    <source srcset="/image/home/Group 313.png" media="(min-width: 1200px)">
+                    <source srcset="/image/home/otterbox-mobile.jpg" media="(min-width: 800px)">
+                    <source srcset="/image/home/otterbox-s-mobile.jpg" media="(min-width: 200px)">
+                    <img src="/image/home/Group 313.png" alt="MDN Web Docs">
+                 </picture>
+            </div>
+            <div class="swiper-slide">
+                <picture>
+                    <source srcset="/image/home/Untitled-1.jpg" media="(min-width: 1200px)">
+                    <source srcset="/image/home/armor-x-mobile.jpg" media="(min-width: 800px)">
+                        <source srcset="/image/home/armor-x-s-mobile.jpg" media="(min-width: 200px)">
+                    <img src="/image/home/Untitled-1.jpg" alt="MDN Web Docs">
+                 </picture>
+            </div>
+            <div class="swiper-slide">
+                <picture>
+                    <source srcset="/image/home/Group321.jpg" media="(min-width: 1200px)">
+                    <source srcset="/image/home/mobihub-mobile.jpg" media="(min-width: 800px)">
+                        <source srcset="/image/home/mobihub-s-mobile.jpg" media="(min-width: 200px)">
+                    <img src="/image/home/Group321.jpg" alt="MDN Web Docs">
+                 </picture>
+            </div>
 
         </div>
         <div class="swiper-pagination"></div>
@@ -59,7 +74,7 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css"
                                             Heading
                                         </h2>
                                         <p>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, quaerat reprehenderit nesciunt optio obcaecati a recusandae ipsum nihil officia accusamus esse? Sapiente rerum, delectus nulla eius illum sint inventore recusandae.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, quaerat reprehenderit nesciunt optio rerum, delectus nulla eius illum sint inventore recusandae.
                                         </p>
                                     </div>
                                 </div>
@@ -70,9 +85,8 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css"
                                         </h3>
 
                                         <p>
-                                            Device management can be complex and cumbersome. For businesses adopting diverse mobile devices with different operating systems and ownership models, it takes several IT hours for provisioning, management and maintaining security.
-
-                                            Scalefusion helps in gaining visibility and streamlines IT controls across these devices.
+                                            Device management can be complex and cumbersome. For businesses adopting diverse mobile s, it takes several IT hours for provisioning, management and maintaining security.
+                                            visibility and streamlines IT controls across these devices.
                                         </p>
                                     </div>
                                 </div>
@@ -83,8 +97,7 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css"
                                         </h3>
                                         <p>
                                             Empower your frontline workers with mobile devices and help them work with more efficiency and fewer distractions. Support them in offering the best service to your customers.
-
-                                            Provision the devices used by your field force with business apps and content. Empower your frontline workforce to get in touch, share files and operate within or outside the conventional office perimeter with ease.
+                                            within or outside the conventional office perimeter with ease.
                                         </p>
                                     </div>
                                 </div>
@@ -651,7 +664,7 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css"
         </div>
     </section>
     <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="/js/swiper-bundle.min.js"></script>
 
      <!-- Initialize Swiper -->
      <script>

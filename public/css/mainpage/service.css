@@ -1,0 +1,126 @@
+.service .bg{
+    background: url(/image/mainpage/service/digital-world-map-hologram-blue-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 350px;
+}
+.service{
+    margin-top: -52px;
+    height: 450px;
+    padding-top: 0;
+}
+.service .text-banner h3{
+    font-size: 17px;
+    color: #FF4242;
+    margin-top: 0;
+    font-weight: bold;
+}
+.service .btn{
+    background-color: #DB4942;
+}
+.service .text-banner h1{
+    color: white;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.service .box{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 370px;
+    margin: 0 150px;
+}
+.service .text-banner{
+    margin-bottom: 70px;
+}
+.service .btn{
+    padding: 10px 55px;
+}
+.service-1{
+    margin: 50px 0;
+}
+.service-1 .card{
+    padding: 50px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 15%), 10px 10px rgb(0 0 0 /5%);
+}
+.service-1 .card img{
+    max-width: 100%;
+}
+.service-1 .card .card-pic{
+    width: 50px;
+    height: 50px;
+}
+
+.service-1 .col-md-4{
+    text-align: center;
+}
+
+.service-2 .contact-form{
+    padding: 30px 300px;
+}
+.service-2 .form-control {
+    background-color: #f8f8f8;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-shadow:0px 0px 0px #fff;
+    transition:0.7s;
+}
+.service-2 .form-control:focus{
+    background-color: #fff;
+    box-shadow:1px 1px 10px #dcdcdc;
+    transform: scale(1.02);
+    border-bottom: 0px solid #fff ;
+}
+.service-2 .contact-form textarea,
+.service-2 .contact-form input{
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #c4c4c4 ;
+    margin: 30px 0;
+}
+.service-2 .contact-form h1{
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.service-2 .contact-form .btn-danger{
+    color: #ffffff;
+    background-color: #999999;
+    border-color: #999999;
+    padding: 5px 50px;
+}
+.service-2 .contact-form .button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media (max-width: 600px){
+    .service-1 .card{
+        padding: 50px 50px;
+        width: 300px;
+        margin: 30px auto 30px auto;
+    }
+    .service .box{
+        margin: 0 50px;
+    }
+    .service-2 .contact-form{
+        padding: 30px 50px;
+    }
+}
+@media screen and (max-width: 992px) and (min-width: 601px){
+    .service-1 .card{
+        padding: 50px 50px;
+        width: 500px;
+        margin: 30px auto 30px auto;
+    }
+    .service-2 .contact-form{
+        padding: 30px 75px;
+    }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 993px){
+    .service-2 .contact-form{
+        padding: 30px 150px;
+    }
+
+}

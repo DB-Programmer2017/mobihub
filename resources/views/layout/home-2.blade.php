@@ -9,7 +9,13 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
     <link href="https://fonts.googleapis.com/css?family=Prompt|Poppins|Questrial|Merienda|Caveat+Brush|Oswald|Anton|Mitr|Abril+Fatface" rel="stylesheet">
     <link rel="stylesheet" href="/css/layout/style.css">
+    <link rel="stylesheet" href="/css/swiper-bundle.min.css">
+    <style>
+        body{
+            font-family: 'Prompt', sans-serif !important;
+        }
 
+    </style>
     @yield('link')
 
 </head>

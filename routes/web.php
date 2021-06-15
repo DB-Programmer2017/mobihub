@@ -26,3 +26,11 @@ Route::get('/armor-x', [ArmorxController::class,'home_armor_x']);
 Route::get('/armor-x-product', function () {
     return view('mainpage/armor-x-product');
 });
+Route::get('/service', function () {
+    return view('mainpage/service');
+});
+
+Route::get('/news-post', function () {
+    return view('mainpage/news-post');
+});
+
