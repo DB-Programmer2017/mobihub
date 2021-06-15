@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArmorxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('mainpage/home');
+});
+
+// Route::get('/armor-x', function () {
+//     return view('mainpage/armor-x');
+// });
+Route::get('/armor-x', [ArmorxController::class,'home_armor_x']);
+
+Route::get('/armor-x-product', function () {
+    return view('mainpage/armor-x-product');
 });
