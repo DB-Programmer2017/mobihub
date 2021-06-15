@@ -32,8 +32,8 @@
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class=""><a href="#">หน้าแรก</a></li>
-          <li><a href="#">เกี่ยวกับเรา</a></li>
+          <li class=""><a href="/">หน้าแรก</a></li>
+          <li><a href="/about">เกี่ยวกับเรา</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">สินค้า <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
@@ -49,13 +49,13 @@
 
           <li><a href="/service">บริการ</a></li>
           <li><a href="/news-post">ข่าวสาร</a></li>
-          <li><a href="#">ติดต่อเรา</a></li>
+          <li><a href="/contact">ติดต่อเรา</a></li>
 
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <button type="button" class="btn btn-primary btn-quotation">ใบเสนอราคา</button>
+            <button type="button" onclick="window.open('/quotation')" class="btn btn-primary btn-quotation">ใบเสนอราคา</button>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Thai <span class="caret"></span></a>
