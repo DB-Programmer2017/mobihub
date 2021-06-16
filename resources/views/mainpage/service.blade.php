@@ -81,29 +81,9 @@
             </div>
         </div>
     </section>
-    <section class="service-2">
-        <div class="container contact-form">
-            <div class="row">
-                <div class="col-xs-12 col-md-12">
-                    <h1>ติดต่อเรา</h1>
-
-                    <input type="text" class="form-control" placeholder="ชื่อ - นามสกุล *">
-
-                    <input type="text" class="form-control" placeholder="ตำแหน่ง/ชื่อบริษัท *">
-
-                    <input type="text" class="form-control" placeholder="อีเมล *">
-
-                    <textarea name="" id=""  rows="5" class="form-control"  placeholder="ข้อความ *"></textarea>
-                    <div class="button">
-                        <button type="button" class="btn btn-danger">ส่ง</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
 @endsection
 
 @section('script')
-
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 @endsection

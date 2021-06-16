@@ -130,11 +130,11 @@
                 </div>
 
                 <div class="col-xs-12 col-md-6">
-                    <img src="/image/home/002.png" width="100%">
+                    <a href="/armor-x"><img src="/image/home/002.png" width="100%"></a>
                 </div>
 
                 <div class="col-xs-12 col-12">
-                    <img src="/image/home/003.png" width="100%">
+                   <img src="/image/home/003.png" width="100%">
                 </div>
             </div>
         </div>

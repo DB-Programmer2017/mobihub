@@ -18,12 +18,12 @@
             <div class="col-xs-12 col-md-6">
                 <h2>About Armor-x</h2>
                 <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                    It has survived not only five centuries, but also the leap into electronic typesetting, 
-                    remaining essentially unchanged. It was popularised in the 1960s with the release of 
-                    Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining essentially unchanged. It was popularised in the 1960s with the release of
+                    Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
                     software like Aldus PageMaker including versions of Lorem Ipsum.
                 </p>
             </div>
@@ -35,7 +35,7 @@
                     Praditmanuthum Rd. Klongjan, Bangkapi Bangkok 10240   THAILAND.
                 </p>
                 <p>
-                    <li class="icon"><i class="far fa-envelope"></i></li> sales@mobihub.co.th 
+                    <li class="icon"><i class="far fa-envelope"></i></li> sales@mobihub.co.th
                 </p>
                 <p>
                     <li class="icon"><i class="fas fa-phone-volume" icon></i></li> 099-287-4710
@@ -64,7 +64,7 @@
 
             <div class="col-xs-12 col-md-3">
                 <div class="panel-group" id="accordion-3" role="tablist" aria-multiselectable="true">
-                @foreach ($category as $row)    
+                @foreach ($category as $row)
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingOne">
                             <h4 class="panel-title">
@@ -75,7 +75,7 @@
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                             <div class="panel-body">
-                            @foreach ($category_brand as $rows)        
+                            @foreach ($category_brand as $rows)
                                 <li>
                                     <div class="sub-title" data-id="1">{{ $rows->name }} <i class="fas fa-chevron-down arrow-right"></i></div>
                                     <ul class="active" data-id="ul-1">
@@ -85,7 +85,7 @@
                                         <li><a href=""><input type="checkbox"> Iphone 11 Cases</a></li> --}}
                                     </ul>
                                 </li>
-                            @endforeach    
+                            @endforeach
                                 {{-- <li>
                                     <div class="sub-title" data-id="2">Ipad <i class="fas fa-chevron-down arrow-right"></i></div>
                                     <ul data-id="ul-2">
@@ -141,16 +141,16 @@
             </div>
 
             <div class="col-xs-12 col-md-9">
-               
+
                 <div class="col-xs-12 col-md-12">
                     Display 1-12 of 892 Products
                 </div>
-                
+
                 <div id="postData">
-                    <?php 
+                    <?php
                         for($i=1;$i<=3;$i++){
                     ?>
-                        <div class="col-xs-12 col-md-3">
+                        <div class="col-xs-12 col-md-3"  onclick="window.open('/armor-x-product')">
                             <div class="product-grid">
                                 <div class="product-image">
                                     <a href="#" class="image">
@@ -250,7 +250,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 @section('script')
-<script>  
+<script>
     $(document).ready(function(){
         var start = 0;
         var limit = 5;
@@ -278,7 +278,7 @@
               }else{
                 start += limit;
                 $(".loader-image").show();
-                $("#postData").append(response);  
+                $("#postData").append(response);
               }
             }
           });
