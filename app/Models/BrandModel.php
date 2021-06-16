@@ -26,7 +26,15 @@ class BrandModel extends Model
         'updated_at'
     ];
 
-    function products() {
+    public function dealer() {
+        return $this->belongsTo(DealerModel::class, 'dealer_id');
+    }
+
+    public function categories() {
+        return $this->hasMany(ProductModel::class);
+    }
+
+    public function products() {
         return $this->hasMany(ProductAllModel::class);
     }
 }

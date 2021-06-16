@@ -26,7 +26,8 @@ class ProductModel extends Authenticatable
         'cover_img',
         'is_enable',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'brand_id',
     ];
 
     /**
@@ -54,5 +55,9 @@ class ProductModel extends Authenticatable
 
     function dealer() {
         return $this->belongsTo(DealerModel::class);
+    }
+
+    public function brand() {
+        return $this->belongsTo(BrandModel::class, 'brand_id');
     }
 }

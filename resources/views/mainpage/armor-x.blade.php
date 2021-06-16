@@ -77,9 +77,13 @@
                             <div class="panel-body">
                             @foreach ($brand->categories as $category)        
                                 <li>
-                                    <div class="sub-title" data-id="1">{{ $category->name }} <i class="fas fa-chevron-down arrow-right"></i></div>
-                                    <ul class="active" data-id="ul-1">
-
+                                    <div class="sub-title" data-id="{{ $category->id }}">{{ $category->name }} <i class="fas fa-chevron-down arrow-right"></i></div>
+                                    <ul @if($category->id == 1) class="active" @endif data-id="ul-{{ $category->id }}">
+                                        @foreach($category->subCategories as $subCategory)
+                                            <li>
+                                                <div>{{ $subCategory->name }}</div>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </li>
                             @endforeach    
