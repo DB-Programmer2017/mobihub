@@ -21,7 +21,7 @@ class ArmorxProductCateModel extends Model
         'cover_img'
     ];
 
-    // function newscate() {
-    //     return $this->belongsTo(NewsCategoryModel::class, 'news_category');
-    // }
+    public function brand() {
+        return $this->belongsTo(ArmorxproductModel::class, 'brand_id');
+    }
 }

@@ -64,47 +64,26 @@
 
             <div class="col-xs-12 col-md-3">
                 <div class="panel-group" id="accordion-3" role="tablist" aria-multiselectable="true">
-                @foreach ($category as $row)    
+                @foreach ($brands as $brand)    
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingOne">
                             <h4 class="panel-title">
                                 <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    {{ $row->name }}
+                                    {{ $brand->name }}
                                 </a>
                             </h4>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                             <div class="panel-body">
-                            @foreach ($category_brand as $rows)        
+                            @foreach ($brand->categories as $category)        
                                 <li>
-                                    <div class="sub-title" data-id="1">{{ $rows->name }} <i class="fas fa-chevron-down arrow-right"></i></div>
+                                    <div class="sub-title" data-id="1">{{ $category->name }} <i class="fas fa-chevron-down arrow-right"></i></div>
                                     <ul class="active" data-id="ul-1">
-                                        {{-- <li><a href=""><input type="checkbox"> Iphone 12 Pro/ 12 Pro Max Cases</a></li>
-                                        <li><a href=""><input type="checkbox"> Iphone 12 / 12 Mini Cases</a></li>
-                                        <li><a href=""><input type="checkbox"> Iphone 11 Pro / 11 Pro Max Cases</a></li>
-                                        <li><a href=""><input type="checkbox"> Iphone 11 Cases</a></li> --}}
+
                                     </ul>
                                 </li>
                             @endforeach    
-                                {{-- <li>
-                                    <div class="sub-title" data-id="2">Ipad <i class="fas fa-chevron-down arrow-right"></i></div>
-                                    <ul data-id="ul-2">
-                                        <li><a href=""><input type="checkbox"> Ipad Mini 5</a></li>
-                                        <li><a href=""><input type="checkbox"> Ipad Pro</a></li>
-                                        <li><a href=""><input type="checkbox"> Ipad Air</a></li>
-                                        <li><a href=""><input type="checkbox"> Ipad 7th</a></li>
-                                    </ul>
-                                </li>
-
-                                <li>
-                                    <div class="sub-title" data-id="3">Accessories <i class="fas fa-chevron-down arrow-right"></i></div>
-                                    <ul data-id="ul-3">
-                                        <li><a href=""><input type="checkbox"> Ipad Mini 5</a></li>
-                                        <li><a href=""><input type="checkbox"> Ipad Pro</a></li>
-                                        <li><a href=""><input type="checkbox"> Ipad Air</a></li>
-                                        <li><a href=""><input type="checkbox"> Ipad 7th</a></li>
-                                    </ul>
-                                </li> --}}
+                                
                             </div>
                         </div>
                     </div>
