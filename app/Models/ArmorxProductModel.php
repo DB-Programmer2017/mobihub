@@ -27,4 +27,9 @@ class ArmorxproductModel extends Model
     public function categories() {
         return $this->hasMany(ArmorxProductCateModel::class, 'brand_id', 'id');
     }
+    //https://stackoverflow.com/questions/37760548/showing-category-and-subcategory-in-laravel
+
+    public function subCategories() {
+        return $this->hasManyThrough(SubCategoryModel::class, ArmorxProductCateModel::class, 'brand_id', 'category_id', 'id', 'id');
+    }
 }

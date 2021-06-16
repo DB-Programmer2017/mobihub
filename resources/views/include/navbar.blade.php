@@ -35,8 +35,8 @@
           <li class=""><a href="/">หน้าแรก</a></li>
           <li><a href="/about">เกี่ยวกับเรา</a></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">สินค้า <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">สินค้า <span class="caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="themes">
               <li><a href="#">Action</a></li>
               <li><a href="#">Another action</a></li>
               <li><a href="#">Something else here</a></li>
@@ -208,4 +208,7 @@
       function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
       }
+
     </script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/js/custom.js"></script>

@@ -35,5 +35,11 @@ class ArmorxController extends Controller
         $product_relate = ProductAllModel::where('dealer_id', '3')->where('id', '<>',$id)->where('is_enable', '1')->orderBy('id', 'asc')->get();
 
         return view('mainpage/armor-x-product',compact(['product','gallery','product_relate']));
+        
+        $brands = ArmorxProductModel::with('categories')->get();
+        // return ArmorxProductModel::with('categories')->get();
+        $sub_categories = ArmorxProductCateModel::with('subCategories')->get();
+        // return ArmorxProductCateModel::with('subCategories')->get();
+        return view('mainpage/armor-x',compact(['brands', 'sub_categories']));
     }
 }
