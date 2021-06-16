@@ -28,4 +28,7 @@ class ProductGalleryModel extends Model
     function products() {
         return $this->hasMany(ProductAllModel::class);
     }
+    function productA() {
+        return $this->belongsTo(ProductAllModel::class, 'product_id');
+    }
 }

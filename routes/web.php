@@ -15,6 +15,7 @@ use App\Http\Controllers\SlideAllController;
 use App\Http\Controllers\MobihubController;
 use App\Http\Controllers\ArmorxController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,9 +46,11 @@ Route::get('/', function () {
 // });
 Route::get('/armor-x', [ArmorxController::class,'home_armor_x']);
 
-Route::get('/armor-x-product', function () {
-    return view('mainpage/armor-x-product');
-});
+// Route::get('/armor-x-product', function () {
+//     return view('mainpage/armor-x-product');
+// });
+Route::get('/armor-x-product/{id}', [ArmorxController::class, 'ProductDetail']);
+
 Route::get('/service', function () {
     return view('mainpage/service');
 });
