@@ -23,4 +23,8 @@ class ArmorxproductModel extends Model
     // function newscate() {
     //     return $this->belongsTo(NewsCategoryModel::class, 'news_category');
     // }
+
+    public function categories() {
+        return $this->hasMany(ArmorxProductCateModel::class, 'brand_id', 'id');
+    }
 }
