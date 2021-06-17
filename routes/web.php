@@ -55,6 +55,12 @@ Route::get('/', function () {
         Route::get('/scalefusion/location-tracking', function () {
             return view('mainpage/scalefusion/location-tracking');
         });
+        Route::get('/scalefusion/mobile-content-management', function () {
+            return view('mainpage/scalefusion/mobile-content-management');
+        });
+        Route::get('/scalefusion/team-communication', function () {
+            return view('mainpage/scalefusion/team-communication');
+        });
 
 
 // Route::get('/armor-x', function () {

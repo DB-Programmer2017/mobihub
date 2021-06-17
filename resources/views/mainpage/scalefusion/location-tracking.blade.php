@@ -30,7 +30,7 @@
         font-size: 13px;
         content: "\f45c";
         margin-right: 10px;
-        color:#D45745;
+        color:#eb6865;
     }
 
     #location-tracking-3{
@@ -54,7 +54,7 @@
         line-height: 52px;
     }
     #remote-support-1{
-        background-image: url('/image/mainpage/feature/5172658.jpg');
+        background-image: url('/image/mainpage/scalefusion/5172658.jpg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -64,7 +64,7 @@
     }
     #remote-support-1 h2 {
     width: 50%;
-    color: #FF4646;
+    color: #eb6864;
     font-size: 45px;
     font-weight: 500;
     line-height: 54px;
@@ -85,7 +85,7 @@
     }
     #location-tracking-3 .text .text-main,
     #location-tracking-2 .text .text-main{
-        color: #D45745;
+        color: #eb6864;
         font-weight: 600;
         font-size: 50px;
         line-height: 91px;
@@ -353,7 +353,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-7 col-md-push-5">
-                <img src="image/mainpage/scalefusion/image 14.png" class="img-reponsive">
+                <img src="/image/mainpage/scalefusion/image 14.png" class="img-reponsive">
                 <div class="text">
                     <h2>
                         Set Virtual Boundaries To <br> <span class="text-main">Physical Locations</span><br> with <span class="text-main" >Geofencing</span>
