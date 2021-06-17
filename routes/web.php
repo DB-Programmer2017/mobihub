@@ -60,8 +60,9 @@ Route::get('/', function () {
 // Route::get('/armor-x', function () {
 //     return view('mainpage/armor-x');
 // });
-Route::get('/armor-x', [ArmorxController::class,'home_armor_x']);
+Route::get('/armor-x', [ArmorxController::class,'home_armor_x'])->name('armor-x');
 Route::get('/armor-x/{id}/SearchProduct', [ArmorxController::class, 'get_causes_against_category']);
+Route::post('/armor-x/filter', [ArmorxController::class, 'ArmorxFilter']);
 
 // Route::get('/armor-x-product', function () {
 //     return view('mainpage/armor-x-product');
