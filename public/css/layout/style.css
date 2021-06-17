@@ -227,7 +227,12 @@ body{
 .dropdown-menus2 .menu-item-dropdowns:focus .menu-right2{
     display: block;
 } */
-
+    .navbar-brand{
+        float: left;
+        height: 60px;
+        padding: 0 15px 19.5px 15px;
+        line-height: 21px;
+    }
     .sidenav .btn-danger{
         color:#fff;
         width: 100%;
@@ -638,7 +643,7 @@ body {
     position: relative;
     background: #fff;
     border-radius: 3px;
-    box-shadow: 0 0 10px -3px rgba(0,0,0,0.2); 
+    box-shadow: 0 0 10px -3px rgba(0,0,0,0.2);
     padding: 20px;
     padding-left: 50px;
     padding-right: 50px;
@@ -975,7 +980,7 @@ body {
         margin-top: -10px;
         display: inline-block;
     }
-  
+
   .wan-spinner .minus,
   .wan-spinner .plus,
   .wan-spinner input {
@@ -985,7 +990,7 @@ body {
     padding: 5px;
     text-align: center;
   }
-  
+
   .wan-spinner input {
     border: 1px solid #dddddd;
     /* border-left: 1px solid #dddddd;
@@ -994,7 +999,7 @@ body {
     width: 45px;
     font-weight: bold;
   }
-  
+
   .wan-spinner .minus,
   .wan-spinner .plus {
     color: #333333;
@@ -1007,7 +1012,7 @@ body {
     font-weight: bold;
   }
 
-  
+
 #product-detail .product-content select{
     width: 50%;
     display: inline-block;
@@ -1117,8 +1122,8 @@ body {
     width: 50%;
     margin: 20px auto 0;
 }
-#modal-contact-sale .modal-box .modal-dialog .modal-content{ 
-    text-align: left; 
+#modal-contact-sale .modal-box .modal-dialog .modal-content{
+    text-align: left;
 }
 #modal-contact-sale .modal-box .modal-dialog .modal-content img{
     height: 250px;

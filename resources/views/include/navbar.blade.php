@@ -37,13 +37,11 @@
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">สินค้า <span class="caret"></span></a>
             <ul class="dropdown-menu" aria-labelledby="themes">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
+              <li><a href="/scalefusion">Scalefusion</a></li>
               <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
+              <li><a href="#">OtterBox</a></li>
+              <li><a href="#">Armor-X</a></li>
+              <li><a href="#">Ram Mounts</a></li>
             </ul>
           </li>
 
@@ -74,7 +72,7 @@
     </div>
 </nav>
     <div class="mobile-navbar">
-        <li class="logo"><a class="navbar-brand" href="/"alt=""><img src="/image/mainpage/logo/logo mobihub.png"  alt=""></a></li>
+        <li class="logo"><a class="navbar-brand" href="/"alt=""><img src="/image/mainpage/logo/logo mobihub.png" width="65%"  alt=""></a></li>
         <li class="bar" onclick="openNav()"><i class="fas fa-bars"></i></li>
     </div>
 

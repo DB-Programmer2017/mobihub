@@ -40,6 +40,22 @@ Route::get('/', function () {
     Route::get('/contact', [ContactUsController::class, 'create']);
     Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
 
+    Route::get('/scalefusion', function () {
+        return view('mainpage/scalefusion/scalefusion');
+    });
+        Route::get('/scalefusion/device-user-enrollment', function () {
+            return view('mainpage/scalefusion/device-user-enrollment');
+        });
+        Route::get('/scalefusion/mobile-application-management', function () {
+            return view('mainpage/scalefusion/mobile-application-management');
+        });
+        Route::get('/scalefusion/remote-support', function () {
+            return view('mainpage/scalefusion/remote-support');
+        });
+        Route::get('/scalefusion/location-tracking', function () {
+            return view('mainpage/scalefusion/location-tracking');
+        });
+
 
 // Route::get('/armor-x', function () {
 //     return view('mainpage/armor-x');
@@ -67,7 +83,7 @@ Route::get('/about', function () {
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-    
+
     Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     /* admin */
@@ -102,7 +118,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/product/edit',[ProductAllController::class,'editProductAll'])->name('editProductAll');
     Route::get('/admin/product/{id}/editProduct', [ProductAllController::class, 'editProduct']);
     Route::get('/admin/product/{id}/ImageProduct', [ProductAllController::class, 'ImageProduct']);
-    Route::get('/admin/product/softdeleteImage/{id}',[ProductAllController::class,'softdeleteImage']); 
+    Route::get('/admin/product/softdeleteImage/{id}',[ProductAllController::class,'softdeleteImage']);
     //Route::post('/admin/product/AddOptionList',[ProductAllController::class,'AddOptionList'])->name('addchoicelist');
     Route::post('/admin/product/ajaxRequestPost', [ProductAllController::class, 'ajaxRequestPost'])->name('ajaxRequestPost');
     Route::get('/admin/product/getCategory/{id}', [ProductController::class, 'getCategory']);
