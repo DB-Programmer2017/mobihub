@@ -55,7 +55,7 @@
                             <tr>
                                 <td>{{$product_cate->firstItem()+$loop->index}}</td>
                                 <td>{{$row->updated_at}}</td>
-                                <td>{{$row->dealer['name'] }}</td>
+                                <td>{{$row->dealer->name }}</td>
                                 {{-- <td>{{$row->name}}</td> --}}
                                 <td>
                                     <a href="javascript:void(0)" class="edit" data-id="{{ $row->id }}" data-toggle="modal" data-target="#myModal2"> {{$row->name}}</a>
