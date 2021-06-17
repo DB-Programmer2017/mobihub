@@ -14,21 +14,51 @@ use Illuminate\Http\Request;
 class ArmorxController extends Controller
 {
     function home_armor_x (Request $request){
-        //brand
-        // $brands = ArmorxProductModel::where('dealer_id', '3')->where('is_enable', '1')->orderBy('id', 'asc')->get();
-        // dd($brands);
-        //category
-        // $categories = ArmorxProductModel::join('product_category', 'product_brand.id', '=', 'product_category.brand_id')
-        //             ->select('product_brand.id', 'product_category.name')
-        //             ->get();
-        // $category = ArmorxProductModel::join('product_category', 'brand_id', '=', 'product_brand.id')->get();
-        // $category_brand= ArmorxProductCateModel::where('dealer_id', '3')->where('is_enable', '1')->orderBy('id', 'asc')->get();
-        // dd($categories);
-
         $brands  = ArmorxProductModel::with('categories')->get();
-        $product = ProductAllModel::where('dealer_id', '3')->where('is_enable', '1')->orderBy('id', 'asc')->paginate(8) ;
+
+        $product=ProductAllModel::query();
+
+        if(!empty($_GET['category'])){
+            // $slugs=explode(",",$_GET['category']);
+            $slugs=explode(",",$_GET['category']);
+            
+            $cate_ids=ArmorxProductCateModel::whereIn('slug', $slugs)
+            ->pluck('id')
+            ->toArray() ;
+
+            $product=$product->whereIn('sub_category_id', $slugs)
+            ->where('dealer_id', '3')
+            ->where('is_enable', '1')
+            ->orderBy('id', 'asc')->paginate(8) ;
+
+            // $product=ProductAllModel::join('product_sub_category', 'product_sub_category.id','=','product.sub_category_id')
+            // ->whereIn('product_sub_category.slug', $slugs)
+            // ->where('product.dealer_id', '3')
+            // ->where('product.is_enable', '1')
+            // ->get(['product.*', 'product_sub_category.*'])->paginate(8) ;
+            
+        }else{
+            $product = ProductAllModel::where('dealer_id', '3')->where('is_enable', '1')->orderBy('id', 'asc')->paginate(8) ;
+        }
 
         return view('mainpage/armor-x',compact(['brands','product']));
+    }
+
+    public function ArmorxFilter(Request $request){
+        $data = $request->all();
+        $catUrl='';
+        if(!empty($data['category'])){
+            foreach($data['category'] as $category){
+                if(empty($catUrl)){
+                    $catUrl .='&category='.$category;
+                }else{
+                    $catUrl .=','.$category;
+                }
+            }
+        }
+        //dd($catUrl);
+        return redirect()->route('armor-x', $catUrl);
+
     }
 
     function ProductDetail($id){
