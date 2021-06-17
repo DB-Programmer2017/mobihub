@@ -39,6 +39,22 @@ Route::get('/', function () {
     Route::get('/contact', [ContactUsController::class, 'create']);
     Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
 
+    Route::get('/scalefusion', function () {
+        return view('mainpage/scalefusion/scalefusion');
+    });
+        Route::get('/scalefusion/device-user-enrollment', function () {
+            return view('mainpage/scalefusion/device-user-enrollment');
+        });
+        Route::get('/scalefusion/mobile-application-management', function () {
+            return view('mainpage/scalefusion/mobile-application-management');
+        });
+        Route::get('/scalefusion/remote-support', function () {
+            return view('mainpage/scalefusion/remote-support');
+        });
+        Route::get('/scalefusion/location-tracking', function () {
+            return view('mainpage/scalefusion/location-tracking');
+        });
+
 
 // Route::get('/armor-x', function () {
 //     return view('mainpage/armor-x');
