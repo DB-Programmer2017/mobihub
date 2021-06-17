@@ -75,19 +75,23 @@
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                             <div class="panel-body">
+                            <?php $counter=0; ?>
+                            @if(!empty($brand->categories))
                             @foreach ($brand->categories as $category)
                                 <li>
                                     <div class="sub-title" data-id="{{ $category->id }}">{{ $category->name }} <i class="fas fa-chevron-down arrow-right"></i></div>
                                     <ul @if($category->id == 1) class="active" @endif data-id="ul-{{ $category->id }}">
                                         @foreach($category->subCategories as $subCategory)
                                             <li>
-                                                <div>{{ $subCategory->name }}</div>
+                                                <input class="custom-control-input category_checkbox" type="checkbox"   att-name="{{ $subCategory->name }}" id="{{ $subCategory->id }}"> 
+                                                <label for="{{ $subCategory->id }}">{{ $subCategory->name }}</label>
                                             </li>
                                         @endforeach
                                     </ul>
                                 </li>
+                            <?php $counter++; ?>
                             @endforeach
-
+                            @endif
                             </div>
                         </div>
                     </div>
@@ -125,11 +129,22 @@
 
             <div class="col-xs-12 col-md-9">
 
-                <div class="col-xs-12 col-md-12">
-                    Display 1-12 of 892 Products
+                <div class="col-xs-12 col-md-6">
+                    <div class="well well-sm category_name_heading">
+                        {{-- {{ $sub_categories->name }} --}} xxxx
+                    </div>
                 </div>
 
-                <div id="postData">
+                <div class="col-xs-12 col-md-6">
+                    <div class="well well-sm category_name_heading">
+                        <h3>Refine By: <span class="_t-item">(0 items)</span></h3>
+                        <div id="catFilters"></div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-md-12 causes_div">zzz</div>
+
+
                     @foreach ($product as $row)  
                         <div class="col-xs-12 col-md-3">
                             <div class="product-grid" onclick="window.open('/armor-x-product/{{ $row->id }}')">
@@ -139,9 +154,7 @@
                                     </a>
                                     <span class="product-new-label">new</span>
                                     <ul class="product-links">
-                                        {{-- <li><a href="#" data-tip="Add to Cart"><i class="fa fa-cart-arrow-down"></i></a></li> --}}
                                         <li><a href="#" data-tip="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                        {{-- <li><a href="#" data-tip="Compare"><i class="fa fa-random"></i></a></li> --}}
                                         <li><a href="#" data-tip="Quick View"><i class="far fa-eye"></i></a></li>
                                     </ul>
                                 </div>
@@ -153,13 +166,9 @@
                         </div>
                     @endforeach
 
+                <div class="col-xs-12 col-md-12">
+                    <center>{{$product->links('vendor.pagination.default')}}</center>
                 </div>
-                <div class='col-xs-12 col-md-12 loader-image' style='display:block;text-align:center;'>
-                    <img src='/image/loading.gif' style="width:30px; height:30px; margin-top:20px" />
-                </div>
-                <div id="loadBtn" style="text-align:center">
-
-            </div>
 
         </div>
     </div>
@@ -170,39 +179,105 @@
 
 @section('script')
 <script>
-    $(document).ready(function(){
-        var start = 0;
-        var limit = 5;
-        var reachedMax = false;
+    $('body').on('click', '.category_checkbox', function () {
+            var ids = [];
+            var counter = 0;
 
-        getPostData();
+            $('#catFilters').empty();
 
-        $(window).scroll(function(){
-          if ($(window).scrollTop() == $(document).height()- $(window).height()) {
-            getPostData();
-          }
+            $('.category_checkbox').each(function(){
+                if($(this).is(":checked")){
+                    ids.push($(this).attr('id'));
+
+                    //$("#catFilters").append('<div class="alert alert-dismissible alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button> test</div>');
+                    counter++;
+                }
+            });
+            
+ 
+            $('._t-item').text('(' + ids.lenght + 'items)');
+            if(counter == 0){
+                $(".causes_div").empty();
+                $(".causes_div").append('No Data Found!!!');
+            }else{
+                fetchCauseAgainstCategory(ids);
+            }
+            
+    });
+
+    function fetchCauseAgainstCategory(ids){
+        $(".causes_div").empty();
+
+        $.get('/armor-x/' + ids +'/SearchProduct', function (data) {
+            if(data.length>0) {
+                for(i=0;i<data.length;i++) {     
+                    //alert(i);
+
+                     $('.causes_div').append('<div class="col-md-3 col-sm-3"><div class="thumbnail"><img src="{{url('storage/images/')}}/'+data[i]['cover_img'] +'" class="img-responsive" alt=""><a href="{{url('/admin/product/softdeleteImage')}}/'+data[i]['id']+'"  class="btn btn-primary btn-xs" type="button">Contact Sales</button></div>');
+                }   
+            }
         });
 
-        function getPostData(){
-          $.ajax({
-            url : 'fetch_posts.php',
-            method: 'POST',
-            dataType: 'text',
-            cache:false,
-            data : {getData:1,start:start,limit:limit},
-            success:function(response){
-              if(response=="") {
-                $(".loader-image").hide();
-                $("#loadBtn").html("<button type='button' class='btn btn-success btn-outline'>That is All</button>");
-              }else{
-                start += limit;
-                $(".loader-image").show();
-                $("#postData").append(response);
-              }
-            }
-          });
-        }
-    });
+        // $.ajax({
+        //     type: 'GET',
+        //     url: '/get_causes_against_category/'+ id,
+        //     success: function (response){
+        //         var response = JSON.parse(response);
+        //         console.log(response);
+
+        //         if(response.lenght == 0){
+        //             $(".causes_div").append("No Data Found");
+        //         }else{
+        //             response.forEach(element => ){
+        //                 $(".causes_div").append('<div class="col-xs-12 col-md-3">'+
+        //                     '<div class="product-grid" onclick="">'+
+        //                         '<div class="product-image">'+
+        //                             '<a href="#" class="image">'+
+        //                                 '<img class="pic-1" src="'${element.cat_image}'" class="img-responsive">'+
+        //                             '</a>'+
+        //                             '<span class="product-new-label">new</span>'+
+        //                             '<ul class="product-links">'+
+        //                                 '<li><a href="#" data-tip="Add to Wishlist"><i class="far fa-heart"></i></a></li>'+
+        //                                 '<li><a href="#" data-tip="Quick View"><i class="far fa-eye"></i></a></li>'+
+        //                             '</ul>'+
+        //                         '</div>'+
+        //                         '<div class="product-content">'+
+        //                             '<h3 class="title"><a href="#">{{ mb_strimwidth($row->name, 0, 70, "...", "UTF-8") }}</a></h3>'+
+        //                             '<a class="add-to-cart" href="#">ติดต่อผู้ขาย</a>'+
+        //                         '</div>'+
+        //                     '</div>'+
+        //                 '</div>');
+        //             });
+        //         }
+        //     }
+        // });
+    }
+
+
+    // $(document).ready(function(){
+    //     $(document).on('click', '.category_checkbox', function(){
+           
+
+    //         var ids = [];
+    //         var counter = 0;
+    //         $('#catFilters').empty();
+    //         $('.category_checkbox').each(function(){
+    //             if($(this).is(":checked")){
+    //                 ids.push($(this).attr('id'));
+    //                 $("#catFilters").append('<div class="alert alert-dismissible alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button> ${$(this).attr('attr-name')}</div>');
+    //                 counter++;
+    //             }
+    //         });
+
+    //         $('._t-item').text('(' + ids.lenght + 'items)');
+    //         if(counter == 0){
+    //             $(".causes_div").empty();
+    //             $(".causes_div").append('No Data Found');
+    //         }else{
+    //             fetchCauseAgainstCategory(id);
+    //         }
+    //     });
+    // });
 
     $("#accordion-3 li .sub-title").click(function(e) {
         var id =$(this).attr("data-id");

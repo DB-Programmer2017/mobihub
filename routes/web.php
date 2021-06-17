@@ -45,6 +45,7 @@ Route::get('/', function () {
 //     return view('mainpage/armor-x');
 // });
 Route::get('/armor-x', [ArmorxController::class,'home_armor_x']);
+Route::get('/armor-x/{id}/SearchProduct', [ArmorxController::class, 'get_causes_against_category']);
 
 // Route::get('/armor-x-product', function () {
 //     return view('mainpage/armor-x-product');

@@ -772,6 +772,10 @@ body {
 }
 #accordion-3 .panel-body .sub-title:hover,#accordion-3 .panel-body ul li:hover{
     background: #f4f4f4;
+    cursor: pointer;
+}
+#accordion-3 .panel-body .sub-title:hover,#accordion-3 .panel-body ul li label{
+    font-weight: normal;
 }
 #accordion-3 .panel-body ul li:hover a{
     color:#505050;

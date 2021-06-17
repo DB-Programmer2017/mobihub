@@ -20,4 +20,8 @@ class ProductChoiceModel extends Model
         'created_at',
         'updated_at'
     ];
+
+    function productChoiceList () {
+        return $this->hasMany(ProductChoiceListModel::class, 'choice_id', 'id');
+    }
 }

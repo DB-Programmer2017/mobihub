@@ -352,23 +352,19 @@
                 <div class="col-xs-12 col-md-6 product-content">
                     <h2>{{ $product->brand->name}}</h2>
                     <h4>{{ $product->name}}</h4>
+
+                  @foreach ($choice as $row)  
                     <li>
-                        เลือกสี : 
+                        {{ $row->name }} : 
                         <div class="list">
-                          <span class="label label-default">Pacific Blue</span>
-                          <span class="label label-default active">Silver</span>
-                          <span class="label label-default">Graphite</span>
-                          <span class="label label-default">Gold</span>
+
+                          @foreach ($row->productChoiceList as $choice_list)
+                            <span data-id="{{ $choice_list->id }}" class="label label-default @if($choice_list->id == 1) active @endif">{{ $choice_list->name }}</span>
+                          @endforeach
+
                         </div>
                     </li>
-                    <li>
-                        เลือกความจุ : 
-                        <div class="list">
-                          <span class="label label-default active">128 GB</span>
-                          <span class="label label-default">256 GB</span>
-                          <span class="label label-default">512 GB</span>
-                        </div>
-                    </li>
+                  @endforeach
                     <li>
                         จำนวน : 
                         <div class="list">
@@ -591,6 +587,11 @@
     $( ".show-modal" ).click(function() {
       var qty = $("#number").val();
       $("#contact-amount").html(qty);
+    });
+
+    $( ".list span" ).click(function() {
+        var id =$(this).attr("data-id");
+        alert(id);
     });
 
     
