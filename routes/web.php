@@ -82,7 +82,7 @@ Route::get('/about', function () {
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-    
+
     Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     /* admin */
@@ -117,7 +117,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/product/edit',[ProductAllController::class,'editProductAll'])->name('editProductAll');
     Route::get('/admin/product/{id}/editProduct', [ProductAllController::class, 'editProduct']);
     Route::get('/admin/product/{id}/ImageProduct', [ProductAllController::class, 'ImageProduct']);
-    Route::get('/admin/product/softdeleteImage/{id}',[ProductAllController::class,'softdeleteImage']); 
+    Route::get('/admin/product/softdeleteImage/{id}',[ProductAllController::class,'softdeleteImage']);
     //Route::post('/admin/product/AddOptionList',[ProductAllController::class,'AddOptionList'])->name('addchoicelist');
     Route::post('/admin/product/ajaxRequestPost', [ProductAllController::class, 'ajaxRequestPost'])->name('ajaxRequestPost');
     Route::get('/admin/product/getCategory/{id}', [ProductController::class, 'getCategory']);
