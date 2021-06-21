@@ -64,166 +64,84 @@
 
             <div class="col-xs-12 col-md-3">
                 <div class="panel-group" id="accordion-3" role="tablist" aria-multiselectable="true">
-                @foreach ($brands as $brand)
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingOne">
-                            <h4 class="panel-title">
-                                <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    {{ $brand->name }}
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                            <div class="panel-body">
-                            @foreach ($brand->categories as $category)
-                                <li>
-                                    <div class="sub-title" data-id="{{ $category->id }}">{{ $category->name }} <i class="fas fa-chevron-down arrow-right"></i></div>
-                                    <ul @if($category->id == 1) class="active" @endif data-id="ul-{{ $category->id }}">
-                                        @foreach($category->subCategories as $subCategory)
-                                            <li>
-                                                <div>{{ $subCategory->name }}</div>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                            @endforeach
+                <form action="{{url('/armor-x/filter')}}" method="POST">
+                    @foreach ($brands as $brand)
+                    @csrf
 
+                    @if(!empty($_GET['category']))
+                        @php
+                            $filter_cates=explode(",",$_GET['category']);
+                        @endphp
+                    @endif
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        {{ $brand->name }}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                <?php $counter=0; ?>
+                                @if(!empty($brand->categories))
+                                @foreach ($brand->categories as $category)
+                                    <li>
+                                        <div class="sub-title" data-id="{{ $category->id }}">{{ $category->name }} <i class="fas fa-chevron-down arrow-right"></i></div>
+                                        <ul @if($category->id == 1) class="active" @endif data-id="ul-{{ $category->id }}">
+                                            @foreach($category->subCategories as $subCategory)
+                                                <li>
+                                                    <input class="custom-control-input category_checkbox" type="checkbox" @if(!empty($filter_cates) && in_array($subCategory->id,$filter_cates)) checked @endif   att-name="{{ $subCategory->name }}" value="{{ $subCategory->id }}" name="category[]" onchange="this.form.submit();" id="{{ $subCategory->id }}"> 
+                                                    <label for="{{ $subCategory->id }}">{{ $subCategory->name }}</label>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                <?php $counter++; ?>
+                                @endforeach
+                                @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
-                    {{-- <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingTwo">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    SAMSUNG
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                            <div class="panel-body">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue erat in luctus pretium. Praesent suscipit tempor consequat. Nam ac enim sit amet justo ultricies condimentum. Ut condimentum, risus at hendrerit ultricies, arcu diam lobortis metus, eu aliquam quam metus ut enim. Aliquam at mi quis tortor semper laoreet ut.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingThree">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    LG
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                            <div class="panel-body">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue erat in luctus pretium. Praesent suscipit tempor consequat. Nam ac enim sit amet justo ultricies condimentum. Ut condimentum, risus at hendrerit ultricies, arcu diam lobortis metus, eu aliquam quam metus ut enim. Aliquam at mi quis tortor semper laoreet ut.
-                            </div>
-                        </div>
-                    </div> --}}
+                    @endforeach
+                </form>
+
                 </div>
             </div>
 
             <div class="col-xs-12 col-md-9">
 
                 <div class="col-xs-12 col-md-12">
-                    Display 1-12 of 892 Products
+                    <div class="well well-sm category_name_heading">
+                        <h4>Total products : {{$product->total()}}</h4>
+                    </div>
                 </div>
 
-                <div id="postData">
-                    <?php
-                        for($i=1;$i<=3;$i++){
-                    ?>
-                        <div class="col-xs-12 col-md-3"  onclick="window.open('/armor-x-product')">
-                            <div class="product-grid">
-                                <div class="product-image">
-                                    <a href="#" class="image">
-                                        <img class="pic-1" src="/image/iphone 12 pro.png" class="img-responsive">
-                                    </a>
-                                    <span class="product-new-label">new</span>
-                                    {{-- <ul class="product-links">
-                                        <li><a href="#" data-tip="Add to Cart"><i class="fa fa-cart-arrow-down"></i></a></li>
-                                        <li><a href="#" data-tip="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                        <li><a href="#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
-                                        <li><a href="#" data-tip="Quick View"><i class="far fa-eye"></i></a></li>
-                                    </ul> --}}
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="title"><a href="#">Iphone 12 / 12 Pro (Black)</a></h3>
-                                    <a class="add-to-cart" href="#">Contact Sales</a>
-                                </div>
-                            </div>
-                        </div>
-
+                    @foreach ($product as $row)  
                         <div class="col-xs-12 col-md-3">
-                            <div class="product-grid">
+                            <div class="product-grid" onclick="window.open('/armor-x-product/{{ $row->id }}')">
                                 <div class="product-image">
                                     <a href="#" class="image">
-                                        <img class="pic-1" src="/image/iphone 12 pro-2.png" class="img-responsive">
+                                        <img class="pic-1" src="{{asset('storage/images/' . $row->cover_img)}}" class="img-responsive">
                                     </a>
                                     <span class="product-new-label">new</span>
-                                    {{-- <ul class="product-links">
-                                        <li><a href="#" data-tip="Add to Cart"><i class="fa fa-cart-arrow-down"></i></a></li>
+                                    <ul class="product-links">
                                         <li><a href="#" data-tip="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                        <li><a href="#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
                                         <li><a href="#" data-tip="Quick View"><i class="far fa-eye"></i></a></li>
-                                    </ul> --}}
+                                    </ul>
                                 </div>
                                 <div class="product-content">
-                                    <h3 class="title"><a href="#">Iphone 12 / 12 Pro (Black)</a></h3>
-                                    <a class="add-to-cart" href="#">Contact Sales</a>
+                                    <h3 class="title"><a href="#">{{ mb_strimwidth($row->name, 0, 70, "...", "UTF-8") }}</a></h3>
+                                    <a class="add-to-cart" href="#">ติดต่อผู้ขาย</a>
                                 </div>
                             </div>
                         </div>
+                    @endforeach
 
-                        <div class="col-xs-12 col-md-3">
-                            <div class="product-grid">
-                                <div class="product-image">
-                                    <a href="#" class="image">
-                                        <img class="pic-1" src="/image/iphone 12 pro-3.png" class="img-responsive">
-                                    </a>
-                                    <span class="product-new-label">new</span>
-                                    {{-- <ul class="product-links">
-                                        <li><a href="#" data-tip="Add to Cart"><i class="fa fa-cart-arrow-down"></i></a></li>
-                                        <li><a href="#" data-tip="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                        <li><a href="#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
-                                        <li><a href="#" data-tip="Quick View"><i class="far fa-eye"></i></a></li>
-                                    </ul> --}}
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="title"><a href="#">Iphone 12 / 12 Pro (Black)</a></h3>
-                                    <a class="add-to-cart" href="#">Contact Sales</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-md-3">
-                            <div class="product-grid">
-                                <div class="product-image">
-                                    <a href="#" class="image">
-                                        <img class="pic-1" src="/image/iphone 12 pro-4.png" class="img-responsive">
-                                    </a>
-                                    <span class="product-new-label">new</span>
-                                    {{-- <ul class="product-links">
-                                        <li><a href="#" data-tip="Add to Cart"><i class="fa fa-cart-arrow-down"></i></a></li>
-                                        <li><a href="#" data-tip="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                        <li><a href="#" data-tip="Compare"><i class="fa fa-random"></i></a></li>
-                                        <li><a href="#" data-tip="Quick View"><i class="far fa-eye"></i></a></li>
-                                    </ul> --}}
-                                </div>
-                                <div class="product-content">
-                                    <h3 class="title"><a href="#">Iphone 12 / 12 Pro (Black)</a></h3>
-                                    <a class="add-to-cart" href="#">Contact Sales</a>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
+                <div class="col-xs-12 col-md-12">
+                    <center>{{$product->appends($_GET)->links('vendor.pagination.default')}}</center>
                 </div>
-                <div class='col-xs-12 col-md-12 loader-image' style='display:block;text-align:center;'>
-                    <img src='/image/loading.gif' style="width:30px; height:30px; margin-top:20px" />
-                </div>
-                <div id="loadBtn" style="text-align:center">
-
-            </div>
 
         </div>
     </div>
@@ -234,46 +152,17 @@
 
 @section('script')
 <script>
-    $(document).ready(function(){
-        var start = 0;
-        var limit = 5;
-        var reachedMax = false;
-
-        getPostData();
-
-        $(window).scroll(function(){
-          if ($(window).scrollTop() == $(document).height()- $(window).height()) {
-            getPostData();
-          }
-        });
-
-        function getPostData(){
-          $.ajax({
-            url : 'fetch_posts.php',
-            method: 'POST',
-            dataType: 'text',
-            cache:false,
-            data : {getData:1,start:start,limit:limit},
-            success:function(response){
-              if(response=="") {
-                $(".loader-image").hide();
-                $("#loadBtn").html("<button type='button' class='btn btn-success btn-outline'>That is All</button>");
-              }else{
-                start += limit;
-                $(".loader-image").show();
-                $("#postData").append(response);
-              }
-            }
-          });
-        }
-    });
-
     $("#accordion-3 li .sub-title").click(function(e) {
         var id =$(this).attr("data-id");
         $currItem = $('[data-id=ul-' + id + ']');
+        $currItem2 = $('[data-id=icon-' + id + ']');
 
         $(this).parents().siblings().find('ul').removeClass('active');
+        //$(this).parents().siblings().find('i').removeClass('fa-plus');
+
         $currItem.addClass('active');
+        //$currItem2.addClass('fa-minus');
+
         e.preventDefault();
     });
 </script>

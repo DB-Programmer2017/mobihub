@@ -5,9 +5,11 @@
 
 {{-- Link CSS --}}
 @section('link')
-<link
-rel="stylesheet"
-href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
 <style>
 .plugin {
@@ -318,26 +320,28 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css">
 </ul>
 
 <section class="armor-x-panel-3" id="product-detail">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-
             <div class="col-xs-12 col-md-12">
-                <div class="col-xs-12 col-md-8">
+                <div class="col-xs-12 col-md-6">
                     {{-- <img class="pic-1" src="/image/iphone 12 pro.png" class="img-responsive"> --}}
                     <div class="wrapper">
                         <div class="gallery">
-                            <div class="gallery__img-block  ">
-                                <img src="/image/iphone 12 pro.png" thumb-url="/image/iphone 12 pro.png" class="">
+                        @foreach ($gallery as $row)  
+                            <div class="gallery__img-block">
+                              <a data-fancybox="gallery" href="{{asset('storage/images/' . $row->img)}}" class="js-img-viwer">
+                                <img src="{{asset('storage/images/' . $row->img)}}" thumb-url="{{asset('storage/images/' . $row->img)}}" class="">
+                              </a>
                             </div>
 
-                            <div class="gallery__img-block  ">
+                            {{-- <div class="gallery__img-block  ">
                                 <img src="/image/iphone 12 pro-2.png" thumb-url="/image/iphone 12 pro-2.png" class="">
                             </div>
 
                             <div class="gallery__img-block  ">
                                 <img src="/image/iphone 12 pro-3.png" thumb-url="/image/iphone 12 pro-3.png" class="">
-                            </div>
-
+                            </div> --}}
+                        @endforeach
                             <div class="gallery__controls">
                 
                             </div>
@@ -345,26 +349,22 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css">
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-md-4 product-content">
-                    <h2>APPLE</h2>
-                    <h4>Iphone 12 Pro Max</h4>
+                <div class="col-xs-12 col-md-6 product-content">
+                    <h2>{{ $product->brand->name}}</h2>
+                    <h4>{{ $product->name}}</h4>
+
+                  @foreach ($choice as $row)  
                     <li>
-                        เลือกสี : 
+                        {{ $row->name }} : 
                         <div class="list">
-                          <span class="label label-default">Pacific Blue</span>
-                          <span class="label label-default active">Silver</span>
-                          <span class="label label-default">Graphite</span>
-                          <span class="label label-default">Gold</span>
+
+                          @foreach ($row->productChoiceList as $choice_list)
+                            <span data-id="{{ $choice_list->id }}" class="label label-default @if($choice_list->id == 1) active @endif">{{ $choice_list->name }}</span>
+                          @endforeach
+
                         </div>
                     </li>
-                    <li>
-                        เลือกความจุ : 
-                        <div class="list">
-                          <span class="label label-default active">128 GB</span>
-                          <span class="label label-default">256 GB</span>
-                          <span class="label label-default">512 GB</span>
-                        </div>
-                    </li>
+                  @endforeach
                     <li>
                         จำนวน : 
                         <div class="list">
@@ -404,7 +404,8 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css">
             </div>
             <div class="col-xs-12 col-md-12">
                 <p>
-                    iPhone 12 Pro Max มาพร้อม 5G ที่ให้คุณดาวน์โหลดไฟล์ใหญ่ๆ ระหว่างเดินทาง รวมทั้งสตรีมวิดีโอ HDR,1 จอภาพ Super Retina XDR ขนาด 6.7 นิ้วที่ใหญ่ขึ้น,2 Ceramic Shield ที่ทนต่อการตกกระแทกได้ดีขึ้น 4 เท่า,3 การถ่ายภาพในสภาวะแสงน้อยที่สวยงามน่าทึ่งด้วยระบบกล้องระดับโปรที่ดีที่สุดบน iPhone พร้อมด้วยช่วงซูมแบบออฟติคอล 5 เท่า, การบันทึก ตัดต่อ และเล่นวิดีโอระดับภาพยนตร์ในแบบ Dolby Vision, ภาพถ่ายบุคคลในโหมดกลางคืนและอีกระดับของประสบการณ์ AR พร้อมด้วยสแกนเนอร์ LiDAR, ชิพ A14 Bionic อันทรงพลัง และอุปกรณ์เสริม MagSafe ใหม่ เพื่อการยึดติดที่ง่ายดายและการชาร์จแบบไร้สายที่เร็วขึ้น4 พร้อมค้นพบความเ็นไปได้ที่น่าประทับใจแบบไม่สิ้นสุด
+                  {{ $product->description}}
+                    {{-- iPhone 12 Pro Max มาพร้อม 5G ที่ให้คุณดาวน์โหลดไฟล์ใหญ่ๆ ระหว่างเดินทาง รวมทั้งสตรีมวิดีโอ HDR,1 จอภาพ Super Retina XDR ขนาด 6.7 นิ้วที่ใหญ่ขึ้น,2 Ceramic Shield ที่ทนต่อการตกกระแทกได้ดีขึ้น 4 เท่า,3 การถ่ายภาพในสภาวะแสงน้อยที่สวยงามน่าทึ่งด้วยระบบกล้องระดับโปรที่ดีที่สุดบน iPhone พร้อมด้วยช่วงซูมแบบออฟติคอล 5 เท่า, การบันทึก ตัดต่อ และเล่นวิดีโอระดับภาพยนตร์ในแบบ Dolby Vision, ภาพถ่ายบุคคลในโหมดกลางคืนและอีกระดับของประสบการณ์ AR พร้อมด้วยสแกนเนอร์ LiDAR, ชิพ A14 Bionic อันทรงพลัง และอุปกรณ์เสริม MagSafe ใหม่ เพื่อการยึดติดที่ง่ายดายและการชาร์จแบบไร้สายที่เร็วขึ้น4 พร้อมค้นพบความเ็นไปได้ที่น่าประทับใจแบบไม่สิ้นสุด
 
                     <h4>หัวข้อย่อยของคุณสมบัติ</h4>
 
@@ -417,7 +418,7 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css">
                     <li>กล้องหน้า TrueDepth ความละเอียด 12MP พร้อมโหมดกลางคืน และการบันทึก HDR ระดับ 4K ในแบบ Dolby Vision</li>
                     <li>ความสามารถในการทนน้ำที่ระดับ IP68 ชั้นแนวหน้าของอุตสาหกรรม6</li>
                     <li>รองรับอุปกรณ์เสริม MagSafe เพื่อการยึดติดที่ง่ายดายและการชาร์จแบบไร้สายที่เร็วขึ้น4</li>
-                    <li>iOS 14 พร้อมวิดเจ็ตที่ได้รับการออกแบบมาใหม่บนหน้าจอโฮม คลังแอพแบบใหม่หมด แอพคลิป และอีกมากมาย</li>
+                    <li>iOS 14 พร้อมวิดเจ็ตที่ได้รับการออกแบบมาใหม่บนหน้าจอโฮม คลังแอพแบบใหม่หมด แอพคลิป และอีกมากมาย</li> --}}
                 </p>
             </div>
         </div>
@@ -432,31 +433,25 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
         <div class="swiper-container swiper-container-3 mySwiper">
           <div class="swiper-wrapper">
-          <?php 
-            for($i=1;$i<=9;$i++){
-              if($i==1){
-                $name ="/image/iphone 12 pro.png";
-              }else{
-                $name ="/image/iphone 12 pro-".$i.".png";
-              }
-          ?>
-              <div class="swiper-slide">
+            @foreach ($product_relate as $row) 
+              <div class="swiper-slide" onclick="window.location.assign('/armor-x-product/{{ $row->id }}')">
                   <div class="box">
-                      <img class="img-responsive" src="<?php echo $name ?>" alt="">
+                      <img class="img-responsive" src="{{asset('storage/images/' . $row->cover_img)}}" alt="{{ $row->name }}">
                       <div class="text-1">
                           <p class="title">
-                              IPHONE 12 PRO / 12 PRO MAX CASE
+                            {{ mb_strimwidth($row->name, 0, 50, "...", "UTF-8") }}
                           </p>
                       </div>
                       <div class="flex-box">
-                          <div class="text-2">
+                          {{-- <div class="text-2">
                               รหัสสินค้า : 77-65501
-                          </div>
-                          <a class="add-to-cart" href="#">Contact Sales</a>
+                          </div> --}}
+                          <a class="add-to-cart" href="#">ติดต่อผู้ขาย</a>
                       </div>
                   </div>
               </div>
-          <?php } ?>
+            @endforeach
+
           </div>
           {{-- <div class="swiper-pagination"></div> --}}
           <div class="swiper-button-next"></div>
@@ -484,10 +479,10 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css">
                               </div> --}}
                               <h3 class="title">สินค้าที่สนใจ</h3>
                               <p class="description">
-                                <center><img class="img-responsive" src="image/iphone 12 pro.png" alt=""></center>
+                                <center><img class="img-responsive" src="{{asset('storage/images/' . $product->cover_img)}}" alt=""></center>
 
-                                <h3>APPLE</h3>
-                                <h4>Iphone 12 Pro Max</h4>
+                                <h3>{{ $product->brand->name}}</h3>
+                                <h4>{{ $product->name}}</h4>
 
                                 <p>สี : Silver</p>
                                 <p>ความจุ : 125 GB</p>
@@ -521,7 +516,8 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 {{-- <script src="https://www.jqueryscript.net/demo/Responsive-Photo-Gallery-Slider-Plugin-jQuery-vit-gallery/app/scripts/main.js"></script> --}}
 
-<script>  
+<script>
+
     $("#accordion-3 li .sub-title").click(function(e) {
         var id =$(this).attr("data-id");
         $currItem = $('[data-id=ul-' + id + ']');
@@ -591,6 +587,11 @@ href="https://unpkg.com/swiper/swiper-bundle.min.css">
     $( ".show-modal" ).click(function() {
       var qty = $("#number").val();
       $("#contact-amount").html(qty);
+    });
+
+    $( ".list span" ).click(function() {
+        var id =$(this).attr("data-id");
+        alert(id);
     });
 
     

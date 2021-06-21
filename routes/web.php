@@ -16,6 +16,7 @@ use App\Http\Controllers\MobihubController;
 use App\Http\Controllers\ArmorxController;
 use App\Http\Controllers\SubCategoryController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,15 +41,41 @@ Route::get('/', function () {
     Route::get('/contact', [ContactUsController::class, 'create']);
     Route::post('/contact', [ContactUsController::class, 'store'])->name('contact.store');
 
+    Route::get('/scalefusion', function () {
+        return view('mainpage/scalefusion/scalefusion');
+    });
+        Route::get('/scalefusion/device-user-enrollment', function () {
+            return view('mainpage/scalefusion/device-user-enrollment');
+        });
+        Route::get('/scalefusion/mobile-application-management', function () {
+            return view('mainpage/scalefusion/mobile-application-management');
+        });
+        Route::get('/scalefusion/remote-support', function () {
+            return view('mainpage/scalefusion/remote-support');
+        });
+        Route::get('/scalefusion/location-tracking', function () {
+            return view('mainpage/scalefusion/location-tracking');
+        });
+        Route::get('/scalefusion/mobile-content-management', function () {
+            return view('mainpage/scalefusion/mobile-content-management');
+        });
+        Route::get('/scalefusion/team-communication', function () {
+            return view('mainpage/scalefusion/team-communication');
+        });
+
 
 // Route::get('/armor-x', function () {
 //     return view('mainpage/armor-x');
 // });
-Route::get('/armor-x', [ArmorxController::class,'home_armor_x']);
+Route::get('/armor-x', [ArmorxController::class,'home_armor_x'])->name('armor-x');
+Route::get('/armor-x/{id}/SearchProduct', [ArmorxController::class, 'get_causes_against_category']);
+Route::post('/armor-x/filter', [ArmorxController::class, 'ArmorxFilter']);
 
-Route::get('/armor-x-product', function () {
-    return view('mainpage/armor-x-product');
-});
+// Route::get('/armor-x-product', function () {
+//     return view('mainpage/armor-x-product');
+// });
+Route::get('/armor-x-product/{id}', [ArmorxController::class, 'ProductDetail']);
+
 Route::get('/service', function () {
     return view('mainpage/service');
 });
@@ -64,7 +91,7 @@ Route::get('/about', function () {
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-    
+
     Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     /* admin */
@@ -111,7 +138,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/product/edit',[ProductAllController::class,'editProductAll'])->name('editProductAll');
     Route::get('/admin/product/{id}/editProduct', [ProductAllController::class, 'editProduct']);
     Route::get('/admin/product/{id}/ImageProduct', [ProductAllController::class, 'ImageProduct']);
-    Route::get('/admin/product/softdeleteImage/{id}',[ProductAllController::class,'softdeleteImage']); 
+    Route::get('/admin/product/softdeleteImage/{id}',[ProductAllController::class,'softdeleteImage']);
     //Route::post('/admin/product/AddOptionList',[ProductAllController::class,'AddOptionList'])->name('addchoicelist');
     Route::post('/admin/product/ajaxRequestPost', [ProductAllController::class, 'ajaxRequestPost'])->name('ajaxRequestPost');
 

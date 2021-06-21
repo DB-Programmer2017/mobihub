@@ -41,4 +41,14 @@ class ProductAllModel extends Model
     function dealer() {
         return $this->belongsTo(DealerModel::class, 'dealer_id');
     }
+
+    function productGallery() {
+        return $this->hasMany(ProductGalleryModel::class);
+    }
+
+    function productChoiceList() {
+        //return $this->hasMany(ProductChoiceListModel::class);
+
+        return $this->hasManyThrough(ProductChoiceListModel::class, ProductChoiceModel::class, 'product_id', 'choice_id', 'id', 'id');
+    }
 }

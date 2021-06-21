@@ -1,0 +1,341 @@
+#mobile-application-1{
+    width: 100%;
+    display: block;
+    height:485px;
+    position: relative;
+    background-image: url('/image/mainpage/scalefusion/sf.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    font-family: 'Prompt', sans-serif;
+    color:#000;
+    display:flex;
+    align-items: center;
+}
+
+#mobile-application-1 h2{
+    width: 50%;
+    color:#ff4646;
+    font-weight: 600;
+    font-size: 45px;
+    line-height: 54px;
+    margin-bottom: 20px;
+    margin-top:10px;
+}
+#mobile-application-1 p::after {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 1px;
+    top: 0;
+    left: 0;
+    border-bottom: 2px solid #ff4646;
+    right: 0;
+    margin: 0 auto;
+    margin-left: 15px;
+}
+
+#mobile-application-1 h4{
+    color: #FFFFFF;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 52px;
+}
+#mobile-application-1 p{
+    width: 50%;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+    margin-top:20px;
+}
+
+#mobile-application-2{
+    padding-top: 130px;
+    padding-bottom: 70px;
+    background: #fff;
+}
+#mobile-application-2 .box{
+    height: 60px;
+    width: 60px;
+    background:#BDBDBD ;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+#mobile-application-2 .content{
+    width: 80%;
+    padding-left: 50px;
+}
+#mobile-application-2 h2{
+    font-weight: bold;
+    color:#000;
+    margin-bottom: 30px;
+    width: 70%;
+    line-height: 45px;
+}
+#mobile-application-2 img{
+    width: 50%;
+}
+#mobile-application-2 .service-box{
+    height:208px;
+    background: #fff;
+    padding: 30px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+#mobile-application-2  .service-box:hover{
+    box-shadow: 0 0 10px -3px rgba(0,0,0,0.2);
+}
+#mobile-application-2 .service-box .icon{
+    width: 10%;
+    float: left;
+    display: inline-block;
+    color:#ca2027;
+    font-size: 35px;
+}
+#mobile-application-2  .service-box .service-content{
+    width: 80%;
+    display: inline-block;
+}
+#mobile-application-2  .service-box .service-content h4{
+    color:#000;
+    font-weight: bold;
+    line-height: 40px;
+    margin-top: -5px;
+}
+#mobile-application-2  .service-box .service-content h4::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    bottom: 0;
+    left: 14px;
+    border-bottom: 2px solid #ff4646;
+    margin: 0 auto;
+}
+
+#mobile-application-2  .service-box .service-content p{
+    line-height: 30px;
+    padding-left: 15px;
+    margin-top: 20px;
+    color:#6d6d6d;
+}
+
+#mobile-application-3{
+    padding-top: 70px;
+    padding-bottom: 70px;
+    background: rgba(45, 57, 75, 0.05);
+}
+#mobile-application-3 .title{
+    padding-top: 10%;
+}
+
+#mobile-application-3 .container .row {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+#mobile-application-3 .container .row:first-child {
+    align-items: center;
+    padding-bottom: 50px;
+
+}
+#mobile-application-3 .container .row:first-child div:first-child {
+    display:flex;
+    justify-content: flex-end;
+}
+
+#mobile-application-3 h2{
+    color:#000;
+    font-weight: bold;
+}
+#mobile-application-3 img{
+    width: 80%;
+    border:1px solid #ddd;
+    box-shadow: 12px 12px 0 0 rgba(0,0,0,0.2);
+    float: right;
+}
+#mobile-application-3 .title p{
+    margin-left: -18px;
+}
+#mobile-application-3 .title p::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    border-bottom: 2px solid #ff4646;
+    /*right: 0;*/
+    margin: 0 auto;
+}
+#mobile-application-3 .service-box{
+    margin-top: 30px;
+    color:#000000;
+    padding: 30px 60px;
+}
+#mobile-application-3 .service-box span{
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+    color: #D45745;
+}
+#mobile-application-3 .service-box label{
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+    color:#3B3F58;
+    margin-bottom:16px;
+}
+#mobile-application-3 .service-box p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+}
+#mobile-application-3 ul, ol{
+    margin: 0;padding: 0;
+    list-style: none;
+}
+#mobile-application-3 li {
+    display: inline-block;
+    width: 45%;
+    margin-right: 50px;
+    background: #1A237E;
+    background: transparent;
+    color: #6f6f6f;
+    counter-increment: myCounter;
+    margin: 0 0 30px 0;
+    padding: 13px;
+    position: relative;
+    top: 1em;
+    border-radius:  0em 2px 1em 1em;
+    padding-left: 2em;
+    font-size: 14px;
+    box-shadow: 0 3px 7.92px .08px rgba(0,0,0,.08);
+    margin-right: 50px;
+}
+#mobile-application-3 li:before{
+    content: counter(myCounter, decimal-leading-zero);
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 27px;
+    line-height: 1.3em;
+    background-color:  #ca2027;
+    color:#fff;
+    padding-top: 6px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: -40px;
+    border-radius: 50%;
+    font-family: exo;
+}
+
+
+#mobile-application-3 li:nth-child(even){
+    background-color: #434A54;
+    background: transparent;
+}
+#mobile-application-3 li span{
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color:#000;
+}
+
+#mobile-application-4{
+    padding-top: 70px;
+    padding-bottom: 70px;
+    background: transparent;
+}
+#mobile-application-4 h2{
+    color:#000;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+#mobile-application-4 li{
+    list-style: none;
+    line-height: 35px;
+}
+#mobile-application-4 li:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f138";
+    margin-right: 10px;
+    color:#ca2027;
+}
+#mobile-application-4 img {
+    max-width: 100%;
+}
+
+
+
+/* #mobile-content-1{
+    padding-top: 180px;
+    padding-bottom: 70px;
+    text-align: center;
+    position: relative;
+    background-color: rgba(124,203,242,.4);
+}
+#mobile-content-2{
+    padding-top: 50px;
+    padding-bottom: 70px;
+}
+#mobile-content-2 .service-box{
+    margin-top: 90px;
+}
+#mobile-content-2 .service-box li{
+    list-style: none;
+    margin-bottom: 50px;
+}
+#mobile-content-2 .service-box li span{
+    color:#000;
+    font-size: 18px;
+    font-weight: bold;
+}
+#mobile-content-2 .service-box li:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 800;
+    font-size: 13px;
+    content: "\f0a9";
+    margin-right: 10px;
+    color:#256bff;
+}
+
+#mobile-content-3{
+    background: #f5faff;
+    padding-top: 50px;
+    padding-bottom: 70px;
+}
+#mobile-content-3 .service-box{
+    background: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+#mobile-content-3 .service-box .icon{
+    font-size: 35px;
+}
+#mobile-content-4{
+    padding-top: 50px;
+    padding-bottom: 70px;
+    background: #fff;
+}
+#mobile-content-4 img{
+    height: 450px;
+    width: auto;
+}
+#mobile-content-5{
+    padding-top: 50px;
+    padding-bottom: 70px;
+    background: #f5faff;
+}
+#mobile-content-5 img{
+    height: 250px;
+    width: auto;
+} */
