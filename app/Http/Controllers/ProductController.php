@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ProductModel;
 use App\Models\DealerModel;//Dealer
+use App\Models\BrandModel;
+
+use Illuminate\Support\Str;
 
 use Redirect,Response;
 
@@ -12,11 +15,12 @@ class ProductController extends Controller
 {
 
     function product (){
-        $product_cate =ProductModel::orderBy('dealer_id', 'ASC')->paginate(20) ;
-        $dealer       =DealerModel::all();
+        $product_cate   =   ProductModel::orderBy('dealer_id', 'ASC')->paginate(20) ;
+        $dealer         =   DealerModel::all();
+        $brands         =   BrandModel::all();
 
         //return view('/admin/main-page/product-category',compact('product_cate'));
-        return view('/admin/main-page/product-category',compact(['product_cate','dealer']));
+        return view('/admin/main-page/product-category',compact(['product_cate','dealer', 'brands']));
     }
 
     public function editProductCate(Request $request){
@@ -60,7 +64,8 @@ class ProductController extends Controller
                     'name'=>$request->name2,
                     'dealer_id'=>$request->dealer_id2,
                     'size'=>$request->size2,
-                    'is_enable'=>$request->is_enable2
+                    'is_enable'=>$request->is_enable2,
+                    'brand_id'=>$request->brand_id2
                 ]);
             }else{
                 ProductModel::find($id)->update([
@@ -68,17 +73,22 @@ class ProductController extends Controller
                     'name'=>$request->name2,
                     'size'=>$request->size2,
                     'dealer_id'=>$request->dealer_id2,
-                    'is_enable'=>$request->is_enable2
+                    'is_enable'=>$request->is_enable2,
+                    'brand_id'=>$request->brand_id2
                 ]);
             }
 
-            return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");
+            $slug =  ProductModel::find($id);
+            // dd($slug);
+            $slug->slug = Str::slug($request->name2, '-');
+            $slug->save();
+            return back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");
         }
     }
 
     public function store(Request $request){
         $request->validate(
-            ['name'=>'required|unique:product_category'],
+            ['name'=>'required'],
             ['name.required'=>'กรุณากรอกข้อมูล ประเภทสินค้า-ไทย'],
             ['cover_image'   =>  'image|nullable|max:1999'],
         );
@@ -103,22 +113,25 @@ class ProductController extends Controller
             $filenameToStore = '';
         }
 
-            $product_cate               = new ProductModel;
-            $product_cate->name         = $request->name;
-            $product_cate->dealer_id    = $request->dealer_id;
-            $product_cate->is_enable    = $request->is_enable;
-            $product_cate->size         = $request->size;
-            $product_cate->cover_img    = $filenameToStore;
-            $product_cate->save();
-            return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");
+        $product_cate               = new ProductModel;
+        $product_cate->name         = $request->name;
+        $product_cate->dealer_id    = $request->dealer_id;
+        $product_cate->is_enable    = $request->is_enable;
+        $product_cate->size         = $request->size;
+        $product_cate->cover_img    = $filenameToStore;
+        $product_cate->brand_id     = $request->brand_id;
+        $product_cate->slug         = Str::slug($request->name, '-');
+        // dd($product_cate->slug);
+        $product_cate->save();
+        return back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");
     }
 
         // Fetch records
-    public function getCategory($dealerid=0){
+    public function getCategory($brandid=0){
             // Fetch Employees by Departmentid
             $empData['data'] = ProductModel::orderby("name","asc")
                         ->select('id','name')
-                        ->where('dealer_id',$dealerid)
+                        ->where('brand_id',$brandid)
                         ->get();
       
             return response()->json($empData);

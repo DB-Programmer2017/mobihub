@@ -48,6 +48,7 @@
                                 <th>#</th>
                                 <th width="10%">Part Number</th>
                                 <th width="10%">Dealer</th>
+                                <th width="10%">Brand</th>
                                 <th width="10%">Category</th>
                                 <th>Product Name</th>
                                 <th width="10%">Photo</th>
@@ -64,13 +65,18 @@
                                 <td>
                                     {{$row->dealer['name']}}
                                 </td>
-                                <td>{{$row->category['name'] }}</td>
+                                <td>
+                                    {{$row->brand->name}}
+                                </td>
+                                <td>
+                                    {{$row->category->name }}
+                                </td>
                                 <td>
                                     {{-- <a href="#"  onclick="EditCate('{{$row->id}},{{$row->name}},{{$row->cover_img}},{{$row->is_enable}},{{$row->description}},{{$row->category->id}},{{$row->brand_id}}')" data-toggle="modal" data-target="#myModal2">
                                         {{$row->name}}
                                     </a> --}}
 
-                                    <a href="javascript:void(0)" onclick="Dealer('{{$row->dealer_id}}')" class="edit" data-id="{{ $row->id }}" data-toggle="modal" data-target="#myModal2"> {{$row->name}}</a>
+                                    <a href="javascript:void(0)"  class="edit" data-id="{{ $row->id }}" data-toggle="modal" data-target="#myModal2"> {{$row->name}}</a>
                                 </td>
                                 <td>
                                     @if ($row->cover_img  !='')
@@ -89,6 +95,10 @@
                         @endforeach
                         </tbody>
                     </table>
+
+                    <div class="col-xs-12 col-md-12">
+                        <center>{{$product_cate->links('vendor.pagination.default')}}</center>
+                    </div>
                 </div>
                 {{-- <div class="panel-footer">
                     <div class="row">
@@ -129,14 +139,14 @@
                                 <div class="modal-body">
                                     <h3 class="title">Add Product</h3>
 
-                                    <div class="col-xs-12 col-md-3 form-group">
+                                    <div class="col-xs-12 col-md-4 form-group">
                                         Topic 
-                                        <select class="form-control" id="brand_id" name="brand_id">
+                                        <select class="form-control" id="topic_id" name="topic_id">
                                             <option value="">New</option>
                                         </select>
                                     </div>
 
-                                    <div class="col-xs-12 col-md-3 form-group">
+                                    <div class="col-xs-12 col-md-4 form-group">
                                         Dealer :
                                         <select class="form-control" id="dealer_id" name="dealer_id">
                                             <option value=''>-- Select Dealer --</option>
@@ -146,13 +156,28 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-xs-12 col-md-3 form-group">
-                                        Category : 
-                                        <select class="form-control" id="category_id" name="category_id">
+                                    <div class="col-xs-12 col-md-4 form-group">
+                                        Brand :
+                                        <select class="form-control" id="brand_id" name="brand_id">
+                                            
                                         </select>
                                     </div>
 
-                                    <div class="col-xs-12 col-md-3 form-group">
+                                    <div class="col-xs-12 col-md-4 form-group">
+                                        Category : 
+                                        <select class="form-control" id="category_id" name="category_id">
+                                            
+                                        </select>
+                                    </div>
+
+                                    <div class="col-xs-12 col-md-4 form-group">
+                                        Sub Category : 
+                                        <select class="form-control" id="sub_category_id" name="sub_category_id">
+                                            
+                                        </select>
+                                    </div>
+
+                                    <div class="col-xs-12 col-md-4 form-group">
                                         Part Number(SKU) : 
                                         <input type="text" id="part_number" name="part_number" class="form-control" placeholder=" Part Number">
                                     </div>
@@ -238,14 +263,14 @@
                                 <div class="modal-body">
                                     <h3 class="title">Edit Product</h3>
 
-                                    <div class="col-xs-12 col-md-3 form-group">
+                                    <div class="col-xs-12 col-md-4 form-group">
                                         Topic 
                                         <select class="form-control" id="topic_id2" name="topic_id2">
                                             <option value="">New</option>
                                         </select>
                                     </div>
 
-                                    <div class="col-xs-12 col-md-3 form-group">
+                                    <div class="col-xs-12 col-md-4 form-group">
                                         Dealer :
                                         <select class="form-control" id="dealer_id2" name="dealer_id2">
                                             {{-- <option value='0'>-- Select Dealer --</option> --}}
@@ -255,17 +280,36 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-xs-12 col-md-3 form-group">
-                                        Category : 
-                                        <select class="form-control" id="category_id2" name="category_id2">
-                                            {{-- <option value='0'>-- Select Category --</option> --}}
-                                            {{-- @foreach ($category as $row)    
+                                    <div class="col-xs-12 col-md-4 form-group">
+                                        Brand :
+                                        <select class="form-control" id="brand_id2" name="brand_id2">
+                                            {{-- <option value='0'>-- Select Dealer --</option> --}}
+                                            @foreach ($brands as $row)    
                                                 <option value="{{ $row->id }}">{{ $row->name }}</option>
-                                            @endforeach --}}
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-xs-12 col-md-4 form-group">
+                                        Category :
+                                        <select class="form-control" id="category_id2" name="category_id2">
+                                            @foreach ($categories as $category)    
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
 
-                                    <div class="col-xs-12 col-md-3 form-group">
+                                    <div class="col-xs-12 col-md-4 form-group">
+                                        Sub Category :
+                                        <select class="form-control" id="sub_category_id2" name="sub_category_id2">
+                                            {{-- <option value='0'>-- Select Dealer --</option> --}}
+                                            @foreach ($sub_categories as $row)    
+                                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="col-xs-12 col-md-4 form-group">
                                         Part Number(SKU) : 
                                         <input type="text" id="part_number2" name="part_number2" class="form-control" placeholder="Part Number">
                                     </div>
@@ -364,6 +408,7 @@
                                         </div>
                                     
                                         <div class="col-xs-12 col-md-12"></div>
+                                        {{-- show image gallery --}}
                                         <div id="product-list"></div>
                                     </div>
 
@@ -416,7 +461,7 @@
 
 <div class="container">
     <div class="row">
-        <form action="#" method="post" id="ChoiceItemList" enctype="multipart/form-data">
+        <form action="{{ route('storePoductChoice') }}" method="POST" id="ChoiceItemList" enctype="multipart/form-data">
             @csrf
             <div class="col-md-12">
                 <div class="modal-box">
@@ -434,21 +479,21 @@
                                           <th>#</th>
                                           <th>Option List</th>
                                           <th>Status</th>
-                                        </tr>
-                                        <tr>
-                                          <td></td>
-                                          <td></td>
-                                          <td></td>
-                                        </tr>
+                                        </tr>                                      
+                                                                                                    
                                     </table>
 
                                     <div class="form-group">
+   
                                         <div class="input-group">
-                                          <input type="text" class="form-control" id="option_name_list" name="option_name_list">
-                                          <span class="input-group-btn">
-                                            <button class="btn btn-success" type="button" id="btnAddOptionList">Add</button>
-                                          </span>
+                                        <input type="hidden" readonly id="product_id3" name="product_id3" value="">
+                                        <input type="hidden" readonly id="choice_id3" name="choice_id3" value="">
+                                        <input type="text" class="form-control" id="option_name_list" name="option_name_list">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-success" type="submit" id="btnAddOptionList">Add</button>
+                                        </span>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -556,13 +601,33 @@
         }
     }
 
-    function ChoiceItem(id){
+    function ChoiceItem(id, product_id){
        // var id= id;
         var id=id;
+        var product_id=product_id;
+        
+// add value to input
+$('#product_id3').val(product_id);
+$('#choice_id3').val(id);
 
         $.get('/admin/product/' + id +'/ChoiceList', function (res) {
             $('#choice-name').html("Option : "+res.name);
             $("#option_id").val(res.id);
+        });
+
+
+        $.get('/admin/product/' + id +'/ChoiceListDetails', function (res2) {
+            if(res2.length>0) {
+                for(i=0;i<res2.length;i++) {     
+                    var n = i+1;
+                    if(res2[i]['is_enable'] == '0'){
+                        var status = "<span class='label label-danger'>Suspend</span>";
+                    } else {
+                        var status = "<span class='label label-success'>Publish</span>";
+                    }
+                    $('#customers').append('<tr><td>'+n+'</td><td>'+res2[i]['name']+'</td><td>'+status+'</td></tr>');
+                }   
+            }
         });
     }
 
@@ -571,10 +636,11 @@
         var option_name_list    = $("#option_name_list").val();
         var product_id          = $("#product_id2").val();
 
+        // alert(choice_id);
         if(choice_id !="" && option_name_list !=""){
             $.ajax({
                 type:'POST',
-                url:"{{ route('ajaxRequestPost') }}",
+                url:"{{ route('storePoductChoice') }}",
                 data:{
                     choice_id:choice_id, 
                     option_name_list:option_name_list,
@@ -587,37 +653,40 @@
         }
     });
 
-    function Dealer(id){
-        var dealer_id = id;
-            // Empty the dropdown
-            $('#category_id2').find('option').not(':first').remove();
+// ออโต้ หา category ของ dealer ตอน กดedit
+    // function Dealer(id){
+    //     var dealer_id = id;
+    //     // alert(dealer_id);
+    //         // Empty the dropdown
+    //         $('#category_id2').find('option').not(':first').remove();
 
-            // AJAX request  
-            $.ajax({
-                url: '/admin/product/getCategory/'+dealer_id,
-                type: 'get',
-                dataType: 'json',
-                success: function(response){
-                    var len = 0;
+    //         // AJAX request  
+    //         $.ajax({
+    //             url: '/admin/product/getCategory/'+dealer_id,
+    //             type: 'get',
+    //             dataType: 'json',
+    //             success: function(response){
+    //                 var len = 0;
 
-                    if(response['data'] != null){
-                        len = response['data'].length;
-                    }
-                    if(len > 0){
-                        // Read data and create <option >
-                        for(var i=0; i<len; i++){
-                            var id = response['data'][i].id;
-                            var name = response['data'][i].name;
+    //                 if(response['data'] != null){
+    //                     len = response['data'].length;
+    //                 }
+    //                 if(len > 0){
+    //                     // Read data and create <option >
+    //                     for(var i=0; i<len; i++){
+    //                         var id = response['data'][i].id;
+    //                         var name = response['data'][i].name;
 
-                            var option = "<option value='"+id+"'>"+name+"</option>"; 
-                            $("#category_id2").append(option); 
-                        }
-                    }
+    //                         var option = "<option value='"+id+"'>"+name+"</option>"; 
+    //                         $("#category_id2").append(option); 
+    //                     }
+    //                 }
 
-                }
-            });
-    }
+    //             }
+    //         });
+    // }
     
+//ในหน้าเพิ่มสินค้าใหม่ หา category ตอนกดเลือก dealer
     $(document).ready(function($){
         $.ajaxSetup({
             headers: {
@@ -627,18 +696,59 @@
 
         $('#dealer_id').on('change',function(e) {
             var dealer_id = e.target.value;
-
+            // alert(dealer_id);
             $.ajax({
-                url: '/admin/product/getCategory/'+dealer_id,
+                url: '/admin/product/getBrand/'+dealer_id,
                 type: 'get',
                 dataType: 'json',
                 success: function(response){
+                    $("#brand_id").empty();
                     $("#category_id").empty();
+                    $("#sub_category_id").empty();
 
                     var len = 0;
 
                     if(response['data'] != null){
                         len = response['data'].length;
+                        // alert(len);
+                    }
+                    if(len > 0){
+                        // Read data and create <option >
+                        var select = "<option value=''>-- Select Brand --</option>";
+                        $("#brand_id").append(select); 
+
+                        for(var i=0; i<len; i++){
+                            var id = response['data'][i].id;
+                            var name = response['data'][i].name;
+
+                            var option = "<option value='"+id+"'>"+name+"</option>"; 
+                            $("#brand_id").append(option); 
+                        }
+                    }
+
+                }
+            });
+        });
+
+//ในหน้าเพิ่มสินค้าใหม่, เลือกแบรนแล้วจะมี categoryของแบรนขึ้นมา
+        $('#brand_id').on('change',function(e) {
+            var brand_id = e.target.value;
+// alert(brand_id);
+            $.ajax({
+                url: '/admin/product/getCategory/'+brand_id,
+                type: 'get',
+                dataType: 'json',
+                success: function(response){
+                    $("#category_id").empty();
+                    $("#sub_category_id").empty();
+
+                    var len = 0;
+
+                    if(response['data'] != null){
+                        len = response['data'].length;
+                        // alert(response['data']);
+                        var select = "<option value=''>-- Select Category --</option>";
+                        $("#category_id").append(select);
                     }
                     if(len > 0){
                         // Read data and create <option >
@@ -655,20 +765,95 @@
             });
         });
 
+//ในหน้าเพิ่มสินค้าใหม่, เลือกcategoryแล้วจะมี sub_categoryขึ้นมา
+        $('#category_id').on('change',function(e) {
+            var category_id = e.target.value;
+// alert(category_id);
+            $.ajax({
+                url: '/admin/product/getSubCategory/'+category_id,
+                type: 'get',
+                dataType: 'json',
+                success: function(response){
+                    $("#sub_category_id").empty();
 
+                    var len = 0;
+
+                    if(response['data'] != null){
+                        len = response['data'].length;
+                        // alert(response['data']);
+                        var select = "<option value=''>-- Select Sub Category --</option>";
+                        $("#sub_category_id").append(select);
+                    }
+                    if(len > 0){
+                        // Read data and create <option >
+                        for(var i=0; i<len; i++){
+                            var id = response['data'][i].id;
+                            var name = response['data'][i].name;
+
+                            var option = "<option value='"+id+"'>"+name+"</option>"; 
+                            $("#sub_category_id").append(option); 
+                        }
+                    }
+
+                }
+            });
+        });
+
+        
+
+//ในmodal edit, ออโต้ ฟิลเตอร์ brand เวลาเปลี่ยนdealer 
         $('#dealer_id2').on('change',function(e) {
             var dealer_id = e.target.value;
+        
+            // Empty the dropdown
+            //$('#sel_emp').find('option').not(':first').remove();
+
+            // AJAX request  
+            $.ajax({
+                url: '/admin/product/getBrand/'+dealer_id,
+                type: 'get',
+                dataType: 'json',
+                success: function(response){
+                    $("#brand_id2").empty();
+                    $("#category_id2").empty();
+                    $("#sub_category_id2").empty();
+
+                    var len = 0;
+
+                    if(response['data'] != null){
+                        len = response['data'].length;
+                        
+                    }
+                    if(len > 0){
+                        // Read data and create <option >
+                        for(var i=0; i<len; i++){
+                            var id = response['data'][i].id;
+                            var name = response['data'][i].name;
+
+                            var option = "<option value='"+id+"'>"+name+"</option>"; 
+                            $("#brand_id2").append(option); 
+                        }
+                    }
+
+                }
+            });
+        });
+
+//ในmodal edit, ออโต้ ฟิลเตอร์ category เวลาเปลี่ยนbrand
+        $('#brand_id2').on('change',function(e) {
+            var brand_id = e.target.value;
             
             // Empty the dropdown
             //$('#sel_emp').find('option').not(':first').remove();
 
             // AJAX request  
             $.ajax({
-                url: '/admin/product/getCategory/'+dealer_id,
+                url: '/admin/product/getCategory/'+brand_id,
                 type: 'get',
                 dataType: 'json',
                 success: function(response){
                     $("#category_id2").empty();
+                    $("#sub_category_id2").empty();
 
                     var len = 0;
 
@@ -690,31 +875,70 @@
             });
         });
 
+//ในmodal edit, ออโต้ ฟิลเตอร์ subcategory เวลาเปลี่ยน category
+        $('#category_id2').on('change',function(e) {
+            var category_id = e.target.value;
+            
+            // Empty the dropdown
+            //$('#sel_emp').find('option').not(':first').remove();
+
+            // AJAX request  
+            $.ajax({
+                url: '/admin/product/getSubCategory/'+category_id,
+                type: 'get',
+                dataType: 'json',
+                success: function(response){
+                    $("#sub_category_id2").empty();
+
+                    var len = 0;
+
+                    if(response['data'] != null){
+                        len = response['data'].length;
+                    }
+                    if(len > 0){
+                        // Read data and create <option >
+                        for(var i=0; i<len; i++){
+                            var id = response['data'][i].id;
+                            var name = response['data'][i].name;
+
+                            var option = "<option value='"+id+"'>"+name+"</option>"; 
+                            $("#sub_category_id2").append(option); 
+                        }
+                    }
+
+                }
+            });
+        });
+
        $('#addNewBook').click(function () {
           $('#addEditBookForm').trigger("reset");
           $('#ajaxBookModel').html("Add Book");
           $('#ajax-book-model').modal('show');
        });
 
-       
+
+
+//when you click edit
        $('body').on('click', '.edit', function () {
         $('#product-cover').html("");
 
            var softwareEnq_id = $(this).data('id');
-
+alert(softwareEnq_id);
            $.get('/admin/product/' + softwareEnq_id +'/editProduct', function (res) {
+                // alert(res.category_id);
                 $('#product-list').html("");
                 $('#product_id2').val(res.id);
                 $('#name2').val(res.name);
                 $('#dealer_id2').val(res.dealer_id);
                 $('#category_id2').val(res.category_id);
+                $('#sub_category_id2').val(res.sub_category_id);
                 $('#product_tag2').val(res.product_tag);
                 $('#meta_tag2').val(res.meta_tag);
                 $('#part_number2').val(res.part_number);
                 $('#price_sale2').val(res.price_sale);
                 $('#is_quo2').val(res.is_quo);
                 $('#stock_amount2').val(res.stock_amount);
-                //$('#description2').val(res.description);
+                $('#brand_id2').val(res.brand_id);
 
                 CKEDITOR.instances['description2'].setData(res.description);
 
@@ -724,18 +948,18 @@
                 //'<button type="button" onclick="DeleteImage('+res.id+')" class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i> Delete</button>'+
                 '</center>');
                 
-                //image
+                //image gallery
                 $.get('/admin/product/' + softwareEnq_id +'/ImageProduct', function (data) {
                     if(data.length>0) {
                         for(i=0;i<data.length;i++) {     
                                 //$('#product-list').append('<div class="col-xs-12 col-md-3 col-sm-3"><img src="{{ '+img+' }}" class="img-responsive"></div>');
                                 // $('#product-list').append('<div class="col-md-3 col-sm-3 hero-feature"><div class="thumbnail"><img src="{{url('storage/images/')}}/'+data[i]['img'] +'" class="img-responsive" alt=""><button type="button"  onclick="DeleteImage('+data[i]['id']+')" class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i> Delete Pic</button></div>');
-                            $('#product-list').append('<div class="col-md-3 col-sm-3 hero-feature"><div class="thumbnail"><img src="{{url('storage/images/')}}/'+data[i]['img'] +'" class="img-responsive" alt=""><a href="{{url('/admin/product/softdeleteImage')}}/'+data[i]['id']+'"  class="btn btn-danger btn-xs" type="button"><i class="fas fa-trash-alt"></i> Delete</button></div>');
+                            $('#product-list').append('<div class="col-md-3 col-sm-3 hero-feature"><div class="thumbnail"><img src="{{url('storage/images/')}}/'+data[i]['img'] +'" class="img-responsive" alt=""><a href="{{url('/admin/product/softdeleteImage')}}/'+data[i]['id']+'"  class="btn btn-danger btn-xs" type="button"><i class="fas fa-trash-alt"></i> Delete</a></div>');
                         }   
                     }
                 });
 
-                //image
+                //product options
                 $.get('/admin/product/' + softwareEnq_id +'/ChoiceProduct', function (data2) {
                     if(data2.length>0) {
                         for(i=0;i<data2.length;i++) {     
@@ -743,7 +967,7 @@
                                 //$('#product-list').append('<div class="col-xs-12 col-md-3 col-sm-3"><img src="{{ '+img+' }}" class="img-responsive"></div>');
                                 // $('#product-list').append('<div class="col-md-3 col-sm-3 hero-feature"><div class="thumbnail"><img src="{{url('storage/images/')}}/'+data[i]['img'] +'" class="img-responsive" alt=""><button type="button"  onclick="DeleteImage('+data[i]['id']+')" class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i> Delete Pic</button></div>');
 
-                            $('#choice-list').append('<div class="col-md-6 col-sm-6 form-group"><div class="input-group"><span class="input-group-addon">'+n+'</span><input type="text" value="'+data2[i]['name']+'" class="form-control"><span class="input-group-btn"><button class="btn btn-success" onclick="ChoiceItem('+data2[i]['id']+')" title="Add List" type="button" data-toggle="modal" data-target="#myModal3"><i class="fas fa-plus-circle"></i></button><button class="btn btn-warning" title="Cancel" type="button"><i class="fas fa-times-circle"></i></button></span></div></div>');
+                            $('#choice-list').append('<div class="col-md-6 col-sm-6 form-group"><div class="input-group"><span class="input-group-addon">'+n+'</span><input type="text" value="'+data2[i]['name']+'" class="form-control"><span class="input-group-btn"><button class="btn btn-success" onclick="ChoiceItem('+data2[i]['id']+','+data2[i]['product_id']+')" title="Add List" type="button" data-toggle="modal" data-target="#myModal3"><i class="fas fa-plus-circle"></i></button><button class="btn btn-warning" title="Cancel" type="button"><i class="fas fa-times-circle"></i></button></span></div></div>');
                         }   
                     }
                 });

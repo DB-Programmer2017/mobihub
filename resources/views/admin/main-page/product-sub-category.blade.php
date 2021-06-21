@@ -27,7 +27,7 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-12 col-sm-5 col-xs-12">
-                            <h4 class="title">Product <span>Category</span></h4>
+                            <h4 class="title">Product <span>Sub Category</span></h4>
                         </div>
                         <div class="col-sm-7 col-xs-12 text-right">
                             <button type="button" class="btn btn-info btn-sm show-modal" data-toggle="modal" data-target="#myModal">
@@ -44,40 +44,27 @@
                             <tr class="active">
                                 <th width="3%">#</th>
                                 <th width="13%">Updated</th>
-                                <th  width="12%">Dealer</th>
-                                <th  width="12%">Brand</th>
-                                <th>Category</th>
-                                <th  width="10%">Photo</th>
-                                <th  width="5%">Size</th>
-                                <th  width="5%">Status</th>
-                                {{-- <th>Action</th> --}}
+                                <th  width="13%">Dealer</th>
+                                <th  width="13%">Brand</th>
+                                <th  width="13%">Category</th>
+                                <th>Sub Category</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($product_cate as $row)    
+                        @foreach ($sub_categories as $sub_category)    
                             <tr>
-                                <td>{{$product_cate->firstItem()+$loop->index}}</td>
-                                <td>{{$row->updated_at}}</td>
-                                <td>{{$row->dealer->name }}</td>
-                                <td>{{$row->brand->name }}</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{$sub_category->updated_at}}</td>
+                                <td>{{$sub_category->dealer->name }}</td>
+                                <td>{{$sub_category->brand->name }}</td>
+                                <td>{{$sub_category->category->name }}</td>
                                 <td>
-                                    <a href="javascript:void(0)" class="edit" data-id="{{ $row->id }}" data-toggle="modal" data-target="#myModal2"> {{$row->name}}</a>
+                                    <a href="javascript:void(0)" class="edit" data-id="{{ $sub_category->id }}" data-toggle="modal" data-target="#myModal2"> {{$sub_category->name}}</a>
                                     {{-- {{$row->name}} --}}
                                 </td>
                                 <td>
-                                    @if ($row->cover_img  !='')
-                                        <img src="{{asset('storage/images/' . $row->cover_img)}}" class="img-responsive">
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($row->size == "v")
-                                        <span class="label label-warning">Vertical</span>
-                                    @else 
-                                        <span class="label label-info">Horizontal</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($row->is_enable == "1")
+                                    @if ($sub_category->is_enable == "1")
                                         <span class="label label-success">Publish</span>
                                     @else 
                                         <span class="label label-danger">Suspend</span>
@@ -119,7 +106,7 @@
 {{-- AddNew Modal --}}
 <div class="container">
     <div class="row">
-        <form action="{{route('addProductCate')}}" method="post" id="editForm" enctype="multipart/form-data">
+        <form action="{{route('sub-category.store')}}" method="post" id="editForm">
             @csrf
             {{-- {{ mothod_field('PUT') }} --}}
 
@@ -137,8 +124,8 @@
                                         Dealer :
                                         <select class="form-control" id="dealer_id" name="dealer_id">
                                             <option value=''>-- Select Dealer --</option>
-                                            @foreach ($dealer as $row)    
-                                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                            @foreach ($dealers as $dealer)    
+                                                <option value="{{ $dealer->id }}">{{ $dealer->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -151,7 +138,13 @@
 
                                     <div class="col-xs-12 col-md-12 form-group">
                                         Category :
-                                        <input type="hidden" id="cate_id" name="cate_id" value="">
+                                        <select class="form-control" id="category_id" name="category_id">
+                                        </select>
+                                    </div>
+
+                                    <div class="col-xs-12 col-md-12 form-group">
+                                        Sub Category :
+                                        <input type="hidden" id="sub_category_id" name="sub_category_id" value="">
                                         <input type="text" id="name" name="name" class="form-control" placeholder="Name">
                                     </div>
 
@@ -162,14 +155,7 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-xs-12 col-md-12">
-                                        <div class="form-upload">
-                                            <i class="fas fa-cloud-upload-alt"></i>
-                                            <input type="file" id="cover_img" name="cover_img">
-                                        </div>
-                                    </div>
-
-                                    <button type="submit" class="btn-save">Save</button>
+                                    <button class="btn-save">Save</button>
 
                                     {{-- @if(session("success"))
                                         <div class="alert alert-success"><i class="fas fa-check"></i> {{session("success")}}</div>
@@ -187,7 +173,7 @@
 {{-- Edit Category Modal --}}
 <div class="container">
     <div class="row">
-        <form action="{{route('editProductCate')}}" method="post" id="editForm" enctype="multipart/form-data">
+        <form action="{{route('sub-category.update')}}" method="post" id="editForm">
             @csrf
             {{-- {{ mothod_field('PUT') }} --}}
 
@@ -204,8 +190,8 @@
                                     <div class="col-xs-12 col-md-12 form-group">
                                         Dealer :
                                         <select class="form-control" id="dealer_id2" name="dealer_id2">
-                                            @foreach ($dealer as $row)    
-                                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                            @foreach ($dealers as $dealer)    
+                                                <option value="{{ $dealer->id }}">{{ $dealer->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -213,26 +199,28 @@
                                     <div class="col-xs-12 col-md-12 form-group">
                                         Brand : 
                                         <select class="form-control" id="brand_id2" name="brand_id2">
-                                            @foreach ($brands as $row)    
-                                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                            @foreach ($brands as $brand)    
+                                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
 
                                     <div class="col-xs-12 col-md-12 form-group">
                                         Category :
-                                        <input type="hidden" readonly id="cate_id2" name="cate_id2" value="">
+                                        <select class="form-control" id="category_id2" name="category_id2">
+                                            @foreach ($categories as $category)    
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="col-xs-12 col-md-12 form-group">
+                                        Sub Category :
+                                        <input type="hidden" readonly id="sub_category_id2" name="sub_category_id2" value="">
                                         <input type="hidden" id="img_cover_name" name="img_cover_name" value="">
                                         <input type="text" id="name2" name="name2" class="form-control" placeholder="Name">
                                     </div>
 
-                                    <div class="col-xs-12 col-md-12 form-group">
-                                        Size :
-                                        <select class="form-control" name="size2" id="size2">
-                                            <option value="v">Vertical</option>
-                                            <option value="h">Horizontal</option>
-                                        </select>
-                                    </div>
 
                                     <div class="col-xs-12 col-md-12 form-group">
                                         Status :
@@ -240,17 +228,6 @@
                                             <option value="1">Publish</option>
                                             <option value="0">Suspend</option>
                                         </select>
-                                    </div>
-
-                                    <div class="col-xs-12 col-md-12">
-                                        <div id="product-cover"></div>
-                                    </div>
-
-                                    <div class="col-xs-12 col-md-12">
-                                        <div class="form-upload">
-                                            <i class="fas fa-cloud-upload-alt"></i>
-                                            <input type="file" id="cover_img2" name="cover_img2">
-                                        </div>
                                     </div>
 
                                     <button class="btn-save">Save</button>
@@ -302,16 +279,15 @@
     $('body').on('click', '.edit', function () {
         $('#product-cover').html("");
            var softwareEnq_id = $(this).data('id');
-
-           $.get('/admin/product-category/' + softwareEnq_id +'/editProductCategory', function (res) {
-            // alert(res.id);
-                $('#cate_id2').val(res.id);
+// alert(softwareEnq_id);
+           $.get('/admin/sub-category/' + softwareEnq_id +'/editSubCategory', function (res) {
+                // alert(res.id);
+                $('#sub_category_id2').val(res.id);
                 $('#dealer_id2').val(res.dealer_id);
                 $('#name2').val(res.name);
                 $('#is_enable2').val(res.is_enable);
-                $('#size2').val(res.size);
-                $('#img_cover_name').val(res.cover_img);
                 $('#brand_id2').val(res.brand_id);
+                $('#category_id2').val(res.category_id);
             
                 if(res.cover_img ==''){
                     $('#product-cover').hide();
@@ -339,7 +315,7 @@
             }
         });
 
-//ตอนเพิ่มCategoryใหม่ หาbrand ของ dealer
+//ตอนเพิ่มSUb categoryใหม่ หาbrand ของ dealer
         $('#dealer_id').on('change',function(e) {
             var dealer_id = e.target.value;
 // alert(1);
@@ -348,7 +324,8 @@
                 type: 'get',
                 dataType: 'json',
                 success: function(response){
-                    $("#brand_id").empty();
+                    $("#brand_id").empty()
+                    $("#category_id").empty();;
 
                     var len = 0;
 
@@ -372,6 +349,114 @@
             });
         });
     });
+
+//ตอนเพิ่มSUb categoryใหม่ หาcategory ของ brand
+    $('#brand_id').on('change',function(e) {
+            var brand_id = e.target.value;
+// alert(brand_id);
+            $.ajax({
+                url: '/admin/product/getCategory/'+brand_id,
+                type: 'get',
+                dataType: 'json',
+                success: function(response){
+                    $("#category_id").empty();
+
+                    var len = 0;
+
+                    if(response['data'] != null){
+                        len = response['data'].length;
+                        // alert(response['data']);
+                        var select = "<option value=''>-- Select Category --</option>";
+                        $("#category_id").append(select);
+                    }
+                    if(len > 0){
+                        // Read data and create <option >
+                        for(var i=0; i<len; i++){
+                            var id = response['data'][i].id;
+                            var name = response['data'][i].name;
+
+                            var option = "<option value='"+id+"'>"+name+"</option>"; 
+                            $("#category_id").append(option); 
+                        }
+                    }
+
+                }
+            });
+        });
+
+//ในmodal edit, ออโต้ ฟิลเตอร์ brand เวลาเปลี่ยนdealer 
+        $('#dealer_id2').on('change',function(e) {
+            var dealer_id = e.target.value;
+            
+            // Empty the dropdown
+            //$('#sel_emp').find('option').not(':first').remove();
+
+            // AJAX request  
+            $.ajax({
+                url: '/admin/product/getBrand/'+dealer_id,
+                type: 'get',
+                dataType: 'json',
+                success: function(response){
+                    $("#brand_id2").empty();
+                    $("#category_id2").empty();
+                    $("#sub_category_id2").empty();
+
+                    var len = 0;
+
+                    if(response['data'] != null){
+                        len = response['data'].length;
+                        
+                    }
+                    if(len > 0){
+                        // Read data and create <option >
+                        for(var i=0; i<len; i++){
+                            var id = response['data'][i].id;
+                            var name = response['data'][i].name;
+
+                            var option = "<option value='"+id+"'>"+name+"</option>"; 
+                            $("#brand_id2").append(option); 
+                        }
+                    }
+
+                }
+            });
+        });
+
+//ในmodal edit, ออโต้ ฟิลเตอร์ category เวลาเปลี่ยนbrand
+        $('#brand_id2').on('change',function(e) {
+            var brand_id = e.target.value;
+// alert(brand_id);
+            // Empty the dropdown
+            //$('#sel_emp').find('option').not(':first').remove();
+
+            // AJAX request  
+            $.ajax({
+                url: '/admin/product/getCategory/'+brand_id,
+                type: 'get',
+                dataType: 'json',
+                success: function(response){
+                    $("#category_id2").empty();
+                    $("#sub_category_id2").empty();
+
+                    var len = 0;
+
+                    if(response['data'] != null){
+                        len = response['data'].length;
+                    }
+                    if(len > 0){
+                        // Read data and create <option >
+                        for(var i=0; i<len; i++){
+                            var id = response['data'][i].id;
+                            var name = response['data'][i].name;
+
+                            var option = "<option value='"+id+"'>"+name+"</option>"; 
+                            $("#category_id2").append(option); 
+                        }
+                    }
+
+                }
+            });
+        });
 
 </script>
 

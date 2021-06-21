@@ -55,7 +55,7 @@
                             <tr>
                                 <td>{{$product_cate->firstItem()+$loop->index}}</td>
                                 <td>{{$row->updated_at}}</td>
-                                <td>{{$row->dealer->name }}</td>
+                                <td>{{$row->dealer['name'] }}</td>
                                 {{-- <td>{{$row->name}}</td> --}}
                                 <td>
                                     <a href="javascript:void(0)" class="edit" data-id="{{ $row->id }}" data-toggle="modal" data-target="#myModal2"> {{$row->name}}</a>
@@ -190,7 +190,7 @@
 
                                     <div class="col-xs-12 col-md-12 form-group">
                                         Brand : 
-                                        <input type="hidden" id="cate_id2" name="cate_id2" value="">
+                                        <input type="hidden" id="brand_id2" name="brand_id2" value="">
                                         <input type="hidden" id="img_cover_name" name="img_cover_name" value="">
                                         <input type="text" id="name2" name="name2" class="form-control" placeholder="Name">
                                     </div>
@@ -243,7 +243,7 @@
         var res = str.split(",");
 
         //$(".show-modal2").click();
-        $('#cate_id2').val(res[0]);
+        $('#brand_id2').val(res[0]);
         $('#name2').val(res[1]);
         $('#img_cover_name').val(res[2]);
         $('#is_enable2').val(res[3]);
@@ -262,7 +262,10 @@
            var softwareEnq_id = $(this).data('id');
 
            $.get('/admin/product-brand/' + softwareEnq_id +'/editBrand', function (res) {
-                $('#cate_id2').val(res.id);
+
+            //    alert(res.id);
+                $('#brand_id2').val(res.id);
+                // alert(res.dealer_id);
                 $('#dealer_id2').val(res.dealer_id);
                 $('#name2').val(res.name);
                 $('#is_enable2').val(res.is_enable);

@@ -13,8 +13,8 @@ class ArmorxController extends Controller
         
         $brands = ArmorxProductModel::with('categories')->get();
         // return ArmorxProductModel::with('categories')->get();
-        $sub_categories = ArmorxProductCateModel::with('subCategories')->get();
+        // $sub_categories = ArmorxProductCateModel::with('subCategories')->get();
         // return ArmorxProductCateModel::with('subCategories')->get();
-        return view('mainpage/armor-x',compact(['brands', 'sub_categories']));
+        return view('mainpage/armor-x',compact(['brands']));
     }
 }
