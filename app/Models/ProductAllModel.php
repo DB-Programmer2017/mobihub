@@ -20,6 +20,7 @@ class ProductAllModel extends Model
         'created_at',
         'description',
         'category_id',
+        'sub_category_id',
         'brand_id',
         'dealer_id',
         'part_number',

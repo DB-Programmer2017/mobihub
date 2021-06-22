@@ -63,11 +63,20 @@ Route::get('/', function () {
 Route::get('/armor-x', [ArmorxController::class,'home_armor_x'])->name('armor-x');
 Route::get('/armor-x/{id}/SearchProduct', [ArmorxController::class, 'get_causes_against_category']);
 Route::post('/armor-x/filter', [ArmorxController::class, 'ArmorxFilter']);
+Route::get('/armor-x-product/{id}', [ArmorxController::class, 'ProductDetail']);
+
+Route::get('/otterbox', [ArmorxController::class,'home_otterbox'])->name('otterbox');
+Route::post('/otterbox/filter', [ArmorxController::class, 'OtterBoxFilter']);
+Route::get('/otterbox-product/{id}', [ArmorxController::class, 'ProductOtterBoxDetail']);
+
+Route::get('/rammounts', [ArmorxController::class,'home_rammounts'])->name('rammounts');
+Route::post('/rammounts/filter', [ArmorxController::class, 'RamMountsFilter']);
+Route::get('/rammounts-product/{id}', [ArmorxController::class, 'ProductRamMountsDetail']);
 
 // Route::get('/armor-x-product', function () {
 //     return view('mainpage/armor-x-product');
 // });
-Route::get('/armor-x-product/{id}', [ArmorxController::class, 'ProductDetail']);
+
 
 Route::get('/service', function () {
     return view('mainpage/service');
