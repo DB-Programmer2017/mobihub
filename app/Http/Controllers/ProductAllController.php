@@ -12,19 +12,27 @@ use App\Models\ProductGalleryModel;//gallery
 use App\Models\ProductChoiceModel;//Choice
 use App\Models\ProductChoiceListModel;//ChoiceList
 use App\Models\DealerModel;//Dealer
+use App\Models\SubCategoryModel;
+use Illuminate\Support\Str;
 
 use Redirect,Response;
 
 class ProductAllController extends Controller
 {
     function product (Request $request){
-        $product_cate   = ProductAllModel::paginate(20) ;
-        $category       = ProductModel::all();
-        $brand          = BrandModel::all();
+        $product_cate   = ProductAllModel::paginate(5) ;
+        $categories     = ProductModel::all();
+        $brands         = BrandModel::all();
         $dealer         = DealerModel::all();
+        $sub_categories = SubCategoryModel::all();
+        $product_id     = $request->product_id3;
+        $choice_id      = $request->choice_id3;
 
-        return view('/admin/main-page/product',compact(['product_cate','category','brand','dealer']));
+        $option_lists   = ProductChoiceListModel::where('product_id', $product_id)->where('choice_id', $choice_id)->get();
+
+        return view('/admin/main-page/product',compact(['product_cate','categories','brands','dealer', 'option_lists', 'sub_categories']));
     }
+
 
     public function editProductAll(Request $request){
         // $request->validate(
@@ -62,12 +70,14 @@ class ProductAllController extends Controller
 
         if($request->has('product_id2')) {
             $id  = $request->product_id2;
-
+        // dd($request->all());
             if($filenameToStore == ''){
                 ProductAllModel::find($id)->update([
                     'name'=>$request->name2,
                     'dealer_id'=>$request->dealer_id2,
+                    'brand_id'=>$request->brand_id2,
                     'category_id'=>$request->category_id2,
+                    'sub_category_id'=>$request->sub_category_id2,
                     'description'=>$request->description2,
                     'part_number'=>$request->part_number2,
                     'meta_tag'=>$request->meta_tag2,
@@ -82,7 +92,9 @@ class ProductAllController extends Controller
                     'cover_img'=> $filenameToStore,
                     'name'=>$request->name2,
                     'dealer_id'=>$request->dealer_id2,
+                    'brand_id'=>$request->brand_id2,
                     'category_id'=>$request->category_id2,
+                    'sub_category_id'=>$request->sub_category_id2,
                     'description'=>$request->description2,
                     'part_number'=>$request->part_number2,
                     'meta_tag'=>$request->meta_tag2,
@@ -93,6 +105,11 @@ class ProductAllController extends Controller
                     'is_enable'=>$request->is_enable2
                 ]);
             }
+
+            $slug =  ProductAllModel::find($id);
+            // dd($slug);
+            $slug->slug = Str::slug($request->name2, '-');
+            $slug->save();
 
             $files = [];
             if($request->hasfile('filenames2'))
@@ -127,6 +144,24 @@ class ProductAllController extends Controller
             return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");
         }
     }
+
+    public function storePoductChoice(Request $request) {
+        
+        $request->validate([
+            'option_name_list' => 'required',
+        ]);
+
+            $details    =   new ProductChoiceListModel;
+
+            $details->name          =   $request->option_name_list;
+            $details->product_id    =   $request->product_id3;
+            $details->choice_id     =   $request->choice_id3;
+        // dd($request->product_id2);
+            $details->save();
+
+            session()->flash('success', 'เพิ่ม "'. $details->name .'" สำเร็จ');
+        return back();
+    }
     
     public function store(Request $request){
         // $request->validate(
@@ -138,9 +173,11 @@ class ProductAllController extends Controller
         // );
 
         $request->validate([
-            'name' => 'required',
-            'dealer_id' => 'required',
-            'category_id' => 'required',
+            'name'              => 'required',
+            'dealer_id'         => 'required',
+            'brand_id'          => 'required',
+            'category_id'       => 'required',
+            'sub_category_id'   => 'required',
         ]);
 
         if($request->hasFile('cover_img')) {
@@ -163,17 +200,19 @@ class ProductAllController extends Controller
             $filenameToStore = '';
         }
 
-            $product_cate               = new ProductAllModel;
-            $product_cate->part_number  = $request->part_number;
-            $product_cate->product_tag  = $request->product_tag;
-            $product_cate->meta_tag     = $request->meta_tag;
-            $product_cate->name         = $request->name;
-            $product_cate->dealer_id     = $request->dealer_id;
-            $product_cate->category_id  = $request->category_id;
-            $product_cate->description  = $request->description;
-            $product_cate->stock_amount = $request->stock_amount;
-            $product_cate->price_sale   = $request->price_sale;
-            $product_cate->cover_img    = $filenameToStore;
+            $product_cate                   = new ProductAllModel;
+            $product_cate->part_number      = $request->part_number;
+            $product_cate->product_tag      = $request->product_tag;
+            $product_cate->meta_tag         = $request->meta_tag;
+            $product_cate->name             = $request->name;
+            $product_cate->dealer_id        = $request->dealer_id;
+            $product_cate->brand_id         = $request->brand_id;
+            $product_cate->category_id      = $request->category_id;
+            $product_cate->sub_category_id  = $request->sub_category_id;
+            $product_cate->description      = $request->description;
+            $product_cate->stock_amount     = $request->stock_amount;
+            $product_cate->price_sale       = $request->price_sale;
+            $product_cate->cover_img        = $filenameToStore;
             $product_cate->save();
 
             $LastInsertId = $product_cate->id;
@@ -204,6 +243,14 @@ class ProductAllController extends Controller
 
             return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");
     }
+
+
+
+    public function showOptionList(Request $request){
+
+        return view('admin.main-page.product', compact(['option_lists']));
+    }
+
 
     public function softdelete(Request $request, $id){
         $delete = $update = ProductAllModel::find($id)->delete();
@@ -239,6 +286,11 @@ class ProductAllController extends Controller
     public function ChoiceProduct($id){
 		$where = array('product_id' => $id);
 		$customer= ProductChoiceModel::where($where)->get();
+		return Response::json($customer);
+	}
+
+    public function ChoiceListDetails($id){
+        $customer = ProductChoiceListModel::where('choice_id', $id)->get();
 		return Response::json($customer);
 	}
 

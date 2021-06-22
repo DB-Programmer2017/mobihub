@@ -15,6 +15,7 @@ class ArmorxProductCateModel extends Model
         'dealer_id',
         'brand_id',
         'name',
+        'slug',
         'is_enable',
         'created_at',
         'updated_at',

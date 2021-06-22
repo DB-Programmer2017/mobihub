@@ -37,4 +37,8 @@ class BrandModel extends Model
     public function products() {
         return $this->hasMany(ProductAllModel::class);
     }
+
+    public function subCategories() {
+        return $this->hasMany(SubCategoryModel::class);
+    }
 }

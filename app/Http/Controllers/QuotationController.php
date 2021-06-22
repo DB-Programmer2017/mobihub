@@ -17,7 +17,7 @@ class QuotationController extends Controller
      */
     public function index()
     {
-        $quitations = Quotation::orderBy('created_at', 'DESC')->get();
+        $quotations = Quotation::orderBy('created_at', 'DESC')->get();
 
         return '123';
     }

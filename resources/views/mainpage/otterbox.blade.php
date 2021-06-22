@@ -1,7 +1,7 @@
 @extends('layout/home-2')
 
 {{-- Title Website --}}
-@section('title', 'MOBIHUB | Armor-X')
+@section('title', 'MOBIHUB | OtterBox')
 
 {{-- Link CSS --}}
 @section('link')
@@ -10,13 +10,14 @@
 
 {{-- Body HTML --}}
 @section('content')
-    <section class="armor-x-panel">
+    <section class="otterbox-panel">
 
     </section>
+
     <div class="container armor-x-panel-2">
         <div class="row">
             <div class="col-xs-12 col-md-6">
-                <h2>About Armor-x</h2>
+                <h2>OtterBox</h2>
                 <p>
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -48,7 +49,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-12">
-                <iframe  src="https://www.youtube.com/embed/g1n6tuCeTRY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe  src="https://www.youtube.com/embed/uJSWsd2K70Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </div>
@@ -62,49 +63,49 @@
                 </ul> --}}
             </div>
 
-            <div class="col-xs-12 col-md-3 ">
+            <div class="col-xs-12 col-md-3">
                 <div class="panel-group" id="accordion-3" role="tablist" aria-multiselectable="true">
-                <form action="{{url('/armor-x/filter')}}" method="POST">
+                <form action="{{url('/otterbox/filter')}}" method="POST">
                     @foreach ($brands as $brand)
-                        @csrf
+                    @csrf
 
-                            @if(!empty($_GET['category']))
-                                @php
-                                    $filter_cates=explode(",",$_GET['category']);
-                                @endphp
-                            @endif
+                    @if(!empty($_GET['category']))
+                        @php
+                            $filter_cates=explode(",",$_GET['category']);
+                        @endphp
+                    @endif
 
-                            <div class="panel panel-default panel-category">
-                                <div class="panel-heading" role="tab" id="headingOne">
-                                    <h4 class="panel-title">
-                                        <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            {{ $brand->name }}
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                    <div class="panel-body">
-                                    <?php $counter=0; ?>
-                                        @if(!empty($brand->categories))
-                                            @foreach ($brand->categories as $category)
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        {{ $brand->name }}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                <?php $counter=0; ?>
+                                @if(!empty($brand->categories))
+                                @foreach ($brand->categories as $category)
+                                    <li>
+                                        <div class="sub-title" data-id="{{ $category->id }}">{{ $category->name }}</div>
+                                        {{-- <ul @if($category->id == 1) class="active" @endif data-id="ul-{{ $category->id }}"> --}}
+                                            <ul class="active">
+                                            @foreach($category->subCategories as $subCategory)
                                                 <li>
-                                                    <div class="sub-title" data-id="{{ $category->id }}">{{ $category->name }}</div>
-                                                    {{-- <ul @if($category->id == 1) class="active" @endif data-id="ul-{{ $category->id }}"> --}}
-                                                        <ul class="active">
-                                                        @foreach($category->subCategories as $subCategory)
-                                                            <li>
-                                                                <input class="custom-control-input category_checkbox" type="checkbox" @if(!empty($filter_cates) && in_array($subCategory->slug,$filter_cates)) checked @endif   att-name="{{ $subCategory->name }}" value="{{ $subCategory->slug }}" name="category[]" onchange="this.form.submit();" id="{{ $subCategory->id }}"> 
-                                                                <label for="{{ $subCategory->id }}">{{ $subCategory->name }} [{{ count(App\Models\ProductAllModel::where('sub_category_id', $subCategory->id)->get()) }}]</label>
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
+                                                    <input class="custom-control-input category_checkbox" type="checkbox" @if(!empty($filter_cates) && in_array($subCategory->slug,$filter_cates)) checked @endif   att-name="{{ $subCategory->name }}" value="{{ $subCategory->slug }}" name="category[]" onchange="this.form.submit();" id="{{ $subCategory->id }}"> 
+                                                    <label for="{{ $subCategory->id }}">{{ $subCategory->name }} [{{ count(App\Models\ProductAllModel::where('sub_category_id', $subCategory->id)->get()) }}]</label>
                                                 </li>
-                                    <?php $counter++; ?>
                                             @endforeach
-                                        @endif
-                                    </div>
+                                        </ul>
+                                    </li>
+                                <?php $counter++; ?>
+                                @endforeach
+                                @endif
                                 </div>
                             </div>
+                        </div>
                     @endforeach
                 </form>
 
@@ -123,7 +124,7 @@
 
                     @foreach ($product as $row)  
                         <div class="col-xs-12 col-md-3">
-                            <div class="product-grid" onclick="window.open('/armor-x-product/{{ $row->slug }}')">
+                            <div class="product-grid" onclick="window.open('/otterbox-product/{{ $row->slug }}')">
                                 <div class="product-image">
                                     <a href="#" class="image">
                                         <img class="pic-1" src="{{asset('storage/images/' . $row->cover_img)}}" class="img-responsive">

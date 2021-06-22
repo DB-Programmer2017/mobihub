@@ -29,18 +29,18 @@ class SubCategoryModel extends Model
     ];
 
     public function dealer() {
-        $this->belongsTo(DealerModel::class, 'dealer_id');
+        return $this->belongsTo(DealerModel::class, 'dealer_id');
     }
 
     public function brand() {
-        $this->belongsTo(BrandModel::class, 'brand_id');
+        return $this->belongsTo(BrandModel::class, 'brand_id');
     }
 
     public function category() {
-        $this->belongsTo(ProductModel::class, 'category_id');
+        return $this->belongsTo(ProductModel::class, 'category_id');
     }
 
     public function armorxCategory() {
-        $this->belongsTo(ArmorxProductCateModel::class, 'category_id');
+        return $this->belongsTo(ArmorxProductCateModel::class, 'category_id');
     }
 }

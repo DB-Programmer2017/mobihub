@@ -18,6 +18,7 @@
               <li><a href="/admin/dealer">Dealer</a></li>
               <li><a href="/admin/brand">Brand</a></li>
               <li><a href="/admin/product-category">Category</a></li>
+              <li><a href="/admin/sub-category">Sub Category</a></li>
               <li class="divider"></li>
               <li><a href="/admin/product">Product All</a></li>
             </ul>

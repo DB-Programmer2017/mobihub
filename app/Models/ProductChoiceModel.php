@@ -21,7 +21,14 @@ class ProductChoiceModel extends Model
         'updated_at'
     ];
 
-    function productChoiceList () {
+    public function choiceLists() {
+        $this->hasMany(ProductChoiceListModel::class);
+    }
+
+    public function product() {
+        $this->belongsTo(ProductAllModel::class, 'product_id');
+    }
+    public function productChoiceList () {
         return $this->hasMany(ProductChoiceListModel::class, 'choice_id', 'id');
     }
 }
