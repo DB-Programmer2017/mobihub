@@ -89,9 +89,8 @@ Route::get('/service', function () {
     return view('mainpage/service');
 });
 
-Route::get('/news-post', function () {
-    return view('mainpage/news-post');
-});
+Route::get('/news-post', [MobihubController::class,'news']);
+Route::get('/news-detail/{id}', [MobihubController::class, 'ShowDetail']);//show detail
 
 Route::get('/about', function () {
     return view('mainpage/about');
