@@ -61,4 +61,8 @@ class ArmorxproductModel extends Model
     public function subCategories2() {
        return $this->hasManyThrough(SubCategoryModel::class, ArmorxProductCateModel::class, 'brand_id', 'category_id', 'id', 'id');
     }
+
+    public function products() {
+        return $this->hasManyThrough(ProductAllModel::class, SubCategoryModel::class, 'brand_id', 'sub_category_id', 'id', 'id' );
+    }
 }

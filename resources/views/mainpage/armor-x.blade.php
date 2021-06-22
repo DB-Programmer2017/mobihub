@@ -65,44 +65,56 @@
             <div class="col-xs-12 col-md-3 ">
                 <div class="panel-group" id="accordion-3" role="tablist" aria-multiselectable="true">
                 <form action="{{url('/armor-x/filter')}}" method="POST">
-                    @foreach ($brands as $brand)
-                        @csrf
+                @csrf
+                    @foreach ($brands as $brand)  
 
-                            @if(!empty($_GET['category']))
-                                @php
-                                    $filter_cates=explode(",",$_GET['category']);
-                                @endphp
-                            @endif
+                    @if(!empty($_GET['category']))
+                        @php
+                            $filter_cates=explode(",",$_GET['category']);
+                        @endphp
+                    @endif
 
-                            <div class="panel panel-default panel-category">
-                                <div class="panel-heading" role="tab" id="headingOne">
-                                    <h4 class="panel-title">
-                                        <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            {{ $brand->name }}
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                    <div class="panel-body">
-                                    <?php $counter=0; ?>
-                                        @if(!empty($brand->categories))
-                                            @foreach ($brand->categories as $category)
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        {{ $brand->name }} {{-- ({{ $brand->sub_categories_count }}) --}}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                <?php $counter=0; ?>
+                                @if(!empty($brand->categories))
+                                @foreach ($brand->categories as $category)
+                                    <li>
+                                        <div class="sub-title" data-id="{{ $category->id }}">{{ $category->name }}<i class="fas fa-chevron-down arrow-right"></i></div>
+
+                                        <ul @if($category->id == 1) class="active" @endif data-id="ul-{{ $category->id }}">
+
+                                            @foreach($category->subCategories as $subCategory) 
                                                 <li>
-                                                    <div class="sub-title" data-id="{{ $category->id }}">{{ $category->name }}</div>
-                                                    {{-- <ul @if($category->id == 1) class="active" @endif data-id="ul-{{ $category->id }}"> --}}
-                                                        <ul class="active">
-                                                        @foreach($category->subCategories as $subCategory)
-                                                            <li>
-                                                                <input class="custom-control-input category_checkbox" type="checkbox" @if(!empty($filter_cates) && in_array($subCategory->slug,$filter_cates)) checked @endif   att-name="{{ $subCategory->name }}" value="{{ $subCategory->slug }}" name="category[]" onchange="this.form.submit();" id="{{ $subCategory->id }}"> 
-                                                                <label for="{{ $subCategory->id }}">{{ $subCategory->name }} [{{ count(App\Models\ProductAllModel::where('sub_category_id', $subCategory->id)->get()) }}]</label>
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
+                                                    
+                                                    <input class="custom-control-input category_checkbox" type="checkbox" @if(!empty($filter_cates) && in_array($subCategory->id,$filter_cates)) checked @endif   att-name="{{ $subCategory->name }}" value="{{ $subCategory->id }}" name="category[]" onchange="this.form.submit();" id="{{ $subCategory->id }}"> 
+                                                    <label for="{{ $subCategory->id }}">
+                                                        {{ $subCategory->name }} [{{ count(App\Models\ProductAllModel::where('sub_category_id', $subCategory->id)->get()) }}]
+                                                    </label>
+
+                                                    {{-- <div>{{ $subCategory->name }}</div> --}}
+                                                    {{-- @foreach($subCategory->products as $sub_cate)<span>({{ $sub_cate->brand_id }})</span> @endforeach --}}
+                                                    {{-- @foreach($sub_categories as $sub_cate)
+                                                        <span>{{ $sub_cate->products_count }}</span> 
+                                                    @endforeach --}}
                                                 </li>
-                                    <?php $counter++; ?>
+
+                                               
                                             @endforeach
-                                        @endif
-                                    </div>
+
+                                        </ul>
+                                    </li>
+                                <?php $counter++; ?>
+                                @endforeach
+                                @endif
                                 </div>
                             </div>
                     @endforeach

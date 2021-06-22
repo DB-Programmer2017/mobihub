@@ -377,10 +377,15 @@ body{
     font-size: 14px;
 }
 .footer .about li{
+    cursor: pointer;
     list-style: circle;
     margin-left: 10px;
     color: #505050;
+    transition: 0.7s;
 
+}
+.footer .about li:hover{
+    transform: scale(1.1);
 }
 .footer .copy-right{
     width: 100%;
@@ -491,11 +496,14 @@ body {
 .swiper-slide .text p{
     font-size: 13px;
 }
-.col-brands .col-md-6{
-    padding: 3px;
+.col-brands .box-1{
+    padding-right: 10px;
 }
-.col-brands .col-12{
-    padding: 3px;
+.col-brands .box-2{
+    padding-left: 10px;
+}
+.col-brands .box-3{
+    padding-top: 20px;
 }
 .swiper-container-2 .swiper-slide {
     text-align: center;

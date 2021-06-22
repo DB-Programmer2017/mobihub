@@ -60,4 +60,8 @@ class ProductModel extends Authenticatable
     public function brand() {
         return $this->belongsTo(BrandModel::class, 'brand_id');
     }
+
+    public function subCategory() {
+        return $this->hasMany(SubCategoryModel::class, 'sub_category_id');
+    }
 }

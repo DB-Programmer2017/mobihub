@@ -26,7 +26,14 @@ class ArmorxProductCateModel extends Model
         return $this->belongsTo(ArmorxproductModel::class, 'brand_id');
     }
 
+    //sub_categoty.category_id = category.id
     public function subCategories() {
         return $this->hasMany(SubCategoryModel::class, 'category_id', 'id');
+                    // ->join('product', 'product.sub_category_id', '=', 'product_sub_category.id')->get();
+    }
+
+
+    public function products() {
+        return $this->hasMany(ProductAllModel::class, 'category_id', 'id');
     }
 }
