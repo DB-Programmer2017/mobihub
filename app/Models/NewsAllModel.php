@@ -13,6 +13,7 @@ class NewsAllModel extends Model
 
     protected $fillable = [
         'name',
+        'category_id',
         'title',
         'description',
         'is_enable',
@@ -20,4 +21,8 @@ class NewsAllModel extends Model
         'updated_at',
         'cover_img'
     ];
+
+    function news_category() {
+        return $this->belongsTo(NewsCategoryModel::class,'category_id');
+    }
 }
