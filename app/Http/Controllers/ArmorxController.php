@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ArmorxProductModel;
 use App\Models\ArmorxProductCateModel;
+use App\Models\ArmorxProductSubCateModel;
 use App\Models\ProductAllModel;
 use App\Models\ProductGalleryModel;
 use App\Models\ProductChoiceModel;
@@ -25,27 +26,53 @@ class ArmorxController extends Controller
                     ->get();
 
 
-        $product=ProductAllModel::query();
+            // $brands = DB::table('product_brand')
+            // ->distinct('product.brand_id')
+            // ->join('product', 'product_brand.id', '=', 'product.brand_id')
+            // ->where('product.brand_id','>','0')
+            // ->where('product_brand.dealer_id', '3')
+            // ->where('product_brand.is_enable', '1')
+            // ->groupBy('product.brand_id')
+            // ->orderBy('product_brand.name', 'ASC')
+            // ->select('product_brand.*', 'product.brand_id')
+            // ->get();
+
+            // $categorys = [];
+            // foreach($brands as $categorys) {
+            //     $categorys = ArmorxProductCateModel::where('brand_id',$categorys->id)->get();
+            // }
+
+            // $sub_category = [];
+            // foreach($categorys as $sub_category) {
+            //     //$sub_categorys = ArmorxProductSubCateModel::where('brand_id',$sub_categorys->id)->get();
+            //     $sub_category = DB::table('product_sub_category')
+            //     ->distinct('product.sub_category_id')
+            //     ->join('product', 'product_sub_category.id', '=', 'product.sub_category_id')
+
+            //     ->where('product.sub_category_id','>','0')
+            //     ->where('product_sub_category.dealer_id', '3')
+            //     ->where('product_sub_category.is_enable', '1')
+
+            //     ->groupBy('product.sub_category_id')
+            //     ->orderBy('product_sub_category.name', 'ASC')
+            //     ->select('product_sub_category.*', 'product.sub_category_id')
+            //     ->get();
+            // }
+
+        $product = ProductAllModel::query();
+        //print_r(ArmorxProductModel::with('subCategories')->get());
 
         if(!empty($_GET['category'])){
-            // $slugs=explode(",",$_GET['category']);
             $slugs=explode(",",$_GET['category']);
             
-            $cate_ids=ArmorxProductCateModel::whereIn('slug', $slugs)
+            $cate_ids=SubCategoryModel::whereIn('slug', $slugs)
             ->pluck('id')
             ->toArray() ;
 
-            $product=$product->whereIn('sub_category_id', $slugs)
+            $product=$product->whereIn('sub_category_id',$cate_ids)
             ->where('dealer_id', '3')
             ->where('is_enable', '1')
             ->orderBy('id', 'asc')->paginate(8) ;
-
-            // $product=ProductAllModel::join('product_sub_category', 'product_sub_category.id','=','product.sub_category_id')
-            // ->whereIn('product_sub_category.slug', $slugs)
-            // ->where('product.dealer_id', '3')
-            // ->where('product.is_enable', '1')
-            // ->get(['product.*', 'product_sub_category.*'])->paginate(8) ;
-            
         }else{
             $product = ProductAllModel::where('dealer_id', '3')->where('is_enable', '1')->orderBy('id', 'asc')->paginate(8) ;
         }
@@ -77,8 +104,42 @@ class ArmorxController extends Controller
 
     }
 
-    function ProductDetail($id){
+    public function OtterBoxFilter(Request $request){
+        $data = $request->all();
+        $catUrl='';
+        if(!empty($data['category'])){
+            foreach($data['category'] as $category){
+                if(empty($catUrl)){
+                    $catUrl .='&category='.$category;
+                }else{
+                    $catUrl .=','.$category;
+                }
+            }
+        }
+        return redirect()->route('otterbox', $catUrl);
+
+    }
+
+    public function RamMountsFilter(Request $request){
+        $data = $request->all();
+        $catUrl='';
+        if(!empty($data['category'])){
+            foreach($data['category'] as $category){
+                if(empty($catUrl)){
+                    $catUrl .='&category='.$category;
+                }else{
+                    $catUrl .=','.$category;
+                }
+            }
+        }
+        return redirect()->route('otterbox', $catUrl);
+
+    }
+
+    function ProductDetail($slugs){
+        $id=ProductAllModel::where('slug', $slugs)->pluck('id')->first();
         $product        = ProductAllModel::find($id);
+
         $gallery        = ProductGalleryModel::where('product_id', $id)->orderBy('id', 'asc')->get();
         $product_relate = ProductAllModel::where('dealer_id', '3')->where('id', '<>',$id)->where('is_enable', '1')->orderBy('id', 'asc')->get();
         $choice         = ProductChoiceModel::where('product_id', '=',$id)->where('is_enable', '1')->orderBy('id', 'asc')->get();
@@ -101,4 +162,81 @@ class ArmorxController extends Controller
         
         return Response::json($data);
     }
+
+    function home_otterbox (Request $request){
+        $brands  = ArmorxProductModel::where('dealer_id','1')->with('categories')->get();
+        $product = ProductAllModel::query();
+
+        if(!empty($_GET['category'])){
+            $slugs=explode(",",$_GET['category']);
+            
+            $cate_ids=SubCategoryModel::whereIn('slug', $slugs)
+            ->pluck('id')
+            ->toArray() ;
+
+            $product=$product->whereIn('sub_category_id',$cate_ids)
+            ->where('dealer_id', '1')
+            ->where('is_enable', '1')
+            ->orderBy('id', 'asc')->paginate(8) ;
+        }else{
+            $product = ProductAllModel::where('dealer_id', '1')->where('is_enable', '1')->orderBy('id', 'asc')->paginate(8) ;
+        }
+
+        return view('mainpage/otterbox',compact(['brands','product']));
+    }
+
+    function ProductOtterBoxDetail($slugs){
+        $id=ProductAllModel::where('slug', $slugs)->pluck('id')->first();
+        $product        = ProductAllModel::find($id);
+
+        $gallery        = ProductGalleryModel::where('product_id', $id)->orderBy('id', 'asc')->get();
+        $product_relate = ProductAllModel::where('dealer_id', '1')->where('id', '<>',$id)->where('is_enable', '1')->orderBy('id', 'asc')->get();
+        $choice         = ProductChoiceModel::where('product_id', '=',$id)->where('is_enable', '1')->orderBy('id', 'asc')->get();
+        
+        $choice_list    = ProductAllModel::with('productChoiceList')->get();
+        return view('mainpage/otterbox-product',compact(['product','gallery','product_relate','choice','choice_list']));
+        
+        $brands         = ArmorxProductModel::with('categories')->get();
+        $sub_categories = ArmorxProductCateModel::with('subCategories')->get();
+        return view('mainpage/otterbox',compact(['brands', 'sub_categories']));
+    }
+
+    function home_rammounts (Request $request){
+        $brands  = ArmorxProductModel::where('dealer_id','2')->with('categories')->get();
+        $product = ProductAllModel::query();
+
+        if(!empty($_GET['category'])){
+            $slugs=explode(",",$_GET['category']);
+            
+            $cate_ids=SubCategoryModel::whereIn('slug', $slugs)
+            ->pluck('id')
+            ->toArray() ;
+
+            $product=$product->whereIn('sub_category_id',$cate_ids)
+            ->where('dealer_id', '2')
+            ->where('is_enable', '1')
+            ->orderBy('id', 'asc')->paginate(8) ;
+        }else{
+            $product = ProductAllModel::where('dealer_id', '2')->where('is_enable', '1')->orderBy('id', 'asc')->paginate(8) ;
+        }
+
+        return view('mainpage/rammounts',compact(['brands','product']));
+    }
+
+    function ProductRamMountsDetail($slugs){
+        $id=ProductAllModel::where('slug', $slugs)->pluck('id')->first();
+        $product        = ProductAllModel::find($id);
+        $gallery        = ProductGalleryModel::where('product_id', $id)->orderBy('id', 'asc')->get();
+        $product_relate = ProductAllModel::where('dealer_id', '2')->where('id', '<>',$id)->where('is_enable', '1')->orderBy('id', 'asc')->get();
+        $choice         = ProductChoiceModel::where('product_id', '=',$id)->where('is_enable', '1')->orderBy('id', 'asc')->get();
+        
+        $choice_list    = ProductAllModel::with('productChoiceList')->get();
+        return view('mainpage/rammounts-product',compact(['product','gallery','product_relate','choice','choice_list']));
+        
+        $brands         = ArmorxProductModel::with('categories')->get();
+        $sub_categories = ArmorxProductCateModel::with('subCategories')->get();
+        return view('mainpage/rammounts',compact(['brands', 'sub_categories']));
+    }
+
+    
 }

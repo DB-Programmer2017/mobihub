@@ -308,7 +308,7 @@
   margin: auto;
 }
 .breadcrumb{
-  text-transform: uppercase;
+  text-transform: uppercase
 }
 </style>
 @endsection
@@ -317,7 +317,7 @@
 @section('content')
 
 <ul class="breadcrumb">
-  <li><a href="/otterbox">ARMOR-X</a></li>
+  <li><a href="/rammounts">RAM MOUNTS</a></li>
   <li><a href="#">{{ $product->brand->name}}</a></li>
   <li><a href="#">{{ $product->name}}</a></li>
 </ul>
@@ -327,26 +327,28 @@
         <div class="row">
             <div class="col-xs-12 col-md-12">
                 <div class="col-xs-12 col-md-6">
+                    {{-- <img class="pic-1" src="/image/iphone 12 pro.png" class="img-responsive"> --}}
                     <div class="wrapper">
                         <div class="gallery">
-
-                            @if(count($gallery) > 0)
-                                @foreach ($gallery as $row)  
-                                  <div class="gallery__img-block">
-                                    <a data-fancybox="gallery" href="{{asset('storage/images/' . $row->img)}}" class="js-img-viwer">
-                                      <img src="{{asset('storage/images/' . $row->img)}}" thumb-url="{{asset('storage/images/' . $row->img)}}" class="">
-                                    </a>
-                                  </div>
-                                @endforeach
-                            @else
+                          @if(count($gallery) > 0)
+                            @foreach ($gallery as $row)  
                               <div class="gallery__img-block">
-                                <a data-fancybox="gallery" href="{{asset('storage/images/' . $product->cover_img)}}" class="js-img-viwer">
-                                  <img src="{{asset('storage/images/' . $product->cover_img)}}" thumb-url="{{asset('storage/images/' . $product->cover_img)}}" class="">
+                                <a data-fancybox="gallery" href="{{asset('storage/images/' . $row->img)}}" class="js-img-viwer">
+                                  <img src="{{asset('storage/images/' . $row->img)}}" thumb-url="{{asset('storage/images/' . $row->img)}}" class="">
                                 </a>
                               </div>
-                            @endif
+                            @endforeach
+                          @else
+                            <div class="gallery__img-block">
+                              <a data-fancybox="gallery" href="{{asset('storage/images/' . $product->cover_img)}}" class="js-img-viwer">
+                                <img src="{{asset('storage/images/' . $product->cover_img)}}" thumb-url="{{asset('storage/images/' . $product->cover_img)}}" class="">
+                              </a>
+                            </div>
+                          @endif 
 
-                          <div class="gallery__controls"></div>
+                            <div class="gallery__controls">
+                
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -359,10 +361,9 @@
                     <li>
                         {{ $row->name }} : 
                         <div class="list">
+
                           @foreach ($row->productChoiceList as $choice_list)
-                              <input onclick="selectChoice()" class="radios" type="radio" name="{{ $row->name }}" id="{{ $choice_list->id }}" value="{{ $choice_list->name }}" checked="">
-                              <label>{{ $choice_list->name }}</label>
-                            {{-- <span data-id="{{ $choice_list->id }}" class="label label-default @if($choice_list->id == 1) active @endif">{{ $choice_list->name }}</span> --}}
+                            <span data-id="{{ $choice_list->id }}" class="label label-default @if($choice_list->id == 1) active @endif">{{ $choice_list->name }}</span>
                           @endforeach
 
                         </div>
@@ -439,7 +440,7 @@
         <div class="swiper-container swiper-container-3 mySwiper">
           <div class="swiper-wrapper">
             @foreach ($product_relate as $row) 
-              <div class="swiper-slide" onclick="window.location.assign('/armor-x-product/{{ $row->slug }}')">
+              <div class="swiper-slide" onclick="window.location.assign('/otterbox-product/{{ $row->slug }}')">
                   <div class="box">
                       <img class="img-responsive" src="{{asset('storage/images/' . $row->cover_img)}}" alt="{{ $row->name }}">
                       <div class="text-1">
