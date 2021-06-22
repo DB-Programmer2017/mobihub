@@ -1,8 +1,8 @@
 .service .bg{
-    background: url(/image/mainpage/service/digital-world-map-hologram-blue-background.jpg);
+    background: url(/image/mainpage/service/service-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 350px;
+    height: 450px;
 }
 .service{
     margin-top: -52px;
@@ -11,12 +11,12 @@
 }
 .service .text-banner h3{
     font-size: 17px;
-    color: #FF4242;
+    color: #fff;
     margin-top: 0;
     font-weight: bold;
 }
 .service .btn{
-    background-color: #DB4942;
+    background-color: #eb6864;
 }
 .service .text-banner h1{
     color: white;
@@ -27,7 +27,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    height: 370px;
+    height: 470px;
     margin: 0 150px;
 }
 .service .text-banner{
@@ -102,6 +102,9 @@
     }
     .service .box{
         margin: 0 50px;
+    }
+    .service .btn{
+        padding: 10px 30px;
     }
     .service-2 .contact-form{
         padding: 30px 50px;

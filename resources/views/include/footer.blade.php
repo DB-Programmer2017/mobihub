@@ -16,11 +16,11 @@
 
             <div class="col-xs-12 col-sm-6 col-md-2 about">
                 <h4>Mobihub</h4>
-                <li>เกี่ยวกับเรา</li>
-                <li>ข่าวสาร</li>
-                <li>สินค้า</li>
-                <li>บริการ</li>
-                <li>ติดต่อเรา</li>
+                <li onclick="window.open('/about')">เกี่ยวกับเรา</li>
+                <li onclick="window.open('/news-post')">ข่าวสาร</li>
+                <li onclick="window.open('/product')">สินค้า</li>
+                <li onclick="window.open('/service')">บริการ</li>
+                <li onclick="window.open('/contact')">ติดต่อเรา</li>
             </div>
 
             <div class="col-xs-12 col-sm-6 col-md-4">
