@@ -300,18 +300,18 @@
   content: "";
   display: block;
   position: absolute;
-  bottom: -7px;
+  bottom: -36px;
   left: 0;
   right: 0;
   width: 0;
   height: 3px;
-  background-color: #757575;
+  background-color: #e53c37;
 }
 .gallery__thumbnail.current img {
   opacity: 1;
 }
 .gallery__thumbnail.current i {
-  background-color: #757575;
+  background-color: #e53c37;
   width: 100%;
 }
 .gallery .slick-track {

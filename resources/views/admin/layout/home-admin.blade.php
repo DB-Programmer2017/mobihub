@@ -28,6 +28,7 @@
         @include('admin/include/navbar-admin')
     </div>
     <main>
+        @include('admin.layout.flash-message')
         @yield('content')
     </main>
         {{-- @include('/include/footer') --}}

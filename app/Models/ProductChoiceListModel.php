@@ -20,4 +20,12 @@ class ProductChoiceListModel extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function choice(){
+        $this->belongsTo(ProductChoiceModel::class, 'choice_id');
+    }
+
+    public function product(){
+        $this->belongsTo(ProductAllModel::class, 'product_id');
+    }
 }

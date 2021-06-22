@@ -20,6 +20,14 @@ class DealerModel extends Model
         'updated_at'
     ];
 
+    public function brands() {
+        return $this->hasMany(BrandModel::class, 'dealer_id');
+    }
+
+    public function subCategories() {
+        return $this->hasMany(SubCategoryModel::class, 'dealer_id');
+    }
+    
     function products() {
         return $this->hasMany(ProductAllModel::class);
     }

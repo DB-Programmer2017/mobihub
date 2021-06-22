@@ -32,15 +32,15 @@ class ProductAllModel extends Model
     ];
 
     function category() {
-        return $this->belongsTo(ProductModel::class);
+        return $this->belongsTo(ProductModel::class, 'category_id');
     }
 
     function brand() {
-        return $this->belongsTo(BrandModel::class);
+        return $this->belongsTo(BrandModel::class, 'brand_id');
     }
 
     function dealer() {
-        return $this->belongsTo(DealerModel::class);
+        return $this->belongsTo(DealerModel::class, 'dealer_id');
     }
 
     function productGallery() {

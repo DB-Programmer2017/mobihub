@@ -35,7 +35,7 @@ class Quotation extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function products(): HasMany
+    public function products()
     {
         return $this->hasMany(Quotation::class, 'product_id');
     }

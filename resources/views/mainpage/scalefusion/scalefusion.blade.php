@@ -135,7 +135,7 @@
                                             <img src="/image/mainpage/scalefusion/icon/line 50.svg" alt="">
                                         </div>
                                         <div class="button-link">
-                                            <a href="/location-tracking" class="button-box">
+                                            <a href="/scalefusion/location-tracking" class="button-box">
                                                 <div class="box-content">
                                                     <img class="img-responsive" src="/image/mainpage/scalefusion/icon/smartphone.png" alt="">
                                                     <div class="post">Location
@@ -157,7 +157,7 @@
                                             <img src="/image/mainpage/scalefusion/icon/line 50.svg" alt="">
                                         </div>
                                         <div class="button-link">
-                                            <a href="/mobile-content-management" class="button-box">
+                                            <a href="/scalefusion/mobile-content-management" class="button-box">
                                                 <div class="box-content">
                                                     <img class="img-responsive" src="/image/mainpage/scalefusion/icon/blog.png" alt="">
                                                     <div class="post">Content
@@ -179,7 +179,7 @@
                                             <img src="/image/mainpage/scalefusion/icon/line 50.svg" alt="">
                                         </div>
                                         <div class="button-link">
-                                            <a href="#" class="button-box">
+                                            <a href="/scalefusion/team-communication" class="button-box">
                                                 <div class="box-content">
                                                     <img class="img-responsive" src="/image/mainpage/scalefusion/icon/meeting.png" alt="">
                                                     <div class="post">Team
@@ -370,7 +370,7 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-sm-12">
-                                                    <a href="/location-tracking" class="btn btn-sm light-red">Read more</a>
+                                                    <a href="/scalefusion/location-tracking" class="btn btn-sm light-red">Read more</a>
                                                 </div>
                                             </div>
                                         </div>

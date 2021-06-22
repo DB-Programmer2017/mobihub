@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\BrandModel;
 use App\Models\DealerModel;//Dealer
 use Redirect,Response;
+use Illuminate\Support\Str;
 
 class BrandController extends Controller
 {
@@ -42,7 +43,7 @@ class BrandController extends Controller
 
             $old_img = $request->img_cover_name;
 
-            if($old_img !='noimage.jpg'){
+            if($old_img !=''){
                 unlink('storage/images/'.$old_img );
             }
 
@@ -50,11 +51,11 @@ class BrandController extends Controller
             $filenameToStore = '';
         }
 
+        // dd($request->dealer_id2);
+        if($request->has('brand_id2')) {
+            $id  = $request->brand_id2;
 
-        if($request->has('cate_id2')) {
-            $id  = $request->cate_id2;
-
-            if($filenameToStore == 'noimage.jpg'){
+            if($filenameToStore == ''){
                 BrandModel::find($id)->update([
                     'name'=>$request->name2,
                     'dealer_id'=>$request->dealer_id2,
@@ -67,6 +68,10 @@ class BrandController extends Controller
                     'is_enable'=>$request->is_enable2
                 ]);
             }
+            
+            // $slug =  BrandModel::find($id);
+            // $slug->slug = Str::slug($request->name2, '-');
+            // $slug->save();
 
             return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");
         }
@@ -104,25 +109,25 @@ class BrandController extends Controller
             $product_cate->dealer_id    = $request->dealer_id;
             $product_cate->is_enable    = $request->is_enable;
             $product_cate->cover_img    = $filenameToStore;
+            $product_cate->slug         = Str::slug($request->name, '-');
             $product_cate->save();
             return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");
     }
-
-    public function getCategory($dealerid=0){
-        // Fetch Employees by Departmentid
-        $empData['data'] = ProductModel::orderby("name","asc")
-                    ->select('id','name')
-                    ->where('dealer_id',$dealerid)
-                    ->get();
-  
-        return response()->json($empData);
-}
 
     public function editBrand($id){
 		$where = array('id' => $id);
 		$customer = BrandModel::where($where)->first();
 		return Response::json($customer);
 	}
+
+    public function getBrand($dealerid=0) {
+        $empData['data'] = BrandModel::orderby("name","asc")
+        ->select('id','name')
+        ->where('dealer_id',$dealerid)
+        ->get();
+
+        return response()->json($empData);
+    }
 
     public function softdelete(Request $request, $id){
         $delete = $update = BrandModel::find($id)->delete();

@@ -50,11 +50,11 @@ class ProductModel extends Authenticatable
     ];
 
     function products() {
-        return $this->hasMany(ProductAllModel::class);
+        return $this->hasMany(ProductAllModel::class, 'category_id', 'id');
     }
 
     function dealer() {
-        return $this->belongsTo(DealerModel::class);
+        return $this->belongsTo(DealerModel::class, 'dealer_id');
     }
 
     public function brand() {

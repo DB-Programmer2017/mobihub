@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DealerModel;
 use Redirect,Response;
+use Illuminate\Support\Str;
 
 class DealerController extends Controller
 {
@@ -50,20 +51,23 @@ class DealerController extends Controller
 
         if($request->has('cate_id2')) {
             $id  = $request->cate_id2;
-
+// dd(Str::slug($request->name2, '-'));
             if($filenameToStore == ''){
                 DealerModel::find($id)->update([
-                    'name'=>$request->name2,
-                    'is_enable'=>$request->is_enable2
+                    'name'      =>$request->name2,
+                    'is_enable' =>$request->is_enable2,
                 ]);
             }else{
                 DealerModel::find($id)->update([
-                    'cover_img'=> $filenameToStore,
-                    'name'=>$request->name2,
-                    'is_enable'=>$request->is_enable2
+                    'cover_img' => $filenameToStore,
+                    'name'      =>$request->name2,
+                    'is_enable' =>$request->is_enable2,
                 ]);
             }
 
+            // $slug =  DealerModel::find($id);
+            // $slug->slug = Str::slug($request->name2, '-');
+            // $slug->save();
             return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");
         }
     }
@@ -98,6 +102,7 @@ class DealerController extends Controller
             $product_cate               = new DealerModel;
             $product_cate->name         = $request->name;
             $product_cate->cover_img    = $filenameToStore;
+            $product_cate->slug         = Str::slug($request->name, '-');
             $product_cate->save();
             return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");
     }

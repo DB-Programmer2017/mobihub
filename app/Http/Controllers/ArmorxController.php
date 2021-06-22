@@ -129,7 +129,7 @@ class ArmorxController extends Controller
         $gallery        = ProductGalleryModel::where('product_id', $id)->orderBy('id', 'asc')->get();
         $product_relate = ProductAllModel::where('dealer_id', '3')->where('id', '<>',$id)->where('is_enable', '1')->orderBy('id', 'asc')->get();
         $choice         = ProductChoiceModel::where('product_id', '=',$id)->where('is_enable', '1')->orderBy('id', 'asc')->get();
-        
+
         $choice_list    = ProductAllModel::with('productChoiceList')->get();
         return view('mainpage/armor-x-product',compact(['product','gallery','product_relate','choice','choice_list']));
         

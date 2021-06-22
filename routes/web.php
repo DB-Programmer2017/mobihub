@@ -14,6 +14,7 @@ use App\Http\Controllers\NewsAllController;
 use App\Http\Controllers\SlideAllController;
 use App\Http\Controllers\MobihubController;
 use App\Http\Controllers\ArmorxController;
+use App\Http\Controllers\SubCategoryController;
 
 
 /*
@@ -54,6 +55,12 @@ Route::get('/', function () {
         });
         Route::get('/scalefusion/location-tracking', function () {
             return view('mainpage/scalefusion/location-tracking');
+        });
+        Route::get('/scalefusion/mobile-content-management', function () {
+            return view('mainpage/scalefusion/mobile-content-management');
+        });
+        Route::get('/scalefusion/team-communication', function () {
+            return view('mainpage/scalefusion/team-communication');
         });
 
 
@@ -112,16 +119,28 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/news', [NewsAllController::class,'news']);
     Route::get('/admin/slide', [SlideAllController::class,'slide']);
 
-    /*Category*/
-    Route::post('/admin/product-category/add',[ProductController::class,'store'])->name('addProductCate');
-    Route::post('/admin/product-category/edit',[ProductController::class,'editProductCate'])->name('editProductCate');//update
-    Route::get('/admin/product-category/{id}/editProductCategory', [ProductController::class, 'editProductCategory']);//edit
-    Route::get('/admin/product/getBrand/{id}', [BrandController::class, 'getBrand']);
-
     /*Brand*/
     Route::post('/admin/brand/add',[BrandController::class,'store'])->name('addProductBrand');
     Route::post('/admin/brand/edit',[BrandController::class,'editProductBrand'])->name('editProductBrand');
     Route::get('/admin/product-brand/{id}/editBrand', [BrandController::class, 'editBrand']);//edit
+    Route::get('/admin/product/getBrand/{id}', [BrandController::class, 'getBrand']);
+
+    /*Category*/
+    Route::post('/admin/product-category/add',[ProductController::class,'store'])->name('addProductCate');
+    Route::post('/admin/product-category/edit',[ProductController::class,'editProductCate'])->name('editProductCate');//update
+    Route::get('/admin/product-category/{id}/editProductCategory', [ProductController::class, 'editProductCategory']);//edit
+    Route::get('/admin/product/getCategory/{id}', [ProductController::class, 'getCategory']);
+
+
+    /*Sub Category*/
+    Route::get('/admin/sub-category', [SubCategoryController::class, 'index']);
+    Route::get('/admin/sub-category/{id}/editSubCategory', [SubCategoryController::class, 'editSubCategory']);
+    
+    Route::post('/admin/sub-category/add', [SubCategoryController::class, 'store'])->name('sub-category.store');
+    Route::post('/admin/sub-category/edit', [SubCategoryController::class, 'update'])->name('sub-category.update');
+    // Route::get('/admin/sub-category/getBrand/{id}', [BrandController::class, 'getBrand']);
+    // Route::get('/admin/sub-category/getCategory/{id}', [ProductController::class, 'getCategory']);
+    Route::get('/admin/product/getSubCategory/{id}', [SubCategoryController::class, 'getSubCategory']);
 
     /*Product*/
     Route::post('/admin/product/add',[ProductAllController::class,'store'])->name('addProductAll');
@@ -131,7 +150,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/product/softdeleteImage/{id}',[ProductAllController::class,'softdeleteImage']);
     //Route::post('/admin/product/AddOptionList',[ProductAllController::class,'AddOptionList'])->name('addchoicelist');
     Route::post('/admin/product/ajaxRequestPost', [ProductAllController::class, 'ajaxRequestPost'])->name('ajaxRequestPost');
-    Route::get('/admin/product/getCategory/{id}', [ProductController::class, 'getCategory']);
+
+
+
 
 
     /*Product Choice*/
@@ -162,4 +183,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('ckeditor', [CkeditorController::class, 'index']);
     Route::post('ckeditor/upload',[CkeditorController::class, 'upload'])->name('ckeditor.upload');
 
+});
+
+
+Route::get("/storage-link", function () {
+    $targetFolder = storage_path("app/public");
+    $linkFolder = $_SERVER['DOCUMENT_ROOT'] . 'storage';
+    dd($linkFolder);
+    symlink($targetFolder, $linkFolder);
+    return 'DONE';
 });

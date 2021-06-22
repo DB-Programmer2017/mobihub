@@ -27,7 +27,7 @@
     }
     #remote-support-1 h2 {
     width: 50%;
-    color: #FF4646;
+    color: #ff6a65;
     font-size: 45px;
     font-weight: 500;
     line-height: 54px;
@@ -53,7 +53,7 @@
         padding: 40px 0 0 100px;
     }
     #remote-support-3{
-        background-color: #D45745;
+        background-color: #eb6864;
         height: 500px;
     }
     #remote-support-3 .service-box{
@@ -80,8 +80,12 @@
         }
     }
     #remote-support-3 center {
-        color: #fff;
         padding: 0 250px;
+        color: #fff !important;
+
+    }
+    #remote-support-3 center h2{
+        color: #fff !important;
     }
     #remote-support-3 .icon-box{
         padding: 0 150px;
@@ -127,6 +131,9 @@
         height: 560px;
     }
     #remote-support-7 .col-md-push-6{
+        color: #fff;
+    }
+    #remote-support-7 .col-md-push-6 h2{
         color: #fff;
     }
     #remote-support-7 .service-box{
@@ -341,7 +348,7 @@
         <div class="row">
             <div class="col-xs-12 col-md-6 col-md-push-6">
                     <h2>Over-the-air IT Support for</h2>
-                    <h2 style="color:#D45745; margin-top:0px;">Android Devices</h2>
+                    <h2 style="color:#eb6864; margin-top:0px;">Android Devices</h2>
                     <p>
                         Resolve issues on Android devices with Scalefusion Remote Cast and Control.
                         Extend quick fixes by remotely mirroring device screens on the Scalefusion dashboard.
@@ -368,7 +375,7 @@
             <div class="col-xs-12 col-md-6 ">
                 <div>
                     <h2>Remote Support for Windows 10 </h2>
-                    <h2 style="color:#D45745; margin-top:0px;">Desktops and Laptops</h2>
+                    <h2 style="color:#eb6864; margin-top:0px;">Desktops and Laptops</h2>
                     <img src="/image/mainpage/scalefusion/icon/red-line.svg" alt="">
                     <p>
                         Simplify device issue resolution on remote Windows 10 devices.
@@ -391,7 +398,7 @@
             <div class="col-xs-12 col-md-6 col-md-push-6">
                 <div>
                     <h2>Remote Support for Windows 10 </h2>
-                    <h2 style="color:#D45745; margin-top:0px;">Desktops and Laptops</h2>
+                    <h2 style="color:#eb6864; margin-top:0px;">Desktops and Laptops</h2>
                     <img src="/image/mainpage/scalefusion/icon/red-line.svg" alt="">
                     <p>
                         Simplify device issue resolution on remote Windows 10 devices.
