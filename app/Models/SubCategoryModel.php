@@ -43,4 +43,8 @@ class SubCategoryModel extends Model
     public function armorxCategory() {
         return $this->belongsTo(ArmorxProductCateModel::class, 'category_id');
     }
+
+    public function products() {
+        return $this->hasMany(ProductAllModel::class, 'sub_category_id', 'id');
+    }
 }

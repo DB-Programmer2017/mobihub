@@ -65,8 +65,8 @@
             <div class="col-xs-12 col-md-3">
                 <div class="panel-group" id="accordion-3" role="tablist" aria-multiselectable="true">
                 <form action="{{url('/armor-x/filter')}}" method="POST">
-                    @foreach ($brands as $brand)
-                    @csrf
+                @csrf
+                    @foreach ($brands as $brand)  
 
                     @if(!empty($_GET['category']))
                         @php
@@ -78,7 +78,7 @@
                             <div class="panel-heading" role="tab" id="headingOne">
                                 <h4 class="panel-title">
                                     <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        {{ $brand->name }}
+                                        {{ $brand->name }} {{-- ({{ $brand->sub_categories_count }}) --}}
                                     </a>
                                 </h4>
                             </div>
@@ -88,14 +88,28 @@
                                 @if(!empty($brand->categories))
                                 @foreach ($brand->categories as $category)
                                     <li>
-                                        <div class="sub-title" data-id="{{ $category->id }}">{{ $category->name }} <i class="fas fa-chevron-down arrow-right"></i></div>
+                                        <div class="sub-title" data-id="{{ $category->id }}">{{ $category->name }}<i class="fas fa-chevron-down arrow-right"></i></div>
+
                                         <ul @if($category->id == 1) class="active" @endif data-id="ul-{{ $category->id }}">
-                                            @foreach($category->subCategories as $subCategory)
+
+                                            @foreach($category->subCategories as $subCategory) 
                                                 <li>
+                                                    
                                                     <input class="custom-control-input category_checkbox" type="checkbox" @if(!empty($filter_cates) && in_array($subCategory->id,$filter_cates)) checked @endif   att-name="{{ $subCategory->name }}" value="{{ $subCategory->id }}" name="category[]" onchange="this.form.submit();" id="{{ $subCategory->id }}"> 
-                                                    <label for="{{ $subCategory->id }}">{{ $subCategory->name }}</label>
+                                                    <label for="{{ $subCategory->id }}">
+                                                        {{ $subCategory->name }} [{{ count(App\Models\ProductAllModel::where('sub_category_id', $subCategory->id)->get()) }}]
+                                                    </label>
+
+                                                    {{-- <div>{{ $subCategory->name }}</div> --}}
+                                                    {{-- @foreach($subCategory->products as $sub_cate)<span>({{ $sub_cate->brand_id }})</span> @endforeach --}}
+                                                    {{-- @foreach($sub_categories as $sub_cate)
+                                                        <span>{{ $sub_cate->products_count }}</span> 
+                                                    @endforeach --}}
                                                 </li>
+
+                                               
                                             @endforeach
+
                                         </ul>
                                     </li>
                                 <?php $counter++; ?>

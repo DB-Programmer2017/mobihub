@@ -8,13 +8,22 @@ use App\Models\ProductAllModel;
 use App\Models\ProductGalleryModel;
 use App\Models\ProductChoiceModel;
 use App\Models\ProductChoiceListModel;
+use App\Models\SubCategoryModel;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ArmorxController extends Controller
 {
     function home_armor_x (Request $request){
-        $brands  = ArmorxProductModel::with('categories')->get();
+
+        // $sub_categories = SubCategoryModel::where('dealer_id', '3')->with('products')->withCount('products')->get(); //products_count
+        // select armor-x's brands
+        $brands = ArmorxProductModel::where('dealer_id', '3')
+                    ->with('categories')
+                    ->get();
+
 
         $product=ProductAllModel::query();
 
@@ -41,7 +50,14 @@ class ArmorxController extends Controller
             $product = ProductAllModel::where('dealer_id', '3')->where('is_enable', '1')->orderBy('id', 'asc')->paginate(8) ;
         }
 
-        return view('mainpage/armor-x',compact(['brands','product']));
+
+        return view('mainpage/armor-x',compact(['brands','product', 'sub_categories']));
+    }
+
+    public function numberProduct() {
+        $sub_categories = SubCategoryModel::where('dealer_id', '3')->with('products')->withCount('products')->get();
+
+        return view('mainpage/armor-x2',compact(['sub_categories']));
     }
 
     public function ArmorxFilter(Request $request){

@@ -51,4 +51,8 @@ class ProductAllModel extends Model
 
         return $this->hasManyThrough(ProductChoiceListModel::class, ProductChoiceModel::class, 'product_id', 'choice_id', 'id', 'id');
     }
+
+    function sub_category() {
+        return $this->belongsTo(SubCategoryModel::class, 'sub_category_id');
+    }
 }
