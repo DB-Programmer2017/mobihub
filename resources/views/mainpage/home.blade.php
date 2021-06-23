@@ -17,13 +17,15 @@
 
             <div class="swiper-slide">
                 <picture>
-                    <source srcset="/image/home/Group 313.png" media="(min-width: 1200px)">
-                    <source srcset="/image/home/otterbox-mobile.jpg" media="(min-width: 800px)">
-                    <source srcset="/image/home/otterbox-s-mobile.jpg" media="(min-width: 200px)">
-                    <img src="/image/home/Group 313.png" alt="MDN Web Docs">
+                    @foreach ($product as $row)
+                        <source srcset="{{asset('storage/images/' . $row->cover_img)}}" media="(min-width: 1200px)">
+                    @endforeach
+                        {{-- <source srcset="/image/home/otterbox-mobile.jpg" media="(min-width: 800px)">
+                        <source srcset="/image/home/otterbox-s-mobile.jpg" media="(min-width: 200px)">
+                        <img src="/image/home/Group 313.png" alt="MDN Web Docs"> --}}
                  </picture>
             </div>
-            <div class="swiper-slide">
+            {{-- <div class="swiper-slide">
                 <picture>
                     <source srcset="/image/home/Untitled-1.jpg" media="(min-width: 1200px)">
                     <source srcset="/image/home/armor-x-mobile.jpg" media="(min-width: 800px)">
@@ -38,7 +40,7 @@
                         <source srcset="/image/home/mobihub-s-mobile.jpg" media="(min-width: 200px)">
                     <img src="/image/home/Group321.jpg" alt="MDN Web Docs">
                  </picture>
-            </div>
+            </div> --}}
 
         </div>
         <div class="swiper-pagination"></div>

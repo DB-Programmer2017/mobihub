@@ -36,9 +36,10 @@ Route::get('/clear-cache', function() {
 
 
 
-Route::get('/', function () {
-    return view('mainpage/home');
-});
+// Route::get('/', function () {
+//     return view('mainpage/home');
+// });
+Route::get('/', [ArmorxController::class, 'index_slide']);
 
     /*** Quotation ***/
     Route::get('/quotation', [QuotationController::class, 'create']);

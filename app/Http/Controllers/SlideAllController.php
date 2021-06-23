@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SlideAllModel;
+use App\Http\Controllers\Image
 
 use Redirect,Response;
 
@@ -41,7 +42,7 @@ class SlideAllController extends Controller
               Storage::delete('images/' . $page->image);
             }
 
-            $page->image = $filename;            
+            $page->image = $filename;
           }
 
             $product_cate               = new SlideAllModel;

@@ -10,6 +10,7 @@ use App\Models\ProductGalleryModel;
 use App\Models\ProductChoiceModel;
 use App\Models\ProductChoiceListModel;
 use App\Models\SubCategoryModel;
+use App\Models\SlideAllModel;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -64,7 +65,7 @@ class ArmorxController extends Controller
 
         if(!empty($_GET['category'])){
             $slugs=explode(",",$_GET['category']);
-            
+
             $cate_ids=SubCategoryModel::whereIn('slug', $slugs)
             ->pluck('id')
             ->toArray() ;
@@ -146,7 +147,7 @@ class ArmorxController extends Controller
 
         $choice_list    = ProductAllModel::with('productChoiceList')->get();
         return view('mainpage/armor-x-product',compact(['product','gallery','product_relate','choice','choice_list']));
-        
+
         $brands         = ArmorxProductModel::with('categories')->get();
         $sub_categories = ArmorxProductCateModel::with('subCategories')->get();
         return view('mainpage/armor-x',compact(['brands', 'sub_categories']));
@@ -157,9 +158,9 @@ class ArmorxController extends Controller
         ->whereIn('sub_category_id',[$id])
         ->where('is_enable', '1')
         ->orderBy('id', 'asc')->get();
-        
+
         //dd($data);
-        
+
         return Response::json($data);
     }
 
@@ -169,7 +170,7 @@ class ArmorxController extends Controller
 
         if(!empty($_GET['category'])){
             $slugs=explode(",",$_GET['category']);
-            
+
             $cate_ids=SubCategoryModel::whereIn('slug', $slugs)
             ->pluck('id')
             ->toArray() ;
@@ -192,10 +193,10 @@ class ArmorxController extends Controller
         $gallery        = ProductGalleryModel::where('product_id', $id)->orderBy('id', 'asc')->get();
         $product_relate = ProductAllModel::where('dealer_id', '1')->where('id', '<>',$id)->where('is_enable', '1')->orderBy('id', 'asc')->get();
         $choice         = ProductChoiceModel::where('product_id', '=',$id)->where('is_enable', '1')->orderBy('id', 'asc')->get();
-        
+
         $choice_list    = ProductAllModel::with('productChoiceList')->get();
         return view('mainpage/otterbox-product',compact(['product','gallery','product_relate','choice','choice_list']));
-        
+
         $brands         = ArmorxProductModel::with('categories')->get();
         $sub_categories = ArmorxProductCateModel::with('subCategories')->get();
         return view('mainpage/otterbox',compact(['brands', 'sub_categories']));
@@ -207,7 +208,7 @@ class ArmorxController extends Controller
 
         if(!empty($_GET['category'])){
             $slugs=explode(",",$_GET['category']);
-            
+
             $cate_ids=SubCategoryModel::whereIn('slug', $slugs)
             ->pluck('id')
             ->toArray() ;
@@ -229,14 +230,19 @@ class ArmorxController extends Controller
         $gallery        = ProductGalleryModel::where('product_id', $id)->orderBy('id', 'asc')->get();
         $product_relate = ProductAllModel::where('dealer_id', '2')->where('id', '<>',$id)->where('is_enable', '1')->orderBy('id', 'asc')->get();
         $choice         = ProductChoiceModel::where('product_id', '=',$id)->where('is_enable', '1')->orderBy('id', 'asc')->get();
-        
+
         $choice_list    = ProductAllModel::with('productChoiceList')->get();
         return view('mainpage/rammounts-product',compact(['product','gallery','product_relate','choice','choice_list']));
-        
+
         $brands         = ArmorxProductModel::with('categories')->get();
         $sub_categories = ArmorxProductCateModel::with('subCategories')->get();
         return view('mainpage/rammounts',compact(['brands', 'sub_categories']));
     }
 
-    
+    function index_slide(){
+        $product = SlideAllModel::where('is_enable', '1')->get();
+
+         return view('mainpage/home',compact(['product']));
+    }
+
 }
