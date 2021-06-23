@@ -8,9 +8,28 @@
 @section('link')
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
     <style>
         #sortable-list tr	{ 
             cursor:move;  
+        }
+
+        #page_list li
+        {
+            padding:16px;
+            background-color:#f9f9f9;
+            border:1px dotted #ccc;
+            cursor:move;
+            margin-top:12px;
+        }
+        #page_list li.ui-state-highlight
+        {
+            padding:24px;
+            background-color:#ffffcc;
+            border:1px dotted #ccc;
+            cursor:move;
+            margin-top:12px;
         }
     </style>
 @endsection
@@ -53,10 +72,10 @@
                                 <th width="5%">Status</th>
                             </tr>
                         </thead>
-                        <tbody class="connectedSortable" id="sortable-list">
+                        <tbody  id="sortable-list">
                             <?php $order = array(); ?>
                             @foreach ($slides_banner as $row)    
-                                <tr class="row1" data-id="{{ $row->id }}" title="{{ $row->id }}">
+                                <tr  title="{{ $row->id }}">
                                     <td>{{$slides_banner->firstItem()+$loop->index}}</td>
                                     <td>
                                         {{$row->created_at}}
@@ -81,7 +100,7 @@
                                 <?php $order[] = $row['id']; ?>
                             @endforeach
 
-                            <input type="text" name="sort_order" id="sort_order" value="<?php echo implode(',',$order); ?>" />
+                            <input type="hidden" name="sort_order" id="sort_order" value="<?php echo implode(',',$order); ?>" />
 
                         </tbody>
                     </table>
@@ -93,7 +112,6 @@
         </div>
     </div>
 </div>
-
 </form>
 {{-- Modal: add a new slide banner --}}
 <div class="container">
@@ -194,7 +212,31 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $( "#page_list" ).sortable({
+            placeholder : "ui-state-highlight",
+            update  : function(event, ui)
+            {
+            var page_id_array = new Array();
+            $('#page_list li').each(function(){
+                page_id_array.push($(this).attr("id"));
+            });
+            $.ajax({
+                url:"update.php",
+                method:"POST",
+                data:{page_id_array:page_id_array},
+                success:function(data)
+                {
+                alert(data);
+                }
+            });
+            }
+            });
+        });
+    </script>
+    
+    
     <script type="text/javascript">
         $(document).ready(function($){    
             $.ajaxSetup({
