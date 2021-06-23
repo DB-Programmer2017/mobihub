@@ -923,7 +923,7 @@ $('#choice_id3').val(id);
         $('#product-cover').html("");
 
            var softwareEnq_id = $(this).data('id');
-alert(softwareEnq_id);
+// alert(softwareEnq_id);
            $.get('/admin/product/' + softwareEnq_id +'/editProduct', function (res) {
                 // alert(res.category_id);
                 $('#product-list').html("");
