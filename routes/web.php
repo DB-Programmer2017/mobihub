@@ -165,10 +165,6 @@ Route::middleware(['auth'])->group(function () {
     //Route::post('/admin/product/AddOptionList',[ProductAllController::class,'AddOptionList'])->name('addchoicelist');
     Route::post('/admin/product/ajaxRequestPost', [ProductAllController::class, 'ajaxRequestPost'])->name('ajaxRequestPost');
 
-
-
-
-
     /*Product Choice*/
     Route::post('/admin/product', [ProductAllController::class,'storePoductChoice'])->name('storePoductChoice');
     Route::get('/admin/product/{id}/ChoiceProduct', [ProductAllController::class, 'ChoiceProduct']);
@@ -191,6 +187,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/slide/edit',[SlideAllController::class,'editSlideAll'])->name('editSlideAll');
     Route::post('/admin/slide-sortable',[SlideAllController::class,'updateOrder'])->name('updateOrder');
 
+    Route::get('/admin/sortable', [SlideAllController::class,'sortable']);
+    Route::get('/admin/sortable/update/{id}',[SlideAllController::class,'sortableUpdate']);
 
     /*CKeditor upload*/
     Route::get('ckeditor', [CkeditorController::class, 'index']);

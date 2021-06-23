@@ -13,6 +13,7 @@ class SlideAllModel extends Model
 
     protected $fillable = [
         'id',
+        'rd',
         'description',
         'is_enable',
         'created_at',

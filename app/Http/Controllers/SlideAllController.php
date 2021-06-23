@@ -15,6 +15,35 @@ class SlideAllController extends Controller
         return view('/admin/main-page/slide',compact(['slides_banner']));
     }
 
+    function sortable (Request $request){
+        $slides_banner   = SlideAllModel::orderby('rd','ASC')->paginate(20) ;
+
+        return view('/admin/main-page/sortable',compact(['slides_banner']));
+    }
+
+    function sortableUpdate($id){
+        $ids = explode(',',$id);
+        
+        foreach($ids as $index=>$id) {
+            $id = (int) $id;
+
+            if($id != '') {
+                $rd = $index+1;
+
+                // mysqli_query($conn,"UPDATE factory_label SET 
+                // rd = '".($index + 1)."' 
+                // WHERE id = '".$id."'");
+
+                $customer = SlideAllModel::find($id)->update([
+                    'rd'=>$rd
+                ]);
+                
+            }
+        }
+
+        return Response::json($customer);
+    }
+
     public function store(Request $request){
         $request->validate([
             'cover_img' => 'required'
