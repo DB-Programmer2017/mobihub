@@ -14,16 +14,18 @@
      <!-- Swiper -->
     <div class="swiper-container swiper-container-0 mySwiper">
         <div class="swiper-wrapper">
-            
+
             <div class="swiper-slide">
                 <picture>
-                    <source srcset="/image/home/Group 313.png" media="(min-width: 1200px)">
-                    <source srcset="/image/home/otterbox-mobile.jpg" media="(min-width: 800px)">
-                    <source srcset="/image/home/otterbox-s-mobile.jpg" media="(min-width: 200px)">
-                    <img src="/image/home/Group 313.png" alt="MDN Web Docs">
+                    @foreach ($product as $row)
+                        <source srcset="{{asset('storage/images/' . $row->cover_img)}}" media="(min-width: 1200px)">
+                    @endforeach
+                        {{-- <source srcset="/image/home/otterbox-mobile.jpg" media="(min-width: 800px)">
+                        <source srcset="/image/home/otterbox-s-mobile.jpg" media="(min-width: 200px)">
+                        <img src="/image/home/Group 313.png" alt="MDN Web Docs"> --}}
                  </picture>
             </div>
-            <div class="swiper-slide">
+            {{-- <div class="swiper-slide">
                 <picture>
                     <source srcset="/image/home/Untitled-1.jpg" media="(min-width: 1200px)">
                     <source srcset="/image/home/armor-x-mobile.jpg" media="(min-width: 800px)">
@@ -38,7 +40,7 @@
                         <source srcset="/image/home/mobihub-s-mobile.jpg" media="(min-width: 200px)">
                     <img src="/image/home/Group321.jpg" alt="MDN Web Docs">
                  </picture>
-            </div>
+            </div> --}}
 
         </div>
         <div class="swiper-pagination"></div>
@@ -127,7 +129,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-6 box-1">
-                    <img src="/image/home/001.png" width="100%">
+                    <a href="/otterbox"><img src="/image/home/001.png" width="100%"></a>
                 </div>
 
                 <div class="col-xs-12 col-md-6 box-2">
@@ -135,7 +137,7 @@
                 </div>
 
                 <div class="col-xs-12 col-12 box-3">
-                   <img src="/image/home/003.png" width="100%">
+                    <a href="/rammounts"><img src="/image/home/003.png" width="100%"></a>
                 </div>
             </div>
         </div>

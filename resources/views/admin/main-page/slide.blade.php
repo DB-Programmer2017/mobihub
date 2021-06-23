@@ -36,6 +36,23 @@
         .list-group-item .btn{
             float: right;
         }
+
+        #page_list li
+        {
+            padding:16px;
+            background-color:#f9f9f9;
+            border:1px dotted #ccc;
+            cursor:move;
+            margin-top:12px;
+        }
+        #page_list li.ui-state-highlight
+        {
+            padding:24px;
+            background-color:#ffffcc;
+            border:1px dotted #ccc;
+            cursor:move;
+            margin-top:12px;
+        }
     </style>
 @endsection
 

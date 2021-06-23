@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SlideAllModel;
+use App\Http\Controllers\Image
 
 use Redirect,Response;
 
