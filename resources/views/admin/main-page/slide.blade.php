@@ -11,8 +11,8 @@
 
 
     <style>
-        #sortable-list tr	{ 
-            cursor:move;  
+        #sortable-list tr	{
+            cursor:move;
         }
 
         #page_list li
@@ -52,11 +52,11 @@
                         <div class="col-sm-7 col-xs-12 text-right">
                             <button type="button" class="btn btn-info btn-sm show-modal" data-toggle="modal" data-target="#myModal">
                                 <i class="fas fa-plus"></i> Add Slide
-                            </button> 
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div class="panel-body table-responsive"> 
+                <div class="panel-body table-responsive">
 
                     <p>
                         <input type="checkbox" style="opacity:0" checked value="1" name="autoSubmit" id="autoSubmit" checked />
@@ -74,7 +74,7 @@
                         </thead>
                         <tbody  id="sortable-list">
                             <?php $order = array(); ?>
-                            @foreach ($slides_banner as $row)    
+                            @foreach ($slides_banner as $row)
                                 <tr  title="{{ $row->id }}">
                                     <td>{{$slides_banner->firstItem()+$loop->index}}</td>
                                     <td>
@@ -85,16 +85,16 @@
                                             <a href="javascript:void(0)"  class="edit" data-id="{{ $row->id }}" data-toggle="modal" data-target="#myModal2">
                                                 <img src="{{asset('storage/images/' . $row->cover_img)}}" class="img-responsive">
                                             </a>
-                                        @endif   
+                                        @endif
                                     </td>
                                     <td>
                                         @if ($row->is_enable == "1")
                                             <span class="label label-success">Publish</span>
-                                        @else 
+                                        @else
                                             <span class="label label-danger">Suspend</span>
                                         @endif
                                     </td>
-                                    
+
                                 </tr>
 
                                 <?php $order[] = $row['id']; ?>
@@ -105,7 +105,7 @@
                         </tbody>
                     </table>
 
-                    
+
 
                 </div>
             </div>
@@ -170,7 +170,7 @@
 
                                     <input type="hidden" readonly id="product_id2" name="product_id2" class="form-control">
 
-                                    
+
                                     <div class="col-xs-12 col-md-12">
                                         <div id="product-cover"></div>
                                     </div>
@@ -235,10 +235,10 @@
             });
         });
     </script>
-    
-    
+
+
     <script type="text/javascript">
-        $(document).ready(function($){    
+        $(document).ready(function($){
             $.ajaxSetup({
                 headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -246,7 +246,7 @@
             });
 
             $('body').on('click', '.edit', function () {
-                
+
                 $('#product-cover').html("");
 
                 var softwareEnq_id = $(this).data('id');

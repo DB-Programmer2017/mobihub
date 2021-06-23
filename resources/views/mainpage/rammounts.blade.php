@@ -67,13 +67,13 @@
                 <div class="panel-group" id="accordion-3" role="tablist" aria-multiselectable="true">
                 <form action="{{url('/rammounts/filter')}}" method="POST">
                     @foreach ($brands as $brand)
-                    @csrf
+                        @csrf
 
-                    @if(!empty($_GET['category']))
-                        @php
-                            $filter_cates=explode(",",$_GET['category']);
-                        @endphp
-                    @endif
+                        @if(!empty($_GET['category']))
+                            @php
+                                $filter_cates=explode(",",$_GET['category']);
+                            @endphp
+                        @endif
 
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingOne">
@@ -94,7 +94,7 @@
                                             <ul class="active">
                                             @foreach($category->subCategories as $subCategory)
                                                 <li>
-                                                    <input class="custom-control-input category_checkbox" type="checkbox" @if(!empty($filter_cates) && in_array($subCategory->slug,$filter_cates)) checked @endif   att-name="{{ $subCategory->name }}" value="{{ $subCategory->slug }}" name="category[]" onchange="this.form.submit();" id="{{ $subCategory->id }}"> 
+                                                    <input class="custom-control-input category_checkbox" type="checkbox" @if(!empty($filter_cates) && in_array($subCategory->slug,$filter_cates)) checked @endif   att-name="{{ $subCategory->name }}" value="{{ $subCategory->slug }}" name="category[]" onchange="this.form.submit();" id="{{ $subCategory->id }}">
                                                     <label for="{{ $subCategory->id }}">{{ $subCategory->name }} [{{ count(App\Models\ProductAllModel::where('sub_category_id', $subCategory->id)->get()) }}]</label>
                                                 </li>
                                             @endforeach
@@ -105,7 +105,7 @@
                                 @endif
                                 </div>
                             </div>
-                        </div>
+                            </div>
                     @endforeach
                 </form>
 
@@ -122,7 +122,7 @@
                     </div>
                 </div>
 
-                    @foreach ($product as $row)  
+                    @foreach ($product as $row)
                         <div class="col-xs-12 col-md-3">
                             <div class="product-grid" onclick="window.open('/rammounts-product/{{ $row->slug }}')">
                                 <div class="product-image">

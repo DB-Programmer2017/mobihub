@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SlideAllModel;
-use App\Http\Controllers\Image
 
 use Redirect,Response;
 
@@ -23,21 +22,21 @@ class SlideAllController extends Controller
 
     function sortableUpdate($id){
         $ids = explode(',',$id);
-        
+
         foreach($ids as $index=>$id) {
             $id = (int) $id;
 
             if($id != '') {
                 $rd = $index+1;
 
-                // mysqli_query($conn,"UPDATE factory_label SET 
-                // rd = '".($index + 1)."' 
+                // mysqli_query($conn,"UPDATE factory_label SET
+                // rd = '".($index + 1)."'
                 // WHERE id = '".$id."'");
 
                 $customer = SlideAllModel::find($id)->update([
                     'rd'=>$rd
                 ]);
-                
+
             }
         }
 
@@ -60,22 +59,32 @@ class SlideAllController extends Controller
         //     $filenameToStore = '';
         // }
 
-        if ($request->hasFile('cover_img')) {
-            $image = $request->file('cover_img');
-            $filename = 'page' . '-' . time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('public/images/' . $filename);
+        // if ($request->hasFile('cover_img')) {
+        //     $image = $request->file('cover_img');
+        //     $filename = 'page' . '-' . time() . '.' . $image->getClientOriginalExtension();
+        //     $location = public_path('public/images/' . $filename);
 
-            Image::make($image)->resize(1200, 600)->save($location);
+        //     Image::make($image)->resize(1200, 600)->save($location);
 
-            if(!empty($page->image)){
-              Storage::delete('images/' . $page->image);
-            }
+        //     if(!empty($page->image)){
+        //       Storage::delete('images/' . $page->image);
+        //     }
 
-            $page->image = $filename;
-          }
+        //     $page->image = $filename;
+        //   }
+        if($request->hasFile('cover_img')) {
+            $filenameWithExt    = $request->file('cover_img')->getClientOriginalName();
+            $filename           = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension          = $request->file('cover_img')->getClientOriginalExtension();
+            $filenameToStore    = $filename . 's_' . time() . '.' . $extension;
+            $path               = $request->file('cover_img')->storeAs('public/images', $filenameToStore);
+
+        } else {
+            $filenameToStore = '';
+        }
 
             $product_cate               = new SlideAllModel;
-            $product_cate->cover_img    = $filename;
+            $product_cate->cover_img    = $filenameToStore;
             $product_cate->save();
 
             return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");

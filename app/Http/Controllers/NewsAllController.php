@@ -40,15 +40,15 @@ class NewsAllController extends Controller
             $product_cate->save();
 
             // $LastInsertId = $product_cate->id;
-            
+
             // $files = [];
             // if($request->hasfile('filenames'))
             // {
             //     foreach($request->file('filenames') as $file)
             //     {
             //         $name = "NEW".time().rand(1,100).'.'.$file->extension();
-            //         $file->move(public_path('storage/images'), $name);  
-            //         $files[] = $name;  
+            //         $file->move(public_path('storage/images'), $name);
+            //         $files[] = $name;
             //     }
             // }
 
