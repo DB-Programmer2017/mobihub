@@ -1,25 +1,14 @@
-@extends('/admin/layout/home-admin')
-
-
-{{-- Title Website --}}
-@section('title', 'MOBIHUB | News')
-
-{{-- Link CSS --}}
-@section('link')
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Drag and Droppable Datatables Using jQuery UI Sortable in Laravel</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <style>
-        #sortable-list tr	{ 
-            cursor:move;  
-        }
-    </style>
-@endsection
-
-{{-- Body HTML --}}
-@section('content')
-
-<form id="dd-form" action="{{ route('updateOrder') }}" method="post">
-    <div id="message-box" style="display:none">{{session("success")}} Waiting for sortation submission...</div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- this is for drop and drog in this arrange of wish order (need) -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/> 
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+</head>
+<body>
 
 <div class="container">
     <div class="row">
@@ -37,14 +26,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel-body table-responsive"> 
-
-                    <p>
-                        <input type="checkbox" style="opacity:0" checked value="1" name="autoSubmit" id="autoSubmit" checked />
-                        <label for="autoSubmit"></label>
-                    </p>
-
-                    <table class="table table-hover" id="table-draggable2" >
+                <div class="panel-body table-responsive">  
+                    <table class="table table-hover" id="datatable2">
                         <thead>
                             <tr class="active">
                                 <th width="5%">#</th>
@@ -53,49 +36,56 @@
                                 <th width="5%">Status</th>
                             </tr>
                         </thead>
-                        <tbody class="connectedSortable" id="sortable-list">
-                            <?php $order = array(); ?>
-                            @foreach ($slides_banner as $row)    
-                                <tr class="row1" data-id="{{ $row->id }}" title="{{ $row->id }}">
-                                    <td>{{$slides_banner->firstItem()+$loop->index}}</td>
-                                    <td>
-                                        {{$row->created_at}}
-                                    </td>
-                                    <td>
-                                        @if ($row->cover_img  !='')
-                                            <a href="javascript:void(0)"  class="edit" data-id="{{ $row->id }}" data-toggle="modal" data-target="#myModal2">
-                                                <img src="{{asset('storage/images/' . $row->cover_img)}}" class="img-responsive">
-                                            </a>
-                                        @endif   
-                                    </td>
-                                    <td>
-                                        @if ($row->is_enable == "1")
-                                            <span class="label label-success">Publish</span>
-                                        @else 
-                                            <span class="label label-danger">Suspend</span>
-                                        @endif
-                                    </td>
-                                    
-                                </tr>
-
-                                <?php $order[] = $row['id']; ?>
-                            @endforeach
-
-                            <input type="text" name="sort_order" id="sort_order" value="<?php echo implode(',',$order); ?>" />
-
+                        <tbody id="tablecontents">
+                        @foreach ($slides_banner as $row)    
+                            <tr class="row1" data-id="{{ $row->id }}">
+                                <td>{{$slides_banner->firstItem()+$loop->index}}</td>
+                                <td>
+                                    {{$row->created_at}}
+                                </td>
+                                <td>
+                                    @if ($row->cover_img  !='')
+                                        <a href="javascript:void(0)"  class="edit" data-id="{{ $row->id }}" data-toggle="modal" data-target="#myModal2">
+                                            <img src="{{asset('storage/images/' . $row->cover_img)}}" class="img-responsive">
+                                        </a>
+                                    @endif   
+                                </td>
+                                <td>
+                                    @if ($row->is_enable == "1")
+                                        <span class="label label-success">Publish</span>
+                                    @else 
+                                        <span class="label label-danger">Suspend</span>
+                                    @endif
+                                </td>
+                                
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
-
-                    
-
                 </div>
+                {{-- <div class="panel-footer">
+                    <div class="row">
+                        <div class="col col-xs-4">Page 1 of 5</div>
+                        <div class="col-xs-8">
+                            <ul class="pagination hidden-xs pull-right">
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                            </ul>
+                            <ul class="pagination visible-xs pull-right">
+                                <li><a href="#"><</a></li>
+                                <li><a href="#">></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> --}}
             </div>
         </div>
     </div>
 </div>
 
-</form>
-{{-- Modal: add a new slide banner --}}
 <div class="container">
     <div class="row">
         <form action="{{route('addSlideAll')}}" method="post" id="editForm" enctype="multipart/form-data">
@@ -133,7 +123,6 @@
     </div>
 </div>
 
-{{-- Modal: edit a slide banner --}}
 <div class="container">
     <div class="row">
         <form action="{{route('editSlideAll')}}" method="post" id="editForm" enctype="multipart/form-data">
@@ -188,10 +177,6 @@
     </div>
 </div>
 
-@endsection
-
-@section('script')
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
@@ -218,58 +203,49 @@
                     '</center>');
                 })
             });
-
-
-            var sortInput = jQuery('#sort_order');
-            var submit = jQuery('#autoSubmit');
-            var messageBox = jQuery('#message-box');
-            var list = jQuery('#sortable-list');
-            /* create requesting function to avoid duplicate code */
-            var request = function() {
-                jQuery.ajax({
-                    beforeSend: function() {
-                        messageBox.text('Updating the sort order in the database.');
-                    },
-                    complete: function() {
-                        messageBox.text('Database has been updated.');
-                        window.location.assign(page);
-                    },
-                    data: 'sort_order=' + sortInput[0].value + '&ajax=' + submit[0].checked + '&do_submit=1&byajax=1', //need [0]?
-                    type: 'post',
-                    url: '<?php echo $_SERVER["REQUEST_URI"]; ?>'
-                });
-            };
-            /* worker function */
-            var fnSubmit = function(save) {
-                var sortOrder = [];
-                list.children('tr').each(function(){
-                    sortOrder.push(jQuery(this).data('id'));
-                });
-                sortInput.val(sortOrder.join(','));
-                console.log(sortInput.val());
-                if(save) {
-                    request();
-                }
-            };
-            /* store values */
-            list.children('tr').each(function() {
-                var li = jQuery(this);
-                li.data('id',li.attr('title')).attr('title','');
-            });
-            /* sortables */
-            list.sortable({
-                opacity: 0.7,
-                update: function() {
-                    fnSubmit(submit[0].checked);
-                }
-            });
-            list.disableSelection();
-            /* ajax form submission */
-            jQuery('#dd-form').bind('submit',function(e) {
-                if(e) e.preventDefault();
-                fnSubmit(true);
-            });
         });
 
+        $(function() {
+
+            $('#tablecontents').sortable({
+                items: "tr",
+                cursor: 'move',
+                opacity: 0.6,
+                update: function() {
+                    sendOrderToServer();
+                }
+            });
+
+            function sendOrderToServer() {
+                var order = [];
+                var token = $('meta[name="csrf-token"]').attr('content');
+
+                $('tr.row1').each(function(index,element) {
+                    order.push({
+                        id: $(this).attr('data-id'),
+                        position: index+1
+                    });
+                });
+
+                $ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: "{{ url('/admin/slide-sortable') }}",
+                    data: {
+                        order: oreder,
+                        _token: token
+                    },
+                    success: function(response) {
+                        if (response.status == "success") {
+                            console.log(response);
+                        } else {
+                            console.log(response);
+                        }
+                    }
+                })
+            }
+        });
     </script>
-@endsection
+
+</body>
+</html>

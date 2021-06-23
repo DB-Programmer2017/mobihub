@@ -188,8 +188,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/slide/add',[SlideAllController::class,'store'])->name('addSlideAll');//Slide
     Route::get('/admin/slide/{id}/editSlide', [SlideAllController::class, 'editSlide']);
     Route::post('/admin/slide/edit',[SlideAllController::class,'editSlideAll'])->name('editSlideAll');
-
-    //Route::get('/admin/product/{id}',[ProductAllController::class,'editProduct'])->name('editProduct');
+    Route::post('/admin/slide-sortable',[SlideAllController::class,'updateOrder'])->name('updateOrder');
 
 
     /*CKeditor upload*/

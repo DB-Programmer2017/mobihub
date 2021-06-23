@@ -10,8 +10,8 @@ use Redirect,Response;
 class SlideAllController extends Controller
 {
     function slide (Request $request){
-        $product_cate   = SlideAllModel::paginate(20) ;
-        return view('/admin/main-page/slide',compact(['product_cate']));
+        $slides_banner   = SlideAllModel::paginate(20) ;
+        return view('/admin/main-page/slide',compact(['slides_banner']));
     }
 
     public function store(Request $request){
@@ -96,6 +96,22 @@ class SlideAllController extends Controller
         }
     }
 
+    /** To update the order of slides **/
+    public function updateOrder(Request $request) {
+        $ids = explode(',', $request->sort_order);
+        dd($ids);
+        $slides     =   SlideAllModel::all();
+
+        foreach ($slides as $slide) {
+            foreach ($request->order as $order) {
+                if($order['id'] == $slide->id) {
+                    $slide->update(['order' => $prder['position']]);
+                }
+            }
+        }
+
+        return \Response('update Successfully.', 200);
+    }
     public function editSlide($id){
 		$where = array('id' => $id);
 		$customer = SlideAllModel::where($where)->first();
