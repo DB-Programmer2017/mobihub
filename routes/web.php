@@ -73,6 +73,9 @@ Route::get('/', function () {
         Route::get('/scalefusion/deepdrive', function () {
             return view('mainpage/scalefusion/deepdrive');
         });
+        Route::get('/scalefusion/report', function () {
+            return view('mainpage/scalefusion/report');
+        });
 
 
 // Route::get('/armor-x', function () {
