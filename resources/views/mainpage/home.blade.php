@@ -14,7 +14,7 @@
      <!-- Swiper -->
     <div class="swiper-container swiper-container-0 mySwiper">
         <div class="swiper-wrapper">
-            
+
             <div class="swiper-slide">
                 <picture>
                     <source srcset="/image/home/Group 313.png" media="(min-width: 1200px)">
@@ -127,7 +127,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-6 box-1">
-                    <img src="/image/home/001.png" width="100%">
+                    <a href="/otterbox"><img src="/image/home/001.png" width="100%"></a>
                 </div>
 
                 <div class="col-xs-12 col-md-6 box-2">
@@ -135,7 +135,7 @@
                 </div>
 
                 <div class="col-xs-12 col-12 box-3">
-                   <img src="/image/home/003.png" width="100%">
+                    <a href="/rammounts"><img src="/image/home/003.png" width="100%"></a>
                 </div>
             </div>
         </div>

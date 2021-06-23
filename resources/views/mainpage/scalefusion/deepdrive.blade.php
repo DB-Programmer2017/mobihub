@@ -8,6 +8,9 @@
 @section('link')
 
 <style>
+    h3,h4,h2,h1,p  {
+        font-family: 'Prompt';
+    }
    #deepdrive-1{
         background-image: url('/image/mainpage/scalefusion/deepdrive/deepdrive_bg.jpg');
         background-position: center;
@@ -20,8 +23,46 @@
     #deepdrive-1 .col-md-12{
         width: 60%;
     }
+    #deepdrive-3 .text h2,
+    #deepdrive-2 h2,
+    #deepdrive-2 p,
+    #deepdrive-1 h3,
+    #deepdrive-1 h2,
+    #deepdrive-1 p{
+        font-weight: 200;
+        color: #505050;
+    }
+    #deepdrive-2{
+        margin: 50px 0;
+    }
+    #deepdrive-2 .text{
+        height: 337px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #deepdrive-3 .text h2,
+    #deepdrive-2 h2{
+        font-size: 24px;
+    }
+    #deepdrive-2 .text img{
+        width: 28%;
+        margin: 12px 0;
+    }
     #deepdrive-3 {
         background: #F4F4F4;
+        padding: 50px 0;
+    }
+    #deepdrive-3 .text{
+        text-align: center;
+    }
+    #deepdrive-3 .text h2{
+        font-weight: 200;
+        color: #505050;
+    }
+    #deepdrive-3 .text p{
+        font-weight: 200;
+        color: #505050;
     }
     #deepdrive-3 .box{
         background: #fff;
@@ -31,6 +72,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        text-align: center;
     }
     #deepdrive-3 .box .img-responsive{
         width: 60px;
@@ -42,6 +84,41 @@
         height: auto;
         display: block;
         margin: 10px 0;
+    }
+    @media (max-width:1024.98px){
+        #deepdrive-3 .box {
+            width: 200px;
+            height: 200px;
+         }
+         #deepdrive-3 .box .img-responsive1 {
+            padding: 0 30px;
+        }
+    }
+    @media (max-width:500.98px){
+        #deepdrive-1 .col-md-12{
+            width: 85%;
+        }
+        #deepdrive-3 .text h2,
+        #deepdrive-2 h2,
+        #deepdrive-1 h2{
+            font-size: 20px
+        }
+        #deepdrive-2 h3,
+        #deepdrive-1 h3{
+            font-size: 18px
+        }
+        #deepdrive-3 .text p,
+        #deepdrive-2 p,
+        #deepdrive-1 p{
+            font-size: 12px
+        }
+        #deepdrive-3 .box {
+            width: 160px;
+            height: 160px;
+        }
+        #deepdrive-2 .text {
+            height: 200px;
+        }
     }
 </style>
 
@@ -95,11 +172,11 @@
                 <div class="col-xs-12 col-md-12">
                     <div class="text">
                         <h2>
-                            We Believe Power Comes From Simplicity
+                            Get Real-Time Visibility of Your Devices
                          </h2>
                          <img src="/image/mainpage/scalefusion/icon/redLine.png" alt="">
                          <p>
-                            Get deep insights into your inventory. Gain platform-wide visibility, data usage details, and compliance-violation data, via a simple, clear and engaging interface using DeepDive.
+                            Obtain a comprehensive and insightful summary of your device inventory along with real-time data about the device health, security, data usage, compliance, and other crucial information with DeepDive.
                          </p>
                     </div>
                 </div>
