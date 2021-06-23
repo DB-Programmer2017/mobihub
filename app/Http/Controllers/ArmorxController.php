@@ -11,8 +11,10 @@ use App\Models\ProductChoiceModel;
 use App\Models\ProductChoiceListModel;
 use App\Models\SubCategoryModel;
 use App\Models\SlideAllModel;
+use App\Models\NewsAllModel;
 
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 
 
@@ -241,8 +243,12 @@ class ArmorxController extends Controller
 
     function index_slide(){
         $product = SlideAllModel::where('is_enable', '1')->get();
-
-         return view('mainpage/home',compact(['product']));
+        $news = NewsAllModel::where('is_enable', '1')->get();
+         return view('mainpage/home',compact(['product', 'news']));
     }
 
+    // function news_slide(){
+    //     $news = NewsAllModel::where('is_enable', '1')->get();
+    //      return view('mainpage/home',compact(['news']));
+    // }
 }

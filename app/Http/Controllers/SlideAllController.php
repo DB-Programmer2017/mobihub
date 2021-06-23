@@ -29,21 +29,21 @@ class SlideAllController extends Controller
 
     function sortableUpdate($id){
         $ids = explode(',',$id);
-        
+
         foreach($ids as $index=>$id) {
             $id = (int) $id;
 
             if($id != '') {
                 $rd = $index+1;
 
-                // mysqli_query($conn,"UPDATE factory_label SET 
-                // rd = '".($index + 1)."' 
+                // mysqli_query($conn,"UPDATE factory_label SET
+                // rd = '".($index + 1)."'
                 // WHERE id = '".$id."'");
 
                 $customer = SlideAllModel::find($id)->update([
                     'rd'=>$rd
                 ]);
-                
+
             }
         }
 
@@ -80,7 +80,7 @@ class SlideAllController extends Controller
         //       Storage::delete('images/' . $page->image);
         //     }
 
-        //     $page->image = $filename;            
+        //     $page->image = $filename;
         // }
 
         $new_slide              = new SlideAllModel;

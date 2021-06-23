@@ -83,18 +83,18 @@
                         <div class="col-sm-7 col-xs-12 text-right">
                             <button type="button" class="btn btn-info btn-sm show-modal" data-toggle="modal" data-target="#myModal">
                                 <i class="fas fa-plus"></i> Add Slide
-                            </button> 
+                            </button>
                         </div>
                     </div>
                 </div>
-                
+
                 <ul class="list-unstyled" id="page_list2">
                     @foreach ($slides_banner as $row2)
                         <li class="list-group-item" id="{{ $row2->id }}">
-                            #{{$slides_banner->firstItem()+$loop->index}} ) 
+                            #{{$slides_banner->firstItem()+$loop->index}} )
                                 @if ($row2->is_enable == "1")
                                     <span class="label label-success">Publish</span>
-                                @else 
+                                @else
                                     <span class="label label-danger">Suspend</span>
                                 @endif
 
@@ -103,7 +103,7 @@
                                 <a href="javascript:void(0)"  class="edit btn btn-info" data-id="{{ $row2->id }}" data-toggle="modal" data-target="#myModal2">
                                     Edit
                                 </a>
-                            @endif   
+                            @endif
                         </li>
                     @endforeach
                 </ul>
@@ -173,7 +173,7 @@
 
                                     <input type="hidden" readonly id="product_id2" name="product_id2" class="form-control">
 
-                                    
+
                                     <div class="col-xs-12 col-md-12">
                                         <div id="product-cover"></div>
                                     </div>
@@ -217,9 +217,9 @@
 
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    
+
     <script type="text/javascript">
-        $(document).ready(function($){    
+        $(document).ready(function($){
             $.ajaxSetup({
                 headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -227,7 +227,7 @@
             });
 
             $('body').on('click', '.edit', function () {
-                
+
                 $('#product-cover').html("");
 
                 var softwareEnq_id = $(this).data('id');
@@ -251,7 +251,7 @@
                 $('#page_list2 li').each(function(){
                     page_id_array.push($(this).attr("id"));
                 });
-                
+
                 //alert(page_id_array);
 
                 $.ajax({
@@ -277,7 +277,7 @@
                 $('.trd').each(function(){
                     page_id_array.push($(this).attr("id"));
                 });
-                
+
                 //alert(page_id_array);
 
                 $.ajax({

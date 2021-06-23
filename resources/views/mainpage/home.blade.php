@@ -14,17 +14,13 @@
      <!-- Swiper -->
     <div class="swiper-container swiper-container-0 mySwiper">
         <div class="swiper-wrapper">
-
+            @foreach ($product as $row)
             <div class="swiper-slide">
                 <picture>
-                    @foreach ($product as $row)
-                        <source srcset="{{asset('storage/images/' . $row->cover_img)}}" media="(min-width: 1200px)">
-                    @endforeach
-                        {{-- <source srcset="/image/home/otterbox-mobile.jpg" media="(min-width: 800px)">
-                        <source srcset="/image/home/otterbox-s-mobile.jpg" media="(min-width: 200px)">
-                        <img src="/image/home/Group 313.png" alt="MDN Web Docs"> --}}
+                    <img src="{{asset('storage/images/' . $row->cover_img)}}" >
                  </picture>
             </div>
+            @endforeach
             {{-- <div class="swiper-slide">
                 <picture>
                     <source srcset="/image/home/Untitled-1.jpg" media="(min-width: 1200px)">
@@ -45,7 +41,6 @@
         </div>
         <div class="swiper-pagination"></div>
     </div>
-
     <section class="swipper-sf">
         <div class="container">
             <div class="row">
@@ -299,10 +294,32 @@
                     </p>
                     <div class="swiper-container swiper-container-4 mySwiper">
                         <div class="swiper-wrapper">
+                        @foreach ($news as $row)
                             <div class="swiper-slide">
                                 <div class="box-news">
                                     <div class="col-md-4">
-                                        <img src="https://picsum.photos/450/450?grayscale?random=1">
+                                        <img src="{{asset('storage/images/' . $row->cover_img)}}">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-1">
+                                            <h2>
+                                                {{ $row->name }}
+                                            </h2>
+                                            <p>
+                                                {{ $row->title }}
+                                            </p>
+                                            <p>
+                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                                {{-- <div class="box-news">
+                                    <div class="col-md-4">
+                                        <img src="{{asset('storage/images/' . $row->cover_img)}}">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="text-1">
@@ -320,25 +337,7 @@
                                 </div>
                                 <div class="box-news">
                                     <div class="col-md-4">
-                                        <img src="https://picsum.photos/450/450?grayscale?random=1">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="text-1">
-                                            <h2>
-                                                hello
-                                            </h2>
-                                            <p>
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nobis dicta dignissimos fuga porro molestias consectetur officiis! Temporibus odit nulla excepturi voluptatem ea voluptas blanditiis? Animi eveniet enim repellendus ipsam!
-                                            </p>
-                                            <p>
-                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-news">
-                                    <div class="col-md-4">
-                                        <img src="https://picsum.photos/450/450?grayscale?random=1">
+                                        <img src="{{asset('storage/images/' . $row->cover_img)}}">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="text-1">
@@ -355,7 +354,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
+                        @endforeach --}}
+                            {{-- <div class="swiper-slide">
                                 <div class="box-news">
                                     <div class="col-md-4">
                                         <img src="https://picsum.photos/450/450?grayscale?random=2">
@@ -658,7 +658,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="swiper-pagination"></div>
                         </div>
@@ -741,7 +741,7 @@
          <script>
             var swiper = new Swiper(".swiper-container-4", {
               direction: "vertical",
-              slidesPerView: 1,
+              slidesPerView: 3,
               spaceBetween: 30,
               mousewheel: true,
               pagination: {
