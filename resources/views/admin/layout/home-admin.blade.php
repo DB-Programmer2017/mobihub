@@ -10,7 +10,7 @@
     {{-- <link rel="stylesheet" href="/css/include/navbar.css"> --}}
     <link href="https://fonts.googleapis.com/css?family=Prompt|Poppins|Questrial|Merienda|Caveat+Brush|Oswald|Anton|Mitr|Abril+Fatface" rel="stylesheet">
     
-    <link rel="stylesheet" href="/css/admin/style.css">
+    <link rel="stylesheet" href="/css/layout/admin.css">
 
     {{-- <link rel="stylesheet" href="/css/include/footer.css">
     <link rel="stylesheet" href="/css/mainpage/style.css"> --}}
@@ -35,7 +35,7 @@
 </body>
 
 @yield('script')
-<script src="/js/main.js"></script>
+{{-- <script src="/js/main.js"></script> --}}
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>

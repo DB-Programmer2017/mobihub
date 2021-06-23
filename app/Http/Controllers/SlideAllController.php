@@ -10,45 +10,79 @@ use Redirect,Response;
 class SlideAllController extends Controller
 {
     function slide (Request $request){
-        $slides_banner   = SlideAllModel::paginate(20) ;
+        $slides_banner   = SlideAllModel::orderBy('rd', 'ASC')->paginate(20) ;
         return view('/admin/main-page/slide',compact(['slides_banner']));
     }
+
+
+
+    function sortable (Request $request){
+        $slides_banner   = SlideAllModel::where('is_enable', '1')->orderBy('rd', 'ASC')->paginate(20) ;
+
+        return view('/admin/main-page/sortable',compact(['slides_banner']));
+    }
+
+    function sortableUpdate($id){
+        $ids = explode(',',$id);
+        
+        foreach($ids as $index=>$id) {
+            $id = (int) $id;
+
+            if($id != '') {
+                $rd = $index+1;
+
+                // mysqli_query($conn,"UPDATE factory_label SET 
+                // rd = '".($index + 1)."' 
+                // WHERE id = '".$id."'");
+
+                $customer = SlideAllModel::find($id)->update([
+                    'rd'=>$rd
+                ]);
+                
+            }
+        }
+
+        session()->flash('success', 'เลือกลำดับของ Banner เรียบร้อยแล้ว');
+        return Response::json($customer);
+    }
+
+
 
     public function store(Request $request){
         $request->validate([
             'cover_img' => 'required'
         ]);
 
-        // if($request->hasFile('cover_img')) {
-        //     $filenameWithExt    = $request->file('cover_img')->getClientOriginalName();
-        //     $filename           = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-        //     $extension          = $request->file('cover_img')->getClientOriginalExtension();
-        //     $filenameToStore    = $filename . 's_' . time() . '.' . $extension;
-        //     $path               = $request->file('cover_img')->storeAs('public/images', $filenameToStore);
+        if($request->hasFile('cover_img')) {
+            $filenameWithExt    = $request->file('cover_img')->getClientOriginalName();
+            $filename           = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension          = $request->file('cover_img')->getClientOriginalExtension();
+            $filenameToStore    = $filename . 's_' . time() . '.' . $extension;
+            $path               = $request->file('cover_img')->storeAs('public/images', $filenameToStore);
 
-        // } else {
-        //     $filenameToStore = '';
+        } else {
+            $filenameToStore = '';
+        }
+
+        // if ($request->hasFile('cover_img')) {
+        //     $image = $request->file('cover_img');
+        //     $filename = 'page' . '-' . time() . '.' . $image->getClientOriginalExtension();
+        //     $location = public_path('public/images/' . $filename);
+
+        //     Image::make($image)->resize(1200, 600)->save($location);
+
+        //     if(!empty($page->image)){
+        //       Storage::delete('images/' . $page->image);
+        //     }
+
+        //     $page->image = $filename;            
         // }
 
-        if ($request->hasFile('cover_img')) {
-            $image = $request->file('cover_img');
-            $filename = 'page' . '-' . time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('public/images/' . $filename);
+        $new_slide              = new SlideAllModel;
+        $new_slide->cover_img    = $filenameToStore;
+        $new_slide->save();
 
-            Image::make($image)->resize(1200, 600)->save($location);
-
-            if(!empty($page->image)){
-              Storage::delete('images/' . $page->image);
-            }
-
-            $page->image = $filename;            
-          }
-
-            $product_cate               = new SlideAllModel;
-            $product_cate->cover_img    = $filename;
-            $product_cate->save();
-
-            return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");
+        return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");
     }
 
     public function editSlideAll(Request $request){

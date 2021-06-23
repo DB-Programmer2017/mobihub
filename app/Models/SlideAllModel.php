@@ -17,7 +17,8 @@ class SlideAllModel extends Model
         'is_enable',
         'created_at',
         'updated_at',
-        'cover_img'
+        'cover_img',
+        'rd'
     ];
 
 }

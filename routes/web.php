@@ -185,13 +185,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/slide/add',[SlideAllController::class,'store'])->name('addSlideAll');//Slide
     Route::get('/admin/slide/{id}/editSlide', [SlideAllController::class, 'editSlide']);
     Route::post('/admin/slide/edit',[SlideAllController::class,'editSlideAll'])->name('editSlideAll');
-    Route::post('/admin/slide-sortable',[SlideAllController::class,'updateOrder'])->name('updateOrder');
 
 
     /*CKeditor upload*/
     Route::get('ckeditor', [CkeditorController::class, 'index']);
     Route::post('ckeditor/upload',[CkeditorController::class, 'upload'])->name('ckeditor.upload');
 
+    Route::get('/admin/sortable', [SlideAllController::class,'sortable']);
+    Route::get('/admin/sortable/update/{id}',[SlideAllController::class,'sortableUpdate']);
 });
 
 

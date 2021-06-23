@@ -1,14 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create Drag and Droppable Datatables Using jQuery UI Sortable in Laravel</title>
+@extends('/admin/layout/home-admin')
+
+
+{{-- Title Website --}}
+@section('title', 'MOBIHUB | News')
+
+{{-- Link CSS --}}
+@section('link')
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- this is for drop and drog in this arrange of wish order (need) -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/> 
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-</head>
-<body>
+    
+@endsection
+
+{{-- Body HTML --}}
+@section('content')
 
 <div class="container">
     <div class="row">
@@ -177,6 +181,10 @@
     </div>
 </div>
 
+@endsection
+
+@section('script')
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
@@ -204,48 +212,5 @@
                 })
             });
         });
-
-        $(function() {
-
-            $('#tablecontents').sortable({
-                items: "tr",
-                cursor: 'move',
-                opacity: 0.6,
-                update: function() {
-                    sendOrderToServer();
-                }
-            });
-
-            function sendOrderToServer() {
-                var order = [];
-                var token = $('meta[name="csrf-token"]').attr('content');
-
-                $('tr.row1').each(function(index,element) {
-                    order.push({
-                        id: $(this).attr('data-id'),
-                        position: index+1
-                    });
-                });
-
-                $ajax({
-                    type: "POST",
-                    dataType: "json",
-                    url: "{{ url('/admin/slide-sortable') }}",
-                    data: {
-                        order: oreder,
-                        _token: token
-                    },
-                    success: function(response) {
-                        if (response.status == "success") {
-                            console.log(response);
-                        } else {
-                            console.log(response);
-                        }
-                    }
-                })
-            }
-        });
     </script>
-
-</body>
-</html>
+@endsection
