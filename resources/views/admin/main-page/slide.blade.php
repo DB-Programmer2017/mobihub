@@ -13,6 +13,7 @@
     <style>
         #page_list2 li,
         #page_list2 .trd
+<<<<<<< Updated upstream
         {
             padding:16px;
             background-color:#f9f9f9;
@@ -38,6 +39,8 @@
         }
 
         #page_list li
+=======
+>>>>>>> Stashed changes
         {
             padding:16px;
             background-color:#f9f9f9;
@@ -45,13 +48,21 @@
             cursor:move;
             margin-top:12px;
         }
-        #page_list li.ui-state-highlight
+        #page_list2 li.ui-state-highlight,
+        #page_list2 .trd.ui-state-highlight
         {
             padding:24px;
             background-color:#ffffcc;
             border:1px dotted #ccc;
             cursor:move;
             margin-top:12px;
+        }
+        .list-group-item img{
+            height: 30px;
+            display: inline-block;
+        }
+        .list-group-item .btn{
+            float: right;
         }
     </style>
 @endsection
