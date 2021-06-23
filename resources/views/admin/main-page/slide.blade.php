@@ -11,8 +11,30 @@
 
 
     <style>
-        #sortable-list tr	{
+        #page_list2 li,
+        #page_list2 .trd
+        {
+            padding:16px;
+            background-color:#f9f9f9;
+            border:1px dotted #ccc;
             cursor:move;
+            margin-top:12px;
+        }
+        #page_list2 li.ui-state-highlight,
+        #page_list2 .trd.ui-state-highlight
+        {
+            padding:24px;
+            background-color:#ffffcc;
+            border:1px dotted #ccc;
+            cursor:move;
+            margin-top:12px;
+        }
+        .list-group-item img{
+            height: 30px;
+            display: inline-block;
+        }
+        .list-group-item .btn{
+            float: right;
         }
 
         #page_list li
@@ -37,8 +59,6 @@
 {{-- Body HTML --}}
 @section('content')
 
-<form id="dd-form" action="{{ route('updateOrder') }}" method="post">
-    <div id="message-box" style="display:none">{{session("success")}} Waiting for sortation submission...</div>
 
 <div class="container">
     <div class="row">
@@ -56,63 +76,35 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel-body table-responsive">
 
-                    <p>
-                        <input type="checkbox" style="opacity:0" checked value="1" name="autoSubmit" id="autoSubmit" checked />
-                        <label for="autoSubmit"></label>
-                    </p>
+                <ul class="list-unstyled" id="page_list2">
+                    @foreach ($slides_banner as $row2)
+                        <li class="list-group-item" id="{{ $row2->id }}">
+                            #{{$slides_banner->firstItem()+$loop->index}} )
+                                @if ($row2->is_enable == "1")
+                                    <span class="label label-success">Publish</span>
+                                @else
+                                    <span class="label label-danger">Suspend</span>
+                                @endif
 
-                    <table class="table table-hover" id="table-draggable2" >
-                        <thead>
-                            <tr class="active">
-                                <th width="5%">#</th>
-                                <th width="13%">Created</th>
-                                <th>Photo</th>
-                                <th width="5%">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody  id="sortable-list">
-                            <?php $order = array(); ?>
-                            @foreach ($slides_banner as $row)
-                                <tr  title="{{ $row->id }}">
-                                    <td>{{$slides_banner->firstItem()+$loop->index}}</td>
-                                    <td>
-                                        {{$row->created_at}}
-                                    </td>
-                                    <td>
-                                        @if ($row->cover_img  !='')
-                                            <a href="javascript:void(0)"  class="edit" data-id="{{ $row->id }}" data-toggle="modal" data-target="#myModal2">
-                                                <img src="{{asset('storage/images/' . $row->cover_img)}}" class="img-responsive">
-                                            </a>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($row->is_enable == "1")
-                                            <span class="label label-success">Publish</span>
-                                        @else
-                                            <span class="label label-danger">Suspend</span>
-                                        @endif
-                                    </td>
+                            <img src="{{asset('storage/images/' . $row2->cover_img)}}" class="img-responsive">
+                            @if ($row2->cover_img  !='')
+                                <a href="javascript:void(0)"  class="edit btn btn-info" data-id="{{ $row2->id }}" data-toggle="modal" data-target="#myModal2">
+                                    Edit
+                                </a>
+                            @endif
+                        </li>
+                    @endforeach
+                </ul>
+                <input type="hidden" name="page_order_list2" id="page_order_list2" />
 
-                                </tr>
-
-                                <?php $order[] = $row['id']; ?>
-                            @endforeach
-
-                            <input type="hidden" name="sort_order" id="sort_order" value="<?php echo implode(',',$order); ?>" />
-
-                        </tbody>
-                    </table>
-
-
-
-                </div>
             </div>
         </div>
     </div>
 </div>
-</form>
+
+
+
 {{-- Modal: add a new slide banner --}}
 <div class="container">
     <div class="row">
@@ -212,30 +204,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $( "#page_list" ).sortable({
-            placeholder : "ui-state-highlight",
-            update  : function(event, ui)
-            {
-            var page_id_array = new Array();
-            $('#page_list li').each(function(){
-                page_id_array.push($(this).attr("id"));
-            });
-            $.ajax({
-                url:"update.php",
-                method:"POST",
-                data:{page_id_array:page_id_array},
-                success:function(data)
-                {
-                alert(data);
-                }
-            });
-            }
-            });
-        });
-    </script>
-
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function($){
@@ -262,54 +232,56 @@
             });
 
 
-            var sortInput = jQuery('#sort_order');
-            var submit = jQuery('#autoSubmit');
-            var messageBox = jQuery('#message-box');
-            var list = jQuery('#sortable-list');
-            /* create requesting function to avoid duplicate code */
-            var request = function() {
-                jQuery.ajax({
-                    beforeSend: function() {
-                        messageBox.text('Updating the sort order in the database.');
-                    },
-                    complete: function() {
-                        messageBox.text('Database has been updated.');
-                        window.location.assign(page);
-                    },
-                    data: 'sort_order=' + sortInput[0].value + '&ajax=' + submit[0].checked + '&do_submit=1&byajax=1', //need [0]?
-                    type: 'post',
-                    url: '<?php echo $_SERVER["REQUEST_URI"]; ?>'
+            $( "#page_list2" ).sortable({
+                placeholder : "ui-state-highlight",
+                update  : function(event, ui){
+                var page_id_array = new Array();
+
+                $('#page_list2 li').each(function(){
+                    page_id_array.push($(this).attr("id"));
                 });
-            };
-            /* worker function */
-            var fnSubmit = function(save) {
-                var sortOrder = [];
-                list.children('tr').each(function(){
-                    sortOrder.push(jQuery(this).data('id'));
+
+                //alert(page_id_array);
+
+                $.ajax({
+                    url:"/admin/sortable/update/"+page_id_array,
+                    method:"GET",
+                    data:{
+                        page_id_array:page_id_array
+                    },
+                    success:function(data)
+                    {
+                    //alert(data);
+                        window.location.reload();
+                    }
                 });
-                sortInput.val(sortOrder.join(','));
-                console.log(sortInput.val());
-                if(save) {
-                    request();
-                }
-            };
-            /* store values */
-            list.children('tr').each(function() {
-                var li = jQuery(this);
-                li.data('id',li.attr('title')).attr('title','');
-            });
-            /* sortables */
-            list.sortable({
-                opacity: 0.7,
-                update: function() {
-                    fnSubmit(submit[0].checked);
                 }
             });
-            list.disableSelection();
-            /* ajax form submission */
-            jQuery('#dd-form').bind('submit',function(e) {
-                if(e) e.preventDefault();
-                fnSubmit(true);
+
+            $( "#page_list" ).sortable({
+                placeholder : "ui-state-highlight",
+                update  : function(event, ui){
+                var page_id_array = new Array();
+
+                $('.trd').each(function(){
+                    page_id_array.push($(this).attr("id"));
+                });
+
+                //alert(page_id_array);
+
+                $.ajax({
+                    url:"/admin/sortable/update/"+page_id_array,
+                    method:"GET",
+                    data:{
+                        page_id_array:page_id_array
+                    },
+                    success:function(data)
+                    {
+                    //alert(data);
+                        window.location.reload();
+                    }
+                });
+                }
             });
         });
 
