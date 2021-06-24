@@ -15,6 +15,7 @@ use App\Http\Controllers\SlideAllController;
 use App\Http\Controllers\MobihubController;
 use App\Http\Controllers\ArmorxController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\Import_Export_Controller ;
 
 
 /*
@@ -148,6 +149,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/product-category/edit',[ProductController::class,'editProductCate'])->name('editProductCate');//update
     Route::get('/admin/product-category/{id}/editProductCategory', [ProductController::class, 'editProductCategory']);//edit
     Route::get('/admin/product/getCategory/{id}', [ProductController::class, 'getCategory']);
+    //Route::post('fileImport', [Import_Export_Controller::class, 'fileImport'])->name('fileImport');
+    Route::post('file-import', [Import_Export_Controller::class, 'fileImport'])->name('file-import');
+    Route::get('file-export', [Import_Export_Controller::class, 'fileExport'])->name('file-export');
 
 
     /*Sub Category*/

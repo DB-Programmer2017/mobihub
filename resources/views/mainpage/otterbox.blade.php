@@ -95,6 +95,11 @@
             display: inline;
         }
     }
+    @media  (min-width:800px)  and (max-width:900px) { 
+        #menu-toggle{
+            display: none;
+        }
+    }
 </style>
 @endsection
 
@@ -107,7 +112,7 @@
 
     <form action="{{url('/armor-x/filter')}}" method="POST">
     <div id="mySidenavArmorx" class="sidenav-armorx ">
-        <a href="/armor-x" class=brand>ARMOR-X</a>
+        <a href="/armor-x" class=brand>OTTERBOX</a>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNavArmorx()">&times;</a>
         
         @foreach ($brands as $brand)
@@ -240,8 +245,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 col-md-9">
-
+            <div class="col-xs-12 col-md-9 products-panel">
                 <div class="col-xs-12 col-md-12">
                     <div class="well well-sm">
                         <p>
@@ -305,5 +309,10 @@
     function closeNavArmorx() {
         document.getElementById("mySidenavArmorx").style.width = "0";
     }
+
+    var screenWidth = screen.width;
+    var screenHeight = screen.height;
+
+    //alert(screenWidth);
 </script>
 @endsection
