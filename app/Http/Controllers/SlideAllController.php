@@ -51,7 +51,8 @@ class SlideAllController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'cover_img' => 'required'
+            'cover_img' => 'required',
+            'size'      => 'required',
         ]);
 
         if($request->hasFile('cover_img')) {
@@ -80,7 +81,8 @@ class SlideAllController extends Controller
         // }
 
         $new_slide              = new SlideAllModel;
-        $new_slide->cover_img    = $filenameToStore;
+        $new_slide->cover_img   = $filenameToStore;
+        $new_slide->size        = $request->size;
         $new_slide->save();
 
         return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");
@@ -113,28 +115,30 @@ class SlideAllController extends Controller
             $filenameToStore = '';
         }
 
-
-        if($request->has('product_id2')) {
-            $id  = $request->product_id2;
+        if($request->has('slide_id2')) {
+            $id  = $request->slide_id2;
 
             if($filenameToStore == ''){
                 SlideAllModel::find($id)->update([
-                    'is_enable'=>$request->is_enable2
+                    'is_enable' => $request->is_enable2,
+                    'size'      => $request->size2
                 ]);
             }else{
                 SlideAllModel::find($id)->update([
-                    'cover_img'=> $filenameToStore,
-                    'is_enable'=>$request->is_enable2
+                    'cover_img' => $filenameToStore,
+                    'is_enable' => $request->is_enable2,
+                    'size'      => $request->size2
                 ]);
             }
-            return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");
         }
+
+        return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");
     }
 
     /** To update the order of slides **/
     public function updateOrder(Request $request) {
         $ids = explode(',', $request->sort_order);
-        dd($ids);
+        
         $slides     =   SlideAllModel::all();
 
         foreach ($slides as $slide) {

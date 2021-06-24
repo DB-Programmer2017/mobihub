@@ -17,7 +17,8 @@ class DealerModel extends Model
         'cover_img',
         'is_enable',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'slug'
     ];
 
     public function brands() {
