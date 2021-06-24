@@ -954,8 +954,9 @@ body {
     padding: 25px 15px;
 }
 .armor-x-panel-3 .product-grid .title{
+    height: 50px;
     font-family: 'Prompt', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     text-transform: capitalize;
     margin: 0 0 26px;
@@ -979,7 +980,7 @@ body {
 }
 .armor-x-panel-3 .product-grid .add-to-cart{
     color: #eb6864;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     text-transform: capitalize;
     text-decoration: none;
@@ -1319,5 +1320,16 @@ body {
     }
     .armor-x-panel-3 .category-menu-panel{
         display: none;
+    }
+}
+
+/*-------------------------- iPad แนวตั้ง------------*/
+@media  (min-width:800px)  and (max-width:900px) { 
+    .armor-x-panel-3 .category-menu-panel{
+        display: block;
+        width: 30%;
+    }
+    .armor-x-panel-3 .products-panel{
+        width: 70%;
     }
 }
