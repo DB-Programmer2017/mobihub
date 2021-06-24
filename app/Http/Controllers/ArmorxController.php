@@ -81,7 +81,7 @@ class ArmorxController extends Controller
         }
 
 
-        return view('mainpage/armor-x',compact(['brands','product', 'sub_categories']));
+        return view('mainpage/armor-x',compact(['brands','product']));
     }
 
     public function numberProduct() {
