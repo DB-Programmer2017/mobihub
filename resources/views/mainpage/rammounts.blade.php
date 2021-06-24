@@ -5,11 +5,139 @@
 
 {{-- Link CSS --}}
 @section('link')
+<style>
+    #menu-toggle{
+        display: none;
+        height: 40px;
+        width: 40px;
+        padding-top: 10px;
+        text-align: center;
+        border-radius: 50px;
+        position: fixed;
+        font-size: 20px;
+        color: #fff;
+        background: #fb5d5d;
+        bottom: 0;
+        right: 0;
+        margin-right: 10px;
+        margin-bottom: 10%;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        z-index: 9999;
+    }
 
+    .sidenav-armorx {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 999999;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .sidenav-armorx a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 16px;
+        color: #000;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidenav-armorx .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 46px;
+        margin-left: 50px;
+    }
+
+    @media screen and (max-height: 450px) {
+    .sidenav-armorx {padding-top: 15px;}
+    .sidenav-armorx a {font-size: 18px;}
+    }
+    .brand{
+        width: 70%;
+        font-size: 35px;
+        font-weight: bold;
+        text-align: right;
+        background: #f4f4f4;
+        margin-top: -40px;
+    }
+    .brand-title{
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .brand-title i{
+        float: right;
+    }
+    .category-title{
+        padding-left: 20px;
+        border-left: 1px dashed #f4f4f4;
+    }
+    .sidenav-armorx  .sub-category-title{
+        margin-left: 20px;
+    }
+    .sub-category-title label{
+        font-weight: normal;
+    }
+    @media  (min-width: 320px)  and (max-width: 736px) { 
+        #menu-toggle{
+            display: inline;
+        }
+    }
+    @media  (min-width: 767px)  and (max-width: 1023px) { 
+        #menu-toggle{
+            display: inline;
+        }
+    }
+</style>
 @endsection
 
 {{-- Body HTML --}}
 @section('content')
+    <div id="menu-toggle" onclick="openNavArmorx()">
+        <i class="fas fa-list-ul"></i>
+    </div>
+
+    <form action="{{url('/armor-x/filter')}}" method="POST">
+    <div id="mySidenavArmorx" class="sidenav-armorx ">
+        <a href="/armor-x" class=brand>ARMOR-X</a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNavArmorx()">&times;</a>
+        
+        @foreach ($brands as $brand)
+        @csrf
+            @if(!empty($_GET['category']))
+                @php 
+                    $filter_cates=explode(",",$_GET['category']); 
+                @endphp
+            @endif
+            <a href="#" class="brand-title">
+                {{ $brand->name }} <i class="fas fa-caret-down"></i>
+            </a>
+
+            <?php $counter=0; ?>
+                @if(!empty($brand->categories))
+                    @foreach ($brand->categories as $category)
+                        {{-- <a href="#" class="category-title" data-id="{{ $category->id }}">{{ $category->name }}</a> --}}
+
+                        @foreach($category->subCategories as $subCategory)
+                            <a href="#" class="sub-category-title">
+                                <input class="custom-control-input category_checkbox" type="checkbox" @if(!empty($filter_cates) && in_array($subCategory->slug,$filter_cates)) checked @endif   att-name="{{ $subCategory->name }}" value="{{ $subCategory->slug }}" name="category[]" onchange="this.form.submit();" id="{{ $subCategory->id }}"> 
+                                <label for="{{ $subCategory->id }}">{{ $subCategory->name }} [{{ count(App\Models\ProductAllModel::where('sub_category_id', $subCategory->id)->get()) }}]</label>
+                            </a>
+                        @endforeach
+                    @endforeach
+                @endif
+        @endforeach
+
+    </div>
+    </form>
+
     <section class="rammounts-panel">
 
     </section>
@@ -56,14 +184,14 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-md-12">
-                <ul class="breadcrumb">
+            <div class="col-xs-12 col-md-12" style="margin-top: 20px">
+                {{-- <ul class="breadcrumb">
                     <li><a href="#">APPLE</a></li>
                     <li><a href="#">IPHONE 12 CASES (895)</a></li>
-                </ul>
+                </ul> --}}
             </div>
 
-            <div class="col-xs-12 col-md-3">
+            <div class="col-xs-12 col-md-3 category-menu-panel">
                 <div class="panel-group" id="accordion-3" role="tablist" aria-multiselectable="true">
                 <form action="{{url('/rammounts/filter')}}" method="POST">
                     @foreach ($brands as $brand)
@@ -169,5 +297,13 @@
 
         e.preventDefault();
     });
+
+    function openNavArmorx() {
+        document.getElementById("mySidenavArmorx").style.width = "100%";
+    }
+
+    function closeNavArmorx() {
+        document.getElementById("mySidenavArmorx").style.width = "0";
+    }
 </script>
 @endsection

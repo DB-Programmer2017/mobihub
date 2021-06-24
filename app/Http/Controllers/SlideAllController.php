@@ -11,11 +11,7 @@ use Redirect,Response;
 class SlideAllController extends Controller
 {
     function slide (Request $request){
-<<<<<<< Updated upstream
         $slides_banner   = SlideAllModel::orderBy('rd', 'ASC')->paginate(20) ;
-=======
-        $slides_banner   = SlideAllModel::orderby('rd','ASC')->paginate(20) ;
->>>>>>> Stashed changes
         return view('/admin/main-page/slide',compact(['slides_banner']));
     }
 

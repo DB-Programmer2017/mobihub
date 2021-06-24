@@ -13,7 +13,6 @@
     <style>
         #page_list2 li,
         #page_list2 .trd
-<<<<<<< Updated upstream
         {
             padding:16px;
             background-color:#f9f9f9;
@@ -39,8 +38,6 @@
         }
 
         #page_list li
-=======
->>>>>>> Stashed changes
         {
             padding:16px;
             background-color:#f9f9f9;

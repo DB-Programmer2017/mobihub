@@ -11,7 +11,8 @@ class mobihubcontroller extends Controller
     function news (Request $request){
         $news      = NewsAllModel::where('is_enable', '1')->orderBy('updated_at', 'desc')->paginate(9) ;
         $newscate  = NewsCategoryModel::all();
-        //$product_cate   = ProductAllModel::paginate(20) ;
+        
+        //dd($news);
 
         return view('mainpage/news-post',compact(['news','newscate']));
     }

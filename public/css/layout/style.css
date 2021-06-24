@@ -644,8 +644,7 @@ body {
     background-repeat: no-repeat;
     background-size:cover;
     font-family: 'Prompt', sans-serif;
-    padding-top: 70px;
-    padding-bottom: 50px;
+    margin-top: -50px;
 }
 
 .otterbox-panel{
@@ -657,8 +656,7 @@ body {
     background-repeat: no-repeat;
     background-size:cover;
     font-family: 'Prompt', sans-serif;
-    padding-top: 70px;
-    padding-bottom: 50px;
+    margin-top: -50px;
 }
 
 .armor-x-panel{
@@ -670,8 +668,8 @@ body {
     background-repeat: no-repeat;
     background-size:cover;
     font-family: 'Prompt', sans-serif;
-    padding-top: 70px;
-    padding-bottom: 50px;
+    margin-top: -50px;
+}
 }
 .armor-x-panel-2{
     position: relative;
@@ -833,6 +831,7 @@ body {
 .armor-x-panel-3 .container{
     margin-top: 50px;
 }
+
 .armor-x-panel-3 .product-grid{
     font-family: 'Prompt', sans-serif;
     text-align: center;
@@ -1269,3 +1268,33 @@ body {
     #modal-contact-sale .modal-dialog{ width: 93% !important; }
 }
 
+/*-------------------------- Mobile แนวตั้ง------------*/
+@media  (min-width: 320px)  and (max-width: 736px) { 
+    .armor-x-panel,.rammounts-panel{
+        margin-top: -16%;
+    }
+    .armor-x-panel-3 .category-menu-panel{
+        display: none;
+    }
+    .armor-x-panel-3 .product-grid .product-image{
+        height: auto;
+    }
+    .armor-x-panel-2{
+        width: 90%;
+        margin-top: -40%;;
+    }
+}
+
+/*-------------------------- iPad แนวตั้ง------------*/
+@media  (min-width: 767px)  and (max-width: 1023px) { 
+    .armor-x-panel,.rammounts-panel{
+        margin-top: -9%;
+    }
+    .armor-x-panel-2{
+        width: 90%;
+        margin-top: -10%;;
+    }
+    .armor-x-panel-3 .category-menu-panel{
+        display: none;
+    }
+}
