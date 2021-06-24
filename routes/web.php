@@ -78,6 +78,9 @@ Route::get('/clear-cache', function() {
         Route::get('/scalefusion/report', function () {
             return view('mainpage/scalefusion/report');
         });
+        Route::get('/scalefusion/workflow', function () {
+            return view('mainpage/scalefusion/workflow');
+        });
 
 
 // Route::get('/armor-x', function () {

@@ -242,7 +242,7 @@
                                             <img src="/image/mainpage/scalefusion/icon/line 50.svg" alt="">
                                         </div>
                                         <div class="button-link">
-                                            <a href="#" class="button-box">
+                                            <a href="/scalefusion/workflow" class="button-box">
                                                 <div class="box-content">
                                                     <img class="img-responsive" src="/image/mainpage/scalefusion/icon/process.png" alt="">
                                                     <div class="post">Workflows</div>
