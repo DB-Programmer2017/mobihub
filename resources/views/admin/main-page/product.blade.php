@@ -533,7 +533,7 @@
                         <!-- Form -->
                         <form action="{{ route('file-import') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <input type='file' name='file-csv' accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="form-control" style="margin-bottom: 30px">
+                            <input type='file' name='file-csv' accept=".csv" class="form-control" style="margin-bottom: 30px">
 
                             <button type="submit" name='submit' value='Import' class="btn btn-info"><i class="fas fa-cloud-upload-alt"></i> Import</button>
                         </form>
