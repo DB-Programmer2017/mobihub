@@ -241,7 +241,6 @@ class ArmorxController extends Controller
         return view('mainpage/rammounts',compact(['brands', 'sub_categories']));
     }
 
-
     // function news_slide(){
     //     $news = NewsAllModel::where('is_enable', '1')->get();
     //      return view('mainpage/home',compact(['news']));
