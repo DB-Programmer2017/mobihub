@@ -6,13 +6,13 @@ use App\Models\NewsCategoryModel;
 
 use Illuminate\Http\Request;
 
-class mobihubcontroller extends Controller
+class MobihubController extends Controller
 {
     function news (Request $request){
-        $news      = NewsAllModel::where('is_enable', '1')->orderBy('updated_at', 'desc')->paginate(9) ;
+        $news      = NewsAllModel::where('is_enable', '1')->orderBy('updated_at', 'desc')->paginate(9);
         $newscate  = NewsCategoryModel::all();
-        
-        //dd($news);
+
+        // dd($news);
 
         return view('mainpage/news-post',compact(['news','newscate']));
     }
