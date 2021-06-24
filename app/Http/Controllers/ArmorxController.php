@@ -10,8 +10,8 @@ use App\Models\ProductGalleryModel;
 use App\Models\ProductChoiceModel;
 use App\Models\ProductChoiceListModel;
 use App\Models\SubCategoryModel;
-use App\Models\SlideAllModel;
-use App\Models\NewsAllModel;
+
+
 
 use Illuminate\Http\Request;
 
@@ -241,11 +241,7 @@ class ArmorxController extends Controller
         return view('mainpage/rammounts',compact(['brands', 'sub_categories']));
     }
 
-    function index_slide(){
-        $product = SlideAllModel::where('is_enable', '1')->get();
-        $news = NewsAllModel::where('is_enable', '1')->get();
-         return view('mainpage/home',compact(['product', 'news']));
-    }
+
 
     // function news_slide(){
     //     $news = NewsAllModel::where('is_enable', '1')->get();

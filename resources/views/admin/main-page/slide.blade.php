@@ -13,7 +13,6 @@
     <style>
         #page_list2 li,
         #page_list2 .trd
-<<<<<<< Updated upstream
         {
             padding:16px;
             background-color:#f9f9f9;
@@ -39,8 +38,6 @@
         }
 
         #page_list li
-=======
->>>>>>> Stashed changes
         {
             padding:16px;
             background-color:#f9f9f9;
@@ -143,6 +140,17 @@
                                         </div>
                                     </div>
 
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="form-group">
+                                            Size :
+                                            <select class="form-control" name="size" id="size">
+                                                @foreach ( \App\Models\SlideAllModel::slide_sizes as $key=>$value)
+                                                    <option value="{{ $value }}"> {{ $key }} </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
                                     <button class="btn-save">Save</button>
                                 </div>
                             </div>
@@ -171,7 +179,7 @@
                                 <div class="modal-body">
                                     <h3 class="title">Edit Slide</h3>
 
-                                    <input type="hidden" readonly id="product_id2" name="product_id2" class="form-control">
+                                    <input type="hidden" readonly id="slide_id2" name="slide_id2" class="form-control">
 
 
                                     <div class="col-xs-12 col-md-12">
@@ -185,6 +193,17 @@
                                             <center>
                                                 <input type="file" id="cover_img2" name="cover_img2">
                                             </center>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-md-2">
+                                        <div class="form-group">
+                                            Size :
+                                            <select class="form-control" name="size2" id="size2">
+                                                @foreach ( \App\Models\SlideAllModel::slide_sizes as $key=>$value)
+                                                    <option value="{{ $value }}"> {{ $key }} </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 
@@ -215,8 +234,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    {{-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script> --}}
+    <script src="{{ asset('js/sortable.js') }}"></script>
 
     <script type="text/javascript">
         $(document).ready(function($){
@@ -234,8 +253,9 @@
 
                 $.get('/admin/slide/' + softwareEnq_id +'/editSlide', function (res) {
                     $('#product-list').html("");
-                    $('#product_id2').val(res.id);
+                    $('#slide_id2').val(res.id);
                     $('#is_enable2').val(res.is_enable);
+                    $('#size2').val(res.size);
 
                     $('#product-cover').append('<center><img src="{{url('storage/images/')}}/'+res.cover_img +'" class="img-responsive" alt="">'+
                     '</center>');

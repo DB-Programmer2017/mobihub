@@ -14,9 +14,12 @@
      <!-- Swiper -->
     <div class="swiper-container swiper-container-0 mySwiper">
         <div class="swiper-wrapper">
-            @foreach ($product as $row)
+            @foreach ($slides as $row)
             <div class="swiper-slide">
                 <picture>
+                    <source srcset="/image/home/Untitled-1.jpg" media="(min-width: 1200px)">
+                    <source srcset="/image/home/armor-x-mobile.jpg" media="(min-width: 800px)">
+                    <source srcset="/image/home/armor-x-s-mobile.jpg" media="(min-width: 200px)">
                     <img src="{{asset('storage/images/' . $row->cover_img)}}" >
                  </picture>
             </div>
@@ -25,7 +28,7 @@
                 <picture>
                     <source srcset="/image/home/Untitled-1.jpg" media="(min-width: 1200px)">
                     <source srcset="/image/home/armor-x-mobile.jpg" media="(min-width: 800px)">
-                        <source srcset="/image/home/armor-x-s-mobile.jpg" media="(min-width: 200px)">
+                    <source srcset="/image/home/armor-x-s-mobile.jpg" media="(min-width: 200px)">
                     <img src="/image/home/Untitled-1.jpg" alt="MDN Web Docs">
                  </picture>
             </div>

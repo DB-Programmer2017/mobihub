@@ -15,6 +15,7 @@ use App\Http\Controllers\SlideAllController;
 use App\Http\Controllers\MobihubController;
 use App\Http\Controllers\ArmorxController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\HomePageController;
 
 
 /*
@@ -35,12 +36,7 @@ Route::get('/clear-cache', function() {
 });
 
 
-
-// Route::get('/', function () {
-//     return view('mainpage/home');
-// });
-    Route::get('/', [ArmorxController::class, 'index_slide']);
-    // Route::get('/', [ArmorxController::class, 'news_slide']);
+    Route::get('/', [HomePageController::class, 'index_slide']);
 
     /*** Quotation ***/
     Route::get('/quotation', [QuotationController::class, 'create']);
@@ -194,8 +190,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('ckeditor', [CkeditorController::class, 'index']);
     Route::post('ckeditor/upload',[CkeditorController::class, 'upload'])->name('ckeditor.upload');
 
-    Route::get('/admin/sortable', [SlideAllController::class,'sortable']);
-    Route::get('/admin/sortable/update/{id}',[SlideAllController::class,'sortableUpdate']);
 });
 
 

@@ -19,7 +19,14 @@ class SlideAllModel extends Model
         'created_at',
         'updated_at',
         'cover_img',
-        'rd'
+        'rd',
+        'size',
+    ];
+
+    const slide_sizes = [
+        'Desktop'   => '1',
+        'Tablet'    => '2',
+        'Mobile'    => '3'
     ];
 
 }
