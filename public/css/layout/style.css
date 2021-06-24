@@ -939,6 +939,7 @@ body {
     top: 50%;
     transition: all 250ms ease-in-out 0s;
 }
+
 .armor-x-panel-3 .product-grid .product-links li a:after{
     content: '';
     height: 10px;
