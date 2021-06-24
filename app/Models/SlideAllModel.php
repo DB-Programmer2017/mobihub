@@ -29,4 +29,15 @@ class SlideAllModel extends Model
         'Mobile'    => '3'
     ];
 
+    public function isDesktop() {
+        return $this->size == 1;
+    }
+
+    public function isTablet() {
+        return $this->size == 2;
+    }
+
+    public function isMobile() {
+        return $this->size == 3;
+    }
 }

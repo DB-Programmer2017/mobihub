@@ -28,7 +28,8 @@ class ProductAllModel extends Model
         'price_sale',
         'is_quo',
         'stock_amount',
-        'meta_tag'
+        'meta_tag',
+        'slug'
     ];
 
     function category() {
