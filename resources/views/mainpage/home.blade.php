@@ -6,7 +6,11 @@
 {{-- Link CSS --}}
 @section('link')
 <link rel="stylesheet" href="/css/mainpage/home.css">
-
+<style>
+     h3,h4,h2,h1,p  {
+        font-family: 'Prompt';
+    }
+</style>
 @endsection
 
 {{-- Body HTML --}}
@@ -152,122 +156,103 @@
                 <!-- Swiper -->
                 <div class="swiper-container swiper-container-3 mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="box">
-                                <img class="img-responsive" src="/image/home/product/product2.jpg" alt="">
-                                <div class="text-1">
-                                    <h3>
-                                        IPHONE 12 PRO / 12 PRO MAX CASE
-                                    </h3>
-                                    <h2>
-                                        SHOCKPROOF DROP PROOF RUGGED
-                                        COVER W/ X-MOUNT & CARABINER
-                                    </h2>
-                                </div>
-                                <div class="flex-box">
-                                    <div class="text-2">
-                                        รหัสสินค้า : 77-65501
+                        @foreach ($recommend as $row)
+                            <div class="swiper-slide"
+                            onclick="window.open('/{{Illuminate\Support\Str::lower($row->dealer->name) }}-product/{{ $row->slug }}')">
+                                <div class="box">
+                                    <img class="img-responsive" src="{{asset('storage/images/' . $row->cover_img)}}" alt="">
+                                    <div class="text-1">
+                                        <h3>
+                                            {{ $row->product_tag }}
+                                        </h3>
+                                        <h2>
+                                            {{ mb_strimwidth($row->name, 0, 40, "...", "UTF-8") }}
+                                        </h2>
                                     </div>
-                                    <button class="btn btn-primary" type="button">ติดต่อผู้ขาย</button>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="box">
-                                <img class="img-responsive" src="/image/home/product/product3.jpg" alt="">
-                                <div class="text-1">
-                                    <h3>
-                                        Gaming
-                                    </h3>
-                                    <h2>
-                                        RAM-B-149Z-UN7U
-                                    </h2>
-                                </div>
-                                <div class="flex-box">
-                                    <div class="text-2">
-                                        รหัสสินค้า : 77-65501
+                        @endforeach
+                                {{-- <div class="swiper-slide">
+                                    <div class="box">
+                                        <img class="img-responsive" src="/image/home/product/product3.jpg" alt="">
+                                        <div class="text-1">
+                                            <h3>
+                                                Gaming
+                                            </h3>
+                                            <h2>
+                                                RAM-B-149Z-UN7U
+                                            </h2>
+                                        </div>
+                                        <div class="flex-box">
+                                            <button class="btn btn-primary" type="button">ติดต่อผู้ขาย</button>
+                                        </div>
                                     </div>
-                                    <button class="btn btn-primary" type="button">ติดต่อผู้ขาย</button>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="box">
-                                <img class="img-responsive" src="/image/home/product/product4.jpg" alt="">
-                                <div class="text-1">
-                                    <h3>
-                                        AirPods
-                                    </h3>
-                                    <h2>
-                                        Ispra Series Case
-                                    </h2>
-                                </div>
-                                <div class="flex-box">
-                                    <div class="text-2">
-                                        รหัสสินค้า : 77-65501
+                                <div class="swiper-slide">
+                                    <div class="box">
+                                        <img class="img-responsive" src="/image/home/product/product4.jpg" alt="">
+                                        <div class="text-1">
+                                            <h3>
+                                                AirPods
+                                            </h3>
+                                            <h2>
+                                                Ispra Series Case
+                                            </h2>
+                                        </div>
+                                        <div class="flex-box">
+                                            <button class="btn btn-primary" type="button">ติดต่อผู้ขาย</button>
+                                        </div>
                                     </div>
-                                    <button class="btn btn-primary" type="button">ติดต่อผู้ขาย</button>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="box">
-                                <img class="img-responsive" src="/image/home/product/product5.jpg" alt="">
-                                <div class="text-1">
-                                    <h3>
-                                        มอเตอร์ไซต์
-                                    </h3>
-                                    <h2>
-                                        RAM-B-149Z-UN7U
-                                    </h2>
-                                </div>
-                                <div class="flex-box">
-                                    <div class="text-2">
-                                        รหัสสินค้า : 77-65501
+                                <div class="swiper-slide">
+                                    <div class="box">
+                                        <img class="img-responsive" src="/image/home/product/product5.jpg" alt="">
+                                        <div class="text-1">
+                                            <h3>
+                                                มอเตอร์ไซต์
+                                            </h3>
+                                            <h2>
+                                                RAM-B-149Z-UN7U
+                                            </h2>
+                                        </div>
+                                        <div class="flex-box">
+                                            <button class="btn btn-primary" type="button">ติดต่อผู้ขาย</button>
+                                        </div>
                                     </div>
-                                    <button class="btn btn-primary" type="button">ติดต่อผู้ขาย</button>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="box">
-                                <img class="img-responsive" src="/image/home/product/product1.jpg" alt="">
-                                <div class="text-1">
-                                    <h3>
-                                        Bag mounting
-                                    </h3>
-                                    <h2>
-                                       Otter Box case
-                                    </h2>
-                                </div>
-                                <div class="flex-box">
-                                    <div class="text-2">
-                                        รหัสสินค้า : 77-65501
+                                <div class="swiper-slide">
+                                    <div class="box">
+                                        <img class="img-responsive" src="/image/home/product/product1.jpg" alt="">
+                                        <div class="text-1">
+                                            <h3>
+                                                Bag mounting
+                                            </h3>
+                                            <h2>
+                                            Otter Box case
+                                            </h2>
+                                        </div>
+                                        <div class="flex-box">
+                                            <button class="btn btn-primary" type="button">ติดต่อผู้ขาย</button>
+                                        </div>
                                     </div>
-                                    <button class="btn btn-primary" type="button">ติดต่อผู้ขาย</button>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="box">
-                                <img class="img-responsive" src="/image/home/product/product1.jpg" alt="">
-                                <div class="text-1">
-                                    <h3>
-                                        IPHONE 12 PRO / 12 PRO MAX CASE
-                                    </h3>
-                                    <h2>
-                                        SHOCKPROOF DROP PROOF RUGGED
-                                        COVER W/ X-MOUNT & CARABINER
-                                    </h2>
-                                </div>
-                                <div class="flex-box">
-                                    <div class="text-2">
-                                        รหัสสินค้า : 77-65501
+                                <div class="swiper-slide">
+                                    <div class="box">
+                                        <img class="img-responsive" src="/image/home/product/product1.jpg" alt="">
+                                        <div class="text-1">
+                                            <h3>
+                                                IPHONE 12 PRO / 12 PRO MAX CASE
+                                            </h3>
+                                            <h2>
+                                                SHOCKPROOF DROP PROOF RUGGED
+                                                COVER W/ X-MOUNT & CARABINER
+                                            </h2>
+                                        </div>
+                                        <div class="flex-box">
+                                            <button class="btn btn-primary" type="button">ติดต่อผู้ขาย</button>
+                                        </div>
                                     </div>
-                                    <button class="btn btn-primary" type="button">ติดต่อผู้ขาย</button>
-                                </div>
-                            </div>
-                        </div>
+                                </div> --}}
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -312,7 +297,7 @@
                                                 {{ $row->title }}
                                             </p>
                                             <p>
-                                                <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
+                                                <i class="far fa-heart"></i> like &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
                                             </p>
                                         </div>
                                     </div>

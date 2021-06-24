@@ -1,5 +1,6 @@
 <?php 
 $title = $newsDetail->name ;
+$url ="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 ?>
 
 @extends('layout/home-2')
@@ -45,11 +46,7 @@ $title = $newsDetail->name ;
                 {!! str_replace('<p>', ' ', $newsDetail->description) !!}
 
                 <ul class="social">
-                    <li  onclick="fb()"> <i class="fab fa-facebook-f"></i>
-                        {{-- <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" target="_blank">
-                            <i class="fab fa-facebook-f"></i>
-                        </a> --}}
-                    </li>
+                    <li  onclick="fb()"> <i class="fab fa-facebook-f"></i></li>
                     <li><i class="fab fa-twitter"></i></li>
                     <li><i class="fab fa-google-plus-g"></i></li>
                 </ul>

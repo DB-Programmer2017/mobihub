@@ -86,11 +86,12 @@
 .product-grid{
     text-align: center;
     transition: all 0.35s ease-in-out;
-    box-shadow: 0 3px 7.92px .08px rgba(0,0,0,.08); 
+    box-shadow: 0 3px 7.92px .08px rgba(0,0,0,.08);
     margin-bottom: 40px;
+    height: 504px;
 }
-.product-grid:hover{ 
-    box-shadow: 0 0 10px -5px #fb5d5d; 
+.product-grid:hover{
+    box-shadow: 0 0 10px -5px #fb5d5d;
     cursor: pointer;
 }
 
@@ -212,8 +213,8 @@
     transition: all 0.3s ease-in;
     text-decoration: none;
 }
-.product-grid .title a:hover{ 
-    color: #fb5d5d; 
+.product-grid .title a:hover{
+    color: #fb5d5d;
 }
 
 .product-grid .price{
@@ -252,7 +253,11 @@
 }
 
 @media screen and (max-width:990px){
-    .product-grid{ margin: 0 0 30px; }
+    .product-grid{
+        margin: 0 0 30px;
+        height: auto;
+    }
+
 }
 
 #panel-news-detail{
@@ -271,7 +276,7 @@
 }
 .panel-content .title{
     font-size: 30px;
-   
+
 }
 .panel-content .news-date{
     margin-bottom: 30px;

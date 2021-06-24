@@ -81,7 +81,7 @@ class ArmorxController extends Controller
         }
 
 
-        return view('mainpage/armor-x',compact(['brands','product', 'sub_categories']));
+        return view('mainpage/armor-x',compact(['brands','product']));
     }
 
     public function numberProduct() {
@@ -240,7 +240,6 @@ class ArmorxController extends Controller
         $sub_categories = ArmorxProductCateModel::with('subCategories')->get();
         return view('mainpage/rammounts',compact(['brands', 'sub_categories']));
     }
-
 
 
     // function news_slide(){

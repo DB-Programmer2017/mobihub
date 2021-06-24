@@ -5,14 +5,143 @@
 
 {{-- Link CSS --}}
 @section('link')
+    <style>
+        #menu-toggle{
+            display: none;
+            height: 40px;
+            width: 40px;
+            padding-top: 10px;
+            text-align: center;
+            border-radius: 50px;
+            position: fixed;
+            font-size: 20px;
+            color: #fff;
+            background: #fb5d5d;
+            bottom: 0;
+            right: 0;
+            margin-right: 10px;
+            margin-bottom: 10%;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            z-index: 9999;
+        }
 
+        .sidenav-armorx {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 999999;
+            top: 0;
+            left: 0;
+            background-color: #fff;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav-armorx a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #000;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav-armorx .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 46px;
+            margin-left: 50px;
+        }
+
+        @media screen and (max-height: 450px) {
+        .sidenav-armorx {padding-top: 15px;}
+        .sidenav-armorx a {font-size: 18px;}
+        }
+        .brand{
+            width: 70%;
+            font-size: 35px;
+            font-weight: bold;
+            text-align: right;
+            background: #f4f4f4;
+            margin-top: -40px;
+        }
+        .brand-title{
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .brand-title i{
+            float: right;
+        }
+        .category-title{
+            padding-left: 20px;
+            border-left: 1px dashed #f4f4f4;
+        }
+        .sidenav-armorx  .sub-category-title{
+            margin-left: 20px;
+        }
+        .sub-category-title label{
+            font-weight: normal;
+        }
+        @media  (min-width: 320px)  and (max-width: 736px) { 
+            #menu-toggle{
+                display: inline;
+            }
+        }
+        @media  (min-width: 767px)  and (max-width: 1023px) { 
+            #menu-toggle{
+                display: inline;
+            }
+        }
+    </style>
 @endsection
 
 {{-- Body HTML --}}
 @section('content')
-    <section class="armor-x-panel">
 
+    <div id="menu-toggle" onclick="openNavArmorx()">
+        <i class="fas fa-list-ul"></i>
+    </div>
+
+    <form action="{{url('/armor-x/filter')}}" method="POST">
+    <div id="mySidenavArmorx" class="sidenav-armorx ">
+        <a href="/armor-x" class=brand>ARMOR-X</a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNavArmorx()">&times;</a>
+        
+        @foreach ($brands as $brand)
+        @csrf
+            @if(!empty($_GET['category']))
+                @php 
+                    $filter_cates=explode(",",$_GET['category']); 
+                @endphp
+            @endif
+            <a href="#" class="brand-title">
+                {{ $brand->name }} <i class="fas fa-caret-down"></i>
+            </a>
+
+            <?php $counter=0; ?>
+                @if(!empty($brand->categories))
+                    @foreach ($brand->categories as $category)
+                        {{-- <a href="#" class="category-title" data-id="{{ $category->id }}">{{ $category->name }}</a> --}}
+
+                        @foreach($category->subCategories as $subCategory)
+                            <a href="#" class="sub-category-title">
+                                <input class="custom-control-input category_checkbox" type="checkbox" @if(!empty($filter_cates) && in_array($subCategory->slug,$filter_cates)) checked @endif   att-name="{{ $subCategory->name }}" value="{{ $subCategory->slug }}" name="category[]" onchange="this.form.submit();" id="{{ $subCategory->id }}"> 
+                                <label for="{{ $subCategory->id }}">{{ $subCategory->name }} [{{ count(App\Models\ProductAllModel::where('sub_category_id', $subCategory->id)->get()) }}]</label>
+                            </a>
+                        @endforeach
+                    @endforeach
+                @endif
+        @endforeach
+
+      </div>
+    </form>
+
+    <section class="armor-x-panel">
     </section>
+
     <div class="container armor-x-panel-2">
         <div class="row">
             <div class="col-xs-12 col-md-6">
@@ -62,59 +191,48 @@
                 </ul> --}}
             </div>
 
-            <div class="col-xs-12 col-md-3 ">
+            <div class="col-xs-12 col-md-3 category-menu-panel">
                 <div class="panel-group" id="accordion-3" role="tablist" aria-multiselectable="true">
                 <form action="{{url('/armor-x/filter')}}" method="POST">
-                @csrf
-                    @foreach ($brands as $brand)  
+                    @foreach ($brands as $brand)
+                        @csrf
 
-                    @if(!empty($_GET['category']))
-                        @php
-                            $filter_cates=explode(",",$_GET['category']);
-                        @endphp
-                    @endif
+                            @if(!empty($_GET['category']))
+                                @php
+                                    $filter_cates=explode(",",$_GET['category']);
+                                @endphp
+                            @endif
 
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingOne">
-                                <h4 class="panel-title">
-                                    <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        {{ $brand->name }} {{-- ({{ $brand->sub_categories_count }}) --}}
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                <div class="panel-body">
-                                <?php $counter=0; ?>
-                                @if(!empty($brand->categories))
-                                @foreach ($brand->categories as $category)
-                                    <li>
-                                        <div class="sub-title" data-id="{{ $category->id }}">{{ $category->name }}<i class="fas fa-chevron-down arrow-right"></i></div>
-
-                                        <ul @if($category->id == 1) class="active" @endif data-id="ul-{{ $category->id }}">
-
-                                            @foreach($category->subCategories as $subCategory) 
+                            <div class="panel panel-default panel-category">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <h4 class="panel-title">
+                                        <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            {{ $brand->name }}
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body">
+                                    <?php $counter=0; ?>
+                                        @if(!empty($brand->categories))
+                                            @foreach ($brand->categories as $category)
                                                 <li>
-                                                    
-                                                    <input class="custom-control-input category_checkbox" type="checkbox" @if(!empty($filter_cates) && in_array($subCategory->id,$filter_cates)) checked @endif   att-name="{{ $subCategory->name }}" value="{{ $subCategory->id }}" name="category[]" onchange="this.form.submit();" id="{{ $subCategory->id }}"> 
-                                                    <label for="{{ $subCategory->id }}">
-                                                        {{ $subCategory->name }} [{{ count(App\Models\ProductAllModel::where('sub_category_id', $subCategory->id)->get()) }}]
-                                                    </label>
-
-                                                    {{-- <div>{{ $subCategory->name }}</div> --}}
-                                                    {{-- @foreach($subCategory->products as $sub_cate)<span>({{ $sub_cate->brand_id }})</span> @endforeach --}}
-                                                    {{-- @foreach($sub_categories as $sub_cate)
-                                                        <span>{{ $sub_cate->products_count }}</span> 
-                                                    @endforeach --}}
+                                                    <div class="sub-title" data-id="{{ $category->id }}">{{ $category->name }}</div>
+                                                    {{-- <ul @if($category->id == 1) class="active" @endif data-id="ul-{{ $category->id }}"> --}}
+                                                        <ul class="active">
+                                                        @foreach($category->subCategories as $subCategory)
+                                                            <li>
+                                                                <input class="custom-control-input category_checkbox" type="checkbox" @if(!empty($filter_cates) && in_array($subCategory->slug,$filter_cates)) checked @endif   att-name="{{ $subCategory->name }}" value="{{ $subCategory->slug }}" name="category[]" onchange="this.form.submit();" id="{{ $subCategory->id }}"> 
+                                                                <label for="{{ $subCategory->id }}">{{ $subCategory->name }} [{{ count(App\Models\ProductAllModel::where('sub_category_id', $subCategory->id)->get()) }}]</label>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
                                                 </li>
-
-                                               
+                                    <?php $counter++; ?>
                                             @endforeach
+                                        @endif
 
-                                        </ul>
-                                    </li>
-                                <?php $counter++; ?>
-                                @endforeach
-                                @endif
+                                    </div>
                                 </div>
                             </div>
                     @endforeach
@@ -134,7 +252,7 @@
                 </div>
 
                     @foreach ($product as $row)  
-                        <div class="col-xs-12 col-md-3">
+                        <div class="col-xs-12 col-sm-6 col-md-4">
                             <div class="product-grid" onclick="window.open('/armor-x-product/{{ $row->slug }}')">
                                 <div class="product-image">
                                     <a href="#" class="image">
@@ -147,7 +265,7 @@
                                     </ul>
                                 </div>
                                 <div class="product-content">
-                                    <h3 class="title"><a href="#">{{ mb_strimwidth($row->name, 0, 40, "...", "UTF-8") }}</a></h3>
+                                    <h3 class="title"><a href="#">{{ mb_strimwidth($row->name, 0, 50, "...", "UTF-8") }}</a></h3>
                                     <a class="add-to-cart" href="#">ติดต่อผู้ขาย</a>
                                 </div>
                             </div>
@@ -180,5 +298,13 @@
 
         e.preventDefault();
     });
+
+    function openNavArmorx() {
+        document.getElementById("mySidenavArmorx").style.width = "100%";
+    }
+
+    function closeNavArmorx() {
+        document.getElementById("mySidenavArmorx").style.width = "0";
+    }
 </script>
 @endsection
