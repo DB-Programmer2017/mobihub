@@ -244,7 +244,9 @@ class ArmorxController extends Controller
     function index_slide(){
         $product = SlideAllModel::where('is_enable', '1')->get();
         $news = NewsAllModel::where('is_enable', '1')->get();
-         return view('mainpage/home',compact(['product', 'news']));
+        $recommend  =  ProductAllModel::where('is_enable', '1')->orderBy('id', 'ASC')->get();
+
+         return view('mainpage/home',compact(['product', 'news' ,'recommend']));
     }
 
     // function news_slide(){

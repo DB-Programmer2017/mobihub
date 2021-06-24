@@ -460,6 +460,20 @@ body {
   -webkit-align-items: center;
   align-items: center;
 }
+.swiper-container-3 .swiper-slide{
+    cursor: pointer;
+    transition: 0.3s;
+}
+.swiper-container-3 .swiper-slide:hover{
+    transform: scale(1.1);
+}
+.swiper-container-3 .swiper-slide img{
+        display: block;
+        width: auto;
+        height: 200px;
+        margin: auto;
+        object-fit: cover;
+}
 .swiper-slide img{
     display: block;
     width: 100%;

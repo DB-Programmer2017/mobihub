@@ -119,4 +119,5 @@ class NewsAllController extends Controller
 		$customer = NewsAllModel::where($where)->first();
 		return Response::json($customer);
 	}
+
 }
