@@ -95,6 +95,11 @@
                 display: inline;
             }
         }
+        @media  (min-width:800px)  and (max-width:900px) { 
+            #menu-toggle{
+                display: none;
+            }
+        }
     </style>
 @endsection
 

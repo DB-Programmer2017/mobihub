@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
+
 
 class ProductAllModel extends Model
 {
@@ -57,4 +59,11 @@ class ProductAllModel extends Model
     function sub_category() {
         return $this->belongsTo(SubCategoryModel::class, 'sub_category_id');
     }
+
+    public static function insertData($data){
+        $value=DB::table('product')->where('name', $data['name'])->get();
+        if($value->count() == 0){
+           DB::table('product')->insert($data);
+        }
+     }
 }

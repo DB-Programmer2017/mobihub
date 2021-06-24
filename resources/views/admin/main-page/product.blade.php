@@ -35,12 +35,27 @@
                             <h4 class="title">Product <span>All</span></h4>
                         </div>
                         <div class="col-sm-7 col-xs-12 text-right">
-                            <button type="button" class="btn btn-info btn-sm show-modal" data-toggle="modal" data-target="#myModal">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-primary show-modal" data-toggle="modal" data-target="#myModal-import"><i class="fas fa-cloud-upload-alt"></i> Import CSV</a>
+                                <a href="{{ route('file-export') }}" class="btn btn-info"><i class="far fa-file-excel"></i> Export Excel</a>
+                                <a href="#" class="btn btn-success show-modal" data-toggle="modal" data-target="#myModal"><i class="fas fa-plus"></i> New Product</a>
+                              </div>
+
+                            {{-- <button type="button" class="btn btn-info btn-sm show-modal" data-toggle="modal" data-target="#myModal">
                                 <i class="fas fa-plus"></i> New Product
-                            </button> 
+                            </button>  --}}
                         </div>
                     </div>
                 </div>
+
+                @if(session('status'))
+                    <div class="col-xs-12 col-md-12">
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    </div>
+                @endif
+
                 <div class="panel-body table-responsive">  
                     <table class="table table-hover" id="datatable2">
                         <thead>
@@ -504,6 +519,31 @@
         </form>
     </div>
 </div>
+
+
+<div class="modal-box">
+    <!-- Modal -->
+    <div class="modal fade product-modal" id="myModal-import" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content clearfix">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <div class="modal-body">
+                        <h3 class="title">Import CSV File</h3>
+
+                        <!-- Form -->
+                        <form action="{{ route('file-import') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type='file' name='file-csv' accept=".csv" class="form-control" style="margin-bottom: 30px">
+
+                            <button type="submit" name='submit' value='Import' class="btn btn-info"><i class="fas fa-cloud-upload-alt"></i> Import</button>
+                        </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 @endsection
 
