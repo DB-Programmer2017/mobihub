@@ -242,7 +242,7 @@ class ArmorxController extends Controller
     }
 
     function index_slide(){
-        $product = SlideAllModel::where('is_enable', '1')->get();
+        $product = SlideAllModel::where('is_enable', '1')->orderBy('rd', 'ASC')->get();
         $news = NewsAllModel::where('is_enable', '1')->get();
         $recommend  =  ProductAllModel::where('is_enable', '1')->orderBy('id', 'ASC')->get();
 
