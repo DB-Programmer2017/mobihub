@@ -22,13 +22,15 @@ class HomePageController extends Controller
     }
     function ajax_slide($screenWidth){
         // dd($screenWidth);
-        if ($screenWidth>="1200"){//Desktop//
+        if ($screenWidth >="1200"){//Desktop//
             $id='1';
             $where = array('size'=> $id);
-        }elseif ($screenWidth>="800" && $screenWidth<="1199"){//Tablet//
+
+        }elseif ($screenWidth >="800" && $screenWidth<="1199"){//Tablet//
             $id='2';
             $where = array('size'=> $id);
-        }elseif ($screenWidth>="500"){//Mobile//
+
+        }elseif ($screenWidth >="400"){//Mobile//
             $id='3';
             $where = array('size'=> $id);
         }else{//Desktop//
