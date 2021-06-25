@@ -38,7 +38,7 @@ Route::get('/clear-cache', function() {
 
 
     Route::get('/', [HomePageController::class, 'index_slide']);
-    Route::get('/homepage/{id}/slide', [HomePageController ::class, 'ajax_slide']);
+    Route::get('/homepage/{id}/ajax_slide', [HomePageController ::class, 'ajax_slide']);
 
     /*** Quotation ***/
     Route::get('/quotation', [QuotationController::class, 'create']);

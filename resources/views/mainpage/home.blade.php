@@ -10,30 +10,40 @@
      h3,h4,h2,h1,p  {
         font-family: 'Prompt';
     }
+
+    .glyphicon-chevron-left:before{
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content:"\f053";
+    }
+    .glyphicon-chevron-right:before{
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content:"\f054";
+    }
 </style>
 @endsection
 
 {{-- Body HTML --}}
 @section('content')
      <!-- Swiper -->
-    <div id='banner-section' class="swiper-container swiper-container-0 mySwiper">
+    {{-- <div id='banner-section' class="swiper-container swiper-container-0 mySwiper">
         <div class="swiper-wrapper">
-            {{-- <span id="banner_list" style="height: 500px;width: 100%;border:1px solid #000">
+<<<<<<< Updated upstream
 
-            </span> --}}
-            {{-- @foreach ($slides as $row)
+=======
+            <div id="banner-list"></div>
+            
+>>>>>>> Stashed changes
+            @foreach ($slides as $row)
             <div class="swiper-slide">
                 <picture>
                     <img src="{{asset('storage/images/' . $row->cover_img)}}" >
                  </picture>
             </div>
-            @endforeach --}}
-             {{-- <source srcset="{{asset('storage/images/' . $row->cover_img)}}" media="(min-width: 1200px)"> --}}
-                    {{-- <source srcset="/image/home/armor-x-mobile.jpg" media="(min-width: 800px)"> --}}
-                    {{-- <source srcset="/image/home/armor-x-s-mobile.jpg" media="(min-width: 200px)"> --}}
+            @endforeach
 
-
-            {{-- <div class="swiper-slide">
+           <div class="swiper-slide">
                 <picture>
                     <source srcset="/image/home/Untitled-1.jpg" media="(min-width: 1200px)">
                     <source srcset="/image/home/armor-x-mobile.jpg" media="(min-width: 800px)">
@@ -41,6 +51,7 @@
                     <img src="/image/home/Untitled-1.jpg" alt="MDN Web Docs">
                  </picture>
             </div>
+
             <div class="swiper-slide">
                 <picture>
                     <source srcset="/image/home/Group321.jpg" media="(min-width: 1200px)">
@@ -48,11 +59,49 @@
                         <source srcset="/image/home/mobihub-s-mobile.jpg" media="(min-width: 200px)">
                     <img src="/image/home/Group321.jpg" alt="MDN Web Docs">
                  </picture>
-            </div> --}}
+            </div>
 
         </div>
         <div class="swiper-pagination"></div>
-    </div>
+    </div> --}}
+
+    <section id="banner-section">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-touch="true">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            {{-- <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li> --}}
+          </ol>
+      
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            {{-- <div class="item active">
+              <img src="la.jpg" alt="Los Angeles" style="width:100%;">
+            </div>
+      
+            <div class="item">
+              <img src="chicago.jpg" alt="Chicago" style="width:100%;">
+            </div>
+          
+            <div class="item">
+              <img src="ny.jpg" alt="New york" style="width:100%;">
+            </div> --}}
+          </div>
+      
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            {{-- <span class="glyphicon"><i class="fas fa-chevron-right"></i></span> --}}
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+    </section>
+
     <section class="swipper-sf">
         <div class="container">
             <div class="row">
@@ -747,31 +796,66 @@
 @endsection
 
 @section('script')
+
+{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> --}}
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
+
 <script>
-    $(document).ready(function($){
+   $( document ).ready(function() {
+        $(".carousel").carousel({
+            interval: false,
+            pause: true
+        });
+
+        $( ".carousel .carousel-inner" ).swipe( {
+        swipeLeft: function ( event, direction, distance, duration, fingerCount ) {
+            this.parent( ).carousel( 'next' );
+        },
+        swipeRight: function ( ) {
+            this.parent( ).carousel( 'prev' );
+        },
+        threshold: 0,
+        tap: function(event, target) {
+            window.location = $(this).find('.carousel-item.active a').attr('href');
+        },
+        excludedElements:"label, button, input, select, textarea, .noSwipe"
+        } );
+
+        $('.carousel .carousel-inner').on('dragstart', 'a', function () {
+            return false;
+        });  
+
+    });
+
+    //$(document).ready(function($){
         var screenWidth = screen.width;
         var screenHeight = screen.height;
 
         // $('#device').html(screenWidth);
 
-        $.get('/homepage/' + screenWidth +'/slide', function (data) {
+        $.get('/homepage/' + screenWidth +'/ajax_slide', function (data) {
+            //alert();
+
             if(data.length>0) {
                 for(i=0;i<data.length;i++) {
                     // alert(data[i]['id']);
+                    if(i == 0){
+                        var active = 'active';
+                    }else{
+                        var active = '';
+                    }
 
-                    $('#banner-section .swiper-wrapper').append('<div class="swiper-slide">'+
-                    '<picture>'+
-                    '<img src="{{url('storage/images/')}}/'+data[i]['cover_img'] +'" >'+
-                    '</picture></div>');
+                   // $('#banner-section .swiper-wrapper').append('<div class="swiper-slide"><picture><img src="{{url('storage/images/')}}/'+data[i]['cover_img'] +'" ></picture></div>');
+                    
+                    $('.carousel-indicators').append('<li data-target="#myCarousel" data-slide-to="'+i+'" class="'+active+'"></li>');
+                    $('.carousel-inner').append('<div class="item '+active+'"><img src="{{url('storage/images/')}}/'+data[i]['cover_img'] +'" alt="Los Angeles" style="width:100%;"></div>');
 
-
-
-                    // $('#banner_list').append('<div class="col-md-3 col-sm-3 hero-feature"><div class="thumbnail"><img src="{{url('storage/images/')}}/'+data[i]['img'] +'" class="img-responsive" alt=""><a href="{{url('/admin/product/softdeleteImage')}}/'+data[i]['id']+'"  class="btn btn-danger btn-xs" type="button"><i class="fas fa-trash-alt"></i> Delete</a></div>');
                 }
             }
         });
 
-    });
+    //});
 </script>
 
 @endsection

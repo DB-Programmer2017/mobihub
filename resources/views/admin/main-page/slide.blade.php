@@ -95,6 +95,14 @@
                                     <span class="label label-danger">Suspend</span>
                                 @endif
 
+                                @if ($row2->size == "1")
+                                    <span class="label label-warning">Desktop</span>
+                                @elseif ($row2->size == "2")
+                                    <span class="label label-default">Tablet</span>
+                                @else
+                                    <span class="label label-danger">Mobile</span>
+                                @endif
+
                             <img src="{{asset('storage/images/' . $row2->cover_img)}}" class="img-responsive">
                             @if ($row2->cover_img  !='')
                                 <a href="javascript:void(0)"  class="edit btn btn-info" data-id="{{ $row2->id }}" data-toggle="modal" data-target="#myModal2">
