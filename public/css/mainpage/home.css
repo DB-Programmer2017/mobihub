@@ -162,7 +162,14 @@
     width: 100%;
     height: auto;
     display: flex;
+    cursor: pointer;
 }
+.col-news .box-news img:hover{
+    transform: scale(1.05);
+}
+.col-news .box-news img{
+    transition: 0.3s;
+    }
 .col-news .pic-news{
     height: auto;
     /* adjust in the future */

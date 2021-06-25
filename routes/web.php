@@ -38,6 +38,7 @@ Route::get('/clear-cache', function() {
 
 
     Route::get('/', [HomePageController::class, 'index_slide']);
+    Route::get('/homepage/{id}/ajax_slide', [HomePageController ::class, 'ajax_slide']);
 
     /*** Quotation ***/
     Route::get('/quotation', [QuotationController::class, 'create']);
@@ -78,6 +79,10 @@ Route::get('/clear-cache', function() {
         Route::get('/scalefusion/workflow', function () {
             return view('mainpage/scalefusion/workflow');
         });
+
+/*** Subscription ***/
+Route::get('/subscription-submit', [SubscriptionEmailController::class, 'create']);
+Route::post('/subscription-submit', [SubscriptionEmailController::class, 'store'])->name('subscriptionEmail.store');
 
 
 // Route::get('/armor-x', function () {

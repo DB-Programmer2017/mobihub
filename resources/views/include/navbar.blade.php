@@ -2,11 +2,11 @@
   <div class="navbar-top">
 
     <ul class="navbar-top-left">
-      <li class="social"><i class="fab fa-facebook-f"></i></li>
-      <li class="social"><i class="fab fa-instagram"></i></li>
-      <li class="social"><i class="fab fa-linkedin-in"></i></li>
-      <li class="social"><i class="fab fa-line"></i></li>
-      <li class="social"><i class="fab fa-youtube"></i></li>
+      <li class="social" onclick="window.open('https://www.facebook.com/MobihubThailand')" ><i class="fab fa-facebook-f"></i></li>
+      <li class="social" onclick="window.open('https://www.instagram.com/mobihubthailand/')"><i class="fab fa-instagram"></i></li>
+      {{-- <li class="social"><i class="fab fa-linkedin-in"></i></li> --}}
+      <li class="social" onclick="window.open('https://liff.line.me/1645278921-kWRPP32q?accountId=438tvagh&openerPlatform=native&openerKey=talkroom%3Amessage#mst_challenge=3-BmaqTCSfNmaYNSOxTvI1t64D-qfrPHYqwOSG8-1_A')"><i class="fab fa-line"></i></li>
+      <li class="social" onclick="window.open('https://www.youtube.com/channel/UCkSv8qp3SH49fjvW0NdQ32Q')"><i class="fab fa-youtube"></i></li>
     </ul>
 
     <ul class="navbar-center">
@@ -39,9 +39,9 @@
             <ul class="dropdown-menu" aria-labelledby="themes">
               <li><a href="/scalefusion">Scalefusion</a></li>
               <li class="divider"></li>
-              <li><a href="#">OtterBox</a></li>
-              <li><a href="#">Armor-X</a></li>
-              <li><a href="#">Ram Mounts</a></li>
+              <li><a href="/otterbox">OtterBox</a></li>
+              <li><a href="/armor-x">Armor-X</a></li>
+              <li><a href="/rammounts">Ram Mounts</a></li>
             </ul>
           </li>
 

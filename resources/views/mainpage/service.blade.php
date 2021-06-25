@@ -26,7 +26,7 @@
                     </h1>
                 </div>
                 <div class="button">
-                    <button type="button" class="btn btn-danger btn-md">
+                    <button type="button" class="btn btn-danger btn-md" onclick="window.open('/contact')">
                         ติดต่อเรา <span><i class="fas fa-long-arrow-alt-right"></i></span>
                     </button>
                 </div>
