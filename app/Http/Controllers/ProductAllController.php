@@ -40,7 +40,8 @@ class ProductAllController extends Controller
         //     ['name2.required'=>'กรุณากรอกข้อมูล ประเภทสินค้า-ไทย'],
         //     ['cover_image2'   =>  'image|nullable|max:1999'],
         // );
-        
+
+
         if($request->hasFile('cover_img2')) {
             //get filename with the extension
             $filenameWithExt    = $request->file('cover_img2')->getClientOriginalName();
@@ -87,6 +88,8 @@ class ProductAllController extends Controller
                     'is_quo'=>$request->is_quo2,
                     'is_enable'=>$request->is_enable2
                 ]);
+
+
             }else{
                 ProductAllModel::find($id)->update([
                     'cover_img'=> $filenameToStore,
@@ -141,16 +144,33 @@ class ProductAllController extends Controller
                 }
             }
 
+            /* Update edit Choice */ 
+            $choice_ids     = $request->choice_ids;
+            // dd($choice_ids);
+            $choice_name    = $request->choice_name;
+            $count_items    = count($request->choice_ids);
+
+            for($i = 0; $i<$count_items; $i++)
+            {
+                $edit_choice = ProductChoiceModel::find($choice_ids[$i]);
+                // dd($edit_choice);
+                $edit_choice->update([
+                    'name' => $choice_name[$i],
+                ]);
+            }
+
+
             return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");
         }
     }
 
     public function storePoductChoice(Request $request) {
-        
-        $request->validate([
-            'option_name_list' => 'required',
-        ]);
+        // dd($request->choice_list_ids);
+        // $request->validate([
+        //     'option_name_list' => '',
+        // ]);
 
+        if($request->option_name_list != '') {
             $details    =   new ProductChoiceListModel;
 
             $details->name          =   $request->option_name_list;
@@ -158,8 +178,25 @@ class ProductAllController extends Controller
             $details->choice_id     =   $request->choice_id3;
         // dd($request->product_id2);
             $details->save();
-
             session()->flash('success', 'เพิ่ม "'. $details->name .'" สำเร็จ');
+        } else {
+            $choice_list_ids    = $request->choice_list_ids;
+            $choice_list_names  = $request->choice_list_names;
+            $count_items        = count($request->choice_list_ids);
+            // dd($count_items);
+            for($i=0; $i<$count_items; $i++) {
+                $edit_choice_list = ProductChoiceListModel::find($choice_list_ids[$i]);
+
+                $edit_choice_list->update([
+                    'name' => $choice_list_names[$i],
+                ]);
+                session()->flash('success', 'อัพเดทสำเร็จ');
+            }
+            
+        }
+            
+
+            
         return back();
     }
     
@@ -374,6 +411,12 @@ class ProductAllController extends Controller
 		return Response::json($customer);
 	}
 
+    public function editChoiceList(Request $request) {
+        dd('yes');
+
+
+    }
+
     public function ajaxRequestPost(Request $request){
         // $request->validate([
         //     'product_id' => 'required',
@@ -398,5 +441,43 @@ class ProductAllController extends Controller
         //unlink("storage/images/".$image->img);
         ProductGalleryModel::where("id", $image->id)->delete();
         return redirect()->back()->with('success',"ลบข้อมูลเรียบร้อยแล้ว");
+	}
+
+    public function softdeleteChoice($id){     
+        //dd($id);
+        $choice = ProductChoiceModel::find($id);
+
+        // ProductChoiceModel::where("id", $choice->id)->delete();
+        // ProductChoiceListModel::where("choice_id", $id)->delete();
+        // print_r($x);
+        if($choice->is_enable == '1') {
+            $choice->update([
+                'is_enable' => '0'
+            ]);  
+        } else {
+            $choice->update([
+                'is_enable' => '1'
+            ]);  
+        }
+        
+        return redirect()->back()->with('success',"อัพเดทข้อมูลเรียบร้อยแล้ว");
+	}
+
+    public function softdeleteChoiceList($id){     
+        // dd($id);
+        $choice_list = ProductChoiceListModel::find($id);
+
+        // ProductChoiceListModel::where("id", $choice_list->id)->delete();
+        if($choice_list->is_enable == '1') {
+            $choice_list->update([
+                'is_enable' => '0'
+            ]);  
+        } else {
+            $choice_list->update([
+                'is_enable' => '1'
+            ]);  
+        }
+
+        return redirect()->back()->with('success',"อัพเดทข้อมูลเรียบร้อยแล้ว");
 	}
 }

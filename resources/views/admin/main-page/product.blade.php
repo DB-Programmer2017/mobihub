@@ -7,6 +7,16 @@
 {{-- Link CSS --}}
 @section('link')
 
+<style>
+    .btn-choice a{
+        color:#FFFFFF;
+    }
+
+    #saveOptionList {
+        float: none;
+        margin-bottom:30px;
+    }
+</style>
 {{-- bootstrap --}}
 {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> --}}
 {{-- <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script> --}}
@@ -474,6 +484,7 @@
     </div>
 </div>
 
+{{-- Modal: product choice option list --}}
 <div class="container">
     <div class="row">
         <form action="{{ route('storePoductChoice') }}" method="POST" id="ChoiceItemList" enctype="multipart/form-data">
@@ -488,28 +499,32 @@
                                 <div class="modal-body">
                                     <h3 class="title" id="choice-name">Option : </h3>
                                     <input type="hidden" readonly id="option_id" name="option_id">
-
-                                    <table id="customers">
-                                        <tr>
-                                          <th>#</th>
-                                          <th>Option List</th>
-                                          <th>Status</th>
-                                        </tr>                                      
-                                                                                                    
-                                    </table>
-
-                                    <div class="form-group">
-   
-                                        <div class="input-group">
-                                        <input type="hidden" readonly id="product_id3" name="product_id3" value="">
-                                        <input type="hidden" readonly id="choice_id3" name="choice_id3" value="">
-                                        <input type="text" class="form-control" id="option_name_list" name="option_name_list">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-success" type="submit" id="btnAddOptionList">Add</button>
-                                        </span>
+                                    
+                                    {{-- <form action="{{ route('editChoiceList') }}" method="POST">
+                                    @csrf --}}
+                                        <div id="customers">
                                         </div>
+
+                                        <div class="col-xs-12 col-md-12">
+                                            <button type="sumbit" class="btn-save" id="saveOptionList">Update</button>
+                                        </div>
+                                    {{-- </form> --}}
+
+                                        <div class="col-md-12 col-sm-12 form-group">
+    
+                                            <div class="input-group">
+                                            <input type="hidden" readonly id="product_id3" name="product_id3" value="">
+                                            <input type="hidden" readonly id="choice_id3" name="choice_id3" value="">
+                                            <input type="text" class="form-control" id="option_name_list" name="option_name_list">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-success" type="submit" id="btnAddOptionList">Add</button>
+                                            </span>
+                                            </div>
+                                            
+                                        </div>
+
                                         
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -647,8 +662,8 @@
         var product_id=product_id;
         
 // add value to input
-$('#product_id3').val(product_id);
-$('#choice_id3').val(id);
+        $('#product_id3').val(product_id);
+        $('#choice_id3').val(id);
 
         $.get('/admin/product/' + id +'/ChoiceList', function (res) {
             $('#choice-name').html("Option : "+res.name);
@@ -660,38 +675,86 @@ $('#choice_id3').val(id);
             if(res2.length>0) {
                 for(i=0;i<res2.length;i++) {     
                     var n = i+1;
+
                     if(res2[i]['is_enable'] == '0'){
-                        var status = "<span class='label label-danger'>Suspend</span>";
+                        var btn  = "btn-danger";
+                        var icon = "<i class='fas fa-times-circle'></i>";
+                        var title = "click for publish";
                     } else {
-                        var status = "<span class='label label-success'>Publish</span>";
+                        var btn = "btn-success";
+                        var icon = "<i class='fas fa-check'></i>";
+                        var title = "click for suspend";
                     }
-                    $('#customers').append('<tr><td>'+n+'</td><td>'+res2[i]['name']+'</td><td>'+status+'</td></tr>');
+
+                    // $('#customers').append('<div class="form-group">'+
+                    // '&<div class="input-group">'+
+                    // '&<input type="hidden" readonly id="product_id3" name="product_id3" value="">'+
+                    // '&<input type="hidden" readonly id="choice_id3" name="choice_id3" value="">'+
+                    // '&<input type="text" class="form-control" id="option_name_list" name="option_name_list">'+
+                    // '&<span class="input-group-btn">'+
+                    // '$<button class="btn btn-success" type="submit" id="btnAddOptionList">Add</button>'+
+                    // '&</span>+'
+                    // '&</div>'+
+                    // '$</div>');
+
+                    $('#customers').append('<div class="col-md-6 col-sm-6 form-group">'+
+                    '<div class="input-group">'+
+                    '<span class="input-group-addon">'+n+'</span>'+
+                    '<input name="choice_list_ids[]" type="text" id="choice_list_ids" value="'+res2[i]['id']+'">'+
+                    '<input type="text" name="choice_list_names[]" value="'+res2[i]['name']+'" class="form-control">'+
+                    '<span class="input-group-btn">'+
+                    '<button class="btn '+ btn +' btn-choice" title="'+title+'" type="button">'+
+                    '<a href="{{ url('/admin/product/softdeleteChoiceList') }}/'+res2[i]['id']+'">'+icon+'</a>'+
+                    '</button>'+
+                    '</span>'+
+                    '</div>'+
+                    '</div>'
+                    );
                 }   
             }
+
         });
     }
 
-    $("#btnAddOptionList").click(function() {
-        var choice_id           = $("#option_id").val();
-        var option_name_list    = $("#option_name_list").val();
-        var product_id          = $("#product_id2").val();
+        $("#btnAddOptionList").click(function() {
+            var choice_id           = $("#option_id").val();
+            var option_name_list    = $("#option_name_list").val();
+            var product_id          = $("#product_id2").val();
 
-        // alert(choice_id);
-        if(choice_id !="" && option_name_list !=""){
-            $.ajax({
+            // alert(choice_id);
+            if(choice_id !="" && option_name_list !=""){
+                $.ajax({
+                    type:'POST',
+                    url:"{{ route('storePoductChoice') }}",
+                    data:{
+                        choice_id:choice_id, 
+                        option_name_list:option_name_list,
+                        product_id:product_id
+                    },
+                    success:function(data){
+                        alert(data.success);
+                    }
+                });
+            }
+        });
+
+        $("#saveOptionList").click(function() {
+            var choice_list_ids = $("#choice_list_ids").val();
+            var choice_list_name = $("#choice_list_name").val();
+            // alert(choice_list_ids);
+            $ajax({
                 type:'POST',
-                url:"{{ route('storePoductChoice') }}",
+                url:'{{ route('editChoiceList', ["id" => '+choice_list_ids+']) }}',
                 data:{
-                    choice_id:choice_id, 
-                    option_name_list:option_name_list,
-                    product_id:product_id
+                    _token:CSRF_TOKEN,
+                    choice_list_ids:choice_list_ids,
+                    choice_list_name:choice_list_name
                 },
                 success:function(data){
                     alert(data.success);
                 }
             });
-        }
-    });
+        });
 
 // ออโต้ หา category ของ dealer ตอน กดedit
     // function Dealer(id){
@@ -773,7 +836,7 @@ $('#choice_id3').val(id);
 //ในหน้าเพิ่มสินค้าใหม่, เลือกแบรนแล้วจะมี categoryของแบรนขึ้นมา
         $('#brand_id').on('change',function(e) {
             var brand_id = e.target.value;
-// alert(brand_id);
+            // alert(brand_id);
             $.ajax({
                 url: '/admin/product/getCategory/'+brand_id,
                 type: 'get',
@@ -808,7 +871,7 @@ $('#choice_id3').val(id);
 //ในหน้าเพิ่มสินค้าใหม่, เลือกcategoryแล้วจะมี sub_categoryขึ้นมา
         $('#category_id').on('change',function(e) {
             var category_id = e.target.value;
-// alert(category_id);
+            // alert(category_id);
             $.ajax({
                 url: '/admin/product/getSubCategory/'+category_id,
                 type: 'get',
@@ -959,7 +1022,7 @@ $('#choice_id3').val(id);
 
 
 //when you click edit
-       $('body').on('click', '.edit', function () {
+    $('body').on('click', '.edit', function () {
         $('#product-cover').html("");
 
            var softwareEnq_id = $(this).data('id');
@@ -1007,10 +1070,38 @@ $('#choice_id3').val(id);
                                 //$('#product-list').append('<div class="col-xs-12 col-md-3 col-sm-3"><img src="{{ '+img+' }}" class="img-responsive"></div>');
                                 // $('#product-list').append('<div class="col-md-3 col-sm-3 hero-feature"><div class="thumbnail"><img src="{{url('storage/images/')}}/'+data[i]['img'] +'" class="img-responsive" alt=""><button type="button"  onclick="DeleteImage('+data[i]['id']+')" class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i> Delete Pic</button></div>');
 
-                            $('#choice-list').append('<div class="col-md-6 col-sm-6 form-group"><div class="input-group"><span class="input-group-addon">'+n+'</span><input type="text" value="'+data2[i]['name']+'" class="form-control"><span class="input-group-btn"><button class="btn btn-success" onclick="ChoiceItem('+data2[i]['id']+','+data2[i]['product_id']+')" title="Add List" type="button" data-toggle="modal" data-target="#myModal3"><i class="fas fa-plus-circle"></i></button><button class="btn btn-warning" title="Cancel" type="button"><i class="fas fa-times-circle"></i></button></span></div></div>');
-                        }   
+                            if(data2[i]['is_enable'] == '0'){
+                                var btn  = "btn-danger";
+                                var icon =  "<i class='fas fa-times-circle'></i>";
+                                var title = "click for publish";
+                            } else {
+                                var btn = "btn-success";
+                                var icon =  "<i class='fas fa-check'></i>";
+                                var title = "click for suspend";
+                            }
+
+                            $('#choice-list').append('<div class="col-md-6 col-sm-6 form-group">'+
+                            '<div class="input-group">'+
+                            '<span class="input-group-addon">'+n+'</span>'+
+                            '<input name="choice_ids[]" type="hidden" id="choice_ids" value="'+data2[i]['id']+'">'+
+                            '<input type="text" name="choice_name[]" value="'+data2[i]['name']+'" class="form-control">'+
+                            '<span class="input-group-btn">'+
+                            '<button class="btn btn-default" onclick="ChoiceItem('+data2[i]['id']+','+data2[i]['product_id']+')" title="Add List"'+
+                            ' type="button" data-toggle="modal" data-target="#myModal3">'+
+                            '<i class="fas fa-list"></i>'+
+                            '</button>'+
+                            '<button class="btn '+ btn +' btn-choice" title="'+title+'" type="button">'+
+                            '<a href="{{ url('/admin/product/softdeleteChoice') }}/'+data2[i]['id']+'">'+icon+'</a>'+
+                            '</button>'+
+                            '</span>'+
+                            '</div>'+
+                            '</div>'
+                            );
+                        }  
                     }
                 });
+
+                
             })
 
             // $.ajax({

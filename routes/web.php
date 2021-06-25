@@ -168,12 +168,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/product/softdeleteImage/{id}',[ProductAllController::class,'softdeleteImage']);
     //Route::post('/admin/product/AddOptionList',[ProductAllController::class,'AddOptionList'])->name('addchoicelist');
     Route::post('/admin/product/ajaxRequestPost', [ProductAllController::class, 'ajaxRequestPost'])->name('ajaxRequestPost');
+    Route::get('/admin/product/softdeleteChoice/{id}',[ProductAllController::class,'softdeleteChoice']);
+    Route::get('/admin/product/softdeleteChoiceList/{id}',[ProductAllController::class,'softdeleteChoiceList']);
+
 
     /*Product Choice*/
     Route::post('/admin/product', [ProductAllController::class,'storePoductChoice'])->name('storePoductChoice');
     Route::get('/admin/product/{id}/ChoiceProduct', [ProductAllController::class, 'ChoiceProduct']);
     Route::get('/admin/product/{id}/ChoiceList', [ProductAllController::class, 'ChoiceList']);
     Route::get('/admin/product/{id}/ChoiceListDetails', [ProductAllController::class, 'ChoiceListDetails']);
+    Route::post('/admin/product/ChoiceListDetails', [ProductAllController::class, 'editChoiceList'])->name('editChoiceList');
 
     /*Dealer*/
     Route::post('/admin/dealer/add',[DealerController::class,'store'])->name('addProductDealer');
