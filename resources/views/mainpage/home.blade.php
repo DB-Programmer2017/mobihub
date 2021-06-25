@@ -166,7 +166,7 @@
                                             {{ $row->product_tag }}
                                         </h3>
                                         <h2>
-                                            {{ mb_strimwidth($row->name, 0, 40, "...", "UTF-8") }}
+                                            {{ mb_strimwidth($row->name, 0, 20, "...", "UTF-8") }}
                                         </h2>
                                     </div>
                                 </div>
@@ -742,6 +742,24 @@
 @endsection
 
 @section('script')
+<script>
+    $(document).ready(function($){
+        var screenWidth = screen.width;
+        var screenHeight = screen.height;
 
+        //alert(screenWidth);
+
+        $.get('/homepage/' + screenWidth +'/slide', function (data) {
+            if(data.length>0) {
+                for(i=0;i<data.length;i++) {
+                    alert(data[i]['id']);
+
+                    // $('#product-list').append('<div class="col-md-3 col-sm-3 hero-feature"><div class="thumbnail"><img src="{{url('storage/images/')}}/'+data[i]['img'] +'" class="img-responsive" alt=""><a href="{{url('/admin/product/softdeleteImage')}}/'+data[i]['id']+'"  class="btn btn-danger btn-xs" type="button"><i class="fas fa-trash-alt"></i> Delete</a></div>');
+                }
+            }
+        });
+
+    });
+</script>
 
 @endsection
