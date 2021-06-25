@@ -29,7 +29,12 @@
      <!-- Swiper -->
     {{-- <div id='banner-section' class="swiper-container swiper-container-0 mySwiper">
         <div class="swiper-wrapper">
+<<<<<<< Updated upstream
 
+=======
+            <div id="banner-list"></div>
+            
+>>>>>>> Stashed changes
             @foreach ($slides as $row)
             <div class="swiper-slide">
                 <picture>
@@ -829,7 +834,9 @@
 
         // $('#device').html(screenWidth);
 
-        $.get('/homepage/' + screenWidth +'/slide', function (data) {
+        $.get('/homepage/' + screenWidth +'/ajax_slide', function (data) {
+            //alert();
+
             if(data.length>0) {
                 for(i=0;i<data.length;i++) {
                     // alert(data[i]['id']);

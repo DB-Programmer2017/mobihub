@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\SlideAllModel;
 use App\Models\NewsAllModel;
 use App\Models\ProductAllModel;
-use Redirect,Response;//Respond Json or Ajax
 
-
+use Redirect,Response; //ใส่บรรทัดนี้หากค้องการส่งข้อมูลแบบ Ajax
 use Illuminate\Http\Request;
 
 class HomePageController extends Controller
@@ -38,6 +37,7 @@ class HomePageController extends Controller
             $where = array('size'=> $id);
         }
 
+        //dd($where);
         //$where = array('product_id' => $id);
 
 		$slide= SlideAllModel::where('is_enable', '1')->where($where)->orderBy('rd', 'ASC')->get();

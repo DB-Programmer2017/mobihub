@@ -15,7 +15,7 @@ use App\Models\DealerModel;//Dealer
 use App\Models\SubCategoryModel;
 use Illuminate\Support\Str;
 
-use Redirect,Response;
+use Redirect,Response;//ใส่บรรทัดนี้หากค้องการส่งข้อมูลแบบ Ajax
 
 class ProductAllController extends Controller
 {
