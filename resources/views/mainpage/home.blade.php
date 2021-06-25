@@ -338,7 +338,7 @@
                         <div class="swiper-wrapper">
                         @foreach ($news as $row)
                             <div class="swiper-slide">
-                                <div class="box-news">
+                                <div class="box-news" onclick="window.location.assign('news-detail/{{$row->id}}')">
                                     <div class="col-md-4">
                                         <img src="{{asset('storage/images/' . $row->cover_img)}}">
                                     </div>
