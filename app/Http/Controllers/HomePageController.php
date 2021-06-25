@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\SlideAllModel;
 use App\Models\NewsAllModel;
 use App\Models\ProductAllModel;
+use Redirect,Response;//Respond Json or Ajax
 
 
 use Illuminate\Http\Request;
@@ -21,13 +22,13 @@ class HomePageController extends Controller
     }
     function ajax_slide($screenWidth){
         // dd($screenWidth);
-        if ($screenWidth=="1200"){//Desktop//
+        if ($screenWidth>="1200"){//Desktop//
             $id='1';
             $where = array('size'=> $id);
-        }elseif ($screenWidth=="800"){//Tablet//
+        }elseif ($screenWidth>="800" && $screenWidth<="1199"){//Tablet//
             $id='2';
             $where = array('size'=> $id);
-        }elseif ($screenWidth=="500"){//Mobile//
+        }elseif ($screenWidth>="500"){//Mobile//
             $id='3';
             $where = array('size'=> $id);
         }else{//Desktop//
@@ -37,7 +38,10 @@ class HomePageController extends Controller
 
         //$where = array('product_id' => $id);
 
-		$slide= SlideAllModel::where('is_enable', '1')->where($where)->get();
+		$slide= SlideAllModel::where('is_enable', '1')->where($where)->orderBy('rd', 'ASC')->get();
+
+        // print_r($slide);
+
 		return Response::json($slide);
     }
 }

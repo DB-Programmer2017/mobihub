@@ -39,9 +39,9 @@
             <ul class="dropdown-menu" aria-labelledby="themes">
               <li><a href="/scalefusion">Scalefusion</a></li>
               <li class="divider"></li>
-              <li><a href="#">OtterBox</a></li>
-              <li><a href="#">Armor-X</a></li>
-              <li><a href="#">Ram Mounts</a></li>
+              <li><a href="/otterbox">OtterBox</a></li>
+              <li><a href="/armor-x">Armor-X</a></li>
+              <li><a href="/rammounts">Ram Mounts</a></li>
             </ul>
           </li>
 

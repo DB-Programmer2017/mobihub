@@ -16,18 +16,23 @@
 {{-- Body HTML --}}
 @section('content')
      <!-- Swiper -->
-    <div class="swiper-container swiper-container-0 mySwiper">
+    <div id='banner-section' class="swiper-container swiper-container-0 mySwiper">
         <div class="swiper-wrapper">
-            @foreach ($slides as $row)
+            {{-- <span id="banner_list" style="height: 500px;width: 100%;border:1px solid #000">
+
+            </span> --}}
+            {{-- @foreach ($slides as $row)
             <div class="swiper-slide">
                 <picture>
-                    {{-- <source srcset="{{asset('storage/images/' . $row->cover_img)}}" media="(min-width: 1200px)"> --}}
-                    {{-- <source srcset="/image/home/armor-x-mobile.jpg" media="(min-width: 800px)"> --}}
-                    {{-- <source srcset="/image/home/armor-x-s-mobile.jpg" media="(min-width: 200px)"> --}}
                     <img src="{{asset('storage/images/' . $row->cover_img)}}" >
                  </picture>
             </div>
-            @endforeach
+            @endforeach --}}
+             {{-- <source srcset="{{asset('storage/images/' . $row->cover_img)}}" media="(min-width: 1200px)"> --}}
+                    {{-- <source srcset="/image/home/armor-x-mobile.jpg" media="(min-width: 800px)"> --}}
+                    {{-- <source srcset="/image/home/armor-x-s-mobile.jpg" media="(min-width: 200px)"> --}}
+
+
             {{-- <div class="swiper-slide">
                 <picture>
                     <source srcset="/image/home/Untitled-1.jpg" media="(min-width: 1200px)">
@@ -747,14 +752,21 @@
         var screenWidth = screen.width;
         var screenHeight = screen.height;
 
-        //alert(screenWidth);
+        // $('#device').html(screenWidth);
 
         $.get('/homepage/' + screenWidth +'/slide', function (data) {
             if(data.length>0) {
                 for(i=0;i<data.length;i++) {
-                    alert(data[i]['id']);
+                    // alert(data[i]['id']);
 
-                    // $('#product-list').append('<div class="col-md-3 col-sm-3 hero-feature"><div class="thumbnail"><img src="{{url('storage/images/')}}/'+data[i]['img'] +'" class="img-responsive" alt=""><a href="{{url('/admin/product/softdeleteImage')}}/'+data[i]['id']+'"  class="btn btn-danger btn-xs" type="button"><i class="fas fa-trash-alt"></i> Delete</a></div>');
+                    $('#banner-section .swiper-wrapper').append('<div class="swiper-slide">'+
+                    '<picture>'+
+                    '<img src="{{url('storage/images/')}}/'+data[i]['cover_img'] +'" >'+
+                    '</picture></div>');
+
+
+
+                    // $('#banner_list').append('<div class="col-md-3 col-sm-3 hero-feature"><div class="thumbnail"><img src="{{url('storage/images/')}}/'+data[i]['img'] +'" class="img-responsive" alt=""><a href="{{url('/admin/product/softdeleteImage')}}/'+data[i]['id']+'"  class="btn btn-danger btn-xs" type="button"><i class="fas fa-trash-alt"></i> Delete</a></div>');
                 }
             }
         });
