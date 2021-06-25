@@ -5,12 +5,21 @@
             <div class="col-xs-12 col-sm-6 col-md-3">
                 <h4>ลงทะเบียนรับข้อมูลข่าวสาร</h4>
                 <div class="form-group">
-                    <div class="input-group">
+                    <form method="POST" action="{{ route('subscriptionEmail.store') }} ">
+                        @csrf
+                        <div class="input-group">
+                            <input type="email" name="email" class="form-control" placeholder="กรอกอีเมล์ของคุณที่นี่...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">ติดตาม</button>
+                            </span>
+                        </div>
+                    </form>
+                    {{-- <div class="input-group">
                       <input type="text" class="form-control" placeholder="กรอกอีเมลของคุณที่นี่">
                       <span class="input-group-btn">
                         <button class="btn btn-primary" type="button">ติดตาม</button>
                       </span>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 

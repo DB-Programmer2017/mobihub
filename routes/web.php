@@ -80,6 +80,10 @@ Route::get('/clear-cache', function() {
             return view('mainpage/scalefusion/workflow');
         });
 
+/*** Subscription ***/
+Route::get('/subscription-submit', [SubscriptionEmailController::class, 'create']);
+Route::post('/subscription-submit', [SubscriptionEmailController::class, 'store'])->name('subscriptionEmail.store');
+
 
 // Route::get('/armor-x', function () {
 //     return view('mainpage/armor-x');
