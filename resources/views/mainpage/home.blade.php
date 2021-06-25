@@ -33,7 +33,7 @@
 
 =======
             <div id="banner-list"></div>
-            
+
 >>>>>>> Stashed changes
             @foreach ($slides as $row)
             <div class="swiper-slide">
@@ -73,22 +73,22 @@
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li> --}}
           </ol>
-      
+
           <!-- Wrapper for slides -->
           <div class="carousel-inner">
             {{-- <div class="item active">
               <img src="la.jpg" alt="Los Angeles" style="width:100%;">
             </div>
-      
+
             <div class="item">
               <img src="chicago.jpg" alt="Chicago" style="width:100%;">
             </div>
-          
+
             <div class="item">
               <img src="ny.jpg" alt="New york" style="width:100%;">
             </div> --}}
           </div>
-      
+
           <!-- Left and right controls -->
           <a class="left carousel-control" href="#myCarousel" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -802,31 +802,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
 
 <script>
-   $( document ).ready(function() {
-        $(".carousel").carousel({
-            interval: false,
-            pause: true
-        });
-
-        $( ".carousel .carousel-inner" ).swipe( {
-        swipeLeft: function ( event, direction, distance, duration, fingerCount ) {
-            this.parent( ).carousel( 'next' );
-        },
-        swipeRight: function ( ) {
-            this.parent( ).carousel( 'prev' );
-        },
-        threshold: 0,
-        tap: function(event, target) {
-            window.location = $(this).find('.carousel-item.active a').attr('href');
-        },
-        excludedElements:"label, button, input, select, textarea, .noSwipe"
-        } );
-
-        $('.carousel .carousel-inner').on('dragstart', 'a', function () {
-            return false;
-        });  
-
-    });
+//
 
     //$(document).ready(function($){
         var screenWidth = screen.width;
@@ -847,7 +823,7 @@
                     }
 
                    // $('#banner-section .swiper-wrapper').append('<div class="swiper-slide"><picture><img src="{{url('storage/images/')}}/'+data[i]['cover_img'] +'" ></picture></div>');
-                    
+
                     $('.carousel-indicators').append('<li data-target="#myCarousel" data-slide-to="'+i+'" class="'+active+'"></li>');
                     $('.carousel-inner').append('<div class="item '+active+'"><img src="{{url('storage/images/')}}/'+data[i]['cover_img'] +'" alt="Los Angeles" style="width:100%;"></div>');
 

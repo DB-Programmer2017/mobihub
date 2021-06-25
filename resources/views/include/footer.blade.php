@@ -27,7 +27,7 @@
                 <h4>Mobihub</h4>
                 <li onclick="window.open('/about')">เกี่ยวกับเรา</li>
                 <li onclick="window.open('/news-post')">ข่าวสาร</li>
-                <li onclick="window.open('/product')">สินค้า</li>
+                <li onclick="window.open('/scalefusion')">สินค้า</li>
                 <li onclick="window.open('/service')">บริการ</li>
                 <li onclick="window.open('/contact')">ติดต่อเรา</li>
             </div>
