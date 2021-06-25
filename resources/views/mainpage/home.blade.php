@@ -21,6 +21,58 @@
         font-weight: 900;
         content:"\f054";
     }
+    
+    
+    .carousel-fade .carousel-inner .item {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+/*
+  WHAT IS NEW IN 3.3: "Added transforms to improve carousel performance in modern browsers."
+  Need to override the 3.3 new styles for modern browsers & apply opacity
+*/
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .carousel-fade .carousel-inner > .item.next,
+    .carousel-fade .carousel-inner > .item.active.right {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.prev,
+    .carousel-fade .carousel-inner > .item.active.left {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.next.left,
+    .carousel-fade .carousel-inner > .item.prev.right,
+    .carousel-fade .carousel-inner > .item.active {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+}
 </style>
 @endsection
 
@@ -29,12 +81,6 @@
      <!-- Swiper -->
     {{-- <div id='banner-section' class="swiper-container swiper-container-0 mySwiper">
         <div class="swiper-wrapper">
-<<<<<<< Updated upstream
-
-=======
-            <div id="banner-list"></div>
-            
->>>>>>> Stashed changes
             @foreach ($slides as $row)
             <div class="swiper-slide">
                 <picture>
@@ -66,7 +112,7 @@
     </div> --}}
 
     <section id="banner-section">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-touch="true">
+        <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-touch="true" data-interval="4000">
           <!-- Indicators -->
           <ol class="carousel-indicators">
             {{-- <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -802,32 +848,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
 
 <script>
-   $( document ).ready(function() {
-        $(".carousel").carousel({
-            interval: false,
-            pause: true
-        });
-
-        $( ".carousel .carousel-inner" ).swipe( {
-        swipeLeft: function ( event, direction, distance, duration, fingerCount ) {
-            this.parent( ).carousel( 'next' );
-        },
-        swipeRight: function ( ) {
-            this.parent( ).carousel( 'prev' );
-        },
-        threshold: 0,
-        tap: function(event, target) {
-            window.location = $(this).find('.carousel-item.active a').attr('href');
-        },
-        excludedElements:"label, button, input, select, textarea, .noSwipe"
-        } );
-
-        $('.carousel .carousel-inner').on('dragstart', 'a', function () {
-            return false;
-        });  
-
-    });
-
     //$(document).ready(function($){
         var screenWidth = screen.width;
         var screenHeight = screen.height;
