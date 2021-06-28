@@ -29,7 +29,7 @@ class QuotationController extends Controller
      */
     public function create()
     {
-        $products  =  ProductAllModel::orderBy('name', 'ASC')->get();
+        $products  =  ProductAllModel::where('is_quo','=','1')->orderBy('name', 'ASC')->get();
         return view('mainpage.quotation', [
             'products' => $products,
         ]);
