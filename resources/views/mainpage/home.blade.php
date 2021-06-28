@@ -22,15 +22,14 @@
         content:"\f054";
     }
     
-    
     .carousel-fade .carousel-inner .item {
-  opacity: 0;
-  transition-property: opacity;
-}
+        opacity: 0;
+        transition-property: opacity;
+    }
 
-.carousel-fade .carousel-inner .active {
-  opacity: 1;
-}
+    .carousel-fade .carousel-inner .active {
+        opacity: 1;
+    }
 
 .carousel-fade .carousel-inner .active.left,
 .carousel-fade .carousel-inner .active.right {

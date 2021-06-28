@@ -49,7 +49,18 @@ class QuotationController extends Controller
             'phone' =>  'numeric',
         ]);
 
+        $quo_no   = Quotation::where('quo_no','LIKE','MH_QT%')->orderBy('quo_no', 'desc')->first();
+        $code_num = "MH_QT".date("ym");
+
+        if($quo_no['quo_no'] == null){
+            $quo_no = $code_num."_001";
+        }else{
+            $code_run=  substr($quo_no['quo_no'],10,13);
+            $quo_no =$code_num."_".str_pad($code_run+1 ,3, "0", STR_PAD_LEFT);
+        }
+
         $quotation  =   [
+            'quo_no'    =>  $quo_no,
             'name'      =>  $request->name,
             'email'     =>  $request->email,
             'company'   =>  $request->company,
@@ -61,10 +72,13 @@ class QuotationController extends Controller
 // dd(json_encode($request->products));
         Quotation::create($quotation);
 
+        
         session()->flash('success', 'Thank You. Your request has sent successfully, Our team will response as soon as possible.');
-
-        Mail::to('piyapat.t@databar.co.th')
+        Mail::to('pairin.p@databar.co.th')
         ->send(new QuotationMail($quotation));
+
+        // Mail::to('piyapat.t@databar.co.th')
+        // ->send(new QuotationMail($quotation));
 
         return back();
     }
