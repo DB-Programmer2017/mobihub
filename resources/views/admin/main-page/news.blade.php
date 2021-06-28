@@ -150,11 +150,14 @@
 
                                     <div class="col-xs-12 col-md-12">
                                         <div class="form-upload2">
-                                            <center><span>Upload an Image</span></center>
+                                            <center>
+                                                <span>Upload an Image</span>
+                                            </center>
                                             <i class="fas fa-cloud-upload-alt"></i>
                                             <center>
                                                 <input type="file" id="cover_img" name="cover_img">
                                             </center>
+                                            
                                         </div>
                                     </div>
 
@@ -224,9 +227,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xs-12 col-md-3">
+                                    <div class="col-xs-12 col-md-6">
                                         <div class="form-group">
-                                            News Recommend :
+                                            News Recommend(Image 800px * 800px) :
                                             <select class="form-control" name="recommen2" id="recommen2">
                                                 <option value="1">Yes</option>
                                                 <option value="0">No</option>

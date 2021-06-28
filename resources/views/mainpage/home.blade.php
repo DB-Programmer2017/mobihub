@@ -22,14 +22,15 @@
         content:"\f054";
     }
     
+    
     .carousel-fade .carousel-inner .item {
-        opacity: 0;
-        transition-property: opacity;
-    }
+  opacity: 0;
+  transition-property: opacity;
+}
 
-    .carousel-fade .carousel-inner .active {
-        opacity: 1;
-    }
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
 
 .carousel-fade .carousel-inner .active.left,
 .carousel-fade .carousel-inner .active.right {
@@ -244,20 +245,25 @@
     <section class="col-news">
         <div class="container">
             <div class="row">
+
+
                 <div class="col-xs-12 col-md-6">
-                    <img src="/image/home/shutterstock_1712203645-news2.jpg" class="pic-news" width="100%" alt="">
+                    <img src="{{asset('storage/images/' . $news_recommend->cover_img)}}" class="pic-news" width="100%">
+                    {{-- <img src="/image/home/shutterstock_1712203645-news2.jpg" class="pic-news" width="100%" alt=""> --}}
                 </div>
                 <div class="box">
                     <h2>
-                        Symmetry Series Clear Case
+                        {{ mb_strimwidth($news_recommend->name, 0, 50, "...", "UTF-8") }}
                     </h2>
                     <h3>
-                        It has survived not only five centuries, but also the leap into electronic..
+                        {{ mb_strimwidth($news_recommend->title, 0, 50, "...", "UTF-8") }}
                     </h3>
                     <p>
                         <i class="far fa-heart"></i> Love &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
                     </p>
                 </div>
+
+
                 <div class="col-xs-12 col-md-6 text-news">
                     <p>
                         ข่าวสาร

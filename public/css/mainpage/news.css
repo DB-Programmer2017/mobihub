@@ -96,6 +96,7 @@
 .product-grid .product-image{
     position: relative;
     overflow: hidden;
+    height: 210px;
 }
 .product-grid .product-image a.image{ display: block; }
 .product-grid .product-image img{
@@ -205,6 +206,7 @@
     font-weight: 600;
     text-transform: capitalize;
     margin:25px 15px;
+    height: 50px;
 }
 .product-grid .title a{
     color: #000;
@@ -214,7 +216,9 @@
 .product-grid .title a:hover{
     color: #fb5d5d;
 }
-
+.product-grid .product-content .content{
+    height: 40px;
+}
 .product-grid .price{
     color: #111;
     font-size: 16px;
@@ -232,7 +236,7 @@
     opacity: 1;
     transform: translateX(-50%);
     position: absolute;
-    bottom: 45%;
+    bottom: 46%;
     left: 50%;
     z-index: 1;
     transition: all 0.3s ease 0s;
