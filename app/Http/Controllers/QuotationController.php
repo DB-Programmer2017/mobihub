@@ -49,8 +49,8 @@ class QuotationController extends Controller
             'phone' =>  'numeric',
         ]);
 
-        $quo_no   = Quotation::where('quo_no','LIKE','MH_QT%')->orderBy('quo_no', 'desc')->first();
-        $code_num = "MH_QT".date("ym");
+        $quo_no   = Quotation::where('quo_no','LIKE','MH_RE%')->orderBy('quo_no', 'desc')->first();
+        $code_num = "MH_RE".date("ym");
 
         if($quo_no['quo_no'] == null ){
             $quo_no = $code_num."_001";

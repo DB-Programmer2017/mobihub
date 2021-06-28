@@ -6,6 +6,11 @@
 
 {{-- Link CSS --}}
 @section('link')
+    <style>
+        .fa-star{
+            color:#FF8F00;
+        }
+    </style>
 
 @endsection
 
@@ -34,7 +39,7 @@
                             <tr class="active">
                                 <th width="5%">#</th>
                                 <th width="10%">Created</th>
-                                <th width="20%">Name</th>
+                                <th width="30%">Name</th>
                                 <th>Title</th>
                                 <th width="10%">Photo</th>
                                 <th width="5%">Status</th>
@@ -43,9 +48,20 @@
                         <tbody>
                         @foreach ($product_cate as $row)    
                             <tr>
-                                <td>{{$product_cate->firstItem()+$loop->index}}</td>
                                 <td>
-                                    {{$row->created_at}}
+                                    @if ($row->recommen == "1")
+                                    <i class="fas fa-star"></i>
+                                    @endif
+
+                                    {{$product_cate->firstItem()+$loop->index}}
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" onclick="Dealer('{{$row->dealer_id}}')" class="edit" data-id="{{ $row->id }}" data-toggle="modal" data-target="#myModal2">
+                                        {{$row->created_at}}
+                                    </a>
+                                    <span class="label label-default" style="display:block;font-weight:normal">
+                                        {{$row->news_category['name'] }}
+                                    </span>
                                 </td>
                                 <td>
                                     <a href="javascript:void(0)" onclick="Dealer('{{$row->dealer_id}}')" class="edit" data-id="{{ $row->id }}" data-toggle="modal" data-target="#myModal2"> {{$row->name}}</a>
@@ -108,6 +124,15 @@
                                 <div class="modal-body">
                                     <h3 class="title">Add News</h3>
 
+                                    <div class="col-xs-12 col-md-4 form-group">
+                                        Category :
+                                        <select class="form-control" id="catgory_id" name="catgory_id">
+                                            @foreach ($category as $row)    
+                                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
                                     <div class="col-xs-12 col-md-12 form-group">
                                         Name : 
                                         <input type="text" id="name" name="name" class="form-control" placeholder="Name">
@@ -160,6 +185,15 @@
                                 <div class="modal-body">
                                     <h3 class="title">Edit News</h3>
 
+                                    <div class="col-xs-12 col-md-4 form-group">
+                                        Category :
+                                        <select class="form-control" id="catgory_id2" name="catgory_id2">
+                                            @foreach ($category as $row)    
+                                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
                                     <div class="col-xs-12 col-md-12 form-group">
                                         Name : 
                                         <input type="text" id="name2" name="name2" class="form-control" placeholder="Name">
@@ -187,6 +221,16 @@
                                             <center>
                                                 <input type="file" id="cover_img2" name="cover_img2">
                                             </center>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-md-3">
+                                        <div class="form-group">
+                                            News Recommend :
+                                            <select class="form-control" name="recommen2" id="recommen2">
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -237,7 +281,9 @@
                     $('#product-list').html("");
                     $('#product_id2').val(res.id);
                     $('#name2').val(res.name);
+                    $('#recommen2').val(res.recommen);
                     $('#is_enable2').val(res.is_enable);
+                    $('#catgory_id2').val(res.category_id);
                     $('#title2').val(res.title);
                     CKEDITOR.instances['description2'].setData(res.description);
 
