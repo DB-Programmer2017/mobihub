@@ -12,12 +12,13 @@ use Illuminate\Http\Request;
 class HomePageController extends Controller
 {
     function index_slide(){
-        $slides     = SlideAllModel::where('is_enable', '1')->orderBy('rd', 'ASC')->get();
-        $news       = NewsAllModel::where('is_enable', '1')->get();
-        $recommend  =  ProductAllModel::where('is_enable', '1')->orderBy('id', 'ASC')->get();
+        $slides               = SlideAllModel::where('is_enable', '1')->orderBy('rd', 'ASC')->get();
+        $news                 = NewsAllModel::where('is_enable', '1')->where('recommen', '0')->get();
+        $news_recommend       = NewsAllModel::where('is_enable', '1')->where('recommen', '1')->first();
+        $recommend            = ProductAllModel::where('is_enable', '1')->orderBy('id', 'ASC')->get();
 
         // var_dump($slides->where('size', 1));
-        return view('mainpage/home',compact(['slides', 'news', 'recommend']));
+        return view('mainpage/home',compact(['slides', 'news', 'recommend','news_recommend']));
     }
     function ajax_slide($screenWidth){
         // dd($screenWidth);

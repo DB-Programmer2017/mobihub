@@ -1,3 +1,7 @@
+<?php
+    $menu = basename($_SERVER['PHP_SELF']);
+?>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -12,7 +16,7 @@
   
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="dropdown active">
+          <li class="dropdown <?php if($menu =='dealer' || $menu =='product' || $menu =='brand' || $menu =='product-category' || $menu =='sub-category'){?> active <?php } ?>">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Product <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="/admin/dealer">Dealer</a></li>
@@ -24,8 +28,9 @@
             </ul>
           </li>
            
-          <li class=""><a href="/admin/news">News</a></li>
-          <li class=""><a href="/admin/slide">Slide</a></li>
+          <li class="<?php if($menu =='news'){?> active <?php } ?>"><a href="/admin/news">News</a></li>
+          <li class="<?php if($menu =='slide'){?> active <?php } ?>"><a href="/admin/slide">Slide</a></li>
+          <li class="<?php if($menu =='scalefusion'){?> active <?php } ?>"><a href="/admin/scalefusion">ScaleFusion</a></li>
           <li class=""><a href="#">User</a></li>
         </ul>
 

@@ -50,6 +50,7 @@
                             </div>
                             <div class="product-content">
                                 <h3 class="title"><a href="#">{{ mb_strimwidth($row->name, 0, 50, "...", "UTF-8") }}</a></h3>
+                                
                                 <div class="content">
                                     {{ mb_strimwidth($row->title, 0, 50, "...", "UTF-8") }} 
                                 </div>

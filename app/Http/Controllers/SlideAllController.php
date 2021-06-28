@@ -15,8 +15,6 @@ class SlideAllController extends Controller
         return view('/admin/main-page/slide',compact(['slides_banner']));
     }
 
-
-
     function sortable (Request $request){
         $slides_banner   = SlideAllModel::where('is_enable', '1')->orderBy('rd', 'ASC')->paginate(20) ;
 
