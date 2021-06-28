@@ -167,7 +167,7 @@ video {
 .quotation .form-container .form-horizontal .form-group{ margin: 0 0 20px; }
 .quotation .form-container .form-horizontal .form-group:nth-of-type(2){ margin-bottom: 35px; }
 .quotation .form-container .form-horizontal .form-group label{ font-weight: 500; }
-.quotation .form-container .form-horizontal .form-control{
+.quotation .form-container .form-horizontal input[type="text"]{
     color: #888;
     background: #f9f9f9;
     font-weight: 400;
@@ -178,9 +178,10 @@ video {
     border: none;
     box-shadow: none;
 }
-.quotation .form-container .form-horizontal textarea{
+/* .quotation .form-container .form-horizontal textarea{
     height: 80px !important;
-}
+} */
+
 .quotation .form-container .form-horizontal .form-control:focus{ box-shadow: 0 0 5px #FF97A8; }
 .quotation .form-container .form-horizontal .signin{
     color: #fff;
@@ -362,19 +363,20 @@ video {
                                         </div>
                                         <div class="form-group">
                                             <label>Telephone :</label>
-                                                <input type="text" name="phone" class="form-control">
+                                            <input type="text" name="phone" class="form-control">
                                         </div>
-
-                                        <div class="form-group">
-                                            <label><strong>Product :</strong></label><br>
-                                            @foreach ($products as $product)
-                                                <label><input type="checkbox" name="products[]" value="{{ $product->name }}">{{ $product->name }}</label>
-                                            @endforeach
-                                        </div>
+                                        @if(count($products) > 0)
+                                            <div class="form-group">
+                                                <label><strong>Product :</strong></label><br>
+                                                @foreach ($products as $product)
+                                                    <label><input type="checkbox" name="products[]" value="{{ $product->name }}">{{ $product->name }}</label>
+                                                @endforeach
+                                            </div>
+                                        @endif
 
                                         <div class="form-group">
                                         <label>Message :</label>
-                                        <textarea name="message" id=""  rows="20" class="form-control"  placeholder="Please Enter Your Message"></textarea>
+                                        <textarea name="message" id=""  rows="10" class="form-control"  placeholder="Please Enter Your Message"></textarea>
                                         </div>
                                         <button type="submit" class="btn signin">Submit</button>
                                     </form>

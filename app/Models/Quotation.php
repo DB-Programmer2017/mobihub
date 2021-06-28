@@ -23,11 +23,14 @@ class Quotation extends Model
      */
     protected $fillable = [
         'name',
+        'quo_no',
         'email',
         'company',
         'phone',
         'message',
         'products',
+        'created_at',
+        'updated_at'
     ];
 
     /**
