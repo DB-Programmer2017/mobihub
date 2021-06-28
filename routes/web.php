@@ -79,6 +79,9 @@ Route::get('/clear-cache', function() {
         Route::get('/scalefusion/workflow', function () {
             return view('mainpage/scalefusion/workflow');
         });
+        Route::get('/scalefusion/integrations', function () {
+            return view('mainpage/scalefusion/intergrations');
+        });
 
 /*** Subscription ***/
 Route::get('/subscription-submit', [SubscriptionEmailController::class, 'create']);
