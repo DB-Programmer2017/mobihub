@@ -52,7 +52,7 @@ class QuotationController extends Controller
         $quo_no   = Quotation::where('quo_no','LIKE','MH_QT%')->orderBy('quo_no', 'desc')->first();
         $code_num = "MH_QT".date("ym");
 
-        if($quo_no['quo_no'] == null){
+        if($quo_no['quo_no'] == null ){
             $quo_no = $code_num."_001";
         }else{
             $code_run=  substr($quo_no['quo_no'],10,13);
