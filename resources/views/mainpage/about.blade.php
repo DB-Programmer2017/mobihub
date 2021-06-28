@@ -139,9 +139,9 @@
 
                     <div class="col-xs-12 col-sm-12 col-md-4">
                         <div class="service-box">
-                            <div class="icon">
+                            {{-- <div class="icon">
                                 <img src="/image/mainpage/about/call-center.png">
-                            </div>
+                            </div> --}}
                             <h3>Call Center</h3>
                             <p>
                                 Our expert staff is well experienced,
@@ -152,9 +152,9 @@
 
                     <div class="col-xs-12 col-sm-6 col-md-4">
                         <div class="service-box">
-                            <div class="icon">
+                            {{-- <div class="icon">
                                 <img src="/image/mainpage/about/online-chat.png" alt="">
-                            </div>
+                            </div> --}}
                             <h3>Services</h3>
                             <p>
                                 Our expert staff is well experienced,
@@ -165,9 +165,9 @@
 
                     <div class="col-xs-12 col-sm-6 col-md-4">
                         <div class="service-box">
-                            <div class="icon">
+                            {{-- <div class="icon">
                                 <img src="/image/mainpage/about/waranty.png">
-                            </div>
+                            </div> --}}
                             <h3>Warranty</h3>
                             <p>
                                 Our expert staff is well experienced,

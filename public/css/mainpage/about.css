@@ -378,3 +378,19 @@
     font-size: 60px;
     color:#ff4646;
 }
+@media (min-width:320px) and (max-width:600px){
+    .panel-about p {
+        width: 100%;
+        line-height: 35px;
+    }
+    #our-service h2 {
+
+        font-size: 22px;
+        width: 100%;
+
+    }
+    .about-service-2 .service-box {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}

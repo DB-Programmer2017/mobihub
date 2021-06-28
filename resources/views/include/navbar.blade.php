@@ -86,16 +86,13 @@
             <ul class="dropdown-menu-2">
                 <li class="dropdown-right-2">
                     <li><h4>Hardware :</h4></li>
-                    <li><a href="#" class="menu-item-2">Armor-X</a></li>
-                    <li><a href="#" class="menu-item-2">Ram Mounts</a></li>
+                    <li><a href="/armor-x" class="menu-item-2">Armor-X</a></li>
+                    <li><a href="/rammounts" class="menu-item-2">Ram Mounts</a></li>
+                    <li><a href="/otterbox" class="menu-item-2">Otterbox</a></li>
 
                     <li><h4>Software :</h4></li>
-                    <li><a href="/products/scalefusion" class="menu-item-2">Scalefusion</a></li>
+                    <li><a href="/scalefusion" class="menu-item-2">Scalefusion</a></li>
 
-                    <li><h4>Accessories :</h4></li>
-                    <li><a href="#" class="menu-item-2">Armor-X</a></li>
-                    <li><a href="#" class="menu-item-2">Ram Mounts</a></li>
-                    <li><a href="#" class="menu-item-2">Otterbox</a></li>
                 </li>
 
                 {{-- <li class="dropdown-right-2">
