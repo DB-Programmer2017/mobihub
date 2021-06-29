@@ -186,6 +186,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/product/{id}/ChoiceProduct', [ProductAllController::class, 'ChoiceProduct']);
     Route::get('/admin/product/{id}/ChoiceList', [ProductAllController::class, 'ChoiceList']);
     Route::get('/admin/product/{id}/ChoiceListDetails', [ProductAllController::class, 'ChoiceListDetails']);
+    Route::get('/admin/product/updateStatusChoice/{id}', [ProductAllController::class, 'updateStatusChoice']);
+    Route::get('/admin/product/updateStatusChoiceList/{id}', [ProductAllController::class, 'updateStatusChoiceList']);
+
+    Route::get('/admin/product/DeleteImage/{id}', [ProductAllController::class, 'DeleteImage']);
+
     Route::post('/admin/product/ChoiceListDetails', [ProductAllController::class, 'editChoiceList'])->name('editChoiceList');
 
     /*Dealer*/
