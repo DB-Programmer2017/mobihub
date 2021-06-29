@@ -25,7 +25,7 @@ class User extends Authenticatable
         'created_at',
         'updated_at',
         'active_code',
-        'active_code/',
+        'active_code2',
         'password',
         'user_category_id',
     ];
