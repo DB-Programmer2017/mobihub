@@ -16,6 +16,12 @@
         float: none;
         margin-bottom:30px;
     }
+    .input-group .btn{
+        height: 45px;
+    }
+    .input-group .form-control{
+        border-radius: 0px;
+    }
 </style>
 {{-- bootstrap --}}
 {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> --}}
@@ -440,10 +446,12 @@
                                     <div class="col-xs-12 col-md-12 inside2">
                                         {{-- Option --}}
                                         <div class="col-xs-12 col-md-12">
-                                            <div class="input-group hdtuto3 control-group lst increment3" >
-                                                <input type="text" name="filenames3[]" class="myfrm form-control">
-                                                <div class="input-group-btn"> 
-                                                <button class="btn btn-success new-file3" type="button"><i class="fas fa-plus"></i> Add</button>
+                                            <div class="col-xs-12 col-md-12">
+                                                <div class="input-group hdtuto3 control-group lst increment3" >
+                                                    <input type="text" name="filenames3[]" placeholder="Input your option..." class="myfrm form-control">
+                                                    <div class="input-group-btn"> 
+                                                    <button class="btn btn-success new-file3" type="button"><i class="fas fa-plus"></i> Add</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -515,9 +523,9 @@
                                             <div class="input-group">
                                             <input type="hidden" readonly id="product_id3" name="product_id3" value="">
                                             <input type="hidden" readonly id="choice_id3" name="choice_id3" value="">
-                                            <input type="text" class="form-control" id="option_name_list" name="option_name_list">
+                                            <input type="text" placeholder="Input your option list..." class="form-control" id="option_name_list" name="option_name_list">
                                             <span class="input-group-btn">
-                                                <button class="btn btn-success" type="submit" id="btnAddOptionList">Add</button>
+                                                <button class="btn btn-info" type="submit" id="btnAddOptionList"><i class="far fa-save"></i> Save</button>
                                             </span>
                                             </div>
                                             
@@ -672,6 +680,7 @@
 
 
         $.get('/admin/product/' + id +'/ChoiceListDetails', function (res2) {
+            $("#customers").html("");
             if(res2.length>0) {
                 for(i=0;i<res2.length;i++) {     
                     var n = i+1;
@@ -686,25 +695,28 @@
                         var title = "click for suspend";
                     }
 
-                    // $('#customers').append('<div class="form-group">'+
-                    // '&<div class="input-group">'+
-                    // '&<input type="hidden" readonly id="product_id3" name="product_id3" value="">'+
-                    // '&<input type="hidden" readonly id="choice_id3" name="choice_id3" value="">'+
-                    // '&<input type="text" class="form-control" id="option_name_list" name="option_name_list">'+
-                    // '&<span class="input-group-btn">'+
-                    // '$<button class="btn btn-success" type="submit" id="btnAddOptionList">Add</button>'+
-                    // '&</span>+'
-                    // '&</div>'+
-                    // '$</div>');
+                    // $('#customers').append('<div class="col-md-6 col-sm-6 form-group">'+
+                    // '<div class="input-group">'+
+                    // '<span class="input-group-addon">'+n+'</span>'+
+                    // '<input name="choice_list_ids[]" type="hidden" id="choice_list_ids" value="'+res2[i]['id']+'">'+
+                    // '<input type="text" name="choice_list_names[]" value="'+res2[i]['name']+'" class="form-control">'+
+                    // '<span class="input-group-btn">'+
+                    // '<button class="btn '+ btn +' btn-choice" title="'+title+'" type="button">'+
+                    // '<a href="{{ url('/admin/product/softdeleteChoiceList') }}/'+res2[i]['id']+'">'+icon+'</a>'+
+                    // '</button>'+
+                    // '</span>'+
+                    // '</div>'+
+                    // '</div>'
+                    // );
 
                     $('#customers').append('<div class="col-md-6 col-sm-6 form-group">'+
                     '<div class="input-group">'+
                     '<span class="input-group-addon">'+n+'</span>'+
-                    '<input name="choice_list_ids[]" type="text" id="choice_list_ids" value="'+res2[i]['id']+'">'+
+                    '<input name="choice_list_ids[]" type="hidden" id="choice_list_ids" value="'+res2[i]['id']+'">'+
                     '<input type="text" name="choice_list_names[]" value="'+res2[i]['name']+'" class="form-control">'+
                     '<span class="input-group-btn">'+
                     '<button class="btn '+ btn +' btn-choice" title="'+title+'" type="button">'+
-                    '<a href="{{ url('/admin/product/softdeleteChoiceList') }}/'+res2[i]['id']+'">'+icon+'</a>'+
+                    '<a href="#" onclick="updateStatusChoiceList('+res2[i]['id']+','+id+')">'+icon+'</a>'+
                     '</button>'+
                     '</span>'+
                     '</div>'+
@@ -712,9 +724,56 @@
                     );
                 }   
             }
-
         });
     }
+
+        function updateStatusChoiceList(list_id,choice_id){
+           var choice_id    = choice_id;
+           var list_id      = list_id;
+           
+            $.ajax({
+                url: '/admin/product/updateStatusChoiceList/'+list_id,
+                type: 'get',
+                dataType: 'json',
+                success: function(response){
+                    $("#customers").html("");
+
+                    $.get('/admin/product/' + response.choice_id +'/ChoiceListDetails', function (res2) {
+                        //alert(res2.length);
+
+                        if(res2.length>0) {
+                            for(i=0;i<res2.length;i++) {     
+                                var n = i+1;
+
+                                if(res2[i]['is_enable'] == '0'){
+                                    var btn  = "btn-danger";
+                                    var icon = "<i class='fas fa-times-circle'></i>";
+                                    var title = "click for publish";
+                                } else {
+                                    var btn = "btn-success";
+                                    var icon = "<i class='fas fa-check'></i>";
+                                    var title = "click for suspend";
+                                }
+                            
+                                $('#customers').append('<div class="col-md-6 col-sm-6 form-group">'+
+                                '<div class="input-group">'+
+                                '<span class="input-group-addon">'+n+'</span>'+
+                                '<input name="choice_list_ids[]" type="hidden" id="choice_list_ids" value="'+res2[i]['id']+'">'+
+                                '<input type="text" name="choice_list_names[]" value="'+res2[i]['name']+'" class="form-control">'+
+                                '<span class="input-group-btn">'+
+                                '<button class="btn '+ btn +' btn-choice" title="'+title+'" type="button">'+
+                                '<a href="#" onclick="updateStatusChoiceList('+res2[i]['id']+','+response.choice_id+')">'+icon+'</a>'+
+                                '</button>'+
+                                '</span>'+
+                                '</div>'+
+                                '</div>'
+                                );
+                            }
+                        }
+                    });
+                }
+            });
+        }
 
         $("#btnAddOptionList").click(function() {
             var choice_id           = $("#option_id").val();
@@ -1019,17 +1078,12 @@
           $('#ajax-book-model').modal('show');
        });
 
-
-
-//when you click edit
     $('body').on('click', '.edit', function () {
         $('#product-cover').html("");
 
            var softwareEnq_id = $(this).data('id');
-// alert(softwareEnq_id);
+           $('#product-list').html("");
            $.get('/admin/product/' + softwareEnq_id +'/editProduct', function (res) {
-                // alert(res.category_id);
-                $('#product-list').html("");
                 $('#product_id2').val(res.id);
                 $('#name2').val(res.name);
                 $('#dealer_id2').val(res.dealer_id);
@@ -1055,15 +1109,20 @@
                 $.get('/admin/product/' + softwareEnq_id +'/ImageProduct', function (data) {
                     if(data.length>0) {
                         for(i=0;i<data.length;i++) {     
-                                //$('#product-list').append('<div class="col-xs-12 col-md-3 col-sm-3"><img src="{{ '+img+' }}" class="img-responsive"></div>');
-                                // $('#product-list').append('<div class="col-md-3 col-sm-3 hero-feature"><div class="thumbnail"><img src="{{url('storage/images/')}}/'+data[i]['img'] +'" class="img-responsive" alt=""><button type="button"  onclick="DeleteImage('+data[i]['id']+')" class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i> Delete Pic</button></div>');
-                            $('#product-list').append('<div class="col-md-3 col-sm-3 hero-feature"><div class="thumbnail"><img src="{{url('storage/images/')}}/'+data[i]['img'] +'" class="img-responsive" alt=""><a href="{{url('/admin/product/softdeleteImage')}}/'+data[i]['id']+'"  class="btn btn-danger btn-xs" type="button"><i class="fas fa-trash-alt"></i> Delete</a></div>');
+                            $('#product-list').append('<div class="col-md-3 col-sm-3 hero-feature">'+
+                            '<div class="thumbnail"><img src="{{url('storage/images/')}}/'+data[i]['img'] +'" class="img-responsive" alt="">'+
+                            '<a href="#" onclick="DeleteImage('+data[i]['id']+','+softwareEnq_id+')"  class="btn btn-primary btn-xs" type="button">'+
+                            '<i class="fas fa-trash-alt"></i> Delete</a></div>');
+
+                            //$('#product-list').append('<div class="col-md-3 col-sm-3 hero-feature"><div class="thumbnail"><img src="{{url('storage/images/')}}/'+data[i]['img'] +'" class="img-responsive" alt=""><a href="{{url('/admin/product/softdeleteImage')}}/'+data[i]['id']+'"  class="btn btn-primary btn-xs" type="button"><i class="fas fa-trash-alt"></i> Delete</a></div>');
                         }   
                     }
                 });
 
                 //product options
                 $.get('/admin/product/' + softwareEnq_id +'/ChoiceProduct', function (data2) {
+                    $("#choice-list").html("");
+
                     if(data2.length>0) {
                         for(i=0;i<data2.length;i++) {     
                             var n = i+1;
@@ -1080,18 +1139,36 @@
                                 var title = "click for suspend";
                             }
 
+                            // $('#choice-list').append('<div class="col-md-6 col-sm-6 form-group">'+
+                            // '<div class="input-group">'+
+                            // '<span class="input-group-addon">'+n+'</span>'+
+                            // '<input name="choice_ids[]" type="hidden" id="choice_ids" value="'+data2[i]['id']+'">'+
+                            // '<input type="text" name="choice_name[]" value="'+data2[i]['name']+'" class="form-control">'+
+                            // '<span class="input-group-btn">'+
+                            // '<button class="btn btn-default" onclick="ChoiceItem('+data2[i]['id']+','+data2[i]['product_id']+')" title="Option List"'+
+                            // ' type="button" data-toggle="modal" data-target="#myModal3">'+
+                            // '<i class="fas fa-list"></i>'+
+                            // '</button>'+
+                            // '<button class="btn '+ btn +' btn-choice" title="'+title+'" type="button">'+
+                            // '<a href="{{ url('/admin/product/softdeleteChoice') }}/'+data2[i]['id']+'">'+icon+'</a>'+
+                            // '</button>'+
+                            // '</span>'+
+                            // '</div>'+
+                            // '</div>'
+                            // );
+
                             $('#choice-list').append('<div class="col-md-6 col-sm-6 form-group">'+
                             '<div class="input-group">'+
                             '<span class="input-group-addon">'+n+'</span>'+
                             '<input name="choice_ids[]" type="hidden" id="choice_ids" value="'+data2[i]['id']+'">'+
                             '<input type="text" name="choice_name[]" value="'+data2[i]['name']+'" class="form-control">'+
                             '<span class="input-group-btn">'+
-                            '<button class="btn btn-default" onclick="ChoiceItem('+data2[i]['id']+','+data2[i]['product_id']+')" title="Add List"'+
+                            '<button class="btn btn-default" onclick="ChoiceItem('+data2[i]['id']+','+data2[i]['product_id']+')" title="Option List"'+
                             ' type="button" data-toggle="modal" data-target="#myModal3">'+
                             '<i class="fas fa-list"></i>'+
                             '</button>'+
                             '<button class="btn '+ btn +' btn-choice" title="'+title+'" type="button">'+
-                            '<a href="{{ url('/admin/product/softdeleteChoice') }}/'+data2[i]['id']+'">'+icon+'</a>'+
+                            '<a href="#" onclick="updateStatusChoice('+data2[i]['id']+','+softwareEnq_id+')">'+icon+'</a>'+
                             '</button>'+
                             '</span>'+
                             '</div>'+
@@ -1103,69 +1180,87 @@
 
                 
             })
-
-            // $.ajax({
-            //    type:"POST",
-            //    url: "{{ url('edit-book') }}",
-            //    data: { id: id },
-            //    dataType: 'json',
-            //    success: function(res){
-            //      $('#id').val(res.id);
-            //      $('#name2').val(res.name);
-            //      $('#brand_id2').val(res.brand_id);
-            //      $('#category_id2').val(res.category_id);
-            //      $('#meta_tag2').val(res.meta_tag);
-            //      $('#description2').val(res.description);
-            //   },
-            // error: function (res) {
-            //     alert(res);
-            //   }
-            // });
-       });
-
-       $('body').on('click', '.delete', function () {
-          if (confirm("Delete Record?") == true) {
-           var id = $(this).data('id');
-            
-           // ajax
-           $.ajax({
-               type:"POST",
-               url: "{{ url('delete-book') }}",
-               data: { id: id },
-               dataType: 'json',
-               success: function(res){
-                 window.location.reload();
-              }
-           });
-          }
-       });
-       $('body').on('click', '#btn-save', function (event) {
-             var id = $("#id").val();
-             var title = $("#title").val();
-             var code = $("#code").val();
-             var author = $("#author").val();
-             $("#btn-save").html('Please Wait...');
-             $("#btn-save"). attr("disabled", true);
-            
-           // ajax
-           $.ajax({
-               type:"POST",
-               url: "{{ url('add-update-book') }}",
-               data: {
-                 id:id,
-                 title:title,
-                 code:code,
-                 author:author,
-               },
-               dataType: 'json',
-               success: function(res){
-                window.location.reload();
-                    $("#btn-save").html('Submit');
-                    $("#btn-save"). attr("disabled", false);
-              }
-           });
        });
    });
+
+        function DeleteImage(id,product_id){
+            var id = id;
+            var softwareEnq_id = product_id;
+
+            $.ajax({
+                url: '/admin/product/DeleteImage/'+id,
+                type: 'get',
+                dataType: 'json',
+                success: function(response){
+                    $('#product-list').html("");
+
+                    $.get('/admin/product/' + softwareEnq_id +'/ImageProduct', function (data) {
+                        if(data.length>0) {
+                            for(i=0;i<data.length;i++) {     
+                                $('#product-list').append('<div class="col-md-3 col-sm-3 hero-feature">'+
+                                '<div class="thumbnail"><img src="{{url('storage/images/')}}/'+data[i]['img'] +'" class="img-responsive" alt="">'+
+                                '<a href="#" onclick="DeleteImage('+data[i]['id']+','+softwareEnq_id+')"  class="btn btn-primary btn-xs" type="button">'+
+                                '<i class="fas fa-trash-alt"></i> Delete</a></div>');
+
+                                //$('#product-list').append('<div class="col-md-3 col-sm-3 hero-feature"><div class="thumbnail"><img src="{{url('storage/images/')}}/'+data[i]['img'] +'" class="img-responsive" alt=""><a href="{{url('/admin/product/softdeleteImage')}}/'+data[i]['id']+'"  class="btn btn-primary btn-xs" type="button"><i class="fas fa-trash-alt"></i> Delete</a></div>');
+                            }   
+                        }
+                    });
+                }
+            });
+        }
+
+        function updateStatusChoice(id,product_id){
+           var choice_id = id;
+           var softwareEnq_id = product_id;
+           
+            $.ajax({
+                url: '/admin/product/updateStatusChoice/'+choice_id,
+                type: 'get',
+                dataType: 'json',
+                success: function(response){
+                    
+                    //product options
+                        $.get('/admin/product/' + softwareEnq_id +'/ChoiceProduct', function (data2) {
+                            $("#choice-list").html("");
+
+                            if(data2.length>0) {
+                                for(i=0;i<data2.length;i++) {     
+                                    var n = i+1;
+                                    if(data2[i]['is_enable'] == '0'){
+                                        var btn  = "btn-danger";
+                                        var icon =  "<i class='fas fa-times-circle'></i>";
+                                        var title = "click for publish";
+                                    } else {
+                                        var btn = "btn-success";
+                                        var icon =  "<i class='fas fa-check'></i>";
+                                        var title = "click for suspend";
+                                    }
+
+                                    $('#choice-list').append('<div class="col-md-6 col-sm-6 form-group">'+
+                                    '<div class="input-group">'+
+                                    '<span class="input-group-addon">'+n+'</span>'+
+                                    '<input name="choice_ids[]" type="hidden" id="choice_ids" value="'+data2[i]['id']+'">'+
+                                    '<input type="text" name="choice_name[]" value="'+data2[i]['name']+'" class="form-control">'+
+                                    '<span class="input-group-btn">'+
+                                    '<button class="btn btn-default" onclick="ChoiceItem('+data2[i]['id']+','+data2[i]['product_id']+')" title="Option List"'+
+                                    ' type="button" data-toggle="modal" data-target="#myModal3">'+
+                                    '<i class="fas fa-list"></i>'+
+                                    '</button>'+
+                                    '<button class="btn '+ btn +' btn-choice" title="'+title+'" type="button">'+
+                                    '<a href="#" onclick="updateStatusChoice('+data2[i]['id']+','+softwareEnq_id+')">'+icon+'</a>'+
+                                    '</button>'+
+                                    '</span>'+
+                                    '</div>'+
+                                    '</div>'
+                                    );
+                                }  
+                            }
+                        });
+
+                }
+            });
+        }
    </script>
 
     <script type="text/javascript">

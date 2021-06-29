@@ -21,7 +21,7 @@ use Redirect,Response;//ใส่บรรทัดนี้หากค้อ�
 class ProductAllController extends Controller
 {
     function product (Request $request){
-        $product_cate   = ProductAllModel::paginate(5) ;
+        $product_cate   = ProductAllModel::paginate(20) ;
         $categories     = ProductModel::all();
         $brands         = BrandModel::all();
         $dealer         = DealerModel::all();
@@ -121,7 +121,7 @@ class ProductAllController extends Controller
                 foreach($request->file('filenames2') as $file)
                 {
                     $name = "NEW".time().rand(1,100).'.'.$file->extension();
-                    $file->move(public_path('storage/images'), $name);  
+                    $file->move(storage_path('app/public/images'), $name);  
                     $files[] = $name;  
                 }
             }
@@ -413,9 +413,7 @@ class ProductAllController extends Controller
 	}
 
     public function editChoiceList(Request $request) {
-        dd('yes');
-
-
+        //dd('yes');
     }
 
     public function ajaxRequestPost(Request $request){
@@ -480,5 +478,42 @@ class ProductAllController extends Controller
         }
 
         return redirect()->back()->with('success',"อัพเดทข้อมูลเรียบร้อยแล้ว");
+	}
+
+    public function updateStatusChoice($id){
+        $choice_list = ProductChoiceModel::find($id);
+        if($choice_list->is_enable == '1') {
+            $choice_list->update([
+                'is_enable' => '0'
+            ]);  
+        } else {
+            $choice_list->update([
+                'is_enable' => '1'
+            ]);  
+        }
+		return Response::json($choice_list);
+    }
+
+    public function updateStatusChoiceList($id){
+        $choice_list = ProductChoiceListModel::find($id);
+        if($choice_list->is_enable == '1') {
+            $choice_list->update([
+                'is_enable' => '0'
+            ]);  
+        } else {
+            $choice_list->update([
+                'is_enable' => '1'
+            ]);  
+        }
+		return Response::json($choice_list);
+    }
+
+    public function DeleteImage($id){     
+        $image = ProductGalleryModel::find($id);
+        unlink("storage/images/".$image->img);
+
+        ProductGalleryModel::where("id", $image->id)->delete();
+        
+        return Response::json($image);
 	}
 }

@@ -126,7 +126,7 @@
 
                                     <div class="col-xs-12 col-md-4 form-group">
                                         Category :
-                                        <select class="form-control" id="catgory_id" name="catgory_id">
+                                        <select class="form-control" id="category_id" name="category_id">
                                             @foreach ($category as $row)    
                                                 <option value="{{ $row->id }}">{{ $row->name }}</option>
                                             @endforeach
@@ -190,7 +190,7 @@
 
                                     <div class="col-xs-12 col-md-4 form-group">
                                         Category :
-                                        <select class="form-control" id="catgory_id2" name="catgory_id2">
+                                        <select class="form-control" id="category_id2" name="category_id2">
                                             @foreach ($category as $row)    
                                                 <option value="{{ $row->id }}">{{ $row->name }}</option>
                                             @endforeach
@@ -286,7 +286,7 @@
                     $('#name2').val(res.name);
                     $('#recommen2').val(res.recommen);
                     $('#is_enable2').val(res.is_enable);
-                    $('#catgory_id2').val(res.category_id);
+                    $('#category_id2').val(res.category_id);
                     $('#title2').val(res.title);
                     CKEDITOR.instances['description2'].setData(res.description);
 
