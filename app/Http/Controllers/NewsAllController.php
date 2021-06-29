@@ -38,7 +38,7 @@ class NewsAllController extends Controller
             $product_cate->name         = $request->name;
             $product_cate->recommen     = '0';
             $product_cate->title        = $request->title;
-            $product_cate->category_id        = $request->category_id;
+            $product_cate->category_id  = $request->category_id;
             $product_cate->description  = $request->description;
             $product_cate->cover_img    = $filenameToStore;
             $product_cate->save();
@@ -115,7 +115,7 @@ class NewsAllController extends Controller
                     'name'=>$request->name2,
                     'title'=>$request->title2,
                     'recommen'=>$request->recommen2,
-                    'category_id'=>$request->catgory_id2,
+                    'category_id'=>$request->category_id2,
                     'description'=>$request->description2,
                     'is_enable'=>$request->is_enable2
                 ]);
@@ -125,7 +125,7 @@ class NewsAllController extends Controller
                     'name'=>$request->name2,
                     'recommen'=>$request->recommen2,
                     'title'=>$request->title2,
-                    'category_id'=>$request->catgory_id2,
+                    'category_id'=>$request->category_id2,
                     'description'=>$request->description2,
                     'is_enable'=>$request->is_enable2
                 ]);
