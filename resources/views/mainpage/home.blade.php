@@ -21,8 +21,8 @@
         font-weight: 900;
         content:"\f054";
     }
-    
-    
+
+
     .carousel-fade .carousel-inner .item {
   opacity: 0;
   transition-property: opacity;
@@ -117,36 +117,39 @@
                 <div class="col-xs-12 col-md-6">
                     <div class="swiper-container swiper-container-1 mySwiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="/image/home/picture_section_2.png"></div>
-                            <div class="swiper-slide"><img src="https://picsum.photos/1080/450?grayscale?random=2"></div>
+                            @foreach ($scalefusion as $row)
+                                <div class="swiper-slide">
+                                    <img src="{{asset('storage/images/' . $row->cover_img)}}" class="pic-news" width="100%">
+                                </div>
+                            @endforeach
+                            {{-- <div class="swiper-slide"><img src="https://picsum.photos/1080/450?grayscale?random=2"></div>
                             <div class="swiper-slide"><img src="https://picsum.photos/1080/450?grayscale?random=3"></div>
                             <div class="swiper-slide"><img src="https://picsum.photos/1080/450?grayscale?random=4"></div>
                             <div class="swiper-slide"><img src="https://picsum.photos/1080/450?grayscale?random=5"></div>
                             <div class="swiper-slide"><img src="https://picsum.photos/1080/450?grayscale?random=6"></div>
                             <div class="swiper-slide"><img src="https://picsum.photos/1080/450?grayscale?random=7"></div>
                             <div class="swiper-slide"><img src="https://picsum.photos/1080/450?grayscale?random=8"></div>
-                            <div class="swiper-slide"><img src="https://picsum.photos/1080/450?grayscale?random=9"></div>
+                            <div class="swiper-slide"><img src="https://picsum.photos/1080/450?grayscale?random=9"></div> --}}
                         </div>
                         <div class="swiper-pagination"></div>
                         </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
-                        <div class="swiper-container swiper-container-2 mySwiper">
+                        <div class="swiper-container swiper-container-1 mySwiper">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="text">
-                                        <h3>
-                                            Effortless, Intuitive,
-                                        </h3>
-                                        <h2>
-                                            Heading
-                                        </h2>
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, quaerat reprehenderit nesciunt optio rerum, delectus nulla eius illum sint inventore recusandae.
-                                        </p>
+                                @foreach ($scalefusion as $row)
+                                    <div class="swiper-slide">
+                                        <div class="text">
+                                            <h3>
+                                                {{ $row->name }}
+                                            </h3>
+                                            <p>
+                                                {{ $row->description }}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="swiper-slide">
+                                @endforeach
+                                {{-- <div class="swiper-slide">
                                     <div class="text">
                                         <h3>
                                             Simplify Mobility Management and Gain Visibility Across All Devices
@@ -180,7 +183,7 @@
                                             Couple that with our acclaimed support and you are set. Be it a single-country deployment or a global rollout across geographies, we've got you covered.
                                         </p>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -235,7 +238,7 @@
                                 </div>
                             </div>
                         @endforeach
-                                
+
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -292,7 +295,7 @@
                                 </div>
                             </div>
                         @endforeach
-  
+
                         </div>
                         <div class="swiper-pagination"></div>
                         </div>
@@ -326,12 +329,12 @@
                 dynamicBullets: true,
             },
             autoplay: {
-                delay: 3500,
+                delay: 5000,
                 disableOnInteraction: false,
             },
             });
         </script>
-        <script>
+        {{-- <script>
         var swiper = new Swiper(".swiper-container-2", {
             effect: "fade",
             pagination: {
@@ -343,7 +346,7 @@
                 disableOnInteraction: false,
             },
             });
-        </script>
+        </script> --}}
         <script>
         var swiper = new Swiper(".swiper-container-3", {
             slidesPerView: 1,
