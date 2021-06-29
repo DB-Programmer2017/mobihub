@@ -155,7 +155,7 @@ body{ background: linear-gradient(to right,#7AB6B6 50%, #E5CFAA 50%); }
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-default">{{ __('Login') }}</button>
-                        <span>Don't have an account? <a href="{{ route('register') }}">Sign up</a></span>
+                        {{-- <span>Don't have an account? <a href="{{ route('register') }}">Sign up</a></span> --}}
                     </div>
                 </form>
             </div>
