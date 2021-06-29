@@ -6,7 +6,12 @@
 <p>Position/Company: {{ $quotation['company'] }}</p>
 <p>Client's Email: {{ $quotation['email'] }}</p>
 <p>เบอร์ติดต่อ: {{ $quotation['phone'] }}</p>
+
+@if( $quotation['products'] !='')
+
 <p>สินค้าที่สนใจ: {{ implode(', ', $quotation['products']) }}</p>
+@endif
+
 <p>ข้อความ: {{ $quotation['message'] }}</p><br>
 
 <h5>Thank You</h5>

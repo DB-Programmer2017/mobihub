@@ -19,6 +19,7 @@ class NewsAllModel extends Model
         'is_enable',
         'created_at',
         'updated_at',
+        'recommen',
         'cover_img'
     ];
 

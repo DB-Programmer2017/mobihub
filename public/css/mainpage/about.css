@@ -3,7 +3,7 @@
     position: relative;
     padding-top: 150px;
     padding-bottom: 150px;
-    background-image: url('/image/mainpage/about/About-Mobihub-02.jpg');
+    background-image: url('/image/mainpage/about/about-mobihub 3.jpg');
     background-repeat: no-repeat;
     background-size:cover;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -377,4 +377,20 @@
 .contact-map .service-box i{
     font-size: 60px;
     color:#ff4646;
+}
+@media (min-width:320px) and (max-width:600px){
+    .panel-about p {
+        width: 100%;
+        line-height: 35px;
+    }
+    #our-service h2 {
+
+        font-size: 22px;
+        width: 100%;
+
+    }
+    .about-service-2 .service-box {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 }

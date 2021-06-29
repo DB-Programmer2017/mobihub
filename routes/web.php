@@ -17,6 +17,7 @@ use App\Http\Controllers\ArmorxController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\Import_Export_Controller ;
+use App\Http\Controllers\ScaleFusionController;
 
 
 /*
@@ -79,6 +80,9 @@ Route::get('/clear-cache', function() {
         Route::get('/scalefusion/workflow', function () {
             return view('mainpage/scalefusion/workflow');
         });
+        Route::get('/scalefusion/integrations', function () {
+            return view('mainpage/scalefusion/intergrations');
+        });
 
 /*** Subscription ***/
 Route::get('/subscription-submit', [SubscriptionEmailController::class, 'create']);
@@ -138,7 +142,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/product', [ProductAllController::class,'product']);
     Route::get('/admin/news', [NewsAllController::class,'news']);
     Route::get('/admin/slide', [SlideAllController::class,'slide']);
-
+ 
     /*Brand*/
     Route::post('/admin/brand/add',[BrandController::class,'store'])->name('addProductBrand');
     Route::post('/admin/brand/edit',[BrandController::class,'editProductBrand'])->name('editProductBrand');
@@ -198,6 +202,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/slide/add',[SlideAllController::class,'store'])->name('addSlideAll');//Slide
     Route::get('/admin/slide/{id}/editSlide', [SlideAllController::class, 'editSlide']);
     Route::post('/admin/slide/edit',[SlideAllController::class,'editSlideAll'])->name('editSlideAll');
+
+    /*ScaleFusion*/
+    Route::get('/admin/scalefusion', [ScaleFusionController::class,'index']);
+    Route::post('/admin/scalefusion/add',[ScaleFusionController::class,'store'])->name('addScaleFusion');
+    Route::get('/admin/scalefusion/{id}/editScale', [ScaleFusionController::class, 'editScale']);
+    Route::post('/admin/scalefusion/update',[ScaleFusionController::class,'updateScaleFusion'])->name('updateScaleFusion');
+    Route::get('/admin/scalefusion/SclaeSortable/{id}',[ScaleFusionController::class,'SclaeSortable']);
 
     Route::get('/admin/sortable', [SlideAllController::class,'sortable']);
     Route::get('/admin/sortable/update/{id}',[SlideAllController::class,'sortableUpdate']);
