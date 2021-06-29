@@ -38,7 +38,7 @@ class LogSuccessfulLogout
         // dd($saveLog);
         $saveLog->status                = 0;
         $saveLog->logout_at             = $current_time;
-        $saveLog->session_online        = $current_time->diffInMinutes($saveLog->created_at);
+        $saveLog->session_online        = $current_time->diffInSeconds($saveLog->created_at);
 
         $saveLog->save();
         // dd($saveLog->session_online);
