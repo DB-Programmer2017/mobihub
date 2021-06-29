@@ -249,12 +249,11 @@
         <div class="container">
             <div class="row">
 
-
-                <div class="col-xs-12 col-md-6">
+                <div class="col-xs-12 col-md-6" onclick="window.location.assign('news-detail/{{$news_recommend->id}}')" >
                     <img src="{{asset('storage/images/' . $news_recommend->cover_img)}}" class="pic-news" width="100%">
                     {{-- <img src="/image/home/shutterstock_1712203645-news2.jpg" class="pic-news" width="100%" alt=""> --}}
                 </div>
-                <div class="box">
+                <div class="box" style="cursor: pointer;" onclick="window.location.assign('news-detail/{{$news_recommend->id}}')">
                     <h2>
                         {{ mb_strimwidth($news_recommend->name, 0, 50, "...", "UTF-8") }}
                     </h2>
@@ -285,7 +284,7 @@
                                                 {{ $row->name }}
                                             </h2>
                                             <p>
-                                                {{ $row->title }}
+                                                {{ mb_strimwidth($row->title, 0, 40, "...", "UTF-8") }}
                                             </p>
                                             <p>
                                                 <i class="far fa-heart"></i> like &nbsp; <i class="fas fa-share-alt"></i> Share &nbsp; <i class="fas fa-eye"></i> : 220
@@ -401,14 +400,15 @@
         var screenWidth = screen.width;
         var screenHeight = screen.height;
 
-        // $('#device').html(screenWidth);
+        //$('#device').html(screenWidth);
+
+        //alert(screenWidth);
 
         $.get('/homepage/' + screenWidth +'/ajax_slide', function (data) {
             //alert();
 
             if(data.length>0) {
                 for(i=0;i<data.length;i++) {
-                    // alert(data[i]['id']);
                     if(i == 0){
                         var active = 'active';
                     }else{

@@ -572,7 +572,8 @@
 
 @section('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+{{-- <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script> --}}
+<script src="//cdn.ckeditor.com/4.14.1/full/ckeditor.js"></script>
 
 <script>
     //$(".cate-2").hide();
@@ -1264,6 +1265,12 @@
    </script>
 
     <script type="text/javascript">
+        CKEDITOR.replace('description', {
+            filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form',
+            customConfig: '/js/admin/ckeditor/config.js'
+        });
+
         CKEDITOR.replace('description2', {
             filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
             filebrowserUploadMethod: 'form',
