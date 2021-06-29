@@ -121,7 +121,7 @@ class ProductAllController extends Controller
                 foreach($request->file('filenames2') as $file)
                 {
                     $name = "NEW".time().rand(1,100).'.'.$file->extension();
-                    $file->move(public_path('storage/images'), $name);  
+                    $file->move(storage_path('app/public/images'), $name);  
                     $files[] = $name;  
                 }
             }
