@@ -115,7 +115,7 @@ Route::get('/service', function () {
 });
 
 Route::get('/news-post', [MobihubController::class,'news']);
-Route::get('/news-detail/{id}', [MobihubController::class, 'ShowDetail']);//show detail
+Route::get('/news-detail/{slug}', [MobihubController::class, 'ShowDetail']);//show detail
 
 Route::get('/about', function () {
     return view('mainpage/about');

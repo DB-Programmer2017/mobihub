@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\NewsAllModel;
 use App\Models\NewsCategoryModel;
+use Illuminate\Support\Str;
 
 use Redirect,Response;
 
@@ -41,6 +42,7 @@ class NewsAllController extends Controller
             $product_cate->category_id  = $request->category_id;
             $product_cate->description  = $request->description;
             $product_cate->cover_img    = $filenameToStore;
+            $product_cate->slug         = Str::slug($request->name, '-');
             $product_cate->save();
 
             // $LastInsertId = $product_cate->id;
@@ -117,7 +119,8 @@ class NewsAllController extends Controller
                     'recommen'=>$request->recommen2,
                     'category_id'=>$request->category_id2,
                     'description'=>$request->description2,
-                    'is_enable'=>$request->is_enable2
+                    'is_enable'=>$request->is_enable2,
+                    'slug'=>Str::slug($request->name2, '-')
                 ]);
             }else{
                 NewsAllModel::find($id)->update([
@@ -127,7 +130,8 @@ class NewsAllController extends Controller
                     'title'=>$request->title2,
                     'category_id'=>$request->category_id2,
                     'description'=>$request->description2,
-                    'is_enable'=>$request->is_enable2
+                    'is_enable'=>$request->is_enable2,
+                    'slug'=>Str::slug($request->name2, '-')
                 ]);
             }
 
