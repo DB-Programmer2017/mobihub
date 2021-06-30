@@ -77,10 +77,14 @@ class SlideAllController extends Controller
 
         //     $page->image = $filename;
         // }
+        
+        $last_rd     =   SlideAllModel::where('rd','>','0')->orderBy('rd','DESC')->first();
+        $rd = $last_rd->rd + 1;
 
         $new_slide              = new SlideAllModel;
         $new_slide->cover_img   = $filenameToStore;
         $new_slide->size        = $request->size;
+        $new_slide->rd          = $rd;
         $new_slide->save();
 
         return redirect()->back()->with('success',"บันทึกข้อมูลเรียบร้อยแล้ว");

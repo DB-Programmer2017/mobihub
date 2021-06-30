@@ -99,8 +99,10 @@
                                     <span class="label label-warning">Desktop</span>
                                 @elseif ($row2->size == "2")
                                     <span class="label label-default">Tablet</span>
-                                @else
+                                @elseif ($row2->size == "3")
                                     <span class="label label-danger">Mobile</span>
+                                @else
+                                    <span class="label label-primary">Unknow</span>
                                 @endif
 
                             <img src="{{asset('storage/images/' . $row2->cover_img)}}" class="img-responsive">
