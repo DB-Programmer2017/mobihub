@@ -74,6 +74,8 @@
 
 {{-- Body HTML --}}
 @section('content')
+
+
     <section id="banner-section">
         <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-touch="true" data-interval="4000">
           <!-- Indicators -->
