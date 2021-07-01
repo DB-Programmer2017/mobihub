@@ -32,7 +32,7 @@
             <div class="row">
 
                 @foreach ($news as $row)
-                    <div class="col-xs-12 col-md-4" onclick="window.location.assign('news-detail/{{$row->id}}')">
+                    <div class="col-xs-12 col-md-4" onclick="window.location.assign('news-detail/{{$row->slug}}')">
                         <div class="product-grid">
                             <div class="product-image">
                                 <a href="#" class="image">

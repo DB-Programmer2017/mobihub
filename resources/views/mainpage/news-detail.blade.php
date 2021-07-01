@@ -66,7 +66,7 @@ $url ="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
             <div class="panel-category" style="padding-top: 20px">
                 @foreach ($news as $row) 
-                    <div class="news-group" onclick="window.location.assign('{{$row->id}}')">
+                    <div class="news-group" onclick="window.location.assign('{{$row->slug}}')">
                         <div class="image">
                             <img class="img-responsive" alt="{{ $row->name }}" src="{{asset('storage/images/' . $row->cover_img)}}">
                         </div>
