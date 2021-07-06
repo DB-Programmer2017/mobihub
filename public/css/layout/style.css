@@ -370,14 +370,16 @@ body{
 .footer h4{
     font-family: 'Prompt', sans-serif;
     color: #505050;
+    font-size: 14px;
 }
 .footer p{
     color: #505050;
+    font-size: 10px;
 }
 .footer li{
     list-style: none;
     margin-bottom: 10px;
-    font-size: 14px;
+    font-size: 10px;
 }
 .footer .about li{
     cursor: pointer;
@@ -396,6 +398,7 @@ body{
     border-top: 1px solid #f4f4f4;
     padding: 15px 0;
     color: #505050;
+    font-size: 12px;
 }
 .footer img{
     height: 210px;

@@ -1,42 +1,34 @@
+body{
+    font-family: Prompt !important;
+    background-color:#fff !important;
+}
 .panel-about{
     display: block;
     position: relative;
-    padding-top: 150px;
-    padding-bottom: 150px;
-    background-image: url('/image/mainpage/about/About-mobihub.jpg');
+    padding-top: 100px;
+    padding-bottom: 200px;
+    background-image: url('/image/mainpage/about/1. Cover Page.jpg');
     background-repeat: no-repeat;
     background-size:cover;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    color:#fff;
+    background-color:#fff;
     text-align: left;
     font-family: 'Prompt', sans-serif;
 }
 
 .panel-about h2 {
     font-size: 30px;
-    font-weight: 200;
+    font-weight: 600;
     margin-bottom: 35px;
     font-family: 'Prompt', sans-serif;
-    color: #fff;
-}
-.panel-about h4{
-    color:#fff;
-    font-family: 'Prompt', sans-serif;
-}
-.panel-about h4::after {
-    content: "";
-    position: absolute;
-    width: 50px;
-    height: 1px;
-    bottom: 0;
-    left: 14px;
-    border-bottom: 2px solid #d01418;
-    margin: 0 auto;
+    color: #000;
+    text-align: center;
 }
 
 .panel-about p{
-    width: 50%;
-    line-height: 35px;
+    text-align: center;
+    font-size: 12px;
+    padding: 0 174px;
+    font-family: 'Prompt', sans-serif;
 }
 /* .panel-about-content h4{
     color:#ca2027;
@@ -93,74 +85,112 @@
     z-index: 1;
 }
 .about-service h4{
-    margin-bottom: 20px;
+    font-family: 'Prompt', sans-serif;
+    color: #919191;
+    font-weight: 400;
 }
 .about-service h3{
+    font-family: 'Prompt', sans-serif;
     color:#000;
     margin-bottom: 30px;
 }
 .about-service .our-service{
     padding: 0px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.15),10px 10px rgba(0,0,0,0.05);
     z-index: 1;
 }
 .about-service .service-box{
-    padding: 20px;
+    padding: 30px 30px  0;
     background: #fff;
-    padding-top: 30px;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom: 50px;
     text-align: center;
     cursor: pointer;
     z-index: 1;
+    box-shadow: 0 0 10px rgb(0 0 0 / 15%), 10px 10px rgb(0 0 0 / 5%);
 }
 .about-service .service-box:nth-child(2),
 .about-service .service-box:nth-child(4){
-    background: #999999;
-    color:#fff;
-}
-.about-service .service-box:nth-child(2) h4,
-.about-service .service-box:nth-child(4) h4{
-    color:#fff;
-    font-weight: bold;
+    background: #fff;
+    color: #fff;
 }
 
 .about-service .service-box .icon{
     display: block;
-    height: 60px;
-    width: 60px;
+    height: auto;
+    width: 100%;
     line-height: 60px;
-    background: #ca2027;
     text-align: center;
     margin-bottom: 10px;
-    border-radius: 50px;
 }
 .about-service .service-box .iconic{
     display: block;
-    height: 60px;
-    width: 60px;
+    height: auto;
+    width: 100%;
     line-height: 60px;
-    background: #fff;
     text-align: center;
     margin-bottom: 10px;
-    border-radius: 50px;
 }
 .about-service .service-box .icon img,
 .about-service .service-box .iconic img{
-    height: 35px;
-    width: auto;
+    height: 100%;
+    width: 100%;
+}
+#about-vision{
+    display: block;
+    position: relative;
+    padding-top: 250px;
+    padding-bottom: 150px;
+    background-image: url('/image/mainpage/about/6. Vision & Mission.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-color:#fff;
+    text-align: left;
+    font-family: 'Prompt', sans-serif;
 }
 
+#about-vision  .text{
+    font-family: 'Prompt', sans-serif;
+    text-align: center;
+}
+
+#about-vision .text-2 h2,
+#about-vision .text h2{
+    color: #919191;
+}
+#about-vision .text-2 ul li{
+    color: #4b4b4bdb;
+}
+#about-vision .text-2 ul{
+    padding-inline-start: 0;
+    list-style: none;
+}
+#about-vision .text h3{
+    color: #4b4b4bdb;
+    font-family: 'Prompt', sans-serif;
+    padding: 0 25%;
+    font-weight: 200;
+    font-size: 35px;
+}
+#about-vision  .text-2{
+    font-family: 'Prompt', sans-serif;
+    padding:7% 25% 0 25%;
+}
 .about-service-2{
-    padding-bottom: 90px;
+    display: block;
+    position: relative;
+    background-image: url('/image/mainpage/about/7. IT Solution.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-color:#fff;
+    text-align: left;
+    font-family: 'Prompt', sans-serif;
+}
+.about-service-2{
+    padding: 100px 0;
+    width: 100%;
 }
 .about-service-2 h2{
+    font-family: 'Prompt', sans-serif;
     font-weight: bold;
     color:#000;
-    margin-bottom: 30px;
-    display: flex;
-    flex-direction: row;
 }
 /* .about-service-2 h2::before {
     content: "-";
@@ -192,17 +222,16 @@
     z-index:-2;
 } */
 
-.about-service-2 h2:before,
-.about-service-2 h2:after {
-    content: "";
-    flex: 1 1;
-    border-bottom: 2px solid #ca2027;
-    margin: auto;
+.about-service-2 .title{
+    font-family: 'Prompt', sans-serif;
 }
 
-.about-service-2 .title{
-    margin-top: 20px;
-    margin-bottom: 30px;
+.about-service-2 .left-side{
+    padding: 0 9%;
+}
+.about-service-2 .row{
+    margin-right: 0;
+    margin-left: 0;
 }
 .about-service-2 .service-box{
     box-shadow: 0 0 10px -3px rgba(0,0,0,0.2);
@@ -251,56 +280,45 @@
     color: #ca2027;
 } */
 #our-service{
-    padding-top: 90px;
-    padding-bottom: 90px;
-    background: #F4F4F4;
     position: relative;
-    background-image: url('/image/about-us-2.jpg');
+    background-image: url('/image/mainpage/about/8. Our Service.jpg');
     background-repeat: no-repeat;
     background-size:cover;
-    margin-bottom: -50px;
+    padding: 200px 0 200px 0;
 }
 #our-service h2{
     font-family: 'Prompt';
     font-weight: 900;
     font-style: normal;
     margin-bottom: 50px;
-    font-size: 27px;
     margin-top: 0px;
-    line-height: 137%;
     color: #505050;
-    width: 80%;
     text-transform: uppercase;
 }
-#our-service h4{
-    color: #505050;
-    font-size: 16px;
+#our-service h2{
+    font-family: 'Prompt';
+    color: #000;
     margin-bottom: 20px;
+    text-align: center;
 }
 #our-service h3{
-    color: #505050;
+    font-family: 'Prompt';
+    color: #4b4b4bdb;
     font-weight: 400;
     font-size: 16px;
 }
-#our-service h4::after {
-    content: "";
-    position: absolute;
-    width: 50px;
-    height: 1px;
-    bottom: 0;
-    left: 14px;
-    border-bottom: 2px solid #ca2027;
-    margin: 0 auto;
-}
+
 #our-service .service-box{
     margin-bottom: 30px;
+    text-align: center;
+    margin-top: 50px;
 }
 #our-service .service-box h3{
     color: #505050;
     font-family: Prompt;
     font-style: normal;
-    font-weight: normal;
-    font-size: 15px;
+    font-weight: bold;
+    font-size: 20px;
     line-height: 88%;
 }
 #our-service .service-box p{

@@ -23,13 +23,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-12">
-                    <h4>About Mobihub</h4>
-                </div>
-                <div class="col-xs-12 col-md-12">
                     <h2>Mobihub Is Connected Mobility & Solutions Enable</h2>
                     <p>
-                        ผู้จัดจำหน่ายธุรกิจแบบ Business-to-Business (B2B)
-                        ที่ได้รับอนุญาติในเรื่องการบริการ สนับสนุนซ่อมแซมผลิตภัณฑ์ โซลูชัน และจำหน่ายสินค้าเทคโนโลยีแบรนด์ระดับโลก
+                        Mobihub Company Limited เป็นหนึ่งในไม่กี่บริษัทที่เป็นตัวแทนจำหน่ายซอฟแวร์ทางด้าน Cloud Solution และ อุปกรณ์ด้าน
+                        Mobile Device,
+                        Accessories Mobility ที่ครบวงจ­รที่สุด เราเน้นขายสินค้าด้านความปลอดภัยในการใช้งานอุปกรณ์พกพาทุกรูปเเบบ
+                        รวมถึง Software as a Service (SaaS)
+                        ที่จะคอยปกป้องข้อมูลของคุณได้อย่างปลอดภัย เรามุ่งเน้นการบริการหลักการขายที่มีคุณภาพ
+                        เพื่อสร้างความประทับใจและมอบประสบการณ์ที่ดีที่สุดให้กับลูกค้า
                     </p>
                 </div>
             </div>
@@ -41,50 +42,68 @@
             <div class="col-xs-12 col-md-12 our-service">
 
                 <div class="col-xs-12 col-sm-6 col-md-3 service-box">
-                    <center><div class="icon"><img src="/image/mainpage/about/call-center.png"></div></center>
-                    <h4>Call Center</h4>
-                    <p>
-                        มีเจ้าหน้าที่คอยให้บริการความช่วยเหลือทางเทคนิค
-                    </p>
+                    <center><div class="icon"><img src="/image/mainpage/about/2. Data Protection.jpg"></div></center>
+                    <h4>Data Protection</h4>
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-3 service-box">
-                    <center><div class="iconic"><img src="/image/mainpage/about/help-desk.png"></div></center>
-                    <h4>Services</h4>
-                    <p>
-                        การติดตามผลหลังการขาย และการให้บริการก่อนและหลังการขาย
-                    </p>
+                    <center><div class="iconic"><img src="/image/mainpage/about/3. Device Protection.jpg"></div></center>
+                    <h4>Device Protection</h4>
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-3 service-box">
-                    <center><div class="icon"><img src="/image/mainpage/about/waranty.png"></div></center>
-                    <h4>Warranty</h4>
-                    <p>
-                        นโยบายในการรับประกันสินค้า การเปลียนสินค้า และการคืนสินค้า
-                    </p>
+                    <center><div class="icon"><img src="/image/mainpage/about/4. Mobility.jpg"></div></center>
+                    <h4>Mobility</h4>
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-md-3 service-box">
-                    <center><div class="iconic"><img src="/image/mainpage/about/help-desk.png"></div></center>
-                    <h4>Call Center</h4>
-                    <p>
-                        มีเจ้าหน้าที่คอยให้บริการความช่วยเหลือทางเทคนิค
-                    </p>
+                    <center><div class="iconic"><img src="/image/mainpage/about/5. Life Style.jpg"></div></center>
+                    <h4>Life Style</h4>
                 </div>
             </div>
         </div>
     </div>
 
+    <section id="about-vision">
+        <div class="text">
+            <h2>
+                Vision
+            </h2>
+            <h3>
+                “เรายึดมั่นในการบริการหลังการขายเเละการนำเสนอ
+                สินค้าที่ตอบโจทย์การใช้งานในทุกๆ ด้านของชีวิต”
+            </h3>
+        </div>
+        <div class="text-2">
+            <h2>
+                Mission
+            </h2>
+            <ul>
+                <li>
+                    1. เรานำเสนอสินค้าทางด้าน it solution เน้นความปลอดภัยในการใช้งานทุกรูปเเบบ
+                </li>
+                <li>
+                    2. เราจะพัฒนาองค์กรในทุกๆ ด้านเพื่อตอบสนองความต้องการของผู้คนโดยเฉพาะบริการหลังการขาย
+                </li>
+                <li>
+                    3. เราเน้นการสร้างประสบการณ์ที่ดีที่สุด เพื่อให้ลูกค้าเกิดความพึงพอใจสูงสุด
+                </li>
+                <li>
+                    4. เราค้นหาธุรกิจเเละสินค้าใหม่ๆ ที่จะมาตอบโจทย์ความต้องการของผู้คนเพื่อให้องค์กรเติบโตขึ้นอย่างทันสมัย
+                </li>
+            </ul>
+        </div>
+    </section>
+
     <div class="container about-service-2">
         <div class="row">
-            <div class="col-xs-12 col-md-6">
+            <div class="col-xs-12 col-md-6 left-side">
                 <div class="col-xs-12 col-md-12">
                     <h2>IT SOLUTION</h2>
                 </div>
                 <div class="col-xs-12 col-md-12">
                     <p class="title">
-                        Lorem ipsum dolor sit amet, this is dream consectetuer adipiscing elit,
-                        sed diam nonummy nibh euismod tincidunt consectetuer adipiscing elit,
+                        เราเน้นสินค้าที่ให้ความปลอดภัยเป็นหลัก รวมถึงการรับประกันเเละการให้บริการทางด้าน IT กับธุรกิจชั้นนำของประเทศมาเเล้ว 200 กว่าบริษัท
                     </p>
                 </div>
 
@@ -117,7 +136,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-md-6">
-                <img src="/image/mainpage/about/handsome-freelancer-using-tablet-laptop-computer-check-his-business-cafe.jpg" class="img-responsive" alt="Random Image">
+
             </div>
         </div>
     </div>
@@ -125,27 +144,19 @@
     <section id="our-service">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-md-4 our-img">
-                    <img src="/image/mainpage/about/Rectangle 224.png" class="img-responsive" alt="Random Image">
-                </div>
-                <div class="col-xs-12 col-md-8">
+                <div class="col-xs-12 col-md-12">
                     <div class="col-xs-12 col-md-12">
-                        <h4>Our Service</h4>
+                        <h2>Our Service</h2>
                     </div>
-                    <div class="col-xs-12 col-md-12">
-                        <h3>Our strategy</h3>
-                        <h2>Includes Consistently Evolving To Ensure Exceptional For Business</h2>
-                    </div>
-
                     <div class="col-xs-12 col-sm-12 col-md-4">
                         <div class="service-box">
                             {{-- <div class="icon">
                                 <img src="/image/mainpage/about/call-center.png">
                             </div> --}}
-                            <h3>Call Center</h3>
+                            <h3>B2B & B2C </h3>
                             <p>
-                                Our expert staff is well experienced,
-                                trained and IT industry certified.
+                                To. 099-287-4710 ถึง 4711 <br>
+                                Email : sales@mobihub.co.th
                             </p>
                         </div>
                     </div>
@@ -155,10 +166,11 @@
                             {{-- <div class="icon">
                                 <img src="/image/mainpage/about/online-chat.png" alt="">
                             </div> --}}
-                            <h3>Services</h3>
+                            <h3>Consulting Service</h3>
                             <p>
-                                Our expert staff is well experienced,
-                                trained and IT industry certified.
+                                To. (099) 287-4709, (099) 287-4733 <br>
+                                Email : services@mobihub.co.th.
+
                             </p>
                         </div>
                     </div>
@@ -168,14 +180,14 @@
                             {{-- <div class="icon">
                                 <img src="/image/mainpage/about/waranty.png">
                             </div> --}}
-                            <h3>Warranty</h3>
+                            <h3>Solution</h3>
                             <p>
-                                Our expert staff is well experienced,
-                                trained and IT industry certified.
+                                To. +66(0)2-102-2591 <br>
+                                Facebook : MobihubThailand
                             </p>
                         </div>
                     </div>
-                </div>
+                </>
             </div>
         </div>
     </section>
