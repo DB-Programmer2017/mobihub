@@ -25,10 +25,14 @@ class CkeditorController extends Controller
             $extension = $request->file('upload')->getClientOriginalExtension();
             $fileName = $fileName.'_'.time().'.'.$extension;
 
-            $request->file('upload')->move(public_path('images'), $fileName);
+            //$request->file('upload')->move(public_path('images'), $fileName);
+            $request->file('upload')->move(storage_path('app/public/images'), $fileName);
 
             $CKEditorFuncNum = $request->input('CKEditorFuncNum');
-            $url = asset('images/'.$fileName);
+            
+           // $url = asset('images/'.$fileName);
+            $url = asset('storage/images/'.$fileName);
+
             $msg = 'Image uploaded successfully';
             $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
 

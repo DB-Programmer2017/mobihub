@@ -18,9 +18,13 @@ class EventServiceProvider extends ServiceProvider
         // Registered::class => [
         //     SendEmailVerificationNotification::class,
         // ],
+
+        //add Listener when user click Lon-in button (the event LogIn succeeded)
         'Illuminate\Auth\Events\Login' => [
             'App\Listeners\LogSuccessfulLogin',
         ],
+
+        //add Listener when user click Log-out button (the event LogOut succeeded)
         'Illuminate\Auth\Events\Logout' => [
             'App\Listeners\LogSuccessfulLogout',
         ],

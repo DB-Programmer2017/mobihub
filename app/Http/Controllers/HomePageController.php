@@ -23,24 +23,24 @@ class HomePageController extends Controller
         return view('mainpage/home',compact(['slides', 'news', 'recommend','news_recommend','scalefusion']));
     }
     function ajax_slide($screenWidth){
-        // dd($screenWidth);
-        if ($screenWidth >="1200"){//Desktop//
-            $id='1';
+        //dd($screenWidth);
+
+
+        if ($screenWidth >="320" && $screenWidth <="699"){//Mobile//
+            $id='3';
             $where = array('size'=> $id);
 
-        }elseif ($screenWidth >="800" && $screenWidth<="1199"){//Tablet//
+        }elseif ($screenWidth >="700" && $screenWidth <="1023" ){//Tablet//
             $id='2';
             $where = array('size'=> $id);
 
-        }elseif ($screenWidth >="320"){//Mobile//
-            $id='3';
-            $where = array('size'=> $id);
         }else{//Desktop//
             $id='1';
             $where = array('size'=> $id);
         }
 
         //dd($where);
+
         //$where = array('product_id' => $id);
 
 		$slide= SlideAllModel::where('is_enable', '1')->where($where)->orderBy('rd', 'ASC')->get();

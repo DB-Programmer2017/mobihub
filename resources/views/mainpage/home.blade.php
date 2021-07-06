@@ -74,6 +74,8 @@
 
 {{-- Body HTML --}}
 @section('content')
+
+
     <section id="banner-section">
         <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-touch="true" data-interval="4000">
           <!-- Indicators -->
@@ -400,14 +402,15 @@
         var screenWidth = screen.width;
         var screenHeight = screen.height;
 
-    //    alert(screenWidth);
+        //$('#device').html(screenWidth);
+
+        //alert(screenWidth);
 
         $.get('/homepage/' + screenWidth +'/ajax_slide', function (data) {
             // alert(data.length);
 
             if(data.length>0) {
                 for(i=0;i<data.length;i++) {
-                    // alert(data[i]['id']);
                     if(i == 0){
                         var active = 'active';
                     }else{

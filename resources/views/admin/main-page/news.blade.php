@@ -126,7 +126,7 @@
 
                                     <div class="col-xs-12 col-md-4 form-group">
                                         Category :
-                                        <select class="form-control" id="catgory_id" name="catgory_id">
+                                        <select class="form-control" id="category_id" name="category_id">
                                             @foreach ($category as $row)    
                                                 <option value="{{ $row->id }}">{{ $row->name }}</option>
                                             @endforeach
@@ -190,7 +190,7 @@
 
                                     <div class="col-xs-12 col-md-4 form-group">
                                         Category :
-                                        <select class="form-control" id="catgory_id2" name="catgory_id2">
+                                        <select class="form-control" id="category_id2" name="category_id2">
                                             @foreach ($category as $row)    
                                                 <option value="{{ $row->id }}">{{ $row->name }}</option>
                                             @endforeach
@@ -263,7 +263,9 @@
 @section('script')
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+    {{-- <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script> --}}
+
+    <script src="//cdn.ckeditor.com/4.14.1/full/ckeditor.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function($){    
@@ -286,7 +288,7 @@
                     $('#name2').val(res.name);
                     $('#recommen2').val(res.recommen);
                     $('#is_enable2').val(res.is_enable);
-                    $('#catgory_id2').val(res.category_id);
+                    $('#category_id2').val(res.category_id);
                     $('#title2').val(res.title);
                     CKEDITOR.instances['description2'].setData(res.description);
 
@@ -310,7 +312,13 @@
             filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
             filebrowserUploadMethod: 'form',
             customConfig: '/js/admin/ckeditor/config.js'
-        });
+        });  
+
+        CKEDITOR.replace('description2', {
+            filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form',
+            customConfig: '/js/admin/ckeditor/config.js'
+        });  
     </script>
 
 @endsection
