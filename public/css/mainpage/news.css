@@ -256,8 +256,9 @@
 
 @media screen and (max-width:990px){
     .product-grid{
-        margin: 0 0 30px;
-        height: auto;
+        margin: 20px auto;
+        padding-bottom: 40px;
+        background: #fff;
     }
 
 }
@@ -270,7 +271,9 @@
 #panel-news-detail a{
     color:#000;
 }
-
+#news-detail .bg-cover{
+    width: 100%;
+}
 .panel-content{
     box-shadow: 0 3px 22px rgba(0,0,0,0.07);
     margin-bottom: 30px;

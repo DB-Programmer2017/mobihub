@@ -12,6 +12,7 @@ class NewsAllModel extends Model
     protected $table='news';
 
     protected $fillable = [
+        'id',
         'name',
         'category_id',
         'title',

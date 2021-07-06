@@ -134,7 +134,7 @@
                             <div class="swiper-slide"><img src="https://picsum.photos/1080/450?grayscale?random=9"></div> --}}
                         </div>
                         <div class="swiper-pagination"></div>
-                        </div>
+                    </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
                         <div class="swiper-container swiper-container-1 mySwiper">
@@ -296,10 +296,9 @@
                                 </div>
                             </div>
                         @endforeach
-
                         </div>
                         <div class="swiper-pagination"></div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -307,8 +306,8 @@
     <!-- Swiper JS -->
     <script src="/js/swiper-bundle.min.js"></script>
 
-     <!-- Initialize Swiper -->
-     <script>
+    <!-- Initialize Swiper -->
+    <script>
         var swiper = new Swiper(".swiper-container-0", {
             pagination: {
                 el: ".swiper-pagination",
@@ -320,7 +319,8 @@
                 speed: 1,
             },
         });
-        </script>
+    </script>
+
         <script>
         var swiper = new Swiper(".swiper-container-1", {
             direction: "vertical",
@@ -407,7 +407,7 @@
         //alert(screenWidth);
 
         $.get('/homepage/' + screenWidth +'/ajax_slide', function (data) {
-            //alert();
+            // alert(data.length);
 
             if(data.length>0) {
                 for(i=0;i<data.length;i++) {
