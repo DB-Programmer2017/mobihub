@@ -42,6 +42,7 @@
                                 <th width="30%">Name</th>
                                 <th>Title</th>
                                 <th width="10%">Photo</th>
+                                <th width="3%"><i class="fas fa-eye"></i></th>
                                 <th width="5%">Status</th>
                             </tr>
                         </thead>
@@ -71,6 +72,9 @@
                                     @if ($row->cover_img  !='')
                                         <img src="{{asset('storage/images/' . $row->cover_img)}}" class="img-responsive">
                                     @endif
+                                </td>
+                                <td>
+                                    <span>{{ $row->reads }}</span>
                                 </td>
                                 <td>
                                     @if ($row->is_enable == "1")

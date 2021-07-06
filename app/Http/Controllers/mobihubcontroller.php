@@ -5,6 +5,7 @@ use App\Models\NewsAllModel;
 use App\Models\NewsCategoryModel;
 use Illuminate\Support\Facades\Cookie;
 
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 
 class MobihubController extends Controller
@@ -20,12 +21,18 @@ class MobihubController extends Controller
 
     function ShowDetail($slug){
         $newsDetail     = NewsAllModel::where('slug', $slug)->first();
-        // dd($newsDetail);
+        // dd($newsDetail->id);
         $newscate       = NewsCategoryModel::all();
-        $news           = NewsAllModel::where('id','<>',$newsDetail->id)->where('is_enable', '1')->inRandomOrder()->paginate(3) ;
+        $news           = NewsAllModel::where('slug', $newsDetail->slug)->where('is_enable', '1')->inRandomOrder()->paginate(3) ;
+        // dd($news);
 
-        if (Cookie::get($newsDetail->id)!='') {
-            Cookie::queue('$newsDetail->id', '1', 60);
+        
+        //ถ้ายังไม่มีคุกกี้ จะทำคำสั่ง ถ้ามีคุกกี้แล้ว จำนวนคนอ่านก็จะไม่ขึ้น เพราะมันซ้ำ
+        if (Cookie::get($newsDetail->id) == null) {
+            // สร้างคุกกี้ในแต่ละข่าว เวลาเข้าไปดูข่าว
+            $cookie = Cookie::queue($newsDetail->id, 1, 60);
+
+            //ทำคำสั่ง incrementReadCount ใน NewsModel
             $newsDetail->incrementReadCount();
         }
         // $newsDetail->incrementReadCount();

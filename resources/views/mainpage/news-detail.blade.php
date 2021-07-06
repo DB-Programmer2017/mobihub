@@ -11,14 +11,19 @@ $url ="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 {{-- Link CSS --}}
 @section('link')
 <link rel="stylesheet" href="/css/mainpage/news.css">
-
+<meta property="og:url"                content="http://www.mobihub.co.th/news-detail/{{ $newsDetail->slug }}" />
+<meta property="og:type"               content="website" />
+<meta property="og:title"              content="{{ $newsDetail->name }}" />
+<meta property="og:description"        content="#mobihub" />
+<meta property="og:image"              content="{{asset('storage/images/' . $newsDetail->cover_img)}}" />
 
 @endsection
 
 
 {{-- Body HTML --}}
 @section('content')
-
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0" nonce="kBpusAcv"></script>
 <section  id="panel-news-detail">
     <div class="container">
         <div class="row">
@@ -46,6 +51,8 @@ $url ="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
                 {{-- {{ $newsDetail->description }} --}}
                 {!! str_replace('<p>', ' ', $newsDetail->description) !!}
 
+ 
+                <div class="fb-share-button" data-href="https://www.mobihub.co.th/news-detail/a-guide-to-application-whitelisting" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.mobihub.co.th%2Fnews-detail%2Fa-guide-to-application-whitelisting&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
                 <ul class="social">
                     
                 <!-- Go to www.addthis.com/dashboard to customize your tools -->
@@ -130,5 +137,15 @@ $url ="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             alert("URL Copied.");
         }
     
+    </script>
+
+<script>
+    (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
     </script>
 @endsection
