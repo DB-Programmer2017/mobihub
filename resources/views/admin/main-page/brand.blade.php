@@ -104,6 +104,7 @@
     </div>
 </div>
 
+{{-- create a new brand --}}
 <div class="container">
     <div class="row">
         <form action="{{route('addProductBrand')}}" method="post" id="editForm" enctype="multipart/form-data">

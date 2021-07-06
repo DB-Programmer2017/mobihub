@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Prompt|Poppins|Questrial|Merienda|Caveat+Brush|Oswald|Anton|Mitr|Abril+Fatface" rel="stylesheet">
     <link rel="stylesheet" href="/css/layout/style.css">
     <link rel="stylesheet" href="/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         body{
             font-family: 'Prompt', sans-serif !important;
@@ -20,6 +21,10 @@
 
 </head>
 <body>
+
+    {{-- Cookie Consent --}}
+    {{-- @include('cookieConsent::index') --}}
+
     <!-- Messenger Chat Plugin Code -->
     <div id="fb-root"></div>
 

@@ -251,11 +251,11 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-xs-12 col-md-6" onclick="window.location.assign('news-detail/{{$news_recommend->id}}')" >
+                <div class="col-xs-12 col-md-6" onclick="window.location.assign('news-detail/{{$news_recommend->slug}}')" >
                     <img src="{{asset('storage/images/' . $news_recommend->cover_img)}}" class="pic-news" width="100%">
                     {{-- <img src="/image/home/shutterstock_1712203645-news2.jpg" class="pic-news" width="100%" alt=""> --}}
                 </div>
-                <div class="box" style="cursor: pointer;" onclick="window.location.assign('news-detail/{{$news_recommend->id}}')">
+                <div class="box" style="cursor: pointer;" onclick="window.location.assign('news-detail/{{$news_recommend->slug}}')">
                     <h2>
                         {{ mb_strimwidth($news_recommend->name, 0, 50, "...", "UTF-8") }}
                     </h2>
@@ -276,7 +276,7 @@
                         <div class="swiper-wrapper">
                         @foreach ($news as $row)
                             <div class="swiper-slide">
-                                <div class="box-news" onclick="window.location.assign('news-detail/{{$row->id}}')">
+                                <div class="box-news" onclick="window.location.assign('news-detail/{{$row->slug}}')">
                                     <div class="col-md-4">
                                         <img src="{{asset('storage/images/' . $row->cover_img)}}">
                                     </div>
