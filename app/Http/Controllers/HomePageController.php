@@ -32,7 +32,7 @@ class HomePageController extends Controller
             $id='2';
             $where = array('size'=> $id);
 
-        }elseif ($screenWidth >="400"){//Mobile//
+        }elseif ($screenWidth >="320"){//Mobile//
             $id='3';
             $where = array('size'=> $id);
         }else{//Desktop//
