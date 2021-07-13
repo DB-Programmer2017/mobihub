@@ -47,8 +47,10 @@ class ContactUsController extends Controller
 
         $contactUs  =   [
                             'name'      =>  $request->name,
+                            'company'   =>  $request->company,
                             'email'     =>  $request->email,
                             'subject'   =>  $request->subject,
+                            'phone'     =>  $request->phone,
                             'message'   =>  $request->message,
                         ];
         // Store input data in contact_us

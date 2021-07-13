@@ -816,7 +816,7 @@
             });
         });
 
-// ออโต้ หา category ของ dealer ตอน กดedit
+// ออโต้ หา brand ของ dealer ตอน กดedit
     // function Dealer(id){
     //     var dealer_id = id;
     //     // alert(dealer_id);
