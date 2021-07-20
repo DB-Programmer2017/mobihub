@@ -684,7 +684,6 @@ body {
 }
 
 .armor-x-panel{
-    width: 100vw;
     height: auto;
     display: block;
     position: relative;
@@ -763,10 +762,15 @@ body {
     padding-top: 30px;
     padding-bottom: 30px;
 }
-.armor-x-panel-3 .text{
-    position: absolute;
-    bottom: 0;
-    left: 11%;
+.armor-x-panel-3 .level{
+    padding: 100px 0;
+}
+.armor-x-panel-3 .level .text{
+    text-align: center;
+}
+.armor-x-panel-3 .defend p{
+    writing-mode: vertical-lr;
+    text-align: center;
 }
 .armor-x-panel-3 .text p{
     color: #fff;
@@ -828,6 +832,22 @@ body {
     font-size: 1vw;
     font-weight: 500;
     letter-spacing: 0.1vw;
+}
+.armor-x-panel-3 .defend{
+    display: flex;
+    justify-content: center;
+}
+.armor-x-panel-3 .pic-6,
+.armor-x-panel-3 .pic-5{
+    display: flex;
+    justify-content: center;
+
+}
+.armor-x-panel-3 .pic-6 img,
+.armor-x-panel-3 .pic-5 img{
+    display: block;
+    max-width: 25%;
+    height: auto;
 }
 .armor-x-panel-3 .btn{
     border-radius: 50px;

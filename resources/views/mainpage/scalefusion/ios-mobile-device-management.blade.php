@@ -254,6 +254,7 @@
     .sf-ios-mdm .section-6 .space-between{
         display: flex;
         justify-content: center;
+        margin: 0 15px;
     }
     .sf-ios-mdm .section-6 .box{
         background: #e8e8e891;
@@ -427,7 +428,7 @@
     }
     @media (max-width:500.98px){
         .android-device-management-3, .android-device-management-1, .android-device-management-2 {
-            padding: 350px 0;
+            padding: 150px 0;
         }
         .android-device-management-1 ul.nav-tabs {
             background-color: #ffe3e2;
@@ -448,6 +449,11 @@
             transition: linear 0.2s;
             text-align: center;
         }
+        .android-device-management .d-flex{
+        display: block;
+        justify-content: center;
+        align-items: center ;
+    }
     }
 
 
@@ -461,7 +467,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-12 col-box">
-                    <div class="col-xs-6 col-md-6">
+                    <div class="col-xs-12 col-md-6">
                         <h3>
                             iOS MDM Software
                         </h3>
@@ -473,11 +479,11 @@
                             Quickly provision, secure and manage company-owned iOS devices including iPhone, iPad, and iPad Pro. Scalefusion MDM for iOS supports varying device use cases across small business, schools and growing enterprises.
                         </p>
                         <div class="pic-certi">
-                            <img src="/image/mainpage/solution/android/g2crowd_logos-971dd0dde2a823023930d7db4c2d972bebc20481cb853dbaa2af73d25a8383d9.png" alt="">
+                            <img class="img-responsive" src="/image/mainpage/solution/android/g2crowd_logos-971dd0dde2a823023930d7db4c2d972bebc20481cb853dbaa2af73d25a8383d9.png" alt="">
                         </div>
                     </div>
-                    <div class="col-xs-6 col-md-6 d-flex">
-                        <img src="/image/mainpage/solution/ios/ios-mdm-device-mockup-dc06e87e62db9191729ffc679d7d735dbafe7e2d8fb115db45b74e893e9fdd86.png" alt="">
+                    <div class="col-xs-12 col-md-6 d-flex">
+                        <img class="img-responsive" src="/image/mainpage/solution/ios/ios-mdm-device-mockup-dc06e87e62db9191729ffc679d7d735dbafe7e2d8fb115db45b74e893e9fdd86.png" alt="">
                     </div>
                 </div>
 
@@ -496,12 +502,12 @@
                             <div class="tab-content tabs">
                                 <div role="tabpanel" class="tab-pane fade in active" id="Section1">
                                     <div class="box">
-                                        <img src="/image/mainpage/solution/ios/ipad-kiosk-single-mode-9f802a139d77905ec6d139d8335321c9dd8d6ba9e6845eaf0ddc8abcc75f8f5d.png">
+                                        <img class="img-responsive" src="/image/mainpage/solution/ios/ipad-kiosk-single-mode-9f802a139d77905ec6d139d8335321c9dd8d6ba9e6845eaf0ddc8abcc75f8f5d.png">
                                     </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="Section2">
                                     <div class="box">
-                                        <img src="/image/mainpage/solution/ios/ios-tablet-3d74e61df6b818a08ac26affb733a391fb201ad056cbfefd40d8ca89bafdb9eb.png">
+                                        <img class="img-responsive" src="/image/mainpage/solution/ios/ios-tablet-3d74e61df6b818a08ac26affb733a391fb201ad056cbfefd40d8ca89bafdb9eb.png">
                                     </div>
                                 </div>
                             </div>
@@ -796,21 +802,22 @@
             </div>
             <div class="top-layer p-t-80 p-b-50">
                 <div class="container">
-                    <div class="row flex xs-col m-0">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 flex v-center h-center">
-                            <img class="img-responsive" alt="iOS app management" src="/image/mainpage/solution/ios/image 196-1.png">
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <h5 class="header-font header-font--blue">
-                                Application Distribution &amp; Management
-                            </h5>
-                            <h2 class="header-font header-font--dark">
-                                Apps for Your Business, Delivered With Ease
-                            </h2>
-                            <p class="body-text body-text__large body-text--dark m-b-15">
-                                Enable your workforce to do more with relevant business apps on iOS devices. Install, configure, or uninstall applications from the Scalefusion dashboard.
-                            </p>
-                            <ul class="features p-l-0">
+                    <div class="row flex ">
+                        <div class="col-xs-12 col-md-12">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 flex v-center h-center">
+                                <img class="img-responsive" alt="iOS app management" src="/image/mainpage/solution/ios/image 196-1.png">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <h5 class="header-font header-font--blue">
+                                    Application Distribution &amp; Management
+                                </h5>
+                                <h2 class="header-font header-font--dark">
+                                    Apps for Your Business, Delivered With Ease
+                                </h2>
+                                <p class="body-text body-text__large body-text--dark m-b-15">
+                                    Enable your workforce to do more with relevant business apps on iOS devices. Install, configure, or uninstall applications from the Scalefusion dashboard.
+                                </p>
+                                <ul class="features p-l-0">
                                     <li>
                                         <p class="body-text body-text__medium body-text--dark m-t-0 m-b-10">
                                             <span class="bold">Apple App Store:</span> Select, configure and push applications from the App Store.
@@ -826,8 +833,8 @@
                                             <span class="bold">Scalefusion Enterprise Store:</span> Install private apps by uploading PList link or IPA file.
                                         </p>
                                     </li>
-                            </ul>
-
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="row m-0 flex space-between xs-col m-t-30">

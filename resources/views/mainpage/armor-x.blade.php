@@ -244,27 +244,29 @@
                 </picture>
             </div>
         </div>
-        <div class="col-xs-12 col-md-12">
-            <div class="text">
-                <h2>
-                    Level of Defend
-                </h2>
+        <div class="col-xs-12 col-md-12 level">
+            <div class="col-xs-12 col-md-12">
+                <div class="text">
+                    <h2>
+                        Level of Defend
+                    </h2>
+                </div>
             </div>
             <div class="col-xs-12 col-md-12 defend">
-                <p>
-
-                </p>
                 <picture class="pic-5">
+                    <p>
+                        SMARTPHONE
+                    </p>
                     <img class="img-responsive" src="/image/mainpage/armor-x/Product/BX3.png" alt="">
                     <img class="img-responsive" src="/image/mainpage/armor-x/Product/HX.png" alt="">
                     <img class="img-responsive" src="/image/mainpage/armor-x/Product/MX.png" alt="">
                 </picture>
             </div>
             <div class="col-xs-12 col-md-12 defend">
-                <p>
-
-                </p>
                 <picture class="pic-6">
+                    <p>
+                        TABLET
+                    </p>
                     <img class="img-responsive" src="/image/mainpage/armor-x/Product/MXS.png" alt="">
                     <img class="img-responsive" src="/image/mainpage/armor-x/Product/PXS.png" alt="">
                     <img class="img-responsive" src="/image/mainpage/armor-x/Product/RIN.png" alt="">
