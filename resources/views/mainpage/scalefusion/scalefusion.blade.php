@@ -478,7 +478,7 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-sm-12">
-                                                    <a href="/" class="btn btn-sm light-red">Read more</a>
+                                                    <a href="/scalefusion/workflow" class="btn btn-sm light-red">Read more</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -542,7 +542,7 @@
                         </div>
                         <div class="col-xs-12 col-md-6 in-grid">
                             <div class="col-md-4 col-sm-6">
-                                <div class="box" onclick="window.open('/android-mobile-device-management')">
+                                <div class="box" onclick="window.open('/scalefusion/android-mobile-device-management')">
                                     <p>Android Management</p>
                                     <div class="box-content">
                                         <p class="title">Android Management</p>
@@ -550,7 +550,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
-                                <div class="box" onclick="window.open('/ios-mobile-device-management')">
+                                <div class="box" onclick="window.open('/scalefusion/ios-mobile-device-management')">
                                     <p>iOS Management</p>
                                     <div class="box-content">
                                         <p class="title">iOS Management</p>
@@ -561,7 +561,7 @@
                                 <div class="box">
                                     <p>Window 10 Management</p>
                                     <div class="box-content">
-                                        <p class="title">Android Management</p>
+                                        <p class="title">Window 10 Management</p>
                                     </div>
                                 </div>
                             </div>
@@ -576,7 +576,7 @@
                         </div>
                         <div class="col-xs-12 col-md-6 in-grid">
                             <div class="col-md-4 col-sm-6">
-                                <div class="box" onclick="window.open('/mobile-device-management')">
+                                <div class="box" onclick="window.open('/scalefusion/mobile-device-management')">
                                     <p>Mobile Device Management</p>
                                     <div class="box-content">
                                         <p class="title">Mobile Device Management</p>

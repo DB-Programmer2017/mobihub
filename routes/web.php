@@ -83,6 +83,15 @@ Route::get('/clear-cache', function() {
         Route::get('/scalefusion/integrations', function () {
             return view('mainpage/scalefusion/intergrations');
         });
+        Route::get('/scalefusion/android-mobile-device-management', function () {
+            return view('mainpage/scalefusion/android-mobile-device-management');
+        });
+        Route::get('/scalefusion/ios-mobile-device-management', function () {
+            return view('mainpage/scalefusion/ios-mobile-device-management');
+        });
+        Route::get('/scalefusion/mobile-device-management', function () {
+            return view('mainpage/scalefusion/mobile-device-management');
+        });
 
 /*** Subscription ***/
 Route::get('/subscription-submit', [SubscriptionEmailController::class, 'create']);
@@ -142,7 +151,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/product', [ProductAllController::class,'product']);
     Route::get('/admin/news', [NewsAllController::class,'news']);
     Route::get('/admin/slide', [SlideAllController::class,'slide']);
- 
+
     /*Brand*/
     Route::post('/admin/brand/add',[BrandController::class,'store'])->name('addProductBrand');
     Route::post('/admin/brand/edit',[BrandController::class,'editProductBrand'])->name('editProductBrand');

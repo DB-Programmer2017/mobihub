@@ -434,7 +434,7 @@ body {
   color: #000;
   margin: 0;
   padding: 0;
-  margin-top: 120px;
+  margin-top: 105px;
 }
 
 .swiper-container {
@@ -684,17 +684,51 @@ body {
 }
 
 .armor-x-panel{
-    width: 100%;
-    height: 550px;
+    width: 100vw;
+    height: auto;
     display: block;
     position: relative;
-    background-image: url('/image/armor-x-bg.jpg');
+    background-image: url('/image/mainpage/armor-x/3.jpg');
     background-repeat: no-repeat;
     background-size:cover;
     font-family: 'Prompt', sans-serif;
-    padding-top: 70px;
-    padding-bottom: 50px;
-    margin-top: -5%;
+}
+.armor-x-panel .text{
+    padding: 8% 0;
+}
+.armor-x-panel .text h2{
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 3vw;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+.armor-tab{
+    width: 100%;
+    height: 84px;
+    background: #000000;
+}
+.armor-tab .nav-armor ul,
+.armor-tab .nav-armor{
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    margin-bottom: 0;
+    width: 100%;
+}
+.armor-tab .nav-armor ul{
+    font-family: Prompt;
+    font-size: 1vw;
+    text-align: center;
+    width: 100%;
+    padding-inline-start: 20%;
+}
+.armor-tab .nav-armor ul li{
+    color: #fff;
+    width: 100%;
+    list-style: none;
 }
 .armor-x-panel-2{
     position: relative;
@@ -726,18 +760,74 @@ body {
 .armor-x-panel-3{
     background: #fff;
     color:#505050;
-    margin-top: 50px;
     padding-top: 30px;
     padding-bottom: 30px;
+}
+.armor-x-panel-3 .text{
+    position: absolute;
+    bottom: 0;
+    left: 11%;
+}
+.armor-x-panel-3 .text p{
+    color: #fff;
 }
 .armor-x-panel-3 h4{
     font-family: 'Prompt', sans-serif;
     color:#505050;
     margin-bottom: 20px;
 }
-.armor-x-panel-3 iframe{
+.armor-x-panel-3 .pic-3{
+    display: inline-flex;
     width: 100%;
-    height: 400px;
+    height: 300px;
+    justify-content: center;
+}
+.armor-x-panel-3 .pic-4{
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+}
+.armor-x-panel-3 .pic-4 .img-1{
+    width: 100%;
+    height: 150px;
+    background-image: url('/image/mainpage/armor-x/6.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.armor-x-panel-3 .pic-4 .img-2{
+    width: 100%;
+    height: 150px;
+    background-image: url('/image/mainpage/armor-x/7.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.armor-x-panel-3 .pic-4 .img-3{
+    width: 100%;
+    height: 150px;
+    background-image: url('/image/mainpage/armor-x/8.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.armor-x-panel-3 .pic-4 .img-4{
+    width: 100%;
+    height: 150px;
+    background-image: url('/image/mainpage/armor-x/9.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.armor-x-panel-3 .pic-4 div{
+    margin: 0 10px;
+}
+.armor-x-panel-3 .pic-4 div p{
+    color: #fff;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 10px;
+    font-size: 1vw;
+    font-weight: 500;
+    letter-spacing: 0.1vw;
 }
 .armor-x-panel-3 .btn{
     border-radius: 50px;
@@ -751,11 +841,11 @@ body {
     margin-bottom: 6px;
 }
 #accordion-3 .panel-category{
-    background: red;
+    background: fff;
 }
 #accordion-3 .panel-heading{
     border-radius: 0px;
-    background-color:#f4f4f4;
+    background-color:#fff;
     padding:0;
 }
 #accordion-3 .panel-title{
@@ -799,7 +889,7 @@ body {
     color: #8a8a8a;
     font-size: 14px;
     line-height: 20px;
-    background:#f4f4f4;
+    background:#fff;
     padding: 5px 27px 15px;
     border-top: 0px none;
 }
@@ -814,7 +904,6 @@ body {
     padding: 0px;
     padding-left: 5px;
     display: none;
-    border-left: 1px dashed #8c8c8c;
 }
 #accordion-3 .panel-body ul.active{
     display: block;
@@ -852,11 +941,6 @@ body {
     float: right;
     margin-top: 5px;
 }
-
-.armor-x-panel-3 .container{
-    margin-top: 50px;
-}
-
 .armor-x-panel-3 .product-grid{
     font-family: 'Prompt', sans-serif;
     text-align: center;
@@ -866,7 +950,7 @@ body {
 .armor-x-panel-3 .product-grid .product-image{
     overflow: hidden;
     position: relative;
-    height: 250px;
+    height: auto;
 }
 .armor-x-panel-3 .product-grid .product-image a.image{ display: block; }
 .armor-x-panel-3 .product-grid .product-image img{
@@ -888,6 +972,12 @@ body {
     top: 10px;
     right: 0;
     clip-path: polygon(100% 0, 100% 100%, 0% 100%, 20% 50%, 0% 0%);
+}
+.armor-x-panel-3 .well{
+    background-color: #fff;
+    border: 0px solid #e3e3e3;
+    border-radius: 0px;
+    box-shadow: inset 0 0px 0px ;
 }
 .armor-x-panel-3 .product-grid .product-links{
     /* background-color: #eb6864; */
