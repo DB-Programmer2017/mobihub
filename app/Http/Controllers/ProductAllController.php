@@ -426,7 +426,7 @@ class ProductAllController extends Controller
         // $todo = ProductChoiceListModel::create($request);
         // return Response::json($todo);
 
-        dd($request);
+        // dd($request);
         $input = $request->all();
           
         ProductChoiceListModel::create($input);

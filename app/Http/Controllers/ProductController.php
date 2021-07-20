@@ -128,13 +128,13 @@ class ProductController extends Controller
 
         // Fetch records
     public function getCategory($brandid=0){
-            // Fetch Employees by Departmentid
-            $empData['data'] = ProductModel::orderby("name","asc")
-                        ->select('id','name')
-                        ->where('brand_id',$brandid)
-                        ->get();
-      
-            return response()->json($empData);
+
+        $empData['data'] = ProductModel::orderby("name","asc")
+                    ->select('id','name')
+                    ->where('brand_id',$brandid)
+                    ->get();
+    
+        return response()->json($empData);
     }
 
     public function editProductCategory($id){
