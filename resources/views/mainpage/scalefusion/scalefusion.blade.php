@@ -7,6 +7,7 @@
 {{-- Link CSS --}}
 @section('link')
 <link rel="stylesheet" href="/css/scalefusion/scalefusion.css">
+<link href="http://fonts.cdnfonts.com/css/prompt?styles=19632,19620,19622,19618" rel="stylesheet">
 <style>
     .scalefusion-1{
         background-image: url('/image/mainpage/scalefusion/Group523.png');
@@ -676,7 +677,7 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <a href="/ios-mobile-device-management" class="btn btn-lg magenta">Read more</a>
+                                                <a onclick="window.open('/scalefusion/ios-mobile-device-management')" class="btn btn-lg magenta">Read more</a>
                                             </div>
                                         </div>
                                     </div>

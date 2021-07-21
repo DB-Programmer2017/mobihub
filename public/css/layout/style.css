@@ -698,8 +698,8 @@ body {
 .armor-x-panel .text h2{
     font-family: Prompt;
     font-style: normal;
-    font-weight: bold;
-    font-size: 3vw;
+    font-weight: 800;
+    font-size: 4vw;
     text-align: center;
     text-transform: uppercase;
     color: #FFFFFF;
@@ -768,9 +768,17 @@ body {
 .armor-x-panel-3 .level .text{
     text-align: center;
 }
+.armor-x-panel-3 .level .text h2{
+    letter-spacing: 3px;
+    font-weight: 600;
+    font-family: 'Prompt', sans-serif;
+
+}
 .armor-x-panel-3 .defend p{
     writing-mode: vertical-lr;
     text-align: center;
+    font-family: 'Prompt', sans-serif;
+    color: #e53c37;
 }
 .armor-x-panel-3 .text p{
     color: #fff;
@@ -829,9 +837,10 @@ body {
     justify-content: center;
     align-items: flex-end;
     padding-bottom: 10px;
-    font-size: 1vw;
-    font-weight: 500;
+    font-size: 1.5vw;
+    font-weight: 700;
     letter-spacing: 0.1vw;
+    font-family: 'Prompt', sans-serif;
 }
 .armor-x-panel-3 .defend{
     display: flex;
