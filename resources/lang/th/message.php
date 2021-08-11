@@ -5,5 +5,8 @@ return [
 "Product" 	=> "สินค้า",
 "Services" 	=> "บริการ",
 "News" 		=> "ข่าวสาร",
-"Contact" 	=> "ติดต่อเรา"
+"Contact" 	=> "ติดต่อเรา",
+"Language" 	=> "ภาษา",
+"Quotation" => "ใบเสนอราคา"
+
 ];

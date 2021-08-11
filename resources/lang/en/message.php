@@ -5,5 +5,7 @@ return [
 "Product" 	=> "Product",
 "Services" 	=> "Services",
 "News" 		=> "News",
-"Contact" 	=> "Contact"
+"Contact" 	=> "Contact",
+"Language" 	=> "Language",
+"Quotation" 	=> "Quotation"
 ];
