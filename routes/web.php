@@ -92,6 +92,27 @@ Route::get('/clear-cache', function() {
         Route::get('/scalefusion/mobile-device-management', function () {
             return view('mainpage/scalefusion/mobile-device-management');
         });
+        Route::get('/scalefusion/window-manager', function () {
+            return view('mainpage/scalefusion/window-manager');
+        });
+        Route::get('/scalefusion/mac-os-manager', function () {
+            return view('mainpage/scalefusion/mac-os-manager');
+        });
+        Route::get('/scalefusion/kiosk', function () {
+            return view('mainpage/scalefusion/kiosk');
+        });
+        Route::get('/scalefusion/rugged', function () {
+            return view('mainpage/scalefusion/rugged');
+        });
+        Route::get('/scalefusion/endpoint', function () {
+            return view('mainpage/scalefusion/endpoint');
+        });
+        Route::get('/scalefusion/enterprise', function () {
+            return view('mainpage/scalefusion/enterprise');
+        });
+        Route::get('/scalefusion/byod', function () {
+            return view('mainpage/scalefusion/byod');
+        });
 
 /*** Subscription ***/
 Route::get('/subscription-submit', [SubscriptionEmailController::class, 'create']);

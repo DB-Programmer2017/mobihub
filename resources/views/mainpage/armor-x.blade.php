@@ -97,7 +97,7 @@
         }
         @media  (min-width:800px)  and (max-width:900px) {
             #menu-toggle{
-                display: none;
+                display: inline;
             }
         }
     </style>
@@ -157,23 +157,49 @@
     <section class="armor-tab">
         <div class="container">
             <div class="row">
-                <nav class="nav-armor">
-                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/logo.jpg" alt="">
-                    <ul>
-                        <li>
-                            Samsung S21
-                        </li>
-                        <li>
-                            Iphone 12
-                        </li>
-                        <li>
-                            Ipad 2021 (5th Gen)
-                        </li>
-                        <li>
-                            Apple Watch S6
-                        </li>
-                    </ul>
-                </nav>
+                <div class="col-xs-12 col-md-12">
+                    <nav class="nav-armor">
+                        <img class="img-responsive" src="/image/mainpage/armor-x/Product/logo.jpg" alt="">
+                        <ul>
+                            <li>
+                                Samsung S21
+                            </li>
+                            <li>
+                                Iphone 12
+                            </li>
+                            <li>
+                                Ipad 2021 (5th Gen)
+                            </li>
+                            <li>
+                                Apple Watch S6
+                            </li>
+                        </ul>
+                        <div class="swiper-container mySwiper-2 mobile">
+                            <div class="swiper-wrapper">
+                              <div class="swiper-slide">
+                                <li>
+                                    Samsung S21
+                                </li>
+                              </div>
+                              <div class="swiper-slide">
+                                <li>
+                                    Iphone 12
+                                </li>
+                              </div>
+                              <div class="swiper-slide">
+                                <li>
+                                    Ipad 2021 (5th Gen)
+                                </li>
+                              </div>
+                              <div class="swiper-slide">
+                                <li>
+                                    Apple Watch S6
+                                </li>
+                              </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
             </div>
         </div>
     </section>
@@ -221,22 +247,22 @@
             </div>
             <div class="col-xs-12 col-md-12">
                 <picture class="pic-4">
-                    <div class="img-1">
+                    <div class="col-xs-6 img-1">
                         <p>
                             Extreme Sport
                         </p>
                     </div>
-                    <div class="img-2">
+                    <div class="col-xs-6 img-2">
                         <p>
                             On Water
                         </p>
                     </div>
-                    <div class="img-3">
+                    <div class="col-xs-6 img-3">
                         <p>
                             Motorbike
                         </p>
                     </div>
-                    <div class="img-4">
+                    <div class="col-xs-6 img-4">
                         <p>
                             Hiking
                         </p>
@@ -262,16 +288,47 @@
                     <img class="img-responsive" src="/image/mainpage/armor-x/Product/MX.png" alt="">
                 </picture>
             </div>
+                <div class="swiper-container mySwiper mobile">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <img class="img-responsive" src="/image/mainpage/armor-x/Product/BX3.png" alt="">
+                      </div>
+                      <div class="swiper-slide">
+                        <img class="img-responsive" src="/image/mainpage/armor-x/Product/HX.png" alt="">
+                      </div>
+                      <div class="swiper-slide">
+                        <img class="img-responsive" src="/image/mainpage/armor-x/Product/MX.png" alt="">
+                      </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
             <div class="col-xs-12 col-md-12 defend">
                 <picture class="pic-6">
                     <p>
                         TABLET
                     </p>
-                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/MXS.png" alt="">
                     <img class="img-responsive" src="/image/mainpage/armor-x/Product/PXS.png" alt="">
                     <img class="img-responsive" src="/image/mainpage/armor-x/Product/RIN.png" alt="">
                     <img class="img-responsive" src="/image/mainpage/armor-x/Product/RX.png" alt="">
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/MXS.png" alt="">
                 </picture>
+            </div>
+            <div class="swiper-container mySwiper mobile">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/PXS.png" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/RIN.png" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/RX.png" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/MXS.png" alt="">
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </div>
@@ -380,6 +437,25 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 @section('script')
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+var swiper = new Swiper(".mySwiper", {
+    pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+    },
+});
+</script>
+<script>
+var swiper = new Swiper(".mySwiper-2", {
+    slidesPerView: 2,
+    autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+    },
+});
+</script>
+
 <script>
     $("#accordion-3 li .sub-title").click(function(e) {
         var id =$(this).attr("data-id");

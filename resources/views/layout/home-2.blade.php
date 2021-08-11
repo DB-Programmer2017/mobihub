@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Prompt|Poppins|Questrial|Merienda|Caveat+Brush|Oswald|Anton|Mitr|Abril+Fatface" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/layout/style.css">
     <link rel="stylesheet" href="/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
