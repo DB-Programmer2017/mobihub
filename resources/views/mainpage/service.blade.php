@@ -7,7 +7,7 @@
 {{-- Link CSS --}}
 @section('link')
 <link rel="stylesheet" href="/css/mainpage/service.css">
-
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;500;900&display=swap" rel="stylesheet">
 
 @endsection
 
@@ -18,17 +18,15 @@
         <div class="bg">
             <div class="box">
                 <div class="text-banner">
-                    <h3>
-                        WELCOME TO OUR COMPANY
-                    </h3>
                     <h1>
-                        SERVICES
+                        Service
                     </h1>
-                </div>
-                <div class="button">
-                    <button type="button" class="btn btn-danger btn-md" onclick="window.open('/contact')">
-                        ติดต่อเรา <span><i class="fas fa-long-arrow-alt-right"></i></span>
-                    </button>
+                    <p>
+                        เราจัดจำหน่ายสินค้าให้กับผู้บริโภคเเละองค์กรธุรกิจควบคู่กันซึ่งรองรับ
+                        ความต้องการของเป้าหมายเราให้บริการด้านการขายในทุกๆ
+                        เเพลตฟอร์ม
+                        เพื่อความสะดวกในการจัดให้ข้อมูลเเละการจัดจำหน่าย
+                    </p>
                 </div>
             </div>
         </div>
@@ -38,43 +36,67 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-12">
-                    <div class="col-xs-12 col-md-4">
-                        <div class="card">
-                            <img src="/image/mainpage/service/customer-service.svg" alt="" class="card-pic">
-                            <h2 class="head-card">
-                                Call center
-                            </h2>
-                            <p class="title-card">
-                                บางฉบับของข้อความใช้คำว่า adipisici
-                                แทน adipiscing เพราะการใช้อักษรคู่เสียงเดี่ยว
-                                ng ท้ายคำเป็นสิ่งที่แปลกในภาษาละตินคลาสสิก
-                            </p>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="card-1">
+                            <div class="box">
+                                <h2>
+                                    B2B
+                                </h2>
+                                <p>
+                                    Email : sales@mobihub.co.th <br>
+                                    Tel. : 099-287-4710 ถึง 4711
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-md-4">
-                        <div class="card">
-                            <img src="/image/mainpage/service/wrench.svg" alt="" class="card-pic">
-                            <h2 class="head-card">
-                                Repair
-                            </h2>
-                            <p class="title-card">
-                                บางฉบับของข้อความใช้คำว่า adipisici
-                                แทน adipiscing เพราะการใช้อักษรคู่เสียงเดี่ยว
-                                ng ท้ายคำเป็นสิ่งที่แปลกในภาษาละตินคลาสสิก
-                            </p>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="card-2">
+                            <div class="box">
+                                <h2>
+                                    B2C
+                                </h2>
+                                <p>
+                                    ช่องทางจัดจำหน่าย Shopee, Lazada,
+                                    Facebook, JD Central, Line
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-md-4">
-                        <div class="card">
-                            <img src="/image/mainpage/service/warranty.svg" alt="" class="card-pic">
-                            <h2 class="head-card">
-                                Warranty
-                            </h2>
-                            <p class="title-card">
-                                บางฉบับของข้อความใช้คำว่า adipisici
-                                แทน adipiscing เพราะการใช้อักษรคู่เสียงเดี่ยว
-                                ng ท้ายคำเป็นสิ่งที่แปลกในภาษาละตินคลาสสิก
-                            </p>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="card-3">
+                            <div class="box-3">
+                                <h2>
+                                    Consulting Service
+                                </h2>
+                                <p>
+                                    เราให้คำปรึกษาเกี่ยวกับระบบ cloud computing
+                                    ของเรากับทั้ง
+                                    B2B เเละ B2C การติดตั่ง การใช้งาน
+                                    ฟังชั่น เเละความปลอดภัยของข้อมูล
+                                     รวมถึงการ
+                                    เชื่อต่ออุปกรณ์เสริมต่างๆ เข้ากับ Device ของคุณ
+                                    อย่างเหมาะสม
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="card-4">
+                            <div class="box-4">
+                                <h2>
+                                    Solution
+                                </h2>
+                                <p>
+                                    รับให้คำปรึกาษาในเรื่องของการทำธุรกิจ
+                                    เเละการจัดจำหน่ายlสินค้าขาย
+                                     ปลีก-ส่ง
+                                    การจัดซื้อช่องทางแพลตฟอร์ม ซึ่งสินค้าบาง
+                                    ชนิดเป็นสินค้านำเข้า
+                                    มากจากต่างประเทศจะมี
+                                    วิธีการซื้อที่เเตกต่างจากปกติรับประกันได้รับ
+                                    สินนค้า 100%
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

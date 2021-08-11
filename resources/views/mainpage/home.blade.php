@@ -74,6 +74,8 @@
 
 {{-- Body HTML --}}
 @section('content')
+
+
     <section id="banner-section">
         <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-touch="true" data-interval="4000">
           <!-- Indicators -->
@@ -132,7 +134,7 @@
                             <div class="swiper-slide"><img src="https://picsum.photos/1080/450?grayscale?random=9"></div> --}}
                         </div>
                         <div class="swiper-pagination"></div>
-                        </div>
+                    </div>
                 </div>
                 <div class="col-xs-12 col-md-6">
                         <div class="swiper-container swiper-container-1 mySwiper">
@@ -249,11 +251,11 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-xs-12 col-md-6" onclick="window.location.assign('news-detail/{{$news_recommend->id}}')" >
+                <div class="col-xs-12 col-md-6" onclick="window.location.assign('news-detail/{{$news_recommend->slug}}')" >
                     <img src="{{asset('storage/images/' . $news_recommend->cover_img)}}" class="pic-news" width="100%">
                     {{-- <img src="/image/home/shutterstock_1712203645-news2.jpg" class="pic-news" width="100%" alt=""> --}}
                 </div>
-                <div class="box" style="cursor: pointer;" onclick="window.location.assign('news-detail/{{$news_recommend->id}}')">
+                <div class="box" style="cursor: pointer;" onclick="window.location.assign('news-detail/{{$news_recommend->slug}}')">
                     <h2>
                         {{ mb_strimwidth($news_recommend->name, 0, 50, "...", "UTF-8") }}
                     </h2>
@@ -274,7 +276,7 @@
                         <div class="swiper-wrapper">
                         @foreach ($news as $row)
                             <div class="swiper-slide">
-                                <div class="box-news" onclick="window.location.assign('news-detail/{{$row->id}}')">
+                                <div class="box-news" onclick="window.location.assign('news-detail/{{$row->slug}}')">
                                     <div class="col-md-4">
                                         <img src="{{asset('storage/images/' . $row->cover_img)}}">
                                     </div>
@@ -294,10 +296,9 @@
                                 </div>
                             </div>
                         @endforeach
-
                         </div>
                         <div class="swiper-pagination"></div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -305,8 +306,8 @@
     <!-- Swiper JS -->
     <script src="/js/swiper-bundle.min.js"></script>
 
-     <!-- Initialize Swiper -->
-     <script>
+    <!-- Initialize Swiper -->
+    <script>
         var swiper = new Swiper(".swiper-container-0", {
             pagination: {
                 el: ".swiper-pagination",
@@ -318,7 +319,8 @@
                 speed: 1,
             },
         });
-        </script>
+    </script>
+
         <script>
         var swiper = new Swiper(".swiper-container-1", {
             direction: "vertical",
@@ -405,7 +407,7 @@
         //alert(screenWidth);
 
         $.get('/homepage/' + screenWidth +'/ajax_slide', function (data) {
-            //alert();
+            // alert(data.length);
 
             if(data.length>0) {
                 for(i=0;i<data.length;i++) {

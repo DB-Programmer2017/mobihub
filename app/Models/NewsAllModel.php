@@ -12,6 +12,7 @@ class NewsAllModel extends Model
     protected $table='news';
 
     protected $fillable = [
+        'id',
         'name',
         'category_id',
         'title',
@@ -20,10 +21,17 @@ class NewsAllModel extends Model
         'created_at',
         'updated_at',
         'recommen',
-        'cover_img'
+        'cover_img',
+        'slug'
     ];
 
     function news_category() {
         return $this->belongsTo(NewsCategoryModel::class,'category_id');
+    }
+
+    //จำนวนผู้อ่านโพส
+    public function incrementReadCount() {
+        $this->reads++;
+        return $this->save();
     }
 }

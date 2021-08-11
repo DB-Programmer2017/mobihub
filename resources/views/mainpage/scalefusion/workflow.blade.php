@@ -151,9 +151,31 @@
     @media (max-width:1199.98px){
 
     }
-    @media (max-width:600.98px){
-
-
+    @media  (min-width: 320px)  and (max-width: 991.98px){
+        #workflow-3 .text{
+            margin: 50px 0;
+        }
+        #workflow-3 .box {
+            width: 200px;
+            height: 50px;
+        }
+    }
+    @media (max-width:767.98px){
+        #workflow-1 .box-text {
+            padding-left: 5%;
+            padding-top: 10%;
+        }
+        #workflow-3 .box img {
+            width: 5%;
+        }
+        #workflow-3 .box {
+            width: 100%;
+            height: 80px;
+            margin: 5px 0;
+        }
+        #workflow-1 .col-md-12 {
+            width: 70%;
+        }
     }
     @media (max-width:500.98px){
 
@@ -168,7 +190,7 @@
     <section id="workflow-1">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-md-12">
+                <div class="col-xs-12 col-md-12 box-text">
                      <h3>
                         Workflows
                      </h3>
@@ -225,7 +247,7 @@
                                     Create Workflows to automate and schedule tasks as well as to set alerts. Schedule workflows for devices/device groups, irrespective of the profile configuration.
                                  </p>
                             </div>
-                            <div class="col-xs-12 col-md-4">
+                            <div class="col-xs-12 col-sm-4 col-md-4">
                                 <div class="box">
                                     <img src="/image/mainpage/scalefusion/workflow/icon/Vector.png" class="img-responsive" alt="">
                                     <p>
@@ -233,7 +255,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-md-4">
+                            <div class="col-xs-12 col-sm-4 col-md-4">
                                 <div class="box">
                                     <img src="/image/mainpage/scalefusion/workflow/icon/Vector-1.png" class="img-responsive" alt="">
                                     <p>
@@ -241,7 +263,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-md-4">
+                            <div class="col-xs-12 col-sm-4 col-md-4">
                                 <div class="box">
                                     <img src="/image/mainpage/scalefusion/workflow/icon/Vector-2.png" class="img-responsive" alt="">
                                     <p>
@@ -406,7 +428,7 @@
     <section id="workflow-5">
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-md-12">
                     <div class="text">
                         <h2>
                             Compliance Alerts & Security Checks

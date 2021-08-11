@@ -85,19 +85,19 @@
         .sub-category-title label{
             font-weight: normal;
         }
-        @media  (min-width: 320px)  and (max-width: 736px) { 
+        @media  (min-width: 320px)  and (max-width: 736px) {
             #menu-toggle{
                 display: inline;
             }
         }
-        @media  (min-width: 767px)  and (max-width: 1023px) { 
+        @media  (min-width: 767px)  and (max-width: 1023px) {
             #menu-toggle{
                 display: inline;
             }
         }
-        @media  (min-width:800px)  and (max-width:900px) { 
+        @media  (min-width:800px)  and (max-width:900px) {
             #menu-toggle{
-                display: none;
+                display: inline;
             }
         }
     </style>
@@ -114,12 +114,12 @@
     <div id="mySidenavArmorx" class="sidenav-armorx ">
         <a href="/armor-x" class=brand>ARMOR-X</a>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNavArmorx()">&times;</a>
-        
+
         @foreach ($brands as $brand)
         @csrf
             @if(!empty($_GET['category']))
-                @php 
-                    $filter_cates=explode(",",$_GET['category']); 
+                @php
+                    $filter_cates=explode(",",$_GET['category']);
                 @endphp
             @endif
             <a href="#" class="brand-title">
@@ -133,7 +133,7 @@
 
                         @foreach($category->subCategories as $subCategory)
                             <a href="#" class="sub-category-title">
-                                <input class="custom-control-input category_checkbox" type="checkbox" @if(!empty($filter_cates) && in_array($subCategory->slug,$filter_cates)) checked @endif   att-name="{{ $subCategory->name }}" value="{{ $subCategory->slug }}" name="category[]" onchange="this.form.submit();" id="{{ $subCategory->id }}"> 
+                                <input class="custom-control-input category_checkbox" type="checkbox" @if(!empty($filter_cates) && in_array($subCategory->slug,$filter_cates)) checked @endif   att-name="{{ $subCategory->name }}" value="{{ $subCategory->slug }}" name="category[]" onchange="this.form.submit();" id="{{ $subCategory->id }}">
                                 <label for="{{ $subCategory->id }}">{{ $subCategory->name }} [{{ count(App\Models\ProductAllModel::where('sub_category_id', $subCategory->id)->get()) }}]</label>
                             </a>
                         @endforeach
@@ -145,9 +145,66 @@
     </form>
 
     <section class="armor-x-panel">
+        <div class="text">
+            <h2>
+                ONE SYSTEM.
+            </h2>
+            <h2>
+                ENDLESS ADVENTURE.
+            </h2>
+        </div>
+    </section>
+    <section class="armor-tab">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <nav class="nav-armor">
+                        <img class="img-responsive" src="/image/mainpage/armor-x/Product/logo.jpg" alt="">
+                        <ul>
+                            <li>
+                                Samsung S21
+                            </li>
+                            <li>
+                                Iphone 12
+                            </li>
+                            <li>
+                                Ipad 2021 (5th Gen)
+                            </li>
+                            <li>
+                                Apple Watch S6
+                            </li>
+                        </ul>
+                        <div class="swiper-container mySwiper-2 mobile">
+                            <div class="swiper-wrapper">
+                              <div class="swiper-slide">
+                                <li>
+                                    Samsung S21
+                                </li>
+                              </div>
+                              <div class="swiper-slide">
+                                <li>
+                                    Iphone 12
+                                </li>
+                              </div>
+                              <div class="swiper-slide">
+                                <li>
+                                    Ipad 2021 (5th Gen)
+                                </li>
+                              </div>
+                              <div class="swiper-slide">
+                                <li>
+                                    Apple Watch S6
+                                </li>
+                              </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <div class="container armor-x-panel-2">
+    {{-- <div class="container armor-x-panel-2">
         <div class="row">
             <div class="col-xs-12 col-md-6">
                 <h2>About Armor-x</h2>
@@ -176,16 +233,107 @@
                 </p>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 <section class="armor-x-panel-3">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-12">
-                <iframe  src="https://www.youtube.com/embed/g1n6tuCeTRY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <picture class="pic-3">
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/1.png" alt="">
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/2.png" alt="">
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/3.png" alt="">
+                </picture>
+            </div>
+            <div class="col-xs-12 col-md-12">
+                <picture class="pic-4">
+                    <div class="col-xs-6 img-1">
+                        <p>
+                            Extreme Sport
+                        </p>
+                    </div>
+                    <div class="col-xs-6 img-2">
+                        <p>
+                            On Water
+                        </p>
+                    </div>
+                    <div class="col-xs-6 img-3">
+                        <p>
+                            Motorbike
+                        </p>
+                    </div>
+                    <div class="col-xs-6 img-4">
+                        <p>
+                            Hiking
+                        </p>
+                    </div>
+                </picture>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-12 level">
+            <div class="col-xs-12 col-md-12">
+                <div class="text">
+                    <h2>
+                        Level of Defend
+                    </h2>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-12 defend">
+                <picture class="pic-5">
+                    <p>
+                        SMARTPHONE
+                    </p>
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/BX3.png" alt="">
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/HX.png" alt="">
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/MX.png" alt="">
+                </picture>
+            </div>
+                <div class="swiper-container mySwiper mobile">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <img class="img-responsive" src="/image/mainpage/armor-x/Product/BX3.png" alt="">
+                      </div>
+                      <div class="swiper-slide">
+                        <img class="img-responsive" src="/image/mainpage/armor-x/Product/HX.png" alt="">
+                      </div>
+                      <div class="swiper-slide">
+                        <img class="img-responsive" src="/image/mainpage/armor-x/Product/MX.png" alt="">
+                      </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            <div class="col-xs-12 col-md-12 defend">
+                <picture class="pic-6">
+                    <p>
+                        TABLET
+                    </p>
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/PXS.png" alt="">
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/RIN.png" alt="">
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/RX.png" alt="">
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/MXS.png" alt="">
+                </picture>
+            </div>
+            <div class="swiper-container mySwiper mobile">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/PXS.png" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/RIN.png" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/RX.png" alt="">
+                  </div>
+                  <div class="swiper-slide">
+                    <img class="img-responsive" src="/image/mainpage/armor-x/Product/MXS.png" alt="">
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </div>
+
+
 
     <div class="container-fluid">
         <div class="row">
@@ -227,7 +375,7 @@
                                                         <ul class="active">
                                                         @foreach($category->subCategories as $subCategory)
                                                             <li>
-                                                                <input class="custom-control-input category_checkbox" type="checkbox" @if(!empty($filter_cates) && in_array($subCategory->slug,$filter_cates)) checked @endif   att-name="{{ $subCategory->name }}" value="{{ $subCategory->slug }}" name="category[]" onchange="this.form.submit();" id="{{ $subCategory->id }}"> 
+                                                                <input class="custom-control-input category_checkbox" type="checkbox" @if(!empty($filter_cates) && in_array($subCategory->slug,$filter_cates)) checked @endif   att-name="{{ $subCategory->name }}" value="{{ $subCategory->slug }}" name="category[]" onchange="this.form.submit();" id="{{ $subCategory->id }}">
                                                                 <label for="{{ $subCategory->id }}">{{ $subCategory->name }} [{{ count(App\Models\ProductAllModel::where('sub_category_id', $subCategory->id)->get()) }}]</label>
                                                             </li>
                                                         @endforeach
@@ -256,7 +404,7 @@
                     </div>
                 </div>
 
-                    @foreach ($product as $row)  
+                    @foreach ($product as $row)
                         <div class="col-xs-12 col-sm-6 col-md-4">
                             <div class="product-grid" onclick="window.open('/armor-x-product/{{ $row->slug }}')">
                                 <div class="product-image">
@@ -271,7 +419,7 @@
                                 </div>
                                 <div class="product-content">
                                     <h3 class="title"><a href="#">{{ mb_strimwidth($row->name, 0, 50, "...", "UTF-8") }}</a></h3>
-                                    <a class="add-to-cart" href="#">ติดต่อผู้ขาย</a>
+                                    <a class="add-to-cart" href="#">รายละเอียด</a>
                                 </div>
                             </div>
                         </div>
@@ -289,6 +437,25 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 @section('script')
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+var swiper = new Swiper(".mySwiper", {
+    pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+    },
+});
+</script>
+<script>
+var swiper = new Swiper(".mySwiper-2", {
+    slidesPerView: 2,
+    autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+    },
+});
+</script>
+
 <script>
     $("#accordion-3 li .sub-title").click(function(e) {
         var id =$(this).attr("data-id");

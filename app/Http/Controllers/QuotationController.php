@@ -72,7 +72,7 @@ class QuotationController extends Controller
 // dd(json_encode($request->products));
         Quotation::create($quotation);
 
-        
+
         session()->flash('success', 'Thank You. Your request has sent successfully, Our team will response as soon as possible.');
         Mail::to('pairin.p@databar.co.th')
         ->send(new QuotationMail($quotation));

@@ -294,7 +294,7 @@ body{
         color:#fff;
         border-radius: 50px;
         height: 38px;
-        margin-top: 30px;
+        margin-top: 60%;
         margin-left: auto;
         margin-right: auto;
     }
@@ -314,7 +314,7 @@ body{
                 display: block;
             }
             main{
-                margin-top: -53px;
+                margin-top: -33px !important;
             }
         }
     /*-------------------------- Mobile แนวนอน------------*/
@@ -326,7 +326,7 @@ body{
             display: block;
         }
         main{
-            margin-top: -53px;
+            margin-top: -33px !important;
         }
     }
     /*-------------------------- iPad แนวตั้ง------------*/
@@ -338,7 +338,7 @@ body{
                 display: block;
             }
             main{
-                margin-top: -53px;
+                margin-top: -33px !important;
             }
         }
  /*-------------------------- iPad แนวนอน------------*/
@@ -370,14 +370,16 @@ body{
 .footer h4{
     font-family: 'Prompt', sans-serif;
     color: #505050;
+    font-size: 14px;
 }
 .footer p{
     color: #505050;
+    font-size: 10px;
 }
 .footer li{
     list-style: none;
     margin-bottom: 10px;
-    font-size: 14px;
+    font-size: 10px;
 }
 .footer .about li{
     cursor: pointer;
@@ -396,6 +398,7 @@ body{
     border-top: 1px solid #f4f4f4;
     padding: 15px 0;
     color: #505050;
+    font-size: 12px;
 }
 .footer img{
     height: 210px;
@@ -431,7 +434,7 @@ body {
   color: #000;
   margin: 0;
   padding: 0;
-  margin-top: 120px;
+  margin-top: 105px;
 }
 
 .swiper-container {
@@ -681,17 +684,50 @@ body {
 }
 
 .armor-x-panel{
-    width: 100%;
-    height: 550px;
+    height: auto;
     display: block;
     position: relative;
-    background-image: url('/image/armor-x-bg.jpg');
+    background-image: url('/image/mainpage/armor-x/3.jpg');
     background-repeat: no-repeat;
     background-size:cover;
     font-family: 'Prompt', sans-serif;
-    padding-top: 70px;
-    padding-bottom: 50px;
-    margin-top: -5%;
+}
+.armor-x-panel .text{
+    padding: 8% 0;
+}
+.armor-x-panel .text h2{
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 4vw;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+.armor-tab{
+    width: 100%;
+    height: 84px;
+    background: #000000;
+}
+.armor-tab .nav-armor ul,
+.armor-tab .nav-armor{
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    margin-bottom: 0;
+    width: 100%;
+}
+.armor-tab .nav-armor ul{
+    font-family: Prompt;
+    font-size: 1vw;
+    text-align: center;
+    width: 100%;
+    padding-inline-start: 20%;
+}
+.armor-tab .nav-armor ul li{
+    color: #fff;
+    width: 100%;
+    list-style: none;
 }
 .armor-x-panel-2{
     position: relative;
@@ -723,18 +759,123 @@ body {
 .armor-x-panel-3{
     background: #fff;
     color:#505050;
-    margin-top: 50px;
     padding-top: 30px;
     padding-bottom: 30px;
+}
+
+.armor-tab .nav-armor .mySwiper-2{
+    display: none;
+}
+.armor-x-panel-3 .level{
+    padding: 100px 0;
+}
+.armor-x-panel-3 .level .text{
+    text-align: center;
+}
+.armor-x-panel-3 .level .text h2{
+    letter-spacing: 3px;
+    font-weight: 600;
+    font-family: 'Prompt', sans-serif;
+
+}
+.armor-x-panel-3 .defend p{
+    writing-mode: vertical-lr;
+    text-align: center;
+    font-family: 'Prompt', sans-serif;
+    color: #e53c37;
+}
+.armor-x-panel-3 .text p{
+    color: #fff;
 }
 .armor-x-panel-3 h4{
     font-family: 'Prompt', sans-serif;
     color:#505050;
     margin-bottom: 20px;
 }
-.armor-x-panel-3 iframe{
+.armor-x-panel-3 .pic-3{
+    display: inline-flex;
     width: 100%;
-    height: 400px;
+    height: 300px;
+    justify-content: center;
+}
+.armor-x-panel-3 .pic-4{
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+}
+.armor-x-panel-3 .img-1{
+    height: 150px;
+    background-image: url('/image/mainpage/armor-x/6.jpg');
+    background-repeat: no-repeat;
+    margin: 0 5px;
+    width: 23%;
+    float: left;
+    background-size: cover;
+}
+.armor-x-panel-3 .img-2{
+    height: 150px;
+    background-image: url('/image/mainpage/armor-x/7.jpg');
+    background-repeat: no-repeat;
+    margin: 0 5px;
+    width: 23%;
+    float: left;
+    background-size: cover;
+}
+.armor-x-panel-3 .img-3{
+    height: 150px;
+    background-image: url('/image/mainpage/armor-x/8.jpg');
+    background-repeat: no-repeat;
+    margin: 0 5px;
+    width: 23%;
+    float: left;
+    background-size: cover;
+}
+.armor-x-panel-3 .img-4{
+    height: 150px;
+    background-image: url('/image/mainpage/armor-x/9.jpg');
+    background-repeat: no-repeat;
+    margin: 0 5px;
+    width: 23%;
+    float: left;
+    background-size: cover;
+}
+.armor-x-panel-3 .pic-4 div{
+    margin: 0 10px;
+}
+.armor-x-panel-3 .pic-4 div p{
+    color: #fff;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 10px;
+    font-size: 1.5vw;
+    font-weight: 700;
+    letter-spacing: 0.1vw;
+    font-family: 'Prompt', sans-serif;
+}
+.armor-x-panel-3 .defend{
+    display: flex;
+    justify-content: center;
+}
+.armor-x-panel-3 .pic-6,
+.armor-x-panel-3 .pic-5{
+    display: block;
+}
+.armor-x-panel-3 .mobile{
+    display: none;
+}
+.armor-x-panel-3 .pic-6,
+.armor-x-panel-3 .pic-5{
+    display: flex;
+    justify-content: center;
+
+}
+.armor-x-panel-3 .pic-6 img,
+.armor-x-panel-3 .pic-5 img{
+    display: block;
+    max-width: 25%;
+    height: auto;
 }
 .armor-x-panel-3 .btn{
     border-radius: 50px;
@@ -748,11 +889,11 @@ body {
     margin-bottom: 6px;
 }
 #accordion-3 .panel-category{
-    background: red;
+    background: fff;
 }
 #accordion-3 .panel-heading{
     border-radius: 0px;
-    background-color:#f4f4f4;
+    background-color:#fff;
     padding:0;
 }
 #accordion-3 .panel-title{
@@ -796,7 +937,7 @@ body {
     color: #8a8a8a;
     font-size: 14px;
     line-height: 20px;
-    background:#f4f4f4;
+    background:#fff;
     padding: 5px 27px 15px;
     border-top: 0px none;
 }
@@ -811,7 +952,6 @@ body {
     padding: 0px;
     padding-left: 5px;
     display: none;
-    border-left: 1px dashed #8c8c8c;
 }
 #accordion-3 .panel-body ul.active{
     display: block;
@@ -849,11 +989,6 @@ body {
     float: right;
     margin-top: 5px;
 }
-
-.armor-x-panel-3 .container{
-    margin-top: 50px;
-}
-
 .armor-x-panel-3 .product-grid{
     font-family: 'Prompt', sans-serif;
     text-align: center;
@@ -863,7 +998,7 @@ body {
 .armor-x-panel-3 .product-grid .product-image{
     overflow: hidden;
     position: relative;
-    height: 250px;
+    height: auto;
 }
 .armor-x-panel-3 .product-grid .product-image a.image{ display: block; }
 .armor-x-panel-3 .product-grid .product-image img{
@@ -885,6 +1020,12 @@ body {
     top: 10px;
     right: 0;
     clip-path: polygon(100% 0, 100% 100%, 0% 100%, 20% 50%, 0% 0%);
+}
+.armor-x-panel-3 .well{
+    background-color: #fff;
+    border: 0px solid #e3e3e3;
+    border-radius: 0px;
+    box-shadow: inset 0 0px 0px ;
 }
 .armor-x-panel-3 .product-grid .product-links{
     /* background-color: #eb6864; */
@@ -1309,6 +1450,138 @@ body {
         width: 90%;
         margin-top: -40%;;
     }
+    .armor-x-panel-3 .pic-3{
+        width: 100%;
+        height: auto;
+    }
+    .armor-x-panel-3 .pic-3 img{
+        display: block;
+        max-width: 32%;
+        height: auto;
+    }
+    .armor-tab .nav-armor img{
+        max-width: 32%;
+    }
+    .armor-tab .nav-armor ul{
+        display: none;
+    }
+    .armor-x-panel {
+        height: auto;
+        display: block;
+        position: relative;
+        background-image: url(/image/mainpage/armor-x/Armor-X-Web-for-Mobile.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: 'Prompt', sans-serif;
+        margin-top: 0%;
+    }
+    .armor-x-panel-3 .pic-4 {
+        display: block;
+        width: 100%;
+        justify-content: center;
+    }
+    .armor-x-panel-3 .img-1{
+        height: 150px;
+        background-image: url('/image/mainpage/armor-x/6.jpg');
+        background-repeat: no-repeat;
+        margin:  5px 5px;
+        width: 45%;
+        float: left;
+        background-size: cover;
+    }
+    .armor-x-panel-3 .img-2{
+        height: 150px;
+        background-image: url('/image/mainpage/armor-x/7.jpg');
+        background-repeat: no-repeat;
+        margin: 5px 5px;
+        width: 45%;
+        float: left;
+        background-size: cover;
+    }
+    .armor-x-panel-3 .img-3{
+        height: 150px;
+        background-image: url('/image/mainpage/armor-x/8.jpg');
+        background-repeat: no-repeat;
+        margin: 5px 5px;
+        width: 45%;
+        float: left;
+        background-size: cover;
+    }
+    .armor-x-panel-3 .pic-4 div{
+        margin: 5px 5px;
+    }
+    .armor-x-panel-3 .img-4{
+        height: 150px;
+        background-image: url('/image/mainpage/armor-x/9.jpg');
+        background-repeat: no-repeat;
+        margin: 5px 5px;
+        width: 45%;
+        float: left;
+        background-size: cover;
+    }
+    .armor-x-panel-3 .pic-6,
+    .armor-x-panel-3 .pic-5{
+        display: none;
+    }
+    .armor-x-panel-3 .mobile{
+        display: block;
+    }
+    .armor-x-panel-3 .swiper-pagination-bullet{
+        width: 80px;
+        height: 8px;
+        display: inline-block;
+        border-radius: 0%;
+        background: #000 ;
+        opacity: .2;
+    }
+    .armor-x-panel-3 .swiper-pagination-bullet-active{
+        background: #000 !important;
+        opacity: 1;
+    }
+    .armor-x-panel-3 .pic-4 div p{
+        font-size: 3.5vw;
+    }
+    .armor-x-panel-3{
+        padding-top: 0px;
+    }
+    .armor-x-panel-3 .pic-3{
+        margin-bottom: 6%;
+    }
+    .armor-x-panel-3 .level .text h2{
+        margin-bottom: 10%;
+    }
+    .armor-x-panel-3 .swiper-slide img{
+        object-fit: contain;
+    }
+    .armor-x-panel-3 .mobile{
+        margin-bottom: 10%;
+    }
+    .armor-x-panel-3 .level {
+        padding: 50px 0;
+    }
+    .armor-tab .nav-armor .mySwiper-2{
+        display: block;
+    }
+    .armor-tab .nav-armor .mySwiper-2 .swiper-slide{
+        background: transparent;
+        width: 50% !important;
+        height: auto;
+    }
+    .armor-tab .nav-armor .mySwiper-2.swiper-container{
+        width: 50%;
+        margin-right: 0;
+    }
+    .armor-tab .nav-armor .mySwiper-2 .swiper-slide li{
+        color: #fff;
+        font-size: 2vw;
+    }
+    .armor-x-panel .text h2{
+        line-height: 0.5;
+        font-size: 6vw;
+    }
+    .armor-tab{
+        height: 60px;
+    }
 }
 
 /*-------------------------- iPad แนวตั้ง------------*/
@@ -1336,4 +1609,8 @@ body {
     .armor-x-panel-3 .products-panel{
         width: 70%;
     }
+    #menu-toggle {
+        display: inline;
+    }
+
 }

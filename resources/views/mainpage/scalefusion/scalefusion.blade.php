@@ -7,6 +7,7 @@
 {{-- Link CSS --}}
 @section('link')
 <link rel="stylesheet" href="/css/scalefusion/scalefusion.css">
+<link href="http://fonts.cdnfonts.com/css/prompt?styles=19632,19620,19622,19618" rel="stylesheet">
 <style>
     .scalefusion-1{
         background-image: url('/image/mainpage/scalefusion/Group523.png');
@@ -478,7 +479,7 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-sm-12">
-                                                    <a href="/" class="btn btn-sm light-red">Read more</a>
+                                                    <a href="/scalefusion/workflow" class="btn btn-sm light-red">Read more</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -542,7 +543,7 @@
                         </div>
                         <div class="col-xs-12 col-md-6 in-grid">
                             <div class="col-md-4 col-sm-6">
-                                <div class="box" onclick="window.open('/android-mobile-device-management')">
+                                <div class="box" onclick="window.open('/scalefusion/android-mobile-device-management')">
                                     <p>Android Management</p>
                                     <div class="box-content">
                                         <p class="title">Android Management</p>
@@ -550,7 +551,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
-                                <div class="box" onclick="window.open('/ios-mobile-device-management')">
+                                <div class="box" onclick="window.open('/scalefusion/ios-mobile-device-management')">
                                     <p>iOS Management</p>
                                     <div class="box-content">
                                         <p class="title">iOS Management</p>
@@ -558,15 +559,15 @@
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
-                                <div class="box">
+                                <div class="box" onclick="window.open('/scalefusion/window-manager')">
                                     <p>Window 10 Management</p>
                                     <div class="box-content">
-                                        <p class="title">Android Management</p>
+                                        <p class="title">Window 10 Management</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
-                                <div class="box">
+                                <div class="box" onclick="window.open('/scalefusion/mac-os-manager')">
                                     <p>macOS Management</p>
                                     <div class="box-content">
                                         <p class="title">macOS Management</p>
@@ -576,7 +577,7 @@
                         </div>
                         <div class="col-xs-12 col-md-6 in-grid">
                             <div class="col-md-4 col-sm-6">
-                                <div class="box" onclick="window.open('/mobile-device-management')">
+                                <div class="box" onclick="window.open('/scalefusion/mobile-device-management')">
                                     <p>Mobile Device Management</p>
                                     <div class="box-content">
                                         <p class="title">Mobile Device Management</p>
@@ -584,7 +585,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
-                                <div class="box">
+                                <div class="box" onclick="window.open('/scalefusion/kiosk')">
                                     <p>Kiosk Software</p>
                                     <div class="box-content">
                                         <p class="title">Kiosk Software</p>
@@ -592,7 +593,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
-                                <div class="box">
+                                <div class="box" onclick="window.open('/scalefusion/rugged')">
                                     <p>Rugged Device Management</p>
                                     <div class="box-content">
                                         <p class="title">Rugged Device Management</p>
@@ -600,7 +601,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
-                                <div class="box">
+                                <div class="box"  onclick="window.open('/scalefusion/endpoint')">
                                     <p>Unified Endpoint Management</p>
                                     <div class="box-content">
                                         <p class="title">Unified Endpoint Management</p>
@@ -608,7 +609,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
-                                <div class="box">
+                                <div class="box"  onclick="window.open('/scalefusion/enterprise')">
                                     <p>Enterprise Mobility Management</p>
                                     <div class="box-content">
                                         <p class="title">Enterprise Mobility Management</p>
@@ -616,7 +617,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
-                                <div class="box">
+                                <div class="box" onclick="window.open('/scalefusion/byod')">
                                     <p>Bring Your Own Device (BYOD)</p>
                                     <div class="box-content">
                                         <p class="title">Bring Your Own Device (BYOD)</p>
@@ -676,7 +677,7 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <a href="/ios-mobile-device-management" class="btn btn-lg magenta">Read more</a>
+                                                <a onclick="window.open('/scalefusion/ios-mobile-device-management')" class="btn btn-lg magenta">Read more</a>
                                             </div>
                                         </div>
                                     </div>
@@ -695,7 +696,7 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <a href="#" class="btn btn-lg magenta">Read more</a>
+                                                <a  onclick="window.open('/scalefusion/window-manager')" href="#" class="btn btn-lg magenta">Read more</a>
                                             </div>
                                         </div>
                                     </div>
@@ -714,7 +715,7 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <a href="#" class="btn btn-lg magenta">Read more</a>
+                                                <a onclick="window.open('/scalefusion/mac-os-manager')" href="#" class="btn btn-lg magenta">Read more</a>
                                             </div>
                                         </div>
                                     </div>
@@ -757,7 +758,7 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <a href="#" class="btn btn-lg magenta">Read more</a>
+                                                <a href="/scalefusion/kiosk" class="btn btn-lg magenta">Read more</a>
                                             </div>
                                         </div>
                                     </div>
@@ -777,7 +778,7 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <a href="#" class="btn btn-lg magenta">Read more</a>
+                                                <a href="/scalefusion/rugged" class="btn btn-lg magenta">Read more</a>
                                             </div>
                                         </div>
                                     </div>
@@ -796,7 +797,7 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <a href="#" class="btn btn-lg magenta">Read more</a>
+                                                <a href="/scalefusion/endpoint" class="btn btn-lg magenta">Read more</a>
                                             </div>
                                         </div>
                                     </div>
@@ -815,7 +816,7 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <a href="#" class="btn btn-lg magenta">Read more</a>
+                                                <a href="/scalefusion/enterprise" class="btn btn-lg magenta">Read more</a>
                                             </div>
                                         </div>
                                     </div>
@@ -834,7 +835,7 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <a href="#" class="btn btn-lg magenta">Read more</a>
+                                                <a href="/scalefusion/byod" class="btn btn-lg magenta">Read more</a>
                                             </div>
                                         </div>
                                     </div>

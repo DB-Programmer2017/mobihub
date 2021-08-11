@@ -83,6 +83,36 @@ Route::get('/clear-cache', function() {
         Route::get('/scalefusion/integrations', function () {
             return view('mainpage/scalefusion/intergrations');
         });
+        Route::get('/scalefusion/android-mobile-device-management', function () {
+            return view('mainpage/scalefusion/android-mobile-device-management');
+        });
+        Route::get('/scalefusion/ios-mobile-device-management', function () {
+            return view('mainpage/scalefusion/ios-mobile-device-management');
+        });
+        Route::get('/scalefusion/mobile-device-management', function () {
+            return view('mainpage/scalefusion/mobile-device-management');
+        });
+        Route::get('/scalefusion/window-manager', function () {
+            return view('mainpage/scalefusion/window-manager');
+        });
+        Route::get('/scalefusion/mac-os-manager', function () {
+            return view('mainpage/scalefusion/mac-os-manager');
+        });
+        Route::get('/scalefusion/kiosk', function () {
+            return view('mainpage/scalefusion/kiosk');
+        });
+        Route::get('/scalefusion/rugged', function () {
+            return view('mainpage/scalefusion/rugged');
+        });
+        Route::get('/scalefusion/endpoint', function () {
+            return view('mainpage/scalefusion/endpoint');
+        });
+        Route::get('/scalefusion/enterprise', function () {
+            return view('mainpage/scalefusion/enterprise');
+        });
+        Route::get('/scalefusion/byod', function () {
+            return view('mainpage/scalefusion/byod');
+        });
 
 /*** Subscription ***/
 Route::get('/subscription-submit', [SubscriptionEmailController::class, 'create']);
@@ -115,7 +145,7 @@ Route::get('/service', function () {
 });
 
 Route::get('/news-post', [MobihubController::class,'news']);
-Route::get('/news-detail/{id}', [MobihubController::class, 'ShowDetail']);//show detail
+Route::get('/news-detail/{slug}', [MobihubController::class, 'ShowDetail']);//show detail
 
 Route::get('/about', function () {
     return view('mainpage/about');
@@ -142,7 +172,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/product', [ProductAllController::class,'product']);
     Route::get('/admin/news', [NewsAllController::class,'news']);
     Route::get('/admin/slide', [SlideAllController::class,'slide']);
- 
+
     /*Brand*/
     Route::post('/admin/brand/add',[BrandController::class,'store'])->name('addProductBrand');
     Route::post('/admin/brand/edit',[BrandController::class,'editProductBrand'])->name('editProductBrand');

@@ -30,9 +30,8 @@
     <section class="section-news">
         <div class="container">
             <div class="row">
-
                 @foreach ($news as $row)
-                    <div class="col-xs-12 col-md-4" onclick="window.location.assign('news-detail/{{$row->id}}')">
+                    <div class="col-xs-12 col-md-4" onclick="window.location.assign('news-detail/{{$row->slug}}')">
                         <div class="product-grid">
                             <div class="product-image">
                                 <a href="#" class="image">
@@ -50,9 +49,9 @@
                             </div>
                             <div class="product-content">
                                 <h3 class="title"><a href="#">{{ mb_strimwidth($row->name, 0, 50, "...", "UTF-8") }}</a></h3>
-                                
+
                                 <div class="content">
-                                    {{ mb_strimwidth($row->title, 0, 140, "...", "UTF-8") }} 
+                                    {{ mb_strimwidth($row->title, 0, 140, "...", "UTF-8") }}
                                 </div>
                             </div>
                             <div class="product-cate">
@@ -61,11 +60,9 @@
                         </div>
                     </div>
                 @endforeach
-
                 <div class="col-xs-12 col-md-12">
                     <center>{{$news->appends($_GET)->links('vendor.pagination.default')}}</center>
                 </div>
-
             </div>
         </div>
     </section>

@@ -299,31 +299,31 @@
                 }
             });
 
-            $( "#page_list" ).sortable({
-                placeholder : "ui-state-highlight",
-                update  : function(event, ui){
-                var page_id_array = new Array();
+            // $( "#page_list" ).sortable({
+            //     placeholder : "ui-state-highlight",
+            //     update  : function(event, ui){
+            //     var page_id_array = new Array();
 
-                $('.trd').each(function(){
-                    page_id_array.push($(this).attr("id"));
-                });
+            //     $('.trd').each(function(){
+            //         page_id_array.push($(this).attr("id"));
+            //     });
 
-                //alert(page_id_array);
+            //     //alert(page_id_array);
 
-                $.ajax({
-                    url:"/admin/sortable/update/"+page_id_array,
-                    method:"GET",
-                    data:{
-                        page_id_array:page_id_array
-                    },
-                    success:function(data)
-                    {
-                    //alert(data);
-                        window.location.reload();
-                    }
-                });
-                }
-            });
+            //     $.ajax({
+            //         url:"/admin/sortable/update/"+page_id_array,
+            //         method:"GET",
+            //         data:{
+            //             page_id_array:page_id_array
+            //         },
+            //         success:function(data)
+            //         {
+            //         //alert(data);
+            //             window.location.reload();
+            //         }
+            //     });
+            //     }
+            // });
         });
 
     </script>

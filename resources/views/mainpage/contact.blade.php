@@ -56,12 +56,28 @@
                     <input type="text" class="form-control" placeholder="ชื่อ - นามสกุล *" name="name" id="name">
 
                     <!-- Error -->
+                        @if ($errors->has('company'))
+                            <div class="error text-danger">
+                                {{ $errors->first('company') }}
+                            </div>
+                        @endif
+                    <input type="text" class="form-control" placeholder="ตำแหน่ง/ชื่อบริษัท" name="company" id="company">
+
+                    <!-- Error -->
                         @if ($errors->has('email'))
                             <div class="error text-danger">
                                 {{ $errors->first('email') }}
                             </div>
                         @endif
-                    <input type="email" class="form-control" placeholder="ตำแหน่ง/ชื่อบริษัท *" name="email" id="email">
+                    <input type="email" class="form-control" placeholder="อีเมล *" name="email" id="email">
+
+                    <!-- Error -->
+                        @if ($errors->has('phone'))
+                            <div class="error text-danger">
+                                {{ $errors->first('phone') }}
+                            </div>
+                        @endif
+                    <input type="text" class="form-control" placeholder="เบอร์โทรศัพท์" name="phone" id="phone">
 
                     <!-- Error -->
                         @if ($errors->has('subject'))
@@ -69,7 +85,7 @@
                                 {{ $errors->first('subject') }}
                             </div>
                         @endif
-                    <input type="text" class="form-control" placeholder="อีเมล *" name="subject" id="subject">
+                    <input type="text" class="form-control" placeholder="หัวข้อ *" name="subject" id="subject">
 
 
                     <!-- Error -->

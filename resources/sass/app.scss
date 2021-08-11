@@ -1,8 +1,27 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import 'variables';
+// @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
+
+.js-cookie-consent {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 99999;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+}
+
+span.cookie-consent__message {
+    color: #FFFFFF;
+}
+
+button.js-cookie-consent-agree.cookie-consent__agree {
+    width: 150px;
+    height: 35px;
+}
