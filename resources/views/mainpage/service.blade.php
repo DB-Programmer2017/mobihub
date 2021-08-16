@@ -19,7 +19,7 @@
             <div class="box">
                 <div class="text-banner">
                     <h1>
-                        Service
+                        {{ trans('message.Services') }}
                     </h1>
                     <p>
                         เราจัดจำหน่ายสินค้าให้กับผู้บริโภคเเละองค์กรธุรกิจควบคู่กันซึ่งรองรับ

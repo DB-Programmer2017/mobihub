@@ -15,7 +15,7 @@
 
     <ul class="navbar-top-right">
       <li><i class="far fa-envelope"></i> sales@mobihub.co.th</li>
-      <li><i class="fas fa-phone-volume"></i> 099-287-4710 ถึง 4711</li>
+      <li><i class="fas fa-phone-volume"></i> 099-287-4710 {{ trans('message.To') }} 4711</li>
     </ul>
   </div>
 
@@ -32,10 +32,10 @@
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class=""><a href="/">หน้าแรก</a></li>
-          <li><a href="/about">เกี่ยวกับเรา</a></li>
+          <li class=""><a href="/">{{ trans('message.Home') }}</a></li>
+          <li><a href="/about">{{ trans('message.About') }}</a></li>
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">สินค้า <span class="caret"></span></a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">{{ trans('message.Product') }} <span class="caret"></span></a>
             <ul class="dropdown-menu" aria-labelledby="themes">
               <li><a href="/scalefusion">Scalefusion</a></li>
               <li class="divider"></li>
@@ -45,26 +45,29 @@
             </ul>
           </li>
 
-          <li><a href="/service">บริการ</a></li>
-          <li><a href="/news-post">ข่าวสาร</a></li>
-          <li><a href="/contact">ติดต่อเรา</a></li>
+          <li><a href="/service">{{ trans('message.Services') }}</a></li>
+          <li><a href="/news-post">{{ trans('message.News') }}</a></li>
+          <li><a href="/contact">{{ trans('message.Contact') }}</a></li>
 
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <button type="button" onclick="window.open('/quotation')" class="btn btn-primary btn-quotation">ใบเสนอราคา</button>
+            <button type="button" onclick="window.open('/quotation')" class="btn btn-primary btn-quotation">{{ trans('message.Quotation') }}</button>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Thai <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ trans('message.Language') }} <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
+                <li>
+                    <a href="{{ URL::to('change/th') }}" class="menu-item-2">
+                        <img class="img-box-1" style="height: 25px; width: auto;"  src="/image/thailand.png"> Thai
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ URL::to('change/en') }}" class="menu-item-2">
+                        <img class="img-box-1" style="height: 25px; width: auto;" src="/image/united-kingdom.png"> English
+                    </a>
+                </li>
             </ul>
           </li>
         </ul>
@@ -78,10 +81,10 @@
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="/">หน้าแรก</a>
+        <a href="/">{{ trans('message.Home') }}</a>
 
         <li class="dropdown-2">
-            <a href="#" class="icon-1">สินค้า</a>
+            <a href="#" class="icon-1">{{ trans('message.Product') }}</a>
 
             <ul class="dropdown-menu-2">
                 <li class="dropdown-right-2">
@@ -152,21 +155,21 @@
             </div> --}}
         </li>
 
-        <a href="/service">บริการ</a>
-        <a href="#">ข่าวสาร</a>
-        <a href="/about">เกี่ยวกับเรา</a>
-        <a href="/contact">ติดต่อเรา</a>
+        <a href="/service">{{ trans('message.Services') }}</a>
+        <a href="/news">{{ trans('message.News') }}</a>
+        <a href="/about">{{ trans('message.About') }}</a>
+        <a href="/contact">{{ trans('message.Contact') }}</a>
         <li class="dropdown-2">
-            <a href="#" class="icon-1">Language</a>
+            <a href="#" class="icon-1">{{ trans('message.Language') }}</a>
             <ul class="dropdown-menu-2">
                 <li class="dropdown-right-2">
                     <li>
-                        <a href="#" class="menu-item-2">
+                        <a href="{{ URL::to('change/th') }}" class="menu-item-2">
                             <img class="img-box-1"  src="/image/thailand.png"> Thai
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="menu-item-2">
+                        <a href="{{ URL::to('change/en') }}" class="menu-item-2">
                             <img class="img-box-1"  src="/image/united-kingdom.png"> English
                         </a>
                     </li>
@@ -174,7 +177,7 @@
             </ul>
         </li>
 
-        <a href="/quotation" class="quotation-mobile">ใบเสนอราคา</a>
+        <a href="/quotation" class="quotation-mobile">{{ trans('message.Quotation') }}</a>
 
         {{-- <a href="#"><img class="img-box-1"  src="/image/thailand.png"> THAI</a>
         <a href="#"><img class="img-box-1"  src="/image/united-kingdom.png"> ENGLISH</a> --}}
