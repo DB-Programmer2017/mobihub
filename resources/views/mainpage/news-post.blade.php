@@ -19,9 +19,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-12">
-                    <h1>ข่าวสาร</h1>
+                    <h1>{{ trans('message.News') }}</h1>
                     <li><a href="/" class="active">Mobihub</a></li>
-                    <li><a href="#" >ข่าวสาร</a></li>
+                    <li><a href="#" >{{ trans('message.News') }}</a></li>
                 </div>
             </div>
         </div>

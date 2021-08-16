@@ -3,12 +3,12 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-3">
-                <h4>ลงทะเบียนรับข้อมูลข่าวสาร</h4>
+                <h4>{{ trans('message.Subscribte') }}</h4>
                 <div class="form-group">
                     <form method="POST" action="{{ route('subscriptionEmail.store') }} ">
                         @csrf
                         <div class="input-group">
-                            <input type="email" name="email" class="form-control" placeholder="กรอกอีเมล์ของคุณที่นี่...">
+                            <input type="email" name="email" class="form-control" placeholder="{{ trans('message.Fill your Email...') }}">
                             <span class="input-group-btn">
                                 <button class="btn btn-primary" type="submit">ติดตาม</button>
                             </span>
@@ -25,11 +25,11 @@
 
             <div class="col-xs-12 col-sm-6 col-md-2 about">
                 <h4>Mobihub</h4>
-                <li onclick="window.open('/about')">เกี่ยวกับเรา</li>
-                <li onclick="window.open('/news-post')">ข่าวสาร</li>
-                <li onclick="window.open('/scalefusion')">สินค้า</li>
-                <li onclick="window.open('/service')">บริการ</li>
-                <li onclick="window.open('/contact')">ติดต่อเรา</li>
+                <li onclick="window.open('/about')">{{ trans('message.About') }}</li>
+                <li onclick="window.open('/news-post')">{{ trans('message.News') }}</li>
+                <li onclick="window.open('/scalefusion')">scalefusion</li>
+                <li onclick="window.open('/service')">{{ trans('message.Services') }}</li>
+                <li onclick="window.open('/contact')">{{ trans('message.Contact') }}</li>
             </div>
 
             <div class="col-xs-12 col-sm-6 col-md-4">
@@ -50,7 +50,7 @@
                     Praditmanuthum Rd. , Klongjan, Bangkapi, Bangkok 10240 THAILAND.
                 </li>
                 <li><i class="far fa-envelope"></i> sales@mobihub.co.th</li>
-                <li><i class="fas fa-phone-volume"></i> 099-287-4710 ถึง 4711</li>
+                <li><i class="fas fa-phone-volume"></i> 099-287-4710 {{ trans('message.To') }} 4711</li>
             </div>
 
         </div>

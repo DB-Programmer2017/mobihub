@@ -24,9 +24,9 @@
             <div class="row">
                 <div class="col-xs-12 col-md-12">
                     <center>
-                        <h1>ติดต่อเรา</h1>
+                        <h1>{{ trans('message.Contact') }}</h1>
                         <li><a href="/" class="active">Mobihub</a></li>
-                        <li><a href="#" >ติดต่อเรา</a></li>
+                        <li><a href="#" >{{ trans('message.Contact') }}</a></li>
                     </center>
                 </div>
             </div>
@@ -36,7 +36,7 @@
         <div class="container contact-form">
             <div class="row">
                 <div class="col-xs-12 col-md-12">
-                    <h1>ติดต่อเรา</h1>
+                    <h1>{{ trans('message.Contact') }}</h1>
 
                     @if(session()->has('success'))
                     <div class="alert alert-success d-flex justify-content-center">
@@ -53,7 +53,7 @@
                                 {{ $errors->first('name') }}
                             </div>
                         @endif
-                    <input type="text" class="form-control" placeholder="ชื่อ - นามสกุล *" name="name" id="name">
+                    <input type="text" class="form-control" placeholder="{{ trans('message.Name') }}*" name="name" id="name">
 
                     <!-- Error -->
                         @if ($errors->has('company'))
@@ -61,7 +61,7 @@
                                 {{ $errors->first('company') }}
                             </div>
                         @endif
-                    <input type="text" class="form-control" placeholder="ตำแหน่ง/ชื่อบริษัท" name="company" id="company">
+                    <input type="text" class="form-control" placeholder="{{ trans('message.Position/Company') }}" name="company" id="company">
 
                     <!-- Error -->
                         @if ($errors->has('email'))
@@ -69,7 +69,7 @@
                                 {{ $errors->first('email') }}
                             </div>
                         @endif
-                    <input type="email" class="form-control" placeholder="อีเมล *" name="email" id="email">
+                    <input type="email" class="form-control" placeholder="{{ trans('message.Email') }} *" name="email" id="email">
 
                     <!-- Error -->
                         @if ($errors->has('phone'))
@@ -77,7 +77,7 @@
                                 {{ $errors->first('phone') }}
                             </div>
                         @endif
-                    <input type="text" class="form-control" placeholder="เบอร์โทรศัพท์" name="phone" id="phone">
+                    <input type="text" class="form-control" placeholder="{{ trans('message.Tell') }}" name="phone" id="phone">
 
                     <!-- Error -->
                         @if ($errors->has('subject'))
@@ -85,7 +85,7 @@
                                 {{ $errors->first('subject') }}
                             </div>
                         @endif
-                    <input type="text" class="form-control" placeholder="หัวข้อ *" name="subject" id="subject">
+                    <input type="text" class="form-control" placeholder="{{ trans('message.Topic') }} *" name="subject" id="subject">
 
 
                     <!-- Error -->
@@ -94,9 +94,9 @@
                                 {{ $errors->first('message') }}
                             </div>
                         @endif
-                    <textarea name="message" id="message" cols="30" rows="10" class="form-control"  placeholder="ข้อความ *"></textarea>
+                    <textarea name="message" id="message" cols="30" rows="10" class="form-control"  placeholder="{{ trans('message.Message') }} *"></textarea>
 
-                    <button type="submit" class="btn btn-danger">ส่ง<i class="fas fa-long-arrow-alt-right"></i></button>
+                    <button type="submit" class="btn btn-danger">{{ trans('message.Submit') }}<i class="fas fa-long-arrow-alt-right"></i></button>
                 </form>
 
 {{--
@@ -191,20 +191,20 @@
             <div class="col-xs-12 col-md-12">
                 <div class="col-xs-12 col-md-4 service-box">
                     <i class="fas fa-envelope"></i>
-                    <h3>Contact Us</h3>
+                    <h3>{{ trans('message.Contact') }}</h3>
                     <p>sales@mobihub.co.th</p>
                 </div>
 
                 <div class="col-xs-12 col-md-4 service-box">
                     <i class="fas fa-phone-volume"></i>
-                    <h3>Tell</h3>
-                    <p>099-287-4710 ถึง 4711</p>
+                    <h3>{{ trans('message.Tell') }}</h3>
+                    <p>099-287-4710 {{ trans('message.To') }} 4711</p>
                 </div>
 
                 <div class="col-xs-12 col-md-4 service-box">
                     <i class="fas fa-map-marker-alt"></i>
-                    <h3>Tracking Map</h3>
-                    <p>sales@mobihub.co.th</p>
+                    <h3>{{ trans('message.Map') }}</h3>
+                    <p>448/15 Crystal Design Center (CDC), L2, 2FL., Room 202, 204, 206, 208, Soi Ladprao 87 (Chandra Suk), Praditmanuthum Rd. , Klongjan, Bangkapi, Bangkok 10240 THAILAND.</p>
                 </div>
             </div>
         </div>

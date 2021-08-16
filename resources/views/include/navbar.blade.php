@@ -15,7 +15,7 @@
 
     <ul class="navbar-top-right">
       <li><i class="far fa-envelope"></i> sales@mobihub.co.th</li>
-      <li><i class="fas fa-phone-volume"></i> 099-287-4710 ถึง 4711</li>
+      <li><i class="fas fa-phone-volume"></i> 099-287-4710 {{ trans('message.To') }} 4711</li>
     </ul>
   </div>
 
