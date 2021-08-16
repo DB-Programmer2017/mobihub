@@ -262,3 +262,8 @@ Route::get("/storage-link", function () {
     symlink($targetFolder, $linkFolder);
     return 'DONE';
 });
+
+Route::get('change/{locale}', function ($locale) {
+    Session::put('locale', $locale);
+    return Redirect::back();
+});
